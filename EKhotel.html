@@ -29,26 +29,26 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px 60px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px 40px; }
 
   /* HERO */
   .hero {
-    padding: 34px 28px 26px;
+    padding: 24px 16px 20px;
     text-align: center;
     border-bottom: 1px solid var(--line);
     background: linear-gradient(180deg, var(--paper2), var(--paper));
   }
   .hero .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.3em;
+    font-size: 10px;
+    letter-spacing: 0.25em;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .hero h1 {
     font-family: 'Noto Serif TC', serif;
     font-weight: 900;
-    font-size: clamp(24px, 3.6vw, 32px);
+    font-size: clamp(22px, 6vw, 32px);
     margin: 0;
     color: var(--ink);
     letter-spacing: 0.02em;
@@ -57,35 +57,35 @@
   /* JOURNEY LINE */
   .journey {
     position: relative;
-    padding-left: 30px;
-    margin-top: 30px;
+    padding-left: 20px;
+    margin-top: 22px;
   }
   .journey::before {
     content:"";
-    position:absolute; left:9px; top:6px; bottom:8px; width:2px;
+    position:absolute; left:5px; top:6px; bottom:8px; width:2px;
     background: linear-gradient(180deg, var(--copper) 0%, var(--copper) 46%, var(--steel) 54%, var(--steel) 100%);
   }
 
   .day {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   .day::before {
     content:"";
-    position:absolute; left:-34px; top:6px;
-    width:20px; height:20px; border-radius:50%;
-    border: 3px solid var(--paper);
+    position:absolute; left:-20px; top:5px;
+    width:14px; height:14px; border-radius:50%;
+    border: 2px solid var(--paper);
     box-shadow: 0 0 0 2px var(--marker);
     background: var(--marker);
   }
   .day.copper { --marker: var(--copper); }
   .day.steel { --marker: var(--steel); }
 
-  .day-head { margin-bottom: 14px; }
+  .day-head { margin-bottom: 12px; }
   .day-head .tag {
     display:inline-block;
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--white); padding: 3px 10px; border-radius: 3px;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); padding: 3px 9px; border-radius: 3px;
     margin-bottom: 8px; font-family:'Noto Sans TC',sans-serif; font-weight:500;
   }
   .day.copper .tag { background: var(--copper); }
@@ -93,13 +93,16 @@
   .day-head h2 {
     font-family: 'Noto Serif TC', serif;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     margin: 0 0 4px;
+    line-height: 1.4;
   }
   .day-head h2 .subnote {
-    font-size: 20px;
+    display: block;
+    font-size: 14.5px;
     font-weight: 400;
     color: var(--muted);
+    margin-top: 3px;
   }
   .day-head .meta { color: var(--muted); font-size: 13px; }
 
@@ -115,30 +118,31 @@
     display: grid;
     grid-template-columns: 1fr;
   }
-  .card-media { position:relative; background:#111; height: 380px; }
-  .card-body .card-media { margin-top: 16px; border-radius: 3px; overflow: hidden; }
+  .card-media { position:relative; background:#111; aspect-ratio: 4 / 3; }
+  .card-body .card-media { margin-top: 14px; border-radius: 3px; overflow: hidden; }
   .card-media img { width:100%; height:100%; object-fit:cover; display:block; }
   .card-media .cap {
-    position:absolute; right:12px; bottom:10px;
-    background: rgba(255,255,255,.82);
-    color:#1A1A1A; font-size:11.5px; padding:5px 10px; letter-spacing:.03em;
+    position:absolute; right:8px; bottom:8px;
+    background: rgba(255,255,255,.85);
+    color:#1A1A1A; font-size:10.5px; padding:4px 8px; letter-spacing:.02em;
     border-radius: 3px;
+    max-width: calc(100% - 16px);
   }
-  .card-body { padding: 18px 22px; }
+  .card-body { padding: 14px 16px; }
   .card-body h3 {
-    font-family:'Noto Serif TC', serif; font-weight:700; font-size:19px; margin:0 0 3px;
+    font-family:'Noto Serif TC', serif; font-weight:700; font-size:17px; margin:0 0 3px;
   }
-  .card-body .sub { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+  .card-body .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 10px; }
   .card-body .stats {
-    display:flex; flex-wrap:wrap; gap: 8px; margin-bottom:12px;
+    display:flex; flex-wrap:wrap; gap: 6px; margin-bottom:12px;
   }
   .stat {
-    font-size:12px; padding: 4px 10px; border-radius:3px;
+    font-size:11px; padding: 4px 9px; border-radius:3px;
     background: var(--paper2); color: var(--ink); border:1px solid var(--line);
   }
   ul.points { margin:0; padding-left: 0; list-style:none; }
   ul.points li {
-    position:relative; padding-left: 18px; margin-bottom: 7px; font-size: 14px; color:#3A362F;
+    position:relative; padding-left: 16px; margin-bottom: 7px; font-size: 13.5px; color:#3A362F;
   }
   ul.points li::before {
     content:"—"; position:absolute; left:0; color: var(--marker-lead, var(--copper)); font-weight:700;
@@ -147,27 +151,34 @@
   ul.points li b { color: var(--ink); font-weight:600; }
 
   .price-note {
-    margin-top: 4px; padding: 12px 16px; background: var(--paper2);
-    border-left: 3px solid var(--copper); border-radius: 2px; font-size: 13px; color: var(--muted);
+    margin-top: 4px; padding: 12px 14px; background: var(--paper2);
+    border-left: 3px solid var(--copper); border-radius: 2px; font-size: 12.5px; color: var(--muted);
   }
   .price-note .lead { color: var(--ink); font-weight:500; margin-bottom: 6px; }
-  .price-note ul { margin: 0 0 6px; padding-left: 18px; }
+  .price-note ul { margin: 0 0 6px; padding-left: 16px; }
   .price-note ul li { margin-bottom: 3px; }
-  .price-note .note { font-size: 12px; }
+  .price-note .note { font-size: 11.5px; }
   .price-note img { width:100%; border-radius:3px; margin-top:8px; display:block; border:1px solid var(--line); }
 
   /* COMPARISON TABLE */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
   table.compare {
-    width:100%; border-collapse: collapse; background:#fff;
-    border:1px solid var(--line); font-size: 13px; margin-top: 4px;
+    width:100%; min-width: 560px; border-collapse: collapse; background:#fff;
+    font-size: 12.5px;
   }
   table.compare th, table.compare td {
-    padding: 9px 12px; text-align:left; border-bottom:1px solid var(--line);
+    padding: 9px 11px; text-align:left; border-bottom:1px solid var(--line);
     vertical-align: top;
   }
   table.compare th {
-    background: var(--steel); color:#fff; font-weight:500; font-size:12px;
-    letter-spacing:.03em;
+    background: var(--steel); color:#fff; font-weight:500; font-size:11.5px;
+    letter-spacing:.03em; white-space: nowrap;
   }
   table.compare tr:last-child td { border-bottom:none; }
   table.compare tr.baseline td { background: var(--paper2); font-weight:600; }
@@ -178,7 +189,7 @@
     margin-top: 14px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
   .room-block {
     border: 1px solid var(--line);
@@ -186,8 +197,8 @@
     overflow: hidden;
   }
   .room-block .room-name {
-    padding: 9px 14px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 12.5px;
     font-weight: 600;
     color: var(--ink);
     background: var(--paper2);
@@ -197,8 +208,40 @@
   .room-block img.table-img { border-bottom: 1px solid var(--line); }
 
   footer {
-    text-align:center; color: var(--muted); font-size:11px; margin-top: 34px;
-    padding-top: 16px; border-top:1px solid var(--line);
+    text-align:center; color: var(--muted); font-size:11px; margin-top: 30px;
+    padding-top: 14px; border-top:1px solid var(--line);
+  }
+
+  /* DESKTOP ENHANCEMENTS */
+  @media (min-width: 640px) {
+    .wrap { padding: 0 28px 60px; }
+    .hero { padding: 34px 28px 26px; }
+    .hero .eyebrow { font-size: 11px; letter-spacing: 0.3em; margin-bottom: 8px; }
+    .journey { padding-left: 30px; margin-top: 30px; }
+    .journey::before { left: 9px; }
+    .day { margin-bottom: 40px; }
+    .day::before { left: -34px; top:6px; width:20px; height:20px; border-width:3px; }
+    .day-head { margin-bottom: 14px; }
+    .day-head .tag { font-size: 11px; letter-spacing: 0.1em; padding: 3px 10px; }
+    .day-head h2 { font-size: 22px; }
+    .day-head h2 .subnote { display: inline; font-size: 20px; margin-top: 0; }
+    .card-media { aspect-ratio: auto; height: 380px; }
+    .card-media .cap { font-size: 11.5px; padding: 5px 10px; right:12px; bottom:10px; }
+    .card-body { padding: 18px 22px; }
+    .card-body h3 { font-size: 19px; }
+    .card-body .sub { font-size: 13px; margin-bottom: 10px; }
+    .card-body .stats { gap: 8px; margin-bottom: 12px; }
+    .stat { font-size: 12px; padding: 4px 10px; }
+    ul.points li { padding-left: 18px; font-size: 14px; }
+    .price-note { padding: 12px 16px; font-size: 13px; }
+    .price-note ul { padding-left: 18px; }
+    .price-note .note { font-size: 12px; }
+    table.compare { min-width: 0; font-size: 13px; }
+    table.compare th, table.compare td { padding: 9px 12px; }
+    table.compare th { font-size: 12px; }
+    .room-options { gap: 14px; }
+    .room-block .room-name { padding: 9px 14px; font-size: 13px; }
+    footer { font-size: 12px; margin-top: 34px; padding-top: 16px; }
   }
 </style>
 </head>
@@ -262,6 +305,7 @@
         <h2>東京商務住宿三選一</h2>
       </div>
 
+      <div class="table-scroll">
       <table class="compare">
         <tr>
           <th>飯店</th><th>星等</th><th>距離 Janu Tokyo</th><th>定位／建議情境</th>
@@ -283,6 +327,7 @@
           <td>與董事長飯店同等級規格，適合對等接待與商務宴請</td>
         </tr>
       </table>
+      </div>
 
       <!-- Villa Fontaine -->
       <div class="card">
