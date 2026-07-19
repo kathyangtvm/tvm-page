@@ -20,6 +20,7 @@
     --white: #FFFFFF;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   html, body { margin:0; padding:0; }
   body {
     background: var(--paper);
@@ -54,32 +55,47 @@
     letter-spacing: 0.02em;
   }
 
-  /* JOURNEY LINE */
+  /* SECTIONS (no side timeline — reclaimed for mobile width) */
   .journey {
-    position: relative;
-    padding-left: 20px;
-    margin-top: 22px;
-  }
-  .journey::before {
-    content:"";
-    position:absolute; left:5px; top:6px; bottom:8px; width:2px;
-    background: linear-gradient(180deg, var(--copper) 0%, var(--copper) 46%, var(--steel) 54%, var(--steel) 100%);
+    margin-top: 18px;
   }
 
   .day {
     position: relative;
     margin-bottom: 28px;
   }
-  .day::before {
-    content:"";
-    position:absolute; left:-20px; top:5px;
-    width:14px; height:14px; border-radius:50%;
-    border: 2px solid var(--paper);
-    box-shadow: 0 0 0 2px var(--marker);
-    background: var(--marker);
-  }
   .day.copper { --marker: var(--copper); }
   .day.steel { --marker: var(--steel); }
+
+  /* ANCHOR NAV */
+  .anchor-nav {
+    display: flex; justify-content: center; gap: 10px;
+    padding: 14px 16px 0; flex-wrap: wrap;
+  }
+  .anchor-link {
+    font-size: 12px; font-weight: 500; padding: 6px 14px;
+    border-radius: 20px; text-decoration: none;
+    border: 1px solid var(--line); background: var(--white);
+    font-family: 'Noto Sans TC', sans-serif; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+  }
+  .anchor-link.copper { color: var(--copper-dark); border-color: var(--copper); }
+  .anchor-link.steel { color: var(--steel); border-color: var(--steel-light); }
+
+  /* DAY DIVIDER */
+  .day-divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 4px 0 28px;
+  }
+  .day-divider .line {
+    flex: 1; height: 2px;
+    background: linear-gradient(90deg, var(--copper), var(--steel));
+    border-radius: 2px;
+  }
+  .day-divider .diamond {
+    width: 8px; height: 8px; transform: rotate(45deg);
+    background: var(--steel); flex-shrink: 0;
+  }
 
   .day-head { margin-bottom: 12px; }
   .day-head .tag {
@@ -217,10 +233,8 @@
     .wrap { padding: 0 28px 60px; }
     .hero { padding: 34px 28px 26px; }
     .hero .eyebrow { font-size: 11px; letter-spacing: 0.3em; margin-bottom: 8px; }
-    .journey { padding-left: 30px; margin-top: 30px; }
-    .journey::before { left: 9px; }
+    .journey { margin-top: 26px; }
     .day { margin-bottom: 40px; }
-    .day::before { left: -34px; top:6px; width:20px; height:20px; border-width:3px; }
     .day-head { margin-bottom: 14px; }
     .day-head .tag { font-size: 11px; letter-spacing: 0.1em; padding: 3px 10px; }
     .day-head h2 { font-size: 22px; }
@@ -252,11 +266,16 @@
   <h1>差旅住宿方案</h1>
 </div>
 
+<div class="anchor-nav">
+  <button type="button" class="anchor-link copper" data-target="day2">Day 2 · TOJI</button>
+  <button type="button" class="anchor-link steel" data-target="day3">Day 3 · Janu</button>
+</div>
+
 <div class="wrap">
   <div class="journey">
 
     <!-- DAY 2 -->
-    <div class="day copper">
+    <div class="day copper" id="day2">
       <div class="day-head">
         <span class="tag">Day 2 · 7/30（四）· 董事長入住 TOJI</span>
         <h2>最佳住宿選項 <span class="subnote">（周邊飯店普遍屋齡較長，四星級以上住宿選擇有限）</span></h2>
@@ -298,8 +317,14 @@
       </div>
     </div>
 
+    <div class="day-divider">
+      <span class="line"></span>
+      <span class="diamond"></span>
+      <span class="line"></span>
+    </div>
+
     <!-- DAY 3 -->
-    <div class="day steel">
+    <div class="day steel" id="day3">
       <div class="day-head">
         <span class="tag">Day 3 · 7/31（五）· 董事長入住 Janu</span>
         <h2>東京商務住宿三選一</h2>
@@ -416,5 +441,17 @@
 
 <footer>住宿選項評估 · 7/30 TOJI ／ 7/31 Janu</footer>
 
+<script>
+  document.querySelectorAll('.anchor-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = link.getAttribute('data-target');
+      var target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
