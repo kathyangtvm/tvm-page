@@ -17,5 +17,9 @@
 .lang-opt:hover{opacity:.8;}
 .lang-opt.active{color:var(--tea);font-weight:600;opacity:1;}
 @media(max-width:560px){
-  .lang-toggle{padding:4px 10px;font-size:11px;right:10px;}
+  .top-nav-wrap{flex-direction:column;padding-top:8px;}
+  .lang-toggle{
+    position:static;transform:none;
+    padding:4px 10px;font-size:11px;margin:2px 0 0;
+  }
 }
