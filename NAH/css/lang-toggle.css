@@ -18,7 +18,7 @@
 .lang-opt.active{color:var(--tea);font-weight:600;opacity:1;}
 @media(max-width:560px){
   .lang-toggle{
-    top:8px;right:8px;transform:none;
+    right:8px;
     padding:3px 7px;font-size:10px;gap:2px;
   }
 }

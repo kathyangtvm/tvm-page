@@ -18,5 +18,5 @@
   .top-nav a:hover{color:var(--tea);border-color:var(--tea);}
   #itinerary-top, #weather-info, #support-info{scroll-margin-top:60px;}
   @media(max-width:560px){
-    .top-nav{padding:11px 62px 11px 16px;}
+    .top-nav{padding:11px 62px 11px 16px;justify-content:flex-start;}
   }
