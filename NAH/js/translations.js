@@ -204,7 +204,7 @@ const NAH_TRANSLATIONS = {
   "午餐・四萬溫泉": "Lunch · Shima Onsen",
   "卡拉OK": "Karaoke",
   "卡拉OK（TOJI）": "Karaoke (TOJI)",
-  "即時天氣更新（ウェザーニュース）": "Live weather updates (Weathernews)",
+  "即時天氣更新": "Live weather updates",
   "參觀 HARUMI Office": "Visit HARUMI Office",
   "參觀 NAH Asakusa Club House": "Visit NAH Asakusa Club House",
   "參觀 NAH Hiroo Club House": "Visit NAH Hiroo Club House",
