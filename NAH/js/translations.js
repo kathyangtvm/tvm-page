@@ -464,7 +464,7 @@ const NAH_TRANSLATIONS = {
   "輕井澤": {en: "Karuizawa", ja: "軽井沢"},
   "輕井澤 Base L 退房，前往積善館": {en: "Check out of Karuizawa Base L, head to Sekizenkan", ja: "軽井沢 Base L をチェックアウトし、積善館へ"},
   "輕井澤 Karuizawa（7/29–7/30）": {en: "Karuizawa (7/29–7/30)", ja: "軽井沢 Karuizawa（7/29～7/30）"},
-  "返台": {en: "Return to Taiwan", ja: "帰国"},
+  "返台": {en: "Return", ja: "帰国"},
   "逃生路線（Base L）": {en: "Evacuation Route (Base L)", ja: "避難経路（Base L）"},
   "都市計畫區域": {en: "City Planning Zone", ja: "都市計画区域"},
   "都市計畫區域外": {en: "Outside City Planning Zone", ja: "都市計画区域外"},
