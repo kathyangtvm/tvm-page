@@ -29,7 +29,7 @@
   .tab-btn .d{
     font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.14em;
     text-transform:uppercase;display:block;margin-bottom:4px;font-weight:500;
-    color:var(--tea);opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    color:var(--tea);opacity:.7;white-space:normal;
   }
   .tab-btn::after{
     content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
@@ -66,7 +66,7 @@
     letter-spacing:.02em;white-space:nowrap;flex-shrink:0;width:98px;font-weight:500;
   }
   .t-content{flex:1;min-width:0;}
-  .t-title{font-family:"Shippori Mincho",serif;font-size:13.5px;font-weight:600;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .t-title{font-family:"Shippori Mincho",serif;font-size:13.5px;font-weight:600;line-height:1.4;white-space:normal;}
   .t-sub{font-size:11.5px;color:var(--ink-soft);margin-top:2px;line-height:1.4;}
   .t-info-link{color:var(--tea);text-decoration:underline;}
   .t-row.stay .t-title{color:var(--tea);white-space:normal;}
@@ -155,5 +155,5 @@
     .timeline{padding:20px 16px;}
     .t-row{gap:10px;padding-bottom:11px;}
     .t-time{width:76px;font-size:10.5px;}
-    .t-title{font-size:12.5px;white-space:normal;}
+    .t-title{font-size:12.5px;}
   }
