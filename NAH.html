@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
-<title>NOT A HOTEL 三日餐食選項｜7/29 – 7/31</title>
+<title>7/29-8/1 Not a hotel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -159,6 +159,32 @@
 </style>
 </head>
 <body>
+
+<style>
+  .top-nav-wrap{
+    position:sticky;top:0;z-index:1500;background:var(--paper);
+    display:flex;justify-content:center;
+  }
+  .top-nav{
+    max-width:520px;width:100%;margin:0 auto;
+    border-bottom:1px solid var(--hairline);
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    padding:11px 16px;
+  }
+  .top-nav a{
+    font-family:"Inter",sans-serif;
+    font-size:11.5px;letter-spacing:.02em;color:var(--ink-soft);text-decoration:none;
+    padding:3px 0;border-bottom:1.5px solid transparent;transition:color .2s ease,border-color .2s ease;
+  }
+  .top-nav a:hover{color:var(--tea);border-color:var(--tea);}
+</style>
+<div class="top-nav-wrap">
+  <div class="top-nav">
+    <a href="#itinerary-top">行程總覽</a>
+    <a href="#weather-info">天氣參考</a>
+    <a href="#support-info">支援資訊</a>
+  </div>
+</div>
 <style>
   /* ── Itinerary Tabs ── */
   .itinerary{
@@ -250,7 +276,7 @@
 
   /* ── Meal Detail Modal ── */
   .meal-modal-overlay{
-    display:none;position:fixed;inset:0;z-index:1000;
+    display:none;position:fixed;inset:0;z-index:2500;
     background:rgba(43,38,32,.55);
     align-items:center;justify-content:center;padding:24px;
   }
@@ -699,6 +725,87 @@ document.addEventListener('touchend', function(e){
 }, {passive:true});
 </script>
 
+<div class="header-rule" style="margin-top:36px;"></div>
+
+<section class="weather-info" id="weather-info">
+  <style>
+    .weather-info{max-width:1180px;margin:32px auto 40px;padding:0 32px;}
+    @media(max-width:560px){.weather-info{padding:0 14px;}}
+    .weather-info-head{text-align:center;margin-bottom:22px;}
+    .weather-info-head .eyebrow{
+      font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.38em;
+      text-transform:uppercase;color:var(--tea);margin-bottom:14px;
+    }
+    .weather-info-head h2{
+      font-family:"Shippori Mincho",serif;font-size:clamp(20px,3vw,26px);
+      font-weight:600;letter-spacing:.06em;
+    }
+    .weather-summary{
+      background:var(--card);border:1px solid var(--hairline);border-radius:14px;
+      padding:20px 24px;margin-bottom:16px;
+    }
+    .weather-summary p{font-size:13px;color:var(--ink-soft);line-height:1.8;margin:0 0 10px;}
+    .weather-summary p:last-child{margin-bottom:0;}
+    .weather-summary b{color:var(--ink);}
+
+    .weather-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+    .weather-card{
+      background:var(--card);border:1px solid var(--hairline);border-radius:12px;
+      padding:14px 10px;text-align:center;
+    }
+    .weather-card .place{font-family:"Shippori Mincho",serif;font-size:13.5px;font-weight:600;margin-bottom:8px;}
+    .weather-card .icon-row{display:flex;justify-content:center;gap:6px;margin-bottom:8px;font-size:20px;}
+    .weather-card .temp{font-size:11.5px;color:var(--ink-soft);line-height:1.6;}
+    .weather-card .temp b{color:var(--ink);font-weight:600;}
+
+    .weather-link-wrap{text-align:center;}
+    .weather-link{
+      display:inline-flex;align-items:center;gap:7px;
+      font-family:"Inter",sans-serif;font-size:13px;font-weight:500;
+      background:var(--ink);border:1px solid var(--ink);
+      border-radius:20px;padding:10px 22px;color:#FFFFFF;text-decoration:none;
+      transition:background .2s ease,opacity .2s ease;
+    }
+    .weather-link:hover{background:#443C30;}
+    .weather-link .arrow{color:#E9C98A;}
+  </style>
+
+  <div class="weather-info-head">
+    <div class="eyebrow">Weather</div>
+    <h2>天氣參考</h2>
+  </div>
+
+  <div class="weather-summary">
+    <p><b>輕井澤（7/29–7/30）</b>：白天高溫約 30℃，早晚涼爽約 19–20℃，降雨機率偏高（約 60%），早晚溫差大，建議備薄外套。</p>
+    <p><b>水上 Minakami（7/30–7/31）</b>：山區氣候與輕井澤相近，白天悶熱、午後偶有雷陣雨可能，早晚仍偏涼。</p>
+    <p><b>東京都內（7/31–8/1，淺草／廣尾／麻布台／晴海）</b>：高溫約 34–36℃，悶熱潮濕，東京都已發布中暑警戒警報，請特別注意防曬與補水。</p>
+  </div>
+
+  <div class="weather-cards">
+    <div class="weather-card">
+      <div class="place">輕井澤</div>
+      <div class="icon-row">☀️🌥️</div>
+      <div class="temp"><b>30℃</b> / 19–20℃</div>
+    </div>
+    <div class="weather-card">
+      <div class="place">水上 Minakami</div>
+      <div class="icon-row">⛅🌦️</div>
+      <div class="temp"><b>30℃</b> 前後 / 偶陣雨</div>
+    </div>
+    <div class="weather-card">
+      <div class="place">東京</div>
+      <div class="icon-row">🌤️🥵</div>
+      <div class="temp"><b>34–36℃</b>／悶熱</div>
+    </div>
+  </div>
+
+  <div class="weather-link-wrap">
+    <a class="weather-link" href="https://weathernews.jp/" target="_blank" rel="noopener">即時天氣更新（ウェザーニュース）<span class="arrow">↗</span></a>
+  </div>
+</section>
+
+<div class="header-rule" style="margin-top:36px;"></div>
+
 <section class="support-info" id="support-info">
   <style>
     .support-info{max-width:1180px;margin:32px auto 40px;padding:0 32px;}
@@ -761,6 +868,7 @@ document.addEventListener('touchend', function(e){
       <a class="support-btn" href="https://helpcenter-en.notahotel.com/I_want_to_know_about_amenities_and_equipment.-677d043eaff748fc94083f39" target="_blank" rel="noopener">房間備品</a>
       <a class="support-btn" href="https://helpcenter-en.notahotel.com/NOT%20A%20HOTEL%20KITAKARUIZAWA%20Facility%20Handling%20Manual-677d043eda34b141a0dbeef1" target="_blank" rel="noopener">逃生路線（Base L）</a>
       <a class="support-btn" href="https://helpcenter-en.notahotel.com/How%20to%20use%20KARAOKE%20(MINAKAMI)-6807115ca007d660b2762ca9" target="_blank" rel="noopener">卡拉OK（TOJI）</a>
+      <button type="button" class="support-btn" style="font-family:inherit;cursor:pointer;" onclick="openPlaceDetail('dining_options');">餐食選項</button>
     </div>
   </div>
 
@@ -780,11 +888,12 @@ document.addEventListener('touchend', function(e){
 
 
 
+<div class="place-overlay" id="place-overlay-dining_options">
+  <div class="place-close" onclick="closePlaceDetail()">&times;</div>
 <div class="wrap" id="dining-options">
   <header>
-    <div class="header-rule"></div>
     <div class="eyebrow">NOT A HOTEL · Dining Options</div>
-    <h1>三日餐食選項一覽</h1>
+    <h1>三日餐食選項</h1>
 
   </header>
 
@@ -2039,6 +2148,8 @@ document.addEventListener('touchend', function(e){
       <div class="meta-info"><div>Venue: 東京都中央區晴海・NOT A HOTEL OFFICE 內</div><div>設計：NIGO®</div></div>
     </div>
   </div>
+</div>
+
 </div>
 
 <div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox()">
