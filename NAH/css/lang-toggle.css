@@ -1,0 +1,20 @@
+/* ── 中/英切換按鈕（目前僅預留架構，尚未提供英文內容） ── */
+.top-nav-wrap{position:relative;}
+.lang-toggle{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;gap:3px;
+  font-family:"Inter",sans-serif;font-size:11.5px;letter-spacing:.02em;
+  background:var(--card);border:1px solid var(--hairline);border-radius:999px;
+  padding:5px 12px;color:var(--ink-soft);cursor:pointer;
+  transition:border-color .2s ease,color .2s ease;
+}
+.lang-toggle:hover{border-color:var(--tea);color:var(--tea);}
+.lang-toggle-zh,.lang-toggle-en{transition:color .2s ease,opacity .2s ease,font-weight .2s ease;}
+.lang-toggle-sep{opacity:.4;}
+.lang-toggle[data-lang="zh"] .lang-toggle-zh{color:var(--tea);font-weight:600;}
+.lang-toggle[data-lang="zh"] .lang-toggle-en{opacity:.45;}
+.lang-toggle[data-lang="en"] .lang-toggle-en{color:var(--tea);font-weight:600;}
+.lang-toggle[data-lang="en"] .lang-toggle-zh{opacity:.45;}
+@media(max-width:560px){
+  .lang-toggle{padding:4px 10px;font-size:11px;right:10px;}
+}

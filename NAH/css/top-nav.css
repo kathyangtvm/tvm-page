@@ -1,0 +1,19 @@
+.top-nav-wrap{
+    position:sticky;top:0;z-index:1500;
+    background:linear-gradient(135deg,#F7EFDE 0%,#FBF3E2 55%,#F3EBDB 100%);
+    border-bottom:1px solid var(--hairline);
+    box-shadow:0 8px 14px -10px rgba(43,38,32,.35), inset 0 1px 0 rgba(255,255,255,.7);
+    display:flex;justify-content:center;
+  }
+  .top-nav{
+    max-width:520px;width:100%;margin:0 auto;
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    padding:11px 16px;
+  }
+  .top-nav a{
+    font-family:"Inter",sans-serif;
+    font-size:11.5px;letter-spacing:.02em;color:var(--ink-soft);text-decoration:none;
+    padding:3px 0;border-bottom:1.5px solid transparent;transition:color .2s ease,border-color .2s ease;
+  }
+  .top-nav a:hover{color:var(--tea);border-color:var(--tea);}
+  #itinerary-top, #weather-info, #support-info{scroll-margin-top:60px;}

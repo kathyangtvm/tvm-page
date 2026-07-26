@@ -1,0 +1,40 @@
+.support-info{max-width:1180px;margin:32px auto 40px;padding:0 32px;}
+    @media(max-width:560px){.support-info{padding:0 14px;}}
+    .support-info-head{text-align:center;margin-bottom:26px;}
+    .support-info-head .eyebrow{
+      font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.38em;
+      text-transform:uppercase;color:var(--tea);margin-bottom:14px;
+    }
+    .support-info-head h2{
+      font-family:"Shippori Mincho",serif;font-size:clamp(20px,3vw,26px);
+      font-weight:600;letter-spacing:.06em;
+    }
+
+    .support-alert{
+      background:linear-gradient(135deg,#FBF1E1,#FDFAF3);
+      border:1px solid #E9C98A;border-radius:14px;padding:20px 24px;margin-bottom:6px;
+    }
+    .support-alert-title{
+      font-family:"Shippori Mincho",serif;font-size:15.5px;font-weight:600;
+      margin-bottom:8px;display:flex;align-items:center;gap:8px;
+    }
+    .support-alert p{font-size:12.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:6px;}
+    .support-alert ul{margin:8px 0 0;padding-left:18px;}
+    .support-alert li{font-size:12.5px;color:var(--ink-soft);line-height:1.7;}
+
+    .support-category{margin-bottom:30px;}
+    .support-category-title{
+      font-family:"Shippori Mincho",serif;font-size:15.5px;font-weight:600;
+      margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--hairline);
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+    }
+    .support-category-title .t-info-link{font-size:12.5px;font-family:"Inter",sans-serif;font-weight:400;}
+
+    .support-btn-grid{display:flex;flex-wrap:wrap;gap:10px;}
+    .support-btn{
+      font-family:"Inter",sans-serif;font-size:12px;letter-spacing:.04em;
+      background:var(--card);border:1px solid var(--hairline);border-radius:20px;
+      padding:8px 16px;color:var(--ink);text-decoration:none;white-space:nowrap;
+      transition:background .2s ease,border-color .2s ease;
+    }
+    .support-btn:hover{background:var(--tea-soft);border-color:var(--tea);}

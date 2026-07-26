@@ -1,0 +1,39 @@
+.weather-info{max-width:1180px;margin:32px auto 40px;padding:0 32px;}
+    @media(max-width:560px){.weather-info{padding:0 14px;}}
+    .weather-info-head{text-align:center;margin-bottom:22px;}
+    .weather-info-head .eyebrow{
+      font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.38em;
+      text-transform:uppercase;color:var(--tea);margin-bottom:14px;
+    }
+    .weather-info-head h2{
+      font-family:"Shippori Mincho",serif;font-size:clamp(20px,3vw,26px);
+      font-weight:600;letter-spacing:.06em;
+    }
+    .weather-summary{
+      background:var(--card);border:1px solid var(--hairline);border-radius:14px;
+      padding:20px 24px;margin-bottom:16px;
+    }
+    .weather-summary p{font-size:13px;color:var(--ink-soft);line-height:1.8;margin:0 0 10px;}
+    .weather-summary p:last-child{margin-bottom:0;}
+    .weather-summary b{color:var(--ink);}
+
+    .weather-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+    .weather-card{
+      background:var(--card);border:1px solid var(--hairline);border-radius:12px;
+      padding:14px 10px;text-align:center;
+    }
+    .weather-card .place{font-family:"Shippori Mincho",serif;font-size:13.5px;font-weight:600;margin-bottom:8px;}
+    .weather-card .icon-row{display:flex;justify-content:center;gap:6px;margin-bottom:8px;font-size:20px;}
+    .weather-card .temp{font-size:11.5px;color:var(--ink-soft);line-height:1.6;}
+    .weather-card .temp b{color:var(--ink);font-weight:600;}
+
+    .weather-link-wrap{text-align:center;}
+    .weather-link{
+      display:inline-flex;align-items:center;gap:7px;
+      font-family:"Inter",sans-serif;font-size:13px;font-weight:500;
+      background:var(--ink);border:1px solid var(--ink);
+      border-radius:20px;padding:10px 22px;color:#FFFFFF;text-decoration:none;
+      transition:background .2s ease,opacity .2s ease;
+    }
+    .weather-link:hover{background:#443C30;}
+    .weather-link .arrow{color:#E9C98A;}
