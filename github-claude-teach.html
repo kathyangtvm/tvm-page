@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從零開始：GitHub × Claude 桌面版新手上路</title>
+<style>
+  :root{
+    --paper:#EFF2ED;
+    --paper-alt:#FFFFFF;
+    --ink:#1E2A22;
+    --ink-soft:#5A6B5E;
+    --line:#CBD2C5;
+
+    --blue:#3E6D9C;      --blue-soft:#E6EEF6;
+    --ochre:#B47F2C;     --ochre-soft:#F5EEDD;
+    --green:#3E7A52;     --green-soft:#E6F1E9;
+    --plum:#7C4A6B;      --plum-soft:#F3E8EF;
+
+    --font-display: "PingFang TC","Microsoft JhengHei","Helvetica Neue",system-ui,sans-serif;
+    --font-body: "PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    --font-mono: ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+    padding:56px 24px 80px;
+  }
+
+  /* ---------- Header ---------- */
+  header{margin-bottom:48px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(26px,5vw,38px);
+    font-weight:800;
+    letter-spacing:-.01em;
+    margin:0 0 14px;
+  }
+  .lede{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:58ch;
+    margin:0;
+  }
+  .note-banner{
+    margin-top:18px;
+    padding:12px 16px;
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 18px;
+    margin-top:20px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+
+  /* ---------- Rail groups ---------- */
+  .rail-group{
+    position:relative;
+    padding-left:56px;
+    margin-bottom:6px;
+  }
+  .rail-group::before{
+    content:"";
+    position:absolute;
+    left:23px;
+    top:26px;
+    bottom:26px;
+    width:3px;
+    background:var(--c);
+    border-radius:3px;
+    opacity:.55;
+  }
+
+  .station{
+    position:relative;
+    display:flex;
+    gap:16px;
+    padding:14px 0;
+  }
+  .node{
+    flex:0 0 auto;
+    width:48px;height:48px;
+    border-radius:50%;
+    background:var(--c);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);
+    font-weight:700;
+    font-size:16px;
+    position:relative;
+    z-index:1;
+    box-shadow:0 0 0 6px var(--paper);
+  }
+  .card{
+    flex:1;
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-left:4px solid var(--c);
+    border-radius:10px;
+    padding:14px 18px;
+  }
+  .card h3{
+    margin:0 0 5px;
+    font-family:var(--font-display);
+    font-size:17px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .card p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .card p + p{margin-top:6px;}
+  .chip{
+    display:inline-block;
+    margin-top:9px;
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    background:var(--soft);
+    color:var(--c);
+    padding:4px 9px;
+    border-radius:6px;
+    border:1px solid var(--line);
+  }
+  .chip + .chip{margin-left:6px;}
+  a.chip, a.linkchip{
+    text-decoration:none;
+    cursor:pointer;
+  }
+  a.chip:hover, a.linkchip:hover{text-decoration:underline;}
+  .linkchip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:9px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--c);
+    background:var(--soft);
+    padding:6px 12px;
+    border-radius:8px;
+    border:1px solid var(--line);
+  }
+  .linkchip .arrow{font-family:var(--font-mono);}
+  .desktop-tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:#fff;
+    background:var(--c);
+    padding:2px 7px;
+    border-radius:5px;
+  }
+  .web-tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:var(--c);
+    background:#fff;
+    border:1px solid var(--c);
+    padding:1px 7px;
+    border-radius:5px;
+  }
+
+  .connector-gap{
+    display:flex;
+    justify-content:center;
+    color:var(--ink-soft);
+    font-size:12px;
+    padding:2px 0 14px;
+    padding-left:56px;
+  }
+
+  /* ---------- Loop panel ---------- */
+  .loop-wrap{margin:8px 0 28px;}
+  .loop-panel{
+    border:2px dashed var(--green);
+    border-radius:16px;
+    padding:22px 20px 20px;
+    background:var(--green-soft);
+  }
+  .loop-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:18px;
+    color:var(--green);
+    margin-bottom:4px;
+  }
+  .loop-title .glyph{font-size:22px;line-height:1;}
+  .loop-sub{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .loop-panel .rail-group{padding-left:56px;margin-bottom:0;}
+  .loop-panel .rail-group::before{background:var(--green);}
+  .loop-panel .card{background:var(--paper-alt);}
+
+  .loop-back{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    padding:14px 16px;
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:10px;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .loop-back .glyph{
+    font-size:22px;
+    color:var(--green);
+    flex:0 0 auto;
+  }
+  .loop-back strong{color:var(--green);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:52px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+  }
+  footer h4{
+    font-family:var(--font-display);
+    font-size:15px;
+    margin:0 0 10px;
+  }
+  footer ul{
+    margin:0 0 22px;
+    padding-left:20px;
+    color:var(--ink-soft);
+    font-size:14px;
+  }
+  footer li{margin-bottom:6px;}
+  footer code{
+    font-family:var(--font-mono);
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:1px 6px;
+    font-size:13px;
+    color:var(--ink);
+  }
+  footer a{color:var(--ink);}
+
+  @media (max-width:480px){
+    .page{padding:36px 16px 60px;}
+    .node{width:40px;height:40px;font-size:14px;}
+    .rail-group{padding-left:48px;}
+    .rail-group::before{left:19px;}
+    .card h3{font-size:15.5px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">新手指南 · Beginner Route (Desktop App 版)</div>
+    <h1>從零開始：<br>GitHub × Claude 桌面版新手上路</h1>
+    <p class="lede">全程使用「GitHub Desktop」與「Claude 桌面版 App」（含內建的 Claude Code），幾乎不需要自己打指令。從註冊帳號開始，一路帶到用 GitHub Pages 把你的成果變成一個網站。</p>
+    <div class="note-banner">🖥️ 圖中 <span class="desktop-tag" style="--c:var(--ink)">桌面 APP</span> 代表這一步在 GitHub Desktop 或 Claude App 裡完成；<span class="web-tag" style="--c:var(--ink)">網站</span> 代表這一步必須打開瀏覽器到 GitHub 網站完成（目前只有 Pages 設定沒有桌面版功能）。</div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--blue)"></span>準備帳號 / 安裝 App</span>
+      <span><span class="dot" style="background:var(--ochre)"></span>建立專案</span>
+      <span><span class="dot" style="background:var(--green)"></span>開發循環（會重複）</span>
+      <span><span class="dot" style="background:var(--plum)"></span>上線 / 完成</span>
+    </div>
+  </header>
+
+  <!-- Phase 1: Accounts + Apps -->
+  <div class="rail-group" style="--c:var(--blue)">
+    <div class="station">
+      <div class="node">1</div>
+      <div class="card">
+        <h3>註冊 GitHub 帳號<span class="web-tag" style="--c:var(--blue)">網站</span></h3>
+        <p>用 Email 建立帳號並完成信箱驗證。這是之後存放程式碼、發布網站的地方。</p>
+        <a class="linkchip" style="--soft:var(--blue-soft)" href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">2</div>
+      <div class="card">
+        <h3>下載安裝 GitHub Desktop<span class="desktop-tag" style="--c:var(--blue)">桌面 APP</span></h3>
+        <p>下載後打開 App，點「Sign in to GitHub.com」，用步驟 1 的帳號登入即可 —— 不需要另外設定 Git 使用者名稱，App 會自動帶入。</p>
+        <a class="linkchip" style="--soft:var(--blue-soft)" href="https://desktop.github.com/download/" target="_blank" rel="noopener">desktop.github.com/download <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">3</div>
+      <div class="card">
+        <h3>註冊 / 登入 Claude<span class="web-tag" style="--c:var(--blue)">網站</span></h3>
+        <p>用 Email 或 Google 帳號建立 Claude 帳號。之後所有程式碼都會請 Claude 幫忙寫。</p>
+        <a class="linkchip" style="--soft:var(--blue-soft)" href="https://claude.ai" target="_blank" rel="noopener">claude.ai <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">4</div>
+      <div class="card">
+        <h3>下載安裝 Claude 桌面版<span class="desktop-tag" style="--c:var(--blue)">桌面 APP</span></h3>
+        <p>安裝好打開後用步驟 3 的帳號登入，之後就能直接在桌面上跟 Claude 對話，不用開瀏覽器。</p>
+        <a class="linkchip" style="--soft:var(--blue-soft)" href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">5</div>
+      <div class="card">
+        <h3>安裝 Git<span class="desktop-tag" style="--c:var(--blue)">Claude Code 需要</span></h3>
+        <p>Claude 桌面版裡的「Code」分頁（也就是 Claude Code）需要電腦上先裝好 Git 才能運作。下載安裝後不用自己打指令，Claude Code 會自動幫你使用它。</p>
+        <a class="linkchip" style="--soft:var(--blue-soft)" href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com/install/windows <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector-gap">↓</div>
+
+  <!-- Phase 2: Repo setup -->
+  <div class="rail-group" style="--c:var(--ochre)">
+    <div class="station">
+      <div class="node">6</div>
+      <div class="card">
+        <h3>在 GitHub Desktop 建立新 Repository<span class="desktop-tag" style="--c:var(--ochre)">桌面 APP</span></h3>
+        <p>選單列點「File → New Repository」，輸入名稱，選一個本機資料夾存放，按「Create Repository」。</p>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">7</div>
+      <div class="card">
+        <h3>發布到 GitHub（Publish repository）<span class="desktop-tag" style="--c:var(--ochre)">桌面 APP</span></h3>
+        <p>建立好後，畫面上會出現「Publish repository」按鈕，按下去。如果之後要用 GitHub Pages 做網站，記得取消勾選「Keep this code private」，設為公開。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector-gap">↓</div>
+
+  <!-- Loop panel -->
+  <div class="loop-wrap">
+    <div class="loop-panel">
+      <div class="loop-title"><span class="glyph">⟲</span>開發循環</div>
+      <p class="loop-sub">這四個步驟會不斷重複，直到你的網站做到滿意為止 —— 虛線邊框代表「這裡是迴圈，不是一次性流程」。</p>
+
+      <div class="rail-group" style="--c:var(--green)">
+        <div class="station">
+          <div class="node">8</div>
+          <div class="card">
+            <h3>用 Claude Code 開啟專案資料夾<span class="desktop-tag" style="--c:var(--green)">桌面 APP</span></h3>
+            <p>打開 Claude 桌面版，切到「Code」分頁，選擇步驟 6 建立的專案資料夾開啟。之後 Claude Code 就能直接讀寫這個資料夾裡的檔案。</p>
+          </div>
+        </div>
+        <div class="station">
+          <div class="node">9</div>
+          <div class="card">
+            <h3>描述需求，讓它直接改程式碼</h3>
+            <p>用一般中文告訴 Claude Code 你想做的網頁功能或想修的問題，它會直接在資料夾裡新增/修改檔案並存檔，不用你自己複製貼上。</p>
+          </div>
+        </div>
+        <div class="station">
+          <div class="node">10</div>
+          <div class="card">
+            <h3>提交變更（Commit）<span class="desktop-tag" style="--c:var(--green)">桌面 APP</span></h3>
+            <p>回到 GitHub Desktop，會看到剛剛的檔案變更，輸入這次改了什麼的簡短說明，按「Commit to main」。</p>
+          </div>
+        </div>
+        <div class="station">
+          <div class="node">11</div>
+          <div class="card">
+            <h3>按「Push origin」上傳<span class="desktop-tag" style="--c:var(--green)">桌面 APP</span></h3>
+            <p>點畫面上方的「Push origin」按鈕，把剛剛的改動送上 GitHub。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="loop-back">
+        <span class="glyph">↺</span>
+        <div><strong>還想繼續改？</strong> 回到步驟 8，跟 Claude Code 討論下一個功能，重複「開資料夾 → 改程式 → Commit → Push」。<br><strong>小提醒：</strong>步驟 10、11 的 Commit 跟 Push，除了自己在 GitHub Desktop 手動按，也可以直接請 Claude Code 幫你操作，不用切換視窗。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector-gap">↓</div>
+
+  <!-- Final phase: Pages -->
+  <div class="rail-group" style="--c:var(--plum)">
+    <div class="station">
+      <div class="node">12</div>
+      <div class="card">
+        <h3>設定 GitHub Pages<span class="web-tag" style="--c:var(--plum)">網站</span></h3>
+        <p>這一步 GitHub Desktop 沒有對應功能，需要打開瀏覽器：進到你的 Repository 頁面 → 上方「Settings」→ 左側「Pages」。</p>
+        <p>在「Build and deployment」底下，Source 選「Deploy from a branch」，Branch 選「main」、資料夾選「/(root)」，按「Save」。</p>
+      </div>
+    </div>
+    <div class="station">
+      <div class="node">13</div>
+      <div class="card">
+        <h3>打開你的網站檢查成果</h3>
+        <p>存好後等 1–2 分鐘，重新整理 Pages 設定頁，最上面會出現網站網址，格式通常是：</p>
+        <span class="chip" style="--soft:var(--plum-soft)">https://你的帳號.github.io/repo名稱/</span>
+        <p>打開它，看到你的網頁 —— 恭喜完成第一次「寫程式 → 上傳 → 上線」的完整循環！</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h4>卡住的時候</h4>
+    <ul>
+      <li>GitHub Desktop 或 Claude Code 出現看不懂的錯誤訊息時，截圖或複製文字貼給 Claude，請它幫你解讀並告訴你下一步該按什麼。</li>
+      <li>忘記剛剛做到哪一步也沒關係，直接問 Claude：「我卡在哪個步驟，接下來該按什麼？」</li>
+      <li>之後每次改完網頁，只要重複「開發循環」（步驟 8–11），GitHub Pages 上的網站會自動跟著更新，不需要重新設定 Pages。</li>
+      <li>如果不想切換到 GitHub Desktop，也可以請 Claude Code 直接幫你 commit、push，甚至新開一個 branch，但一開始建議先手動按過一次，熟悉畫面上每個按鈕的作用。</li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
