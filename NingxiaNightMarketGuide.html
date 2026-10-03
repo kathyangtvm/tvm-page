@@ -47,7 +47,7 @@ p{margin:0 0 10px}
 .logi strong{display:block;font-family:var(--serif);font-size:16px;color:var(--navy)}
 
 /* map */
-.mapwrap{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:18px;align-items:start}
+.mapwrap{display:block;max-width:440px;margin:0 auto;gap:18px;align-items:start}
 .mapwrap svg{width:100%;height:auto;display:block}
 .legend{font-size:13.5px}
 .legend ol{margin:0;padding-left:0;list-style:none;counter-reset:s}
@@ -97,7 +97,8 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
   header.cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{padding:14px 0 4px}
   h2{break-after:avoid}
-  .mapwrap{grid-template-columns:62mm 1fr}
+  .mapwrap{max-width:110mm}
+  iframe,#map h3,#map h3+p,#map div[style*="padding-top"]{display:none!important}
   #food{break-before:page}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
@@ -109,6 +110,33 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
 .logi .alt .tag{background:var(--muted)}
 .leg-h{font-size:12.5px;font-weight:700;color:var(--gold);margin:6px 0 0}
 </style>
+<style>
+.award{display:inline-block;font-size:12px;font-weight:500;color:#7A5C22;background:var(--gold-soft);border:1px solid var(--gold);border-radius:4px;padding:0 7px;margin:0 4px 4px 0}
+.award.sel{color:var(--navy);background:#E6EAF2;border-color:var(--navy-2)}
+.star{color:var(--terra);font-weight:700}
+.tier{font-family:var(--serif);font-size:16px;color:#fff;background:var(--terra);display:inline-block;padding:2px 12px;border-radius:4px;margin:14px 0 8px}
+.tier.b{background:var(--navy)}
+.card{scroll-margin-top:70px}
+#wc li{scroll-margin-top:70px}
+.legend .dot.x{background:var(--gold);border-radius:4px}
+.legend .dot.w{background:#2E6DA4;border-radius:4px;font-size:10px}
+.legend a b{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.ttl a{color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+td a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold)}
+svg a:hover circle,svg a:hover rect{opacity:.8}
+.wc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wc div{border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.wc ul{margin:4px 0 0;padding-left:18px;font-size:14px}
+@media (max-width:600px){.wc{grid-template-columns:1fr}}
+.tri{margin:4px 0 8px;display:grid;grid-template-columns:5.2em 1fr;gap:4px 10px;font-size:14.5px}
+.tri dt{font-weight:700;color:var(--terra);white-space:nowrap}
+.tri dd{margin:0}
+.sig{font-family:var(--serif);font-size:15px;color:var(--navy);margin:2px 0 4px}
+.sig b{color:var(--gold)}
+.card .num.x{background:var(--gold);border-radius:6px}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--gold)}100%{box-shadow:0 0 0 0 transparent}}
+.flash{animation:flash 1.6s ease-out}
+</style>
 </head>
 <body>
 <div class="page">
@@ -117,7 +145,7 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
   <h1>寧夏夜市導覽</h1>
   <p class="en">Ningxia Night Market — a guide for tonight</p>
   <ul class="facts">
-    <li><b>營業時間</b>每日約 17:00–23:30</li>
+    <li><b>營業時間</b>每日約 17:00–00:00</li>
     <li><b>建議抵達</b>18:00–18:30（週末人潮多）</li>
     <li><b>路線</b>民生西路正門進，先往南、再往北走回原點</li>
     <li><b>所需時間</b>來回約 800 公尺，1.5–2 小時</li>
@@ -125,144 +153,356 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
 </header>
 
 <nav class="toc" aria-label="目錄">
-  <a href="#car">上下車</a><a href="#map">路線地圖</a><a href="#list">美食總表</a><a href="#food">美食介紹</a><a href="#culture">夜市文化</a><a href="#history">寧夏背景</a><a href="#tips">提醒</a>
+  <a href="#car">上下車</a><a href="#map">路線地圖</a><a href="#picks">總表</a><a href="#food">美食介紹</a><a href="#more">更多推薦</a><a href="#wc">廁所</a><a href="#bib">必比登</a><a href="#culture">夜市文化</a><a href="#history">寧夏背景</a><a href="#tips">提醒</a>
 </nav>
 
 <section id="car">
   <h2>司機上下車地點 <small>Drop-off &amp; pick-up</small></h2>
   <div class="logi">
-    <div><span class="tag">上下車</span><strong>民生西路 × 寧夏路口</strong>寧夏夜市正門入口，下車和回程上車都在這裡。進門後往南走，回程走回同一個路口。<br><a class="carlink" href="https://www.google.com/maps/search/?api=1&query=%E6%B0%91%E7%94%9F%E8%A5%BF%E8%B7%AF%20%E5%AF%A7%E5%A4%8F%E8%B7%AF%E5%8F%A3%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80">Google 地圖</a></div>
-    <div class="alt"><span class="tag">備用上車點</span><strong>南京西路 × 寧夏路口</strong>夜市南端。客人走到第 4 站李掌伯就累了、不想走回頭路時，可以請司機改到這裡接。<br><a class="carlink" href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF%20%E5%AF%A7%E5%A4%8F%E8%B7%AF%E5%8F%A3%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80">Google 地圖</a></div>
+    <div><span class="tag">上下車</span><strong>民生西路 × 寧夏路口</strong>寧夏夜市正門入口，下車和回程上車都在這裡。進門後往南走，回程走回同一個路口。<br><a class="carlink" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B0%91%E7%94%9F%E8%A5%BF%E8%B7%AF%20%E5%AF%A7%E5%A4%8F%E8%B7%AF%E5%8F%A3%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80" target="_blank">Google 地圖</a></div>
+    <div class="alt"><span class="tag">備用上車點</span><strong>南京西路 × 寧夏路口</strong>夜市南端。客人走到第 4 站就累了、不想走回頭路時，可以請司機改到這裡接。<br><a class="carlink" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF%20%E5%AF%A7%E5%A4%8F%E8%B7%AF%E5%8F%A3%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80" target="_blank">Google 地圖</a></div>
   </div>
   <p class="note">夜市營業時段寧夏路中間擺滿攤位，車子開不進去，只能在路口上下車。週末民生西路很塞，請司機不要在路邊久等，約好「快到時傳 LINE、我們走到路口」。回程吃到第 6 站時就可以通知司機。</p>
 </section>
 
 <section id="map">
-  <h2>美食路線地圖 <small>Down to the south end, back up north</small></h2>
+  <h2>路線地圖 <small>Drawn from Google Maps coordinates</small></h2>
   <div class="mapwrap">
-    <svg viewBox="0 0 340 600" role="img" aria-label="寧夏路示意圖：從民生西路正門往南吃到李掌伯，再往北走回民生西路">
-      <title>寧夏夜市來回美食路線示意圖</title>
-      <rect x="0" y="22" width="340" height="34" fill="#E8E4DA"/>
-      <text x="12" y="44" font-size="13" fill="#1F2D4A" font-family="Noto Sans TC, sans-serif" font-weight="700">民生西路（正門）</text>
-      <rect x="0" y="548" width="340" height="34" fill="#E8E4DA"/>
-      <text x="12" y="570" font-size="13" fill="#1F2D4A" font-family="Noto Sans TC, sans-serif" font-weight="700">南京西路</text>
-      <rect x="140" y="56" width="60" height="492" fill="#F3EAD6"/>
-      <text x="170" y="120" font-size="11" fill="#B8924A" font-family="Noto Sans TC, sans-serif" text-anchor="middle">寧夏路</text>
-      <line x1="155" y1="64" x2="155" y2="452" stroke="#1F2D4A" stroke-width="2.5" stroke-dasharray="6 5"/>
-      <polygon points="155,462 148,448 162,448" fill="#1F2D4A"/>
-      <path d="M155 462 Q155 492 170 492 Q185 492 185 462" fill="none" stroke="#B8924A" stroke-width="2.5" stroke-dasharray="6 5"/>
-      <line x1="185" y1="462" x2="185" y2="76" stroke="#B5553C" stroke-width="2.5" stroke-dasharray="6 5"/>
-      <polygon points="185,64 178,78 192,78" fill="#B5553C"/>
-      <g font-family="Noto Sans TC, sans-serif"><text x="322" y="82" font-size="12" fill="#5D6470" text-anchor="middle">N</text><line x1="322" y1="88" x2="322" y2="112" stroke="#5D6470" stroke-width="1.5"/><polygon points="322,86 317,96 327,96" fill="#5D6470"/></g>
-      <g font-family="Noto Sans TC, sans-serif" font-size="11.5" font-weight="700">
-        <rect x="200" y="26" width="132" height="26" rx="5" fill="#1F2D4A"/><text x="266" y="43" fill="#fff" text-anchor="middle">🚗 上下車 In &amp; out</text>
-        <rect x="216" y="552" width="116" height="26" rx="5" fill="#5D6470"/><text x="274" y="569" fill="#fff" text-anchor="middle">備用上車點</text>
-      </g>
-      <g font-family="Noto Sans TC, sans-serif" font-size="12" fill="#5D6470">
-        <text x="128" y="90" text-anchor="end">去程 ↓</text><text x="212" y="440">↑ 回程</text>
-      </g>
-      <g font-family="Noto Sans TC, sans-serif" font-size="12.5">
-        <g><circle cx="155" cy="288" r="11" fill="#1F2D4A"/><text x="155" y="292.5" fill="#fff" text-anchor="middle" font-weight="700">1</text><text x="136" y="292" fill="#22252B" text-anchor="end">圓環邊蚵仔煎</text></g>
-        <g><circle cx="155" cy="320" r="11" fill="#1F2D4A"/><text x="155" y="324.5" fill="#fff" text-anchor="middle" font-weight="700">2</text><text x="136" y="324" fill="#22252B" text-anchor="end">方家雞肉飯</text></g>
-        <g><circle cx="155" cy="365" r="11" fill="#1F2D4A"/><text x="155" y="369.5" fill="#fff" text-anchor="middle" font-weight="700">3</text><text x="136" y="369" fill="#22252B" text-anchor="end">劉芋仔 芋餅</text></g>
-        <g><circle cx="170" cy="492" r="12" fill="#B5553C" stroke="#B8924A" stroke-width="3"/><text x="170" y="496.5" fill="#fff" text-anchor="middle" font-weight="700">4</text><text x="136" y="520" fill="#22252B" text-anchor="end">李掌伯（折返）</text></g>
-        <g><circle cx="185" cy="401" r="11" fill="#1F2D4A"/><text x="185" y="405.5" fill="#fff" text-anchor="middle" font-weight="700">5</text><text x="204" y="405" fill="#22252B">花生捲冰淇淋</text></g>
-        <g><circle cx="185" cy="230" r="11" fill="#B5553C"/><text x="185" y="234.5" fill="#fff" text-anchor="middle" font-weight="700">6</text><text x="204" y="234" fill="#22252B">豬肝榮仔</text></g>
-        <g><circle cx="185" cy="150" r="11" fill="#1F2D4A"/><text x="185" y="154.5" fill="#fff" text-anchor="middle" font-weight="700">7</text><text x="204" y="154" fill="#22252B">豆花莊（收尾）</text></g>
-      </g>
-      <text x="12" y="540" font-size="10.5" fill="#5D6470" font-family="Noto Sans TC, sans-serif">示意圖，非實際比例</text>
-    </svg>
-    <div class="legend">
-      <p class="leg-h">去程往南：主餐</p>
-      <ol>
-        <li><span class="dot">1</span><div><b>圓環邊蚵仔煎</b> 蚵仔煎、蛤仔湯<br><a href="https://maps.google.com/?cid=9427095792374969016">Google 地圖</a></div></li>
-        <li><span class="dot">2</span><div><b>方家雞肉飯</b> 雞肉飯<br><a href="https://maps.google.com/?cid=8480770231485709370">Google 地圖</a></div></li>
-        <li><span class="dot">3</span><div><b>劉芋仔</b> 蛋黃芋餅<br><a href="https://maps.google.com/?cid=12706446233810352411">Google 地圖</a></div></li>
-        <li><span class="dot t">4</span><div><b>李掌伯</b> 炸臭豆腐（挑戰），折返點<br><a href="https://maps.google.com/?cid=1438352876431956666">Google 地圖</a></div></li>
-      </ol>
-      <p class="leg-h">回程往北：甜點收尾</p>
-      <ol>
-        <li><span class="dot">5</span><div><b>雅米</b> 花生捲冰淇淋<br><a href="https://maps.google.com/?cid=7755888033687803030">Google 地圖</a></div></li>
-        <li><span class="dot t">6</span><div><b>豬肝榮仔</b> 豬肝湯（挑戰）<br><a href="https://maps.google.com/?cid=8280307532077538155">Google 地圖</a></div></li>
-        <li><span class="dot">7</span><div><b>豆花莊</b> 豆花，坐下休息後上車<br><a href="https://maps.google.com/?cid=6971991644493487220">Google 地圖</a></div></li>
-      </ol>
-      <p class="note" style="margin-top:8px">深藍＝好入口；紅色＝選擇性挑戰。</p>
-    </div>
+    <svg viewBox="0 0 380 650" role="img" aria-label="依 Google 地圖座標繪製的寧夏夜市路線圖，點選標記可開啟 Google 地圖" font-family="Noto Sans TC, Noto Sans CJK TC, sans-serif">
+<title>寧夏夜市路線圖（依 Google 地圖座標）</title>
+<rect width="380" height="650" fill="#F4F3EF"/>
+<polygon points="0,158.7 380,148.9 380,166.9 0,176.7" fill="#C9D3DE"/>
+<rect x="0" y="598.6" width="380" height="30" fill="#C9D3DE"/>
+<polyline points="169.5,-31.6 196.1,106.0 205.5,155.9 202.4,169.7 83.5,691.0" fill="none" stroke="#C9D3DE" stroke-width="16" stroke-linejoin="round"/>
+<polyline points="169.5,-31.6 196.1,106.0 205.5,155.9 202.4,169.7 83.5,691.0" fill="none" stroke="#F3EAD6" stroke-width="10" stroke-linejoin="round"/>
+<text x="6" y="155.7" font-size="11" fill="#5D6470" font-weight="700">民生西路（正門）</text>
+<text x="250" y="617.6" font-size="11" fill="#5D6470" font-weight="700">南京西路</text>
+<text transform="translate(112.7,501.7) rotate(-77.2)" font-size="10.5" fill="#B8924A" font-weight="700" text-anchor="middle">寧夏路</text>
+<polyline points="199.6,166.2 198.1,173.0 196.6,179.7 195.0,186.5 193.5,193.3 192.0,200.0 190.4,206.8 188.9,213.5 187.3,220.3 185.8,227.0 184.3,233.8 182.7,240.5 181.2,247.3 179.6,254.0 178.1,260.8 176.6,267.5 175.0,274.3 173.5,281.0 171.9,287.8 170.4,294.5 168.9,301.3 167.3,308.1 165.8,314.8 164.2,321.6 162.7,328.3 161.2,335.1 159.6,341.8 158.1,348.6 156.5,355.3 155.0,362.1 153.5,368.8 151.9,375.6 150.4,382.3 148.8,389.1 147.3,395.8 145.8,402.6 144.2,409.3 142.7,416.1 141.1,422.9 139.6,429.6 138.1,436.4" fill="none" stroke="#1F2D4A" stroke-width="2.2" stroke-dasharray="5 4"/>
+<path d="M138.1 436.4 Q141.6 448.4 145.1 436.4" fill="none" stroke="#B8924A" stroke-width="2.2"/>
+<polyline points="145.1,436.4 146.9,428.3 148.7,420.3 150.6,412.2 152.4,404.2 154.2,396.1 156.1,388.1 157.9,380.1 159.7,372.0 161.6,364.0 163.4,355.9 165.2,347.9 167.1,339.8 168.9,331.8 170.7,323.8 172.6,315.7 174.4,307.7 176.2,299.6 178.1,291.6 179.9,283.5 181.7,275.5 183.6,267.5 185.4,259.4 187.2,251.4 189.1,243.3 190.9,235.3 192.7,227.2 194.6,219.2 196.4,211.1 198.2,203.1 200.1,195.1 201.9,187.0 203.7,179.0 205.6,170.9 207.4,162.9 208.8,154.8 207.3,146.8 205.8,138.8 204.3,130.7 202.7,122.7 201.2,114.6" fill="none" stroke="#B5553C" stroke-width="2.2" stroke-dasharray="5 4"/>
+<polygon points="182.0,249.7 178.0,240.7 186.0,240.7" fill="#1F2D4A"/>
+<polygon points="150.6,387.3 146.6,378.3 154.6,378.3" fill="#1F2D4A"/>
+<polygon points="165.5,340.9 161.5,349.9 169.5,349.9" fill="#B5553C"/>
+<polygon points="192.9,220.5 188.9,229.5 196.9,229.5" fill="#B5553C"/>
+<line x1="163.4" y1="274.2" x2="153.4" y2="270.7" stroke="#1F2D4A" stroke-width="0.8" opacity=".7"/>
+<a href="#s1"><text x="151.4" y="274.2" font-size="11" font-weight="700" fill="#1F2D4A" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">1 圓環邊蚵仔煎</text></a>
+<line x1="165.1" y1="289.8" x2="148.2" y2="298.7" stroke="#1F2D4A" stroke-width="0.8" opacity=".7"/>
+<a href="#s2"><text x="146.2" y="302.2" font-size="11" font-weight="700" fill="#1F2D4A" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">2 方家雞肉飯</text></a>
+<line x1="170.4" y1="346.1" x2="186.1" y2="342.6" stroke="#1F2D4A" stroke-width="0.8" opacity=".7"/>
+<a href="#s3"><text x="188.1" y="346.1" font-size="11" font-weight="700" fill="#1F2D4A" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">3 劉芋仔</text></a>
+<line x1="118.9" y1="446.2" x2="108.9" y2="442.7" stroke="#B5553C" stroke-width="0.8" opacity=".7"/>
+<a href="#s4"><text x="106.9" y="446.2" font-size="11" font-weight="700" fill="#B5553C" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">4 李掌伯（折返）</text></a>
+<line x1="161.4" y1="385.3" x2="176.6" y2="384.6" stroke="#1F2D4A" stroke-width="0.8" opacity=".7"/>
+<a href="#s5"><text x="178.6" y="388.1" font-size="11" font-weight="700" fill="#1F2D4A" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">5 雅米花生捲</text></a>
+<line x1="186.2" y1="204.5" x2="169.2" y2="206.2" stroke="#B5553C" stroke-width="0.8" opacity=".7"/>
+<a href="#s6"><text x="167.2" y="209.7" font-size="11" font-weight="700" fill="#B5553C" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">6 豬肝榮仔</text></a>
+<line x1="211.2" y1="109.1" x2="221.2" y2="105.6" stroke="#1F2D4A" stroke-width="0.8" opacity=".7"/>
+<a href="#s7"><text x="223.2" y="109.1" font-size="11" font-weight="700" fill="#1F2D4A" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">7 豆花莊（收尾）</text></a>
+<line x1="179.5" y1="306.7" x2="195.1" y2="303.2" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sA"><text x="197.1" y="306.7" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">A 鴨頭正二代滷肉飯</text></a>
+<line x1="167.0" y1="356.0" x2="182.9" y2="356.6" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sB"><text x="184.9" y="360.1" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">B 高粱香腸</text></a>
+<line x1="176.2" y1="239.5" x2="159.7" y2="248.2" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sC"><text x="157.7" y="251.7" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">C 魏祥記</text></a>
+<line x1="183.0" y1="226.0" x2="162.9" y2="234.2" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sD"><text x="160.9" y="237.7" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">D 牛媽媽</text></a>
+<line x1="131.0" y1="415.0" x2="121.0" y2="411.5" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sE"><text x="119.0" y="415.0" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">E 詹記水果</text></a>
+<line x1="150.1" y1="286.7" x2="140.1" y2="284.7" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sF"><text x="138.1" y="288.2" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">F 環記麻油雞</text></a>
+<line x1="280.8" y1="181.8" x2="290.8" y2="187.1" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sG"><text x="292.8" y="190.6" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">G 賴雞蛋</text></a>
+<line x1="136.4" y1="184.7" x2="126.4" y2="192.2" stroke="#B8924A" stroke-width="0.8" opacity=".7"/>
+<a href="#sH"><text x="124.4" y="195.7" font-size="11" font-weight="500" fill="#8A6A2E" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">H 古早味豆花</text></a>
+<line x1="111.7" y1="181.7" x2="101.7" y2="178.2" stroke="#2E6DA4" stroke-width="0.8" opacity=".7"/>
+<a href="#wc1"><text x="99.7" y="181.7" font-size="11" font-weight="500" fill="#2E6DA4" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">廁 7-11</text></a>
+<line x1="310.3" y1="176.6" x2="320.3" y2="173.1" stroke="#2E6DA4" stroke-width="0.8" opacity=".7"/>
+<a href="#wc2"><text x="322.3" y="176.6" font-size="11" font-weight="500" fill="#2E6DA4" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">廁 雙連市場</text></a>
+<line x1="173.7" y1="219.6" x2="163.7" y2="220.2" stroke="#2E6DA4" stroke-width="0.8" opacity=".7"/>
+<a href="#wc3"><text x="161.7" y="223.7" font-size="11" font-weight="500" fill="#2E6DA4" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">廁 鬍鬚張</text></a>
+<line x1="174.2" y1="372.7" x2="184.2" y2="370.6" stroke="#2E6DA4" stroke-width="0.8" opacity=".7"/>
+<a href="#wc4"><text x="186.2" y="374.1" font-size="11" font-weight="500" fill="#2E6DA4" text-anchor="start" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">廁 蓬萊國小</text></a>
+<line x1="87.2" y1="562.2" x2="77.2" y2="558.7" stroke="#2E6DA4" stroke-width="0.8" opacity=".7"/>
+<a href="#wc6"><text x="75.2" y="562.2" font-size="11" font-weight="500" fill="#2E6DA4" text-anchor="end" stroke="#F4F3EF" stroke-width="3" paint-order="stroke">廁 香連鐵板</text></a>
+<a href="#s1"><circle cx="163.4" cy="274.2" r="7.5" fill="#1F2D4A" stroke="#fff" stroke-width="1"/><text x="163.4" y="277.6" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">1</text></a>
+<a href="#s2"><circle cx="165.1" cy="289.8" r="7.5" fill="#1F2D4A" stroke="#fff" stroke-width="1"/><text x="165.1" y="293.2" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">2</text></a>
+<a href="#s3"><circle cx="170.4" cy="346.1" r="7.5" fill="#1F2D4A" stroke="#fff" stroke-width="1"/><text x="170.4" y="349.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">3</text></a>
+<a href="#s4"><circle cx="118.9" cy="446.2" r="7.5" fill="#B5553C" stroke="#B8924A" stroke-width="2"/><text x="118.9" y="449.6" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">4</text></a>
+<a href="#s5"><circle cx="161.4" cy="385.3" r="7.5" fill="#1F2D4A" stroke="#fff" stroke-width="1"/><text x="161.4" y="388.7" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">5</text></a>
+<a href="#s6"><circle cx="186.2" cy="204.5" r="7.5" fill="#B5553C" stroke="#fff" stroke-width="1"/><text x="186.2" y="207.9" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">6</text></a>
+<a href="#s7"><circle cx="211.2" cy="109.1" r="7.5" fill="#1F2D4A" stroke="#fff" stroke-width="1"/><text x="211.2" y="112.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">7</text></a>
+<a href="#sA"><rect x="173.5" y="300.7" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="179.5" y="310.0" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">A</text></a>
+<a href="#sB"><rect x="161.0" y="350.0" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="167.0" y="359.3" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">B</text></a>
+<a href="#sC"><rect x="170.2" y="233.5" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="176.2" y="242.8" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">C</text></a>
+<a href="#sD"><rect x="177.0" y="220.0" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="183.0" y="229.3" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">D</text></a>
+<a href="#sE"><rect x="125.0" y="409.0" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="131.0" y="418.3" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">E</text></a>
+<a href="#sF"><rect x="144.1" y="280.7" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="150.1" y="290.0" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">F</text></a>
+<a href="#sG"><rect x="274.8" y="175.8" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="280.8" y="185.1" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">G</text></a>
+<a href="#sH"><rect x="130.4" y="178.7" width="12" height="12" rx="2.5" fill="#B8924A" stroke="#fff" stroke-width="1"/><text x="136.4" y="188.0" font-size="8.5" font-weight="700" fill="#fff" text-anchor="middle">H</text></a>
+<a href="#wc1"><rect x="106.2" y="176.2" width="11" height="11" rx="5.5" fill="#2E6DA4" stroke="#fff" stroke-width="1"/><text x="111.7" y="184.7" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">W</text></a>
+<a href="#wc2"><rect x="304.8" y="171.1" width="11" height="11" rx="5.5" fill="#2E6DA4" stroke="#fff" stroke-width="1"/><text x="310.3" y="179.6" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">W</text></a>
+<a href="#wc3"><rect x="168.2" y="214.1" width="11" height="11" rx="5.5" fill="#2E6DA4" stroke="#fff" stroke-width="1"/><text x="173.7" y="222.6" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">W</text></a>
+<a href="#wc4"><rect x="168.7" y="367.2" width="11" height="11" rx="5.5" fill="#2E6DA4" stroke="#fff" stroke-width="1"/><text x="174.2" y="375.7" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">W</text></a>
+<a href="#wc6"><rect x="81.7" y="556.7" width="11" height="11" rx="5.5" fill="#2E6DA4" stroke="#fff" stroke-width="1"/><text x="87.2" y="565.2" font-size="7.5" font-weight="700" fill="#fff" text-anchor="middle">W</text></a>
+<a href="#car"><rect x="243.9" y="118.8" width="104" height="22" rx="5" fill="#1F2D4A"/><text x="295.9" y="133.8" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">🚗 上下車（正門）</text><line x1="243.9" y1="129.8" x2="207.9" y2="159.8" stroke="#1F2D4A" stroke-width="1.2"/></a>
+<a href="#car"><rect x="141.2" y="602.6" width="82" height="22" rx="5" fill="#5D6470"/><text x="182.2" y="617.6" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">備用上車點</text></a>
+<g><text x="358" y="22" font-size="11" fill="#5D6470" text-anchor="middle">N</text><line x1="358" y1="28" x2="358" y2="50" stroke="#5D6470" stroke-width="1.5"/><polygon points="358,26 353,36 363,36" fill="#5D6470"/></g>
+<g><line x1="288.5" y1="636" x2="366" y2="636" stroke="#5D6470" stroke-width="2"/><line x1="288.5" y1="631" x2="288.5" y2="636" stroke="#5D6470" stroke-width="2"/><line x1="366" y1="631" x2="366" y2="636" stroke="#5D6470" stroke-width="2"/><text x="327.2" y="630" font-size="9.5" fill="#5D6470" text-anchor="middle">50 公尺</text></g>
+<text x="8" y="640" font-size="9.5" fill="#5D6470">依 Google 地圖座標繪製・點標記看介紹</text>
+</svg>
+  </div>
+
+  <h3>Google 地圖即時版（需網路）</h3>
+  <div style="position:relative;width:100%;padding-top:110%;border:1px solid var(--line);border-radius:8px;overflow:hidden">
+    <iframe title="寧夏夜市 Google 地圖" src="https://maps.google.com/maps?q=%E5%AF%A7%E5%A4%8F%E5%A4%9C%E5%B8%82&amp;ll=25.0562,121.5153&amp;z=18&amp;output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
-<section id="list">
-  <h2>美食總表 <small>At a glance</small></h2>
-  <div class="tablewrap">
-  <table>
-    <thead><tr><th>站</th><th>店家</th><th>必點</th><th>English</th><th>類型</th><th>入口難度</th></tr></thead>
+<section id="picks">
+  <h2>必吃・推薦總表 <small><span class="star">★</span> 台灣原創・中國沒有</small></h2>
+  <span class="tier" style="margin-top:0">必吃 一定要吃</span>
+  <div class="tablewrap"><table>
+    <thead><tr><th>圖</th><th>店家</th><th>必點</th><th>English</th><th>重點</th></tr></thead>
     <tbody>
-      <tr><td>1 ↓</td><td>圓環邊蚵仔煎</td><td>蚵仔煎、蛤仔湯</td><td>Oyster omelette, clam soup</td><td>主食</td><td><span class="pill mid">口感特別</span></td></tr>
-      <tr><td>2 ↓</td><td>方家雞肉飯</td><td>雞肉飯</td><td>Chicken rice</td><td>主食</td><td><span class="pill easy">好入口</span></td></tr>
-      <tr><td>3 ↓</td><td>劉芋仔</td><td>蛋黃芋餅</td><td>Taro ball with salted egg yolk</td><td>點心</td><td><span class="pill easy">好入口</span></td></tr>
-      <tr><td>4</td><td>李掌伯</td><td>炸臭豆腐</td><td>Fried stinky tofu</td><td>點心</td><td><span class="pill hard">挑戰</span></td></tr>
-      <tr><td>5 ↑</td><td>雅米</td><td>花生捲冰淇淋</td><td>Peanut ice cream roll</td><td>甜點</td><td><span class="pill easy">好入口</span></td></tr>
-      <tr><td>6 ↑</td><td>豬肝榮仔</td><td>豬肝湯／芋頭糕</td><td>Pork liver soup / taro cake</td><td>湯品</td><td><span class="pill hard">挑戰</span></td></tr>
-      <tr><td>7 ↑</td><td>豆花莊</td><td>豆花</td><td>Tofu pudding</td><td>甜點</td><td><span class="pill easy">好入口</span></td></tr>
+      <tr><td>1</td><td><a href="#s1">圓環邊蚵仔煎</a></td><td>蚵仔煎、米糕</td><td>Oyster omelette</td><td>寧夏夜市招牌</td></tr>
+      <tr><td>2</td><td><a href="#s2">方家雞肉飯</a> <span class="star">★</span></td><td>雞肉飯</td><td>Chicken rice</td><td>台式雞肉飯，中國沒有</td></tr>
+      <tr><td>A</td><td><a href="#sA">鴨頭正二代滷肉飯</a> <span class="star">★</span></td><td>滷肉飯、蛋包瓜仔肉湯</td><td>Braised pork rice</td><td>台灣國民小吃，在台灣演變成現在的吃法</td></tr>
+      <tr><td>3</td><td><a href="#s3">劉芋仔</a> <span class="star">★</span></td><td>蛋黃芋餅</td><td>Taro ball with egg yolk</td><td>攤家自創</td></tr>
+      <tr><td>5</td><td><a href="#s5">雅米</a> <span class="star">★</span></td><td>花生捲冰淇淋</td><td>Peanut ice cream roll</td><td>宜蘭發源</td></tr>
+      <tr><td>B</td><td><a href="#sB">老六</a> <span class="star">★</span></td><td>高粱香腸蛋餅捲</td><td>Kinmen sorghum sausage wrap</td><td>金門高粱酒調味；黃仁勳 2026 年 6 月來吃過</td></tr>
+      <tr><td>7</td><td><a href="#s7">豆花莊</a></td><td>豆花</td><td>Tofu pudding</td><td>收尾休息點</td></tr>
     </tbody>
-  </table>
-  </div>
-  <p class="note" style="margin-top:8px">點餐原則：每樣點一份，三人分著吃。方家 18:00 開、豬肝榮仔 18:30 開，兩家週一公休。豬肝榮仔排在回程，走到時已經開門。</p>
+  </table></div>
+
+  <span class="tier b">推薦 第二順位</span>
+  <div class="tablewrap"><table>
+    <thead><tr><th>圖</th><th>店家</th><th>必點</th><th>English</th><th>重點</th></tr></thead>
+    <tbody>
+      <tr><td>6</td><td><a href="#s6">豬肝榮仔</a></td><td>豬肝湯、芋頭糕</td><td>Pork liver soup</td><td>敢吃內臟再點</td></tr>
+      <tr><td>4</td><td><a href="#s4">李掌伯</a></td><td>麻辣臭豆腐鴨血、炸臭豆腐</td><td>Stinky tofu</td><td>原名里長伯，逾 60 年；曾為國宴小吃</td></tr>
+      <tr><td>F</td><td><a href="#sF">環記麻油雞</a></td><td>麻油雞、麻油炒腰子</td><td>Sesame oil chicken soup</td><td>寧夏路44號｜12:00–15:00、17:00–00:30（隔週一休）。70 多年老店，用土雞腿；<span class="warn">湯含米酒</span></td></tr>
+      <tr><td>G</td><td><a href="#sG">賴雞蛋蚵仔煎</a></td><td>蚵仔煎</td><td>Crispy-style oyster omelette</td><td>民生西路198之22號，靠近正門。圓環邊排太久時的替代選擇</td></tr>
+      <tr><td>H</td><td><a href="#sH">寧夏夜市古早味豆花</a></td><td>豆花＋蜜芋頭</td><td>Tofu pudding with taro</td><td>民生西路210號｜10:00–00:00。有機黃豆、古法鹽滷，日本旅客必訪；有英文菜單</td></tr>
+      <tr><td>C</td><td><a href="#sC">魏祥記純糖麻糬</a></td><td>麻糬冰</td><td>Warm mochi on shaved ice</td><td>寧夏路70-58號｜17:00–00:00。60 年老店，麻糬七道工法製作，配芝麻糖粉、花生粉</td></tr>
+      <tr><td>E</td><td><a href="#sE">詹記水果</a> <span class="star">★</span></td><td>台灣水果、薑汁番茄</td><td>Tropical fruit</td><td>寧夏路27號。薑汁番茄是台南古早吃法；黃仁勳買過蓮霧、山竹、芭樂</td></tr>
+      <tr><td>D</td><td><a href="#sD">牛媽媽</a></td><td>沙茶炒牛肉、控肉飯</td><td>Shacha beef</td><td>週二休</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
 <section id="food">
-  <h2>美食介紹 <small>What to tell them</small></h2>
-
+  <h2>美食介紹 <small>主路線 7 站</small></h2>
   <h3>去程往南 Heading south</h3>
-  <div class="card"><div class="hd"><div class="num">1</div><div class="ttl">圓環邊蚵仔煎 — 蚵仔煎<span>Yuen Huan Pien · Oyster Omelette</span></div></div>
+  <div class="card" id="s1"><div class="hd"><div class="num">1</div><div class="ttl"><a href="https://maps.google.com/?cid=9427095792374969016" target="_blank">圓環邊蚵仔煎</a><span>Yuen Huan Pien · Oyster Omelette</span></div><span class="pill mid" style="margin-left:auto">口感特別</span></div>
   <div class="bd">
-    <p class="meta">內用有冷氣和廁所；排隊時店員會先來點餐；外帶不用排內用的隊</p>
-    <p>寧夏夜市的招牌。蚵仔、雞蛋、青菜加地瓜粉漿一起煎，口感偏軟 Q，淋甜辣醬。蛤仔湯也很推薦。</p>
-    <div class="say"><p>"This is the signature dish here — oyster omelette. Oysters, egg and greens cooked in a sweet potato starch batter, so it's soft and a bit chewy, not like a Western omelette. The sauce is sweet and slightly spicy. Their clam soup is great too."</p></div>
-    <div class="verdict"><b>一句話：</b>第一站就吃招牌主菜，順便坐下、上廁所。先確認客人能吃貝類。</div>
+    <div><span class="award">必比登 2018–2021（連續 4 年）</span><span class="award sel">2026 米其林入選</span></div>
+    <p class="meta">寧夏路46號｜12:00–14:30、16:30–01:00｜內用有冷氣和廁所；外帶不用排內用的隊</p>
+    <p class="sig"><b>招牌</b>　蚵仔煎（Oyster omelette）、檜木桶米糕</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>用新鮮蚵仔、雞蛋和青菜，裹地瓜粉漿煎成的煎餅，淋上甜辣醬，是台灣夜市最具代表性的小吃之一。</dd>
+      <dt>怎麼做</dt><dd>鐵板上先煎蚵仔，倒入地瓜粉漿和蛋液，放上青菜，煎到邊緣焦脆、中間軟Q，起鍋淋上店家現調的醬汁。這家用每日直送的台南蚵。另一招牌米糕用古早檜木桶蒸煮。</dd>
+      <dt>背景文化</dt><dd>蚵仔煎源自閩南沿海，福建、潮汕也有類似的「海蠣煎」「蠔烙」，隨移民傳到台灣後演變成現在的台灣版本。店名的「圓環」指的是附近老台北最有名的小吃集散地建成圓環。</dd>
+    </dl>
+    <div class="say"><p>"Oyster omelette is one of Taiwan's most iconic night market dishes. Fresh oysters, egg and greens are fried in a sweet potato starch batter — crispy at the edges, soft and slightly chewy in the middle — then topped with a sweet chilli sauce. The dish came from southern Fujian with early settlers, but the Taiwanese version has its own style. This place uses oysters from Tainan, was a Michelin Bib Gourmand for four years, and is in this year's Michelin Guide."</p></div>
+    <div class="verdict"><b>一句話：</b>第一站就吃招牌，順便坐下、上廁所。先確認客人能吃貝類。</div>
   </div></div>
-  <div class="card"><div class="hd"><div class="num">2</div><div class="ttl">方家雞肉飯 — 雞肉飯<span>Fang Family · Chicken Rice</span></div></div>
+  <div class="card" id="s2"><div class="hd"><div class="num">2</div><div class="ttl"><a href="https://maps.google.com/?cid=8480770231485709370" target="_blank">方家雞肉飯 <span class="star">★</span></a><span>Fang Family · Chicken Rice</span></div><span class="pill easy" style="margin-left:auto">好入口</span></div>
   <div class="bd">
-    <p class="meta">18:00 開；內用和外帶分開排隊</p>
-    <p>台式雞肉飯是火雞肉絲淋雞油和醬汁，簡單但很香，必比登推介。</p>
-    <div class="say"><p>"Taiwanese chicken rice — shredded turkey over rice with chicken fat and a light soy sauce. Simple comfort food, and a Michelin pick."</p></div>
+    <div><span class="award">必比登 2019–2022（連續 4 年）</span></div>
+    <p class="meta">寧夏夜市060攤位｜18:00 開、週一休｜內用和外帶分開排隊</p>
+    <p class="sig"><b>招牌</b>　雞肉飯（Chicken rice）、滷豆腐</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>白飯鋪上雞肉絲，淋雞油和醬汁，是台灣常見的平價國民飯食。</dd>
+      <dt>怎麼做</dt><dd>雞肉煮熟後撕成絲鋪在飯上，淋上用雞骨熬的醬汁和雞油，再撒油蔥酥。比起嘉義火雞肉飯，口味偏北部清爽。滷豆腐、蔥花蛋也是熱門配菜。</dd>
+      <dt>背景文化</dt><dd>台式雞肉飯源自嘉義，傳統用火雞肉，戰後發展起來後流行全台，中國沒有這種吃法。方家是寧夏夜市 40 多年的老店。</dd>
+    </dl>
+    <div class="say"><p>"Taiwanese chicken rice — shredded chicken over rice, dressed with chicken fat, a light savoury sauce and fried shallots. It started in Chiayi in southern Taiwan, where it's traditionally made with turkey; this Taipei version uses chicken and is a bit lighter. It's uniquely Taiwanese, and this stall was a Michelin Bib Gourmand for four years."</p></div>
     <div class="verdict"><b>一句話：</b>一碗大家分，不要吃太飽，後面還很多。</div>
   </div></div>
-  <div class="card"><div class="hd"><div class="num">3</div><div class="ttl">劉芋仔 — 蛋黃芋餅<span>Liu Yu Zi · Taro Ball with Salted Egg Yolk</span></div></div>
+  <div class="card" id="s3"><div class="hd"><div class="num">3</div><div class="ttl"><a href="https://maps.google.com/?cid=12706446233810352411" target="_blank">劉芋仔 <span class="star">★</span></a><span>Liu Yu Zi · Taro Balls</span></div><span class="pill easy" style="margin-left:auto">好入口</span></div>
   <div class="bd">
-    <p>芋泥外皮炸得酥脆，內餡是鹹鴨蛋黃和肉鬆，曾獲必比登推介。要趁熱吃。</p>
-    <div class="say"><p>"Mashed taro, deep-fried, with a salted duck egg yolk and pork floss inside — sweet and savoury at the same time. Best eaten hot."</p></div>
-    <div class="verdict"><b>一句話：</b>最容易讓外國人喜歡的一攤，排隊不長就一定要買。</div>
+    <div><span class="award">必比登 2018–2022（連續 5 年）</span></div>
+    <p class="meta">寧夏夜市091攤位｜17:00–01:00、週四休｜全外帶，排隊約 10 分鐘</p>
+    <p class="sig"><b>招牌</b>　蛋黃芋餅（Taro ball with salted egg yolk）、香酥芋丸</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>以芋泥做外皮、包鹹蛋黃和肉鬆的炸點心，甜鹹兼具。</dd>
+      <dt>怎麼做</dt><dd>芋頭蒸熟壓成泥，包入鹹鴨蛋黃和肉鬆，下鍋炸到外皮酥脆、內層綿密。全攤只賣蛋黃芋餅和香酥芋丸兩樣；芋丸用高雄甲仙芋頭。</dd>
+      <dt>背景文化</dt><dd>40 多年老店，最早在林森北路擺攤，後來搬到寧夏夜市，倚著蓬萊國小的圍牆營業。蛋黃芋餅是攤家自創的小吃，別處吃不到。</dd>
+    </dl>
+    <div class="say"><p>"These are taro balls: mashed taro wrapped around salted duck egg yolk and pork floss, then deep-fried until crisp — sweet and savoury at the same time. The stall has been going for over 40 years, sells just two items, and was a Michelin Bib Gourmand five years running. It's their own creation, so you won't find it anywhere else."</p></div>
+    <div class="verdict"><b>一句話：</b>最容易讓外國人喜歡的一攤，一定要買。</div>
   </div></div>
-  <div class="card"><div class="hd"><div class="num t">4</div><div class="ttl">李掌伯 — 炸臭豆腐<span>Li Zhang Bo · Fried Stinky Tofu</span></div></div>
+  <div class="card" id="s4"><div class="hd"><div class="num t">4</div><div class="ttl"><a href="https://maps.google.com/?cid=1438352876431956666" target="_blank">李掌伯（原里長伯麻辣臭豆腐）</a><span>Li Zhang Bo · Stinky Tofu</span></div><span class="pill hard" style="margin-left:auto">挑戰</span></div>
   <div class="bd">
-    <p>發酵過的豆腐炸到外酥內嫩，配台式泡菜和醬汁。聞起來很臭，吃起來其實不太臭。</p>
-    <div class="say"><p>"This is stinky tofu — fermented tofu, deep-fried. It smells much stronger than it tastes. Crispy outside, soft inside, served with pickled cabbage. Totally optional, but it's <i>the</i> Taiwanese night market challenge."</p></div>
+    <p class="meta">寧夏路22-9號｜有友善廁所</p>
+    <p class="sig"><b>招牌</b>　麻辣臭豆腐鴨血、炸臭豆腐（Stinky tofu）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>臭豆腐是浸過發酵滷水的豆腐，聞起來很臭、吃起來溫和。這家有兩種經典吃法：泡在麻辣湯裡的麻辣臭豆腐鴨血，以及炸得酥脆、配台式泡菜的炸臭豆腐。</dd>
+      <dt>怎麼做</dt><dd>麻辣湯頭由四川老師傅傳授，用十多種中藥材和朝天椒熬煮，麻而不油，臭豆腐和自製鴨血吸滿湯汁。炸臭豆腐現點現炸，配酸甜泡菜。另有金沙臭豆腐、香酥臭餛飩等創新口味。</dd>
+      <dt>背景文化</dt><dd>臭豆腐源自中國，各地做法不同。這家從雙連市場的小吃攤發跡，已逾 60 年。舊名「里長伯」，因為第二代老闆當了 20 年的星明里里長，他當年奔走推動夜市整頓，讓寧夏夜市成為全台第一個環保夜市。陳水扁、馬英九兩位前總統都吃過，也曾進總統府成為國宴小吃。</dd>
+    </dl>
+    <div class="say"><p>"Stinky tofu is tofu soaked in a fermented brine — it smells strong but tastes much milder. This stall does it two ways: deep-fried with pickled cabbage, or simmered in a numbing Sichuan-style spicy broth with duck blood. It started in a nearby market over 60 years ago. The name is a pun on 'Uncle Borough Chief' — the owner's father was the local borough chief who helped make Ningxia Taiwan's first eco-friendly night market. It's even been served at a presidential state banquet."</p></div>
     <div class="verdict"><b>一句話：</b>折返點的勇氣挑戰，點一份大家試一口就好。</div>
   </div></div>
   <h3>回程往北 Heading back north</h3>
-  <div class="card"><div class="hd"><div class="num">5</div><div class="ttl">雅米 — 花生捲冰淇淋<span>Peanut Ice Cream Roll</span></div></div>
+  <div class="card" id="s5"><div class="hd"><div class="num">5</div><div class="ttl"><a href="https://maps.google.com/?cid=7755888033687803030" target="_blank">雅米花生捲冰淇淋 <span class="star">★</span></a><span>Peanut Ice Cream Roll</span></div><span class="pill easy" style="margin-left:auto">好入口</span></div>
   <div class="bd">
-    <p>現刨花生糖粉，加兩球冰淇淋和香菜，用潤餅皮捲起來。不要香菜就說「不要香菜」。</p>
-    <div class="say"><p>"It's like a burrito for dessert: shaved peanut brittle and ice cream wrapped in a thin crêpe. Traditionally it has coriander in it — sounds odd, but it works. I can ask them to leave it out."</p></div>
+    <p class="meta">寧夏夜市115號攤位</p>
+    <p class="sig"><b>招牌</b>　花生捲冰淇淋（Peanut ice cream roll）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>用潤餅皮包花生糖粉、冰淇淋和香菜的甜點，甜中帶鹹，又涼又香。</dd>
+      <dt>怎麼做</dt><dd>從整塊花生麥芽糖磚上現刨出花生糖粉，鋪在潤餅皮上，放兩球冰淇淋，加香菜後捲起。不要香菜就說「不要香菜」。</dd>
+      <dt>背景文化</dt><dd>花生捲冰淇淋是宜蘭的街頭小吃，起源已不可考，有一說是日治時期由日本人組合而成。香菜用來平衡甜味。這道甜點曾登上國宴招待外賓。</dd>
+    </dl>
+    <div class="say"><p>"It's like a dessert burrito: peanut brittle is shaved fresh from a big block onto a thin crêpe, then topped with ice cream and coriander and rolled up. It's a street snack from Yilan on Taiwan's east coast — nobody knows exactly who invented it, but it's even been served at state banquets. The coriander balances the sweetness; I can ask them to leave it out."</p></div>
     <div class="verdict"><b>一句話：</b>清爽解膩，剛好接在臭豆腐後面，拿著邊走邊吃。</div>
   </div></div>
-  <div class="card"><div class="hd"><div class="num t">6</div><div class="ttl">豬肝榮仔 — 豬肝湯<span>Rong's Pork Liver · Pork Liver Soup</span></div></div>
+  <div class="card" id="s6"><div class="hd"><div class="num t">6</div><div class="ttl"><a href="https://maps.google.com/?cid=8280307532077538155" target="_blank">豬肝榮仔</a><span>Rong's Pork Liver</span></div><span class="pill hard" style="margin-left:auto">挑戰</span></div>
   <div class="bd">
-    <p class="meta">18:30 開；週一公休</p>
-    <p>清湯，豬肝嫩而不腥，是老台北人的經典，必比登推介。不敢吃內臟就改點香蔥芋頭糕或北部粽。</p>
-    <div class="say"><p>"This one's for the adventurous — pork liver soup. The broth is clear and light, and the liver is very tender. If offal isn't your thing, try the taro cake or the sticky rice dumpling instead."</p></div>
+    <div><span class="award">必比登 2019、2020（連續 2 年）</span></div>
+    <p class="meta">寧夏夜市010攤位｜18:30–23:30、週一休</p>
+    <p class="sig"><b>招牌</b>　豬肝湯（Pork liver soup）、香蔥芋頭糕</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>以豬骨熬的清湯加入豬肝片，口味清淡鮮甜。</dd>
+      <dt>怎麼做</dt><dd>豬肝切厚片快速燙熟，保持脆嫩不柴；湯頭不用薑去腥，而是加洋蔥熬煮，喝起來偏甜。另有豬肚湯、綜合湯、肉粽，以及做成台灣形狀的香蔥芋頭糕。</dd>
+      <dt>背景文化</dt><dd>豬肝湯是台灣傳統的古早味湯品，老一輩認為吃肝能補血。豬肝榮仔在寧夏夜市營業超過 60 年。</dd>
+    </dl>
+    <div class="say"><p>"Pork liver soup — a light, clear pork-bone broth with slices of liver, cooked quickly so it stays tender. Instead of ginger, they use onion, which makes it slightly sweet. It's an old-school Taiwanese soup; older generations believed eating liver was good for your blood. If offal isn't your thing, try the taro cake — it's shaped like Taiwan."</p></div>
     <div class="verdict"><b>一句話：</b>回程時已經開門。看客人膽量決定，芋頭糕是安全牌。</div>
   </div></div>
-  <div class="card"><div class="hd"><div class="num">7</div><div class="ttl">豆花莊 — 豆花<span>Beans Village · Tofu Pudding</span></div></div>
+  <div class="card" id="s7"><div class="hd"><div class="num">7</div><div class="ttl"><a href="https://maps.google.com/?cid=6971991644493487220" target="_blank">豆花莊</a><span>Beans Village · Tofu Pudding</span></div><span class="pill easy" style="margin-left:auto">好入口</span></div>
   <div class="bd">
-    <p>坐在店裡吹冷氣。豆花是很嫩的豆腐甜點，可選花生、芋圓、粉粿等配料，冰的熱的都有。</p>
-    <div class="say"><p>"Douhua — silky tofu pudding in light syrup, with toppings like peanuts or taro balls. A light, refreshing way to finish."</p></div>
+    <p class="meta">寧夏路49號｜10:00–01:00｜配料超過 30 種</p>
+    <p class="sig"><b>招牌</b>　豆花（Tofu pudding）、湯圓</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>非常嫩的豆腐甜點，配糖水和各種配料，冰的熱的都有。</dd>
+      <dt>怎麼做</dt><dd>豆漿煮好後加入凝固劑，凝結成滑嫩的豆花，再加糖水和花生、芋圓、粉圓等配料。</dd>
+      <dt>背景文化</dt><dd>豆花源自中國，在台灣是很普遍的甜點。豆花莊創立於 1965 年；黃仁勳 2024 年曾帶張忠謀、林百里在這裡排排坐吃豆花。</dd>
+    </dl>
+    <div class="say"><p>"Douhua — silky tofu pudding in light syrup. Soy milk is set into a delicate curd, then you add toppings like peanuts, taro balls or tapioca. This shop opened in 1965; NVIDIA's Jensen Huang once brought TSMC's founder Morris Chang here for douhua."</p></div>
     <div class="verdict"><b>一句話：</b>收尾站，坐下吹冷氣，吃的同時 LINE 司機到民生西路口。</div>
   </div></div>
+</section>
 
-  <h3>備案：環記麻油雞 Sesame Oil Chicken Soup</h3>
-  <p>麻油、老薑加米酒燉的雞湯。排隊太長時可替換，但<span class="warn">湯裡有酒</span>，不喝酒的人要注意。</p>
+<section id="more">
+  <h2>更多推薦 <small>順路加點 A–H</small></h2>
+
+  <p class="note" style="margin:8px 0 14px">寧夏夜市另有「千歲宴」，集合 22 家名攤做成台式辦桌，需事先預約，可作為下次招待外賓的選項。</p>
+  <div class="card" id="sA"><div class="hd"><div class="num x">A</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%B4%A8%E9%A0%AD%E6%AD%A3%E4%BA%8C%E4%BB%A3%E6%BB%B7%E8%82%89%E9%A3%AF&amp;query_place_id=ChIJo2hZ3WqpQjQRMKi1B3xeDyA" target="_blank">鴨頭正二代滷肉飯 <span class="star">★</span></a><span>Braised Pork Rice</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏路40號｜18:00–23:00</p>
+    <p class="sig"><b>招牌</b>　滷肉飯（Braised pork rice）、蛋包瓜仔肉湯</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>滷肉飯是白飯淋上滷得軟爛的碎豬肉和滷汁。瓜仔肉湯是加了醬瓜的肉湯，「蛋包」是在湯裡多煮一顆蛋。</dd>
+      <dt>怎麼做</dt><dd>帶皮豬肉切小丁，用醬油、冰糖和油蔥酥長時間滷製，淋在白飯上。瓜仔肉是醬瓜拌絞肉，下湯煮熟後再打入一顆蛋。</dd>
+      <dt>背景文化</dt><dd>滷肉飯是台灣最具代表性的國民小吃，起源說法不一，但現在的吃法是在台灣發展成形的。</dd>
+    </dl>
+    <div class="say"><p>"Braised pork rice is Taiwan's ultimate comfort food — finely chopped pork belly slow-braised in soy sauce with fried shallots, spooned over rice. The soup is minced pork with pickled cucumber and an egg cooked in it."</p></div>
+  </div></div>
+  <div class="card" id="sB"><div class="hd"><div class="num x">B</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%80%81%E5%85%AD%E9%AB%98%E7%B2%B1%E9%A6%99%E8%85%B8%E8%9B%8B%E9%A4%85%E6%8D%B2&amp;query_place_id=ChIJI26F4AqpQjQRjE-789TfE2M" target="_blank">老六高粱香腸蛋餅捲 <span class="star">★</span></a><span>Sorghum Sausage Wrap</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏路97號攤位｜17:00–23:30</p>
+    <p class="sig"><b>招牌</b>　高粱香腸蛋餅捲（Kinmen sorghum sausage wrap）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>用台式蛋餅包烤香腸和九層塔，香腸用金門高粱酒調味。</dd>
+      <dt>怎麼做</dt><dd>台式香腸烤到表皮微焦，用煎好的蛋餅捲起，加九層塔。香腸帶明顯酒香。</dd>
+      <dt>背景文化</dt><dd>台式香腸偏甜、帶酒香，通常現烤現吃。金門高粱酒是金門的代表酒，香腸加高粱酒是台灣獨有的組合。黃仁勳今年 6 月來寧夏夜市時也吃了這攤。</dd>
+    </dl>
+    <div class="say"><p>"Taiwanese sausage is sweeter than Western sausage. This one is flavoured with Kinmen sorghum liquor, a famous spirit from Taiwan's offshore islands, then grilled and wrapped in a Taiwanese egg crêpe with basil. Jensen Huang stopped here in June."</p></div>
+  </div></div>
+  <div class="card" id="sC"><div class="hd"><div class="num x">C</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AD%8F%E7%A5%A5%E8%A8%98%E9%BA%BB%E7%B3%AC%E5%86%B0&amp;query_place_id=ChIJ7QeTTGKpQjQREJl4xPWRj2E" target="_blank">魏祥記純糖麻糬</a><span>Mochi on Shaved Ice</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏路70-58號｜17:00–00:00</p>
+    <p class="sig"><b>招牌</b>　麻糬冰（Warm mochi on shaved ice）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>熱騰騰的麻糬放在剉冰上，一口吃到冷熱對比的冰品。</dd>
+      <dt>怎麼做</dt><dd>麻糬經過七道工序製作，加熱後鋪在淋了糖水和煉乳的剉冰上，再撒芝麻糖粉和花生粉。</dd>
+      <dt>背景文化</dt><dd>經營約 60 年的老店，麻糬冰是台灣夏天的古早味消暑甜點。</dd>
+    </dl>
+    <div class="say"><p>"Warm, chewy mochi on top of shaved ice with syrup and condensed milk, finished with sesame sugar and peanut powder — hot and cold in one bite."</p></div>
+  </div></div>
+  <div class="card" id="sD"><div class="hd"><div class="num x">D</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%89%9B%E5%AA%BD%E5%AA%BD%E6%8E%A7%E8%82%89%E9%A3%AF&amp;query_place_id=ChIJI_8jRmupQjQRZqiO7ZDs9tI" target="_blank">牛媽媽</a><span>Shacha Beef</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏夜市44號攤位｜週二休</p>
+    <p class="sig"><b>招牌</b>　沙茶炒牛肉（Stir-fried beef with shacha sauce）、控肉飯</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>用沙茶醬大火快炒牛肉和青菜，配飯或麵。</dd>
+      <dt>怎麼做</dt><dd>牛肉片和青菜大火快炒，加沙茶醬調味。沙茶醬用扁魚、蝦米、蒜頭、辣椒等熬製，鹹香帶海味。</dd>
+      <dt>背景文化</dt><dd>沙茶醬源自潮汕，戰後隨潮汕移民傳到台灣，現在是台灣火鍋和熱炒的常見醬料。</dd>
+    </dl>
+    <div class="say"><p>"Beef stir-fried over high heat with shacha sauce — a savoury paste made with dried fish, shrimp, garlic and chilli. Shacha came to Taiwan from the Chaoshan region of China and is now a staple here."</p></div>
+  </div></div>
+  <div class="card" id="sE"><div class="hd"><div class="num x">E</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%A9%B9%E8%A8%98%E6%B0%B4%E6%9E%9C&amp;query_place_id=ChIJBUeD46OpQjQRIvejsI2YHOE" target="_blank">詹記水果 <span class="star">★</span></a><span>Fruit Stand</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏路27號｜17:00–00:00</p>
+    <p class="sig"><b>招牌</b>　台灣當季水果、薑汁番茄（Ginger tomato）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>現切台灣當季水果。招牌是台南古早吃法「薑汁番茄」：番茄切片沾醬吃。</dd>
+      <dt>怎麼做</dt><dd>番茄切片，沾醬油膏、薑泥、糖和甘草粉調成的醬，甜鹹交織。</dd>
+      <dt>背景文化</dt><dd>薑汁番茄是台南的古早吃法，台灣人習慣把番茄當水果吃。這攤經營約 30 年，黃仁勳今年 6 月在這裡買了蓮霧、山竹、芭樂。</dd>
+    </dl>
+    <div class="say"><p>"Fresh Taiwanese fruit. Try the ginger tomato: sliced tomato dipped in a sauce of soy paste, ginger, sugar and liquorice powder — an old Tainan way of eating tomatoes as fruit."</p></div>
+  </div></div>
+  <div class="card" id="sF"><div class="hd"><div class="num x">F</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E7%92%B0%E8%A8%98%E9%BA%BB%E6%B2%B9%E9%9B%9E&amp;query_place_id=ChIJlespIWupQjQRVxM5nrChEQA" target="_blank">環記麻油雞</a><span>Sesame Oil Chicken</span></div></div>
+  <div class="bd">
+    <p class="meta">寧夏路44號｜12:00–15:00、17:00–00:30（隔週一休）</p>
+    <p class="sig"><b>招牌</b>　麻油雞（Sesame oil chicken soup）、麻油炒腰子</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>黑麻油、老薑和米酒燉煮的雞湯，香氣濃郁、暖身。</dd>
+      <dt>怎麼做</dt><dd>老薑用黑麻油煸香，加入土雞腿和米酒燉煮。麻油炒腰子是把豬腰切花，用麻油和薑快炒，口感脆。</dd>
+      <dt>背景文化</dt><dd>麻油雞是台灣傳統的坐月子和冬季進補料理，源自閩南習俗。環記是寧夏夜市圓環附近 70 多年的老店。<span class="warn">湯裡有米酒，酒味明顯。</span></dd>
+    </dl>
+    <div class="say"><p>"Sesame oil chicken — chicken leg simmered with black sesame oil, old ginger and rice wine. In Taiwan it's a traditional warming dish for new mothers and cold winter days. Heads-up: the broth has a strong alcohol taste."</p></div>
+  </div></div>
+  <div class="card" id="sG"><div class="hd"><div class="num x">G</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%B3%B4%E9%9B%9E%E8%9B%8B%E8%9A%B5%E4%BB%94%E7%85%8E&amp;query_place_id=ChIJcRyA8GqpQjQRlilMzZ4ocY4" target="_blank">賴雞蛋蚵仔煎</a><span>Crispy Oyster Omelette</span></div></div>
+  <div class="bd">
+    <p class="meta">民生西路198之22號｜16:30–00:30、週二休</p>
+    <p class="sig"><b>招牌</b>　雞蛋蚵仔煎（Crispy-style oyster omelette）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>同樣是蚵仔煎，但這家把粉漿外層煎得焦脆，和圓環邊的軟嫩口感不同。</dd>
+      <dt>怎麼做</dt><dd>點餐先付款、現點現煎；有雞蛋蚵仔煎、蝦仁煎、綜合煎，另有麻油豬肝、腰子。</dd>
+      <dt>背景文化</dt><dd>位在民生西路上、靠近正門，不在寧夏路本街。很多在地人從小吃到大；焦脆口感評價兩極，喜歡的人很愛。</dd>
+    </dl>
+    <div class="say"><p>"Another oyster omelette, but fried until the batter is crispy and a little charred — a nice contrast to the softer one. Lots of locals have been coming here since childhood."</p></div>
+  </div></div>
+  <div class="card" id="sH"><div class="hd"><div class="num x">H</div><div class="ttl"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AF%A7%E5%A4%8F%E5%A4%9C%E5%B8%82%E5%8F%A4%E6%97%A9%E5%91%B3%E8%B1%86%E8%8A%B1&amp;query_place_id=ChIJwWrP22qpQjQR7scKUkov_BI" target="_blank">寧夏夜市古早味豆花</a><span>Traditional Douhua</span></div></div>
+  <div class="bd">
+    <p class="meta">民生西路210號｜10:00–00:00｜有英文菜單</p>
+    <p class="sig"><b>招牌</b>　古早味豆花＋蜜芋頭（Tofu pudding with honeyed taro）</p>
+    <dl class="tri">
+      <dt>這是什麼</dt><dd>古法製作的豆花和傳統冰品。</dd>
+      <dt>怎麼做</dt><dd>用有機黃豆磨漿，以古法鹽滷凝固，豆香濃。招牌搭配蜜芋頭，綿密和滑嫩的口感交融。</dd>
+      <dt>背景文化</dt><dd>位在民生西路正門附近，深受日本旅客喜愛，聽說是日本人來台必訪的冰品店。</dd>
+    </dl>
+    <div class="say"><p>"Another douhua shop, known for organic soybeans and a traditional brine method that gives a strong soy flavour. Try it with honeyed taro. They have an English menu."</p></div>
+  </div></div>
+</section>
+
+<section id="wc">
+  <h2>廁所位置 <small>Toilets</small></h2>
+  <div class="wc">
+    <div><strong>友善廁所</strong>（店家開放）
+      <ul>
+        <li id="wc1"><a href="https://www.google.com/maps/search/?api=1&amp;query=7-11%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E6%B0%91%E7%94%9F%E8%A5%BF%E8%B7%AF216%E8%99%9F" target="_blank">7-11</a>　民生西路216號（正門旁）</li>
+        <li id="wc3"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AC%8D%E9%AC%9A%E5%BC%B5%E7%BE%8E%E9%A3%9F%E6%96%87%E5%8C%96%E9%A4%A8%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E5%AF%A7%E5%A4%8F%E8%B7%AF62%E8%99%9F" target="_blank">鬍鬚張美食文化館</a>　寧夏路62號（近第 6 站）</li>
+        <li id="wc5"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%87%8C%E9%95%B7%E4%BC%AF%E8%87%AD%E8%B1%86%E8%85%90%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E5%AF%A7%E5%A4%8F%E8%B7%AF22-9%E8%99%9F" target="_blank">李掌伯（原里長伯臭豆腐）</a>　寧夏路22-9號（＝第 4 站）</li>
+        <li id="wc6"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A6%99%E9%80%A3%E9%90%B5%E6%9D%BF%E6%96%99%E7%90%86&amp;query_place_id=ChIJWWDf6GqpQjQRFuKl1i_aDv8" target="_blank">香連鐵板料理</a>　寧夏路16號（南端）</li>
+      </ul></div>
+    <div><strong>公共廁所</strong>
+      <ul>
+        <li id="wc2"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E9%9B%99%E9%80%A3%E5%B8%82%E5%A0%B4%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E6%B0%91%E7%94%9F%E8%A5%BF%E8%B7%AF198%E8%99%9F" target="_blank">雙連市場</a>　民生西路198號（正門旁）</li>
+        <li id="wc4"><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%93%AC%E8%90%8A%E5%9C%8B%E5%B0%8F%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4%20%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E5%AF%A7%E5%A4%8F%E8%B7%AF35%E8%99%9F" target="_blank">蓬萊國小地下停車場</a>　寧夏路35號（夜市中段）</li>
+      </ul></div>
+  </div>
+  <p class="note" style="margin-top:8px">另外，圓環邊蚵仔煎（第 1 站）內用區也有廁所。友善廁所借用前，可以先跟店家打聲招呼。</p>
+</section>
+
+<section id="bib">
+  <h2>米其林必比登是什麼 <small>About Bib Gourmand</small></h2>
+  <p>必比登推介（Bib Gourmand）是米其林指南自 1997 年起設立的評選類別，不是星級，專門表彰以合理價格提供優質料理的「物有所值」店家。名稱來自米其林的輪胎人吉祥物 Bibendum。夜市攤位能入選，代表連米其林評審都認可它的水準。</p>
+  <p>米其林指南另有「入選餐廳」（Michelin Selected）類別，是評審推薦、但未獲星級或必比登的店家。圓環邊蚵仔煎就在《臺灣米其林指南 2026》的入選名單中。</p>
+  <div class="say"><p>"Bib Gourmand is a Michelin Guide category for places that serve really good food at a fair price. It's not a star — it's Michelin's pick for great value. Several stalls here have been on the list over the years."</p></div>
 </section>
 
 <section id="culture">
@@ -276,11 +516,11 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
 
 <section id="history">
   <h2>寧夏夜市背景 <small>About Ningxia</small></h2>
-  <p>寧夏夜市位在大同區，緊鄰大稻埕老城區。這一帶在日治時期是台北最熱鬧的商業區，附近的建成圓環曾是老台北最有名的小吃集散地。寧夏夜市延續這份老台北的飲食傳統，被稱為「台北人的胃」。</p>
-  <p>規模不大，基本上就是一條街，幾乎全是吃的，以台灣古早味聞名。2000 年代初經過市府輔導整頓，是台北第一個統一規劃油水分離和排水設施的示範夜市，所以相對乾淨。米其林 2018 年進入台北後，這裡有好幾攤被列入必比登推介。</p>
+  <p>寧夏夜市位在大同區，緊鄰大稻埕老城區，被稱為「台北人的胃」。它從日治時期的圓環一帶發展起來，1973 年重慶北路拓寬後，攤販往兩旁聚集，夜市逐漸擴大興盛。</p>
+  <p>後來各大夜市興起，寧夏夜市一度沒落。台北市政府把這裡選為夜市改造示範點，推動環保筷、集中處理攤販油汙廢水、加裝油煙防制設備等。當時的星明里里長（也就是李掌伯臭豆腐的第二代老闆）四處奔走，把油汙管地下化、攤位集中到鋪了地磚的徒步區，讓寧夏夜市成為全台第一個環保夜市，人潮也重新回流。米其林 2018 年進入台北後，這裡有好幾攤獲必比登推介。</p>
   <p class="note">路名小知識：台北很多路是 1945 年後以中國省分和城市命名，「寧夏」原本是中國西北的地名。</p>
   <div class="say">
-    <p>"This is one of Taipei's oldest and most local night markets — people call it 'Taipei's stomach.' The area next to it, Dadaocheng, was the city's main trading district about a century ago. It's basically one street, almost all food, known for traditional Taiwanese dishes. Several stalls here are in the Michelin Bib Gourmand guide. It's also one of the cleanest night markets, because the city redesigned its drainage and grease systems in the early 2000s."</p>
+    <p>"This is one of Taipei's oldest and most local night markets — people call it 'Taipei's stomach.' It grew up around an old food hub from the Japanese era. It's basically one street, almost all food, known for traditional Taiwanese dishes. When it went into decline, the local borough chief pushed to clean it up — underground grease pipes, a proper pedestrian area — and it became Taiwan's first eco-friendly night market. Several stalls have been in the Michelin Bib Gourmand guide."</p>
     <p>"Fun fact: many Taipei streets are named after places in mainland China — Ningxia is a region in China's northwest."</p>
   </div>
 </section>
@@ -288,15 +528,31 @@ footer{padding:20px 28px 0;font-size:12px;color:var(--muted)}
 <section id="tips">
   <h2>帶客提醒 <small>Hosting tips</small></h2>
   <ul class="tips">
+    <li>點餐原則：每樣點一份，三人分著吃，才吃得到多種。</li>
     <li>點餐前先問過敏和忌口：<i>"Any allergies or anything you don't eat — shellfish, offal, coriander?"</i></li>
     <li>第一次來台的客人可能會被人潮和氣味嚇到，先從芋餅、雞肉飯開始，臭豆腐和豬肝當作選擇性挑戰。</li>
     <li>帶現金（多準備百元鈔和零錢）、面紙和濕紙巾。</li>
     <li>熱門攤排隊約 20–40 分鐘，可以一人排隊、其他人去附近買小東西。圓環邊蚵仔煎隊伍太長時，可改外帶。</li>
-    <li>廁所：圓環邊蚵仔煎內用區有，可以安排在第 1 站使用。</li>
+    <li>廁所位置見上方「廁所」一節，地圖上以藍色 WC 標示。</li>
   </ul>
 </section>
 
 <footer>營業資訊依 2026 年 10 月查詢結果整理，攤商可能臨時休息，出發前可再看一眼 Google 地圖。</footer>
 </div>
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(!a) return;
+    var h=a.getAttribute('href')||a.getAttribute('xlink:href')||'';
+    if(h.charAt(0)!=='#') return;
+    var el=document.getElementById(h.slice(1));
+    if(!el) return;
+    e.preventDefault();
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  });
+})();
+</script>
 </body>
 </html>
