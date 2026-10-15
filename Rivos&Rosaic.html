@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}</style>
+<title>Rivos 與 Rosaic Labs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (max 980px) for an executive briefing; summary first, then diagram, timeline, profiles, verification, sources. */
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --fg:#1B2230; --muted:#5A6375; --line:#D9DDE5;
+  --rivos:#2C5C9A; --rivos-soft:#E6EDF7;
+  --rosaic:#A23E66; --rosaic-soft:#F6E7EE;
+  --tan:#94680F; --tan-soft:#F5EEDD;
+  --neutral:#6B7385; --neutral-soft:#ECEEF2;
+  --warn:#9A5B00; --warn-soft:#FBF1DF; --ok:#2F7A4F; --ok-soft:#E3F2E9;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161D; --surface:#1A2029; --fg:#E6E9EF; --muted:#9AA3B4; --line:#2E3644;
+  --rivos:#7FA8E0; --rivos-soft:#1D2A3D; --rosaic:#E08AAE; --rosaic-soft:#3A2230;
+  --tan:#D9AE55; --tan-soft:#33291A; --neutral:#A2AABA; --neutral-soft:#242B36;
+  --warn:#E5AE5A; --warn-soft:#352816; --ok:#76C496; --ok-soft:#1B3125; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161D; --surface:#1A2029; --fg:#E6E9EF; --muted:#9AA3B4; --line:#2E3644;
+  --rivos:#7FA8E0; --rivos-soft:#1D2A3D; --rosaic:#E08AAE; --rosaic-soft:#3A2230;
+  --tan:#D9AE55; --tan-soft:#33291A; --neutral:#A2AABA; --neutral-soft:#242B36;
+  --warn:#E5AE5A; --warn-soft:#352816; --ok:#76C496; --ok-soft:#1B3125; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:980px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(28px,4.6vw,40px)}
+h2{font-size:clamp(22px,3vw,27px);display:flex;align-items:baseline;gap:12px}
+h2 .no{font-family:var(--mono);font-size:14px;color:var(--muted);font-weight:500}
+h3{font-size:19px}
+p{margin:0}
+a{color:var(--rivos)}
+a:focus-visible{outline:2px solid var(--rivos);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:68ch}
+section{display:flex;flex-direction:column;gap:20px;min-width:0}
+.sec-intro{color:var(--muted);max-width:70ch}
+.r{color:var(--rivos);font-weight:700}.s{color:var(--rosaic);font-weight:700}.t{color:var(--tan);font-weight:700}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:28px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+
+/* summary */
+.answer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 26px;display:flex;flex-direction:column;gap:18px}
+.answer .big{font-family:var(--serif);font-size:clamp(19px,2.4vw,22px);line-height:1.6;font-weight:600}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.key{background:var(--bg);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.key b{font-size:15px}
+.key p{font-size:15px;color:var(--muted)}
+
+/* diagram */
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 12px 12px;overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:760px;height:auto}
+.fig-note{font-size:14px;color:var(--muted)}
+svg .box{stroke-width:1.5}
+svg .b-rivos{fill:var(--rivos-soft);stroke:var(--rivos)}
+svg .b-rosaic{fill:var(--rosaic-soft);stroke:var(--rosaic)}
+svg .b-tan{fill:var(--tan-soft);stroke:var(--tan)}
+svg .b-neu{fill:var(--neutral-soft);stroke:var(--neutral)}
+svg .b-person{fill:var(--surface);stroke:var(--line)}
+svg .b-dash{fill:var(--surface);stroke:var(--neutral);stroke-dasharray:5 4}
+svg .nm{font-family:var(--sans);font-size:16px;font-weight:700;fill:var(--fg)}
+svg .sub{font-family:var(--sans);font-size:12.5px;fill:var(--muted)}
+svg .co{font-family:var(--serif);font-size:20px;font-weight:700}
+svg .co-r{fill:var(--rivos)} svg .co-s{fill:var(--rosaic)}
+svg .lbl{font-family:var(--sans);font-size:12.5px;fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+svg .lbl-m{fill:var(--muted)}
+svg .e{fill:none;stroke-width:2}
+svg .e-r{stroke:var(--rivos)} svg .e-s{stroke:var(--rosaic)} svg .e-t{stroke:var(--tan)} svg .e-n{stroke:var(--neutral)}
+svg .e-dash{stroke-dasharray:6 5}
+svg .ah-r{fill:var(--rivos)} svg .ah-s{fill:var(--rosaic)} svg .ah-n{fill:var(--neutral)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--muted);padding:8px 8px 0}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:28px;border-top:2px solid var(--fg)}
+.legend i.d{border-top-style:dashed;border-color:var(--neutral)}
+
+/* lineage */
+.lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px;position:relative;min-width:0}
+.step .yr{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.step h3{font-size:17px}
+.step .ex{font-size:13.5px;color:var(--muted)}
+.step .ppl{font-size:13.5px;border-top:1px dashed var(--line);padding-top:6px;margin-top:auto}
+.step.rv{border-color:var(--rivos);background:var(--rivos-soft)}
+.step.rs{border-color:var(--rosaic);background:var(--rosaic-soft)}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;z-index:1}
+@media (max-width:820px){.lineage{grid-template-columns:1fr 1fr}.step::after{display:none}}
+@media (max-width:460px){.lineage{grid-template-columns:1fr}}
+
+/* company cards */
+.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.co-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.co-card h3{font-size:24px;color:var(--c)}
+.co-card .tag{font-size:14px;color:var(--muted)}
+dl.facts{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:15px}
+dl.facts dt{color:var(--muted);font-size:14px;padding-top:1px}
+dl.facts dd{margin:0;min-width:0}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:7.6em;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:6.8em 1fr;gap:44px;padding:9px 0;position:relative}
+.tl li::before{content:"";position:absolute;left:calc(7.6em - 5px);top:17px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--dot,var(--neutral))}
+.tl .d{font-family:var(--mono);font-size:13.5px;color:var(--muted);text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+.tl .x{font-size:15.5px;min-width:0}
+.tl .x small{display:block;color:var(--muted);font-size:13.5px}
+.tl li.rv{--dot:var(--rivos)} .tl li.rs{--dot:var(--rosaic)} .tl li.tn{--dot:var(--tan)}
+.tl li.rv::before,.tl li.rs::before,.tl li.tn::before{background:var(--dot)}
+.era{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--muted);padding:16px 0 4px calc(6.8em + 28px)}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.person{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.person .hd{display:flex;flex-direction:column;gap:2px}
+.person .hd h3{font-size:20px}
+.person .hd .en{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:2px 9px;border-radius:999px;background:var(--neutral-soft);color:var(--fg);white-space:nowrap}
+.chip.r{background:var(--rivos-soft);color:var(--rivos);font-weight:500}
+.chip.s{background:var(--rosaic-soft);color:var(--rosaic);font-weight:500}
+.chip.t{background:var(--tan-soft);color:var(--tan);font-weight:500}
+.chip.w{background:var(--warn-soft);color:var(--warn);font-weight:500}
+.person ul{margin:0;padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.person .why{font-size:14.5px;background:var(--bg);border-radius:6px;padding:10px 12px}
+.person .why b{color:var(--fg)}
+.person.key-p{border-color:var(--tan)}
+
+/* price chart */
+.bars{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+.bar-row{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:14px;align-items:center}
+.bar-row .bl{font-size:14.5px}
+.bar-row .bl small{display:block;color:var(--muted);font-size:13px}
+.track{position:relative;height:30px;background:var(--neutral-soft);border-radius:4px}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--rivos);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:var(--surface);font-family:var(--mono);font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
+.axis{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.axis div:last-child{display:flex;justify-content:space-between}
+@media (max-width:560px){.bar-row,.axis{grid-template-columns:1fr}.axis div:first-child{display:none}}
+
+/* controversy */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel ul{margin:0;padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:6px}
+
+/* verification table */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--muted);font-weight:500;background:var(--bg)}
+tr:last-child td{border-bottom:none}
+.st{display:inline-block;font-size:12.5px;padding:2px 9px;border-radius:999px;white-space:nowrap;font-weight:500}
+.st.ok{background:var(--ok-soft);color:var(--ok)}
+.st.wn{background:var(--warn-soft);color:var(--warn)}
+.st.no{background:var(--neutral-soft);color:var(--neutral)}
+
+/* glossary */
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px 28px;margin:0}
+.gloss div{border-top:1px solid var(--line);padding-top:10px;min-width:0}
+.gloss dt{font-weight:700;font-size:15.5px}
+.gloss dd{margin:2px 0 0;font-size:14.5px;color:var(--muted)}
+
+/* sources */
+ol.src{margin:0;padding-left:1.6em;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px;columns:1}
+ol.src a{word-break:break-word}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">產業背景簡報 · 半導體新創</div>
+  <h1>Rivos 與 Rosaic Labs 的關係</h1>
+  <p class="lede">兩家公司都是美國矽谷的晶片新創。本簡報說明兩家公司各自的背景、彼此之間的連結人物，以及英特爾（Intel）在其中扮演的角色。</p>
+  <div class="meta-row">
+    <span>資料截至 <span class="mono">2026/10/15</span></span>
+    <span>依據：Reuters、Bloomberg、SemiAnalysis、Phoronix 等公開報導（見文末來源）</span>
+  </div>
+</header>
+
+<!-- 1. Summary -->
+<section aria-labelledby="s1">
+  <h2 id="s1"><span class="no">01</span>一句話結論</h2>
+  <div class="answer">
+    <p class="big">兩家公司在法律上沒有隸屬關係。<span class="s">Rosaic Labs</span> 是 <span class="r">Rivos</span> 的早期投資人 Amarjit Gill 在 Rivos 被 Meta 收購後，帶著部分 Rivos 舊部新成立的晶片公司。兩邊的共同點在「人」，而非股權。</p>
+    <div class="keys">
+      <div class="key"><b>沒有股權關係</b><p>Rosaic 不是 Rivos 的子公司或分拆公司。Rivos 已在 2025 年 9 月被 Meta 收購。</p></div>
+      <div class="key"><b>核心人物重疊</b><p>Rosaic 執行長 Gill 曾協助組建 Rivos 創始團隊；前 Rivos 財務長 Amit Parikh 簽署了 Rosaic 的公司設立文件。</p></div>
+      <div class="key"><b>英特爾的角色引發關注</b><p>英特爾執行長陳立武曾任 Rivos 董事長，與 Gill 是長期共同投資夥伴。英特爾罕見地把 Atom 處理器的設計碼提供給 Rosaic。</p></div>
+      <div class="key"><b>仍屬未知</b><p>Rosaic 的產品方向、投資人名單都未公開；目前沒有報導指出陳立武持有 Rosaic 股份。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Relationship diagram -->
+<section aria-labelledby="s2">
+  <h2 id="s2"><span class="no">02</span>關係圖</h2>
+  <p class="sec-intro">左側是 Rivos，右側是 Rosaic Labs，中間是同時連到兩邊的人物。實線代表已有報導或文件證實，虛線代表傳聞、尚未證實。</p>
+  <div class="fig" role="img" aria-label="Rivos 與 Rosaic Labs 關係圖">
+    <svg viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah-r"/></marker>
+        <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah-s"/></marker>
+        <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="ah-n"/></marker>
+      </defs>
+
+      <!-- edges -->
+      <!-- Meta -> Rivos -->
+      <line x1="135" y1="94" x2="135" y2="246" class="e e-n" marker-end="url(#an)"/>
+      <text x="147" y="200" class="lbl">2025/9 收購</text>
+      <!-- Intel -> Rosaic -->
+      <line x1="865" y1="94" x2="865" y2="246" class="e e-n" marker-end="url(#an)"/>
+      <text x="853" y="160" text-anchor="end" class="lbl">提供 Atom 設計碼</text>
+      <text x="853" y="178" text-anchor="end" class="lbl lbl-m">（2026/7 Reuters 報導）</text>
+      <!-- Tan - Intel -->
+      <line x1="580" y1="62" x2="770" y2="62" class="e e-t"/>
+      <text x="675" y="53" text-anchor="middle" class="lbl">現任執行長（2025/3 起）</text>
+      <!-- Tan - Rivos -->
+      <line x1="440" y1="94" x2="222" y2="250" class="e e-t"/>
+      <text x="322" y="148" text-anchor="end" class="lbl">前董事長、股東</text>
+      <!-- Tan - Gill -->
+      <line x1="500" y1="94" x2="500" y2="238" class="e e-t"/>
+      <text x="512" y="155" class="lbl">長期共同投資夥伴</text>
+      <text x="512" y="173" class="lbl lbl-m">（例：同為 Nuvia 種子輪投資人）</text>
+      <!-- Gill - Rivos / Rosaic -->
+      <line x1="420" y1="270" x2="230" y2="270" class="e e-r"/>
+      <text x="325" y="261" text-anchor="middle" class="lbl">投資人、協助組建創始團隊</text>
+      <line x1="580" y1="270" x2="766" y2="270" class="e e-s" marker-end="url(#as)"/>
+      <text x="675" y="261" text-anchor="middle" class="lbl">執行長（CEO）</text>
+      <!-- Parikh -->
+      <line x1="420" y1="334" x2="230" y2="334" class="e e-r"/>
+      <text x="325" y="325" text-anchor="middle" class="lbl">前財務長</text>
+      <line x1="580" y1="334" x2="766" y2="334" class="e e-s" marker-end="url(#as)"/>
+      <text x="675" y="325" text-anchor="middle" class="lbl">簽署公司設立文件</text>
+      <!-- Kumar -->
+      <line x1="420" y1="468" x2="170" y2="346" class="e e-r"/>
+      <text x="262" y="450" text-anchor="middle" class="lbl">共同創辦人、執行長</text>
+      <line x1="580" y1="468" x2="800" y2="350" class="e e-n e-dash" marker-end="url(#an)"/>
+      <text x="688" y="456" text-anchor="middle" class="lbl lbl-m">傳聞可能加入，未證實</text>
+      <!-- Anvin -->
+      <line x1="890" y1="480" x2="890" y2="350" class="e e-s" marker-end="url(#as)"/>
+      <text x="880" y="420" text-anchor="end" class="lbl">2026/10 加入</text>
+
+      <!-- nodes -->
+      <rect x="40" y="30" width="190" height="64" rx="8" class="box b-neu"/>
+      <text x="135" y="58" text-anchor="middle" class="nm">Meta</text>
+      <text x="135" y="80" text-anchor="middle" class="sub">Rivos 收購方</text>
+
+      <rect x="770" y="30" width="190" height="64" rx="8" class="box b-neu"/>
+      <text x="865" y="58" text-anchor="middle" class="nm">英特爾 Intel</text>
+      <text x="865" y="80" text-anchor="middle" class="sub">x86 處理器大廠</text>
+
+      <rect x="420" y="30" width="160" height="64" rx="8" class="box b-tan"/>
+      <text x="500" y="58" text-anchor="middle" class="nm">陳立武</text>
+      <text x="500" y="80" text-anchor="middle" class="sub">Lip-Bu Tan</text>
+
+      <rect x="40" y="250" width="190" height="96" rx="10" class="box b-rivos"/>
+      <text x="135" y="288" text-anchor="middle" class="co co-r">Rivos</text>
+      <text x="135" y="312" text-anchor="middle" class="sub">RISC-V／AI 晶片</text>
+      <text x="135" y="331" text-anchor="middle" class="sub">2021 成立 · 已併入 Meta</text>
+
+      <rect x="770" y="250" width="190" height="96" rx="10" class="box b-rosaic"/>
+      <text x="865" y="288" text-anchor="middle" class="co co-s">Rosaic Labs</text>
+      <text x="865" y="312" text-anchor="middle" class="sub">x86 晶片 · 隱身模式</text>
+      <text x="865" y="331" text-anchor="middle" class="sub">2026/5 登記成立</text>
+
+      <rect x="420" y="238" width="160" height="64" rx="8" class="box b-person"/>
+      <text x="500" y="266" text-anchor="middle" class="nm">Amarjit Gill</text>
+      <text x="500" y="288" text-anchor="middle" class="sub">連結兩邊的核心人物</text>
+
+      <rect x="420" y="312" width="160" height="56" rx="8" class="box b-person"/>
+      <text x="500" y="337" text-anchor="middle" class="nm">Amit Parikh</text>
+      <text x="500" y="357" text-anchor="middle" class="sub">財務背景</text>
+
+      <rect x="420" y="440" width="160" height="60" rx="8" class="box b-dash"/>
+      <text x="500" y="466" text-anchor="middle" class="nm">Puneet Kumar</text>
+      <text x="500" y="487" text-anchor="middle" class="sub">現於 Meta</text>
+
+      <rect x="795" y="480" width="165" height="60" rx="8" class="box b-person"/>
+      <text x="877" y="506" text-anchor="middle" class="nm">H. Peter Anvin</text>
+      <text x="877" y="527" text-anchor="middle" class="sub">前英特爾 Linux 專家</text>
+    </svg>
+    <div class="legend">
+      <span><i style="border-color:var(--rivos)"></i>與 Rivos 的關係</span>
+      <span><i style="border-color:var(--rosaic)"></i>與 Rosaic 的關係</span>
+      <span><i style="border-color:var(--tan)"></i>陳立武的關係</span>
+      <span><i class="d"></i>傳聞、未證實</span>
+    </div>
+  </div>
+  <p class="fig-note">在手機上可左右滑動查看完整圖表。</p>
+</section>
+
+<!-- 3. Lineage -->
+<section aria-labelledby="s3">
+  <h2 id="s3"><span class="no">03</span>同一群人的二十多年</h2>
+  <p class="sec-intro">Rivos 與 Rosaic 的核心成員，多數從 2000 年前後就在同一個圈子共事。這群人有一個反覆出現的模式：成立晶片新創，再被大廠收購。理解這段歷史，就能理解為什麼 Rosaic 會被視為「Rivos 人脈的延續」。</p>
+  <div class="lineage">
+    <div class="step">
+      <span class="yr">2000 被收購</span>
+      <h3>SiByte</h3>
+      <span class="ex">網通處理器 → 併入 Broadcom</span>
+      <span class="ppl">Gill（共同創辦）、Hayter、Kumar</span>
+    </div>
+    <div class="step">
+      <span class="yr">2008 被收購</span>
+      <h3>P.A. Semi</h3>
+      <span class="ex">低功耗處理器 → 併入 Apple，成為 Apple 自研晶片團隊基礎</span>
+      <span class="ppl">Gill（共同創辦）、Hayter、Kumar</span>
+    </div>
+    <div class="step">
+      <span class="yr">2010 被收購</span>
+      <h3>Agnilux</h3>
+      <span class="ex">前 P.A. Semi 成員創立 → 併入 Google</span>
+      <span class="ppl">Gill（創辦人、執行長）、Hayter（共同創辦）、Kumar</span>
+    </div>
+    <div class="step rv">
+      <span class="yr">2021–2025</span>
+      <h3 class="r">Rivos</h3>
+      <span class="ex">RISC-V／AI 晶片 → 2025 併入 Meta</span>
+      <span class="ppl">Kumar、Hayter（共同創辦）、Gill（投資人）、陳立武（董事長）</span>
+    </div>
+    <div class="step rs">
+      <span class="yr">2026–</span>
+      <h3 class="s">Rosaic Labs</h3>
+      <span class="ex">x86 晶片，獲英特爾提供 Atom 設計碼</span>
+      <span class="ppl">Gill（執行長）、Parikh、多位前 Rivos 成員</span>
+    </div>
+  </div>
+  <p class="fig-note">另有一條投資關係：Gill 與陳立武都是晶片新創 Nuvia 的種子輪投資人，Nuvia 於 2021 年被 Qualcomm 收購。人物經歷依據 SemiAnalysis、InfoWorld、Crunchbase 等資料整理。</p>
+</section>
+
+<!-- 4. Companies -->
+<section aria-labelledby="s4">
+  <h2 id="s4"><span class="no">04</span>兩家公司簡介</h2>
+  <div class="cos">
+    <article class="co-card" style="--c:var(--rivos)">
+      <div><h3>Rivos</h3><p class="tag">RISC-V 架構的 AI 伺服器晶片新創，已被 Meta 收購</p></div>
+      <dl class="facts">
+        <dt>成立</dt><dd>2021 年 5 月</dd>
+        <dt>總部</dt><dd>美國加州聖塔克拉拉（Santa Clara）</dd>
+        <dt>產品</dt><dd>伺服器級 RISC-V 處理器，結合專為大型語言模型與資料分析設計的 AI 加速器；採台積電 3 奈米製程。另提供伺服器硬體與完整軟體堆疊。</dd>
+        <dt>規模</dt><dd>約 375 人（2024 年 4 月，執行長受訪數字）</dd>
+        <dt>募資</dt><dd>2024 年 4 月完成逾 2.5 億美元募資，由 Matrix Capital 領投；投資人包括 Intel Capital、聯發科、和通創投、Walden Catalyst（陳立武的創投）、Dell Technologies Capital 等。</dd>
+        <dt>合作</dt><dd>2024 年 9 月宣布採用晶心科技（Andes）NX45 處理器核心，負責晶片內的控制功能。</dd>
+        <dt>訴訟</dt><dd>2022 年 Apple 控告 Rivos 挖角工程師並竊取營業秘密，雙方於 2024 年 2 月和解。</dd>
+        <dt>結局</dt><dd>2025 年 9 月 30 日經 Bloomberg、Reuters 披露由 Meta 收購，金額未公開。Reuters 報導 Meta 是 Rivos 最大客戶之一。</dd>
+      </dl>
+    </article>
+    <article class="co-card" style="--c:var(--rosaic)">
+      <div><h3>Rosaic Labs</h3><p class="tag">正式名稱 RosaicLabs Inc.，處於隱身模式的 x86 晶片新創</p></div>
+      <dl class="facts">
+        <dt>成立</dt><dd>2026 年 5 月向美國德拉瓦州提交公司設立文件</dd>
+        <dt>現況</dt><dd>隱身模式（Stealth Mode）：沒有官網、沒有 LinkedIn 頁面，未公布產品。</dd>
+        <dt>經營團隊</dt><dd>執行長 Amarjit Gill；前 Rivos 財務長 Amit Parikh 簽署設立文件；Reuters 報導創始團隊包含多位 Rivos 老將。</dd>
+        <dt>募資</dt><dd>2026 年 7 月 24 日修訂的文件顯示，公司可募集最高 1,000 萬美元種子輪；5 百萬美元以下的資本支出不需投資人或董事會同意。</dd>
+        <dt>技術來源</dt><dd>依 Reuters 2026 年 7 月 29 日獨家報導，英特爾提供 Atom 處理器技術，並計畫交付 RTL 設計碼，讓 Rosaic 能自行設計客製化 x86 晶片。英特爾不予置評，交易條件未公開。</dd>
+        <dt>近期</dt><dd>2026 年 10 月，Linux x86 核心程式維護者 H. Peter Anvin 以 Rosaic 名義簽署程式修補。</dd>
+        <dt>產品方向</dt><dd>未公開。媒體推測包括邊緣運算、AI 運算或機器人，均無證實。</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<!-- 5. Timeline -->
+<section aria-labelledby="s5">
+  <h2 id="s5"><span class="no">05</span>時間軸</h2>
+  <p class="sec-intro">藍點為 Rivos 相關事件，金點為陳立武與英特爾相關事件，紅點為 Rosaic 相關事件。</p>
+  <ol class="tl">
+    <li class="rv"><span class="d">2021/05</span><span class="x">Rivos 成立<small>陳立武與 Gill 協助組建創始團隊，陳立武後來擔任董事長</small></span></li>
+    <li class="rv"><span class="d">2022</span><span class="x">Apple 控告 Rivos 挖角並竊取營業秘密<small>2024 年 2 月和解</small></span></li>
+    <li class="rv"><span class="d">2024/04</span><span class="x">Rivos 完成逾 2.5 億美元募資<small>Intel Capital 參與，當時陳立武尚未出任英特爾執行長</small></span></li>
+    <li class="rv"><span class="d">2024/09</span><span class="x">Rivos 宣布採用晶心科技 NX45 核心</span></li>
+    <li class="tn"><span class="d">2025/03/18</span><span class="x">陳立武出任英特爾執行長，同時仍是 Rivos 董事長與股東</span></li>
+    <li class="tn"><span class="d">2025 夏</span><span class="x">陳立武向英特爾董事會提議收購 Rivos，遭董事會以利益衝突、缺乏明確 AI 策略為由否決<small>之後英特爾改提新 AI 計畫，與 Rivos 展開合作洽談並出價，與 Meta 形成競標</small></span></li>
+    <li class="rv"><span class="d">2025/08</span><span class="x">報導指 Rivos 尋求以約 20 億美元估值募資</span></li>
+    <li class="rv"><span class="d">2025/09/30</span><span class="x">Meta 收購 Rivos 消息曝光，Meta 勝過英特爾</span></li>
+    <li class="tn"><span class="d">2025/12/10</span><span class="x">Reuters 報導陳立武的投資與英特爾交易之間的利益衝突疑慮</span></li>
+    <li class="rs"><span class="d">2026/05</span><span class="x">RosaicLabs Inc. 在德拉瓦州登記成立<small>同月，併入 Meta 的 Rivos 員工第一批股票獎酬（RSU）解鎖</small></span></li>
+    <li class="rs"><span class="d">2026/07/24</span><span class="x">Rosaic 修訂設立文件：Gill 為執行長，可募最高 1,000 萬美元種子輪</span></li>
+    <li class="rs"><span class="d">2026/07/29</span><span class="x">Reuters 獨家：英特爾提供 Atom 技術與 RTL 設計碼給 Rosaic</span></li>
+    <li class="rs"><span class="d">2026/10/08</span><span class="x">H. Peter Anvin 以 Rosaic 名義出現在 Linux 核心郵件清單</span></li>
+  </ol>
+</section>
+
+<!-- 6. People -->
+<section aria-labelledby="s6">
+  <h2 id="s6"><span class="no">06</span>關鍵人物</h2>
+  <p class="sec-intro">依與兩家公司的關聯程度排序。每張卡片下方的灰底文字，說明此人為何與本題相關。</p>
+  <div class="people">
+
+    <article class="person key-p">
+      <div class="hd"><h3>Amarjit Gill</h3><span class="en">Rosaic Labs 執行長</span></div>
+      <div class="chips"><span class="chip r">Rivos 投資人</span><span class="chip s">Rosaic 執行長</span><span class="chip t">陳立武共同投資夥伴</span></div>
+      <ul>
+        <li>連續創業家與天使投資人，畢業於聖荷西州立大學電機系。</li>
+        <li>早年在德州儀器、迪吉多（DEC）與英特爾擔任半導體業務主管。</li>
+        <li>共同創辦 SiByte（2000 年被 Broadcom 收購）與 P.A. Semi（2008 年被 Apple 收購）；創辦 Agnilux 並任執行長（2010 年被 Google 收購）。</li>
+        <li>與陳立武同為 Nuvia 種子輪投資人（2021 年被 Qualcomm 收購）。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>他是串起兩家公司的核心人物。他投資 Rivos，並與陳立武一起組建 Rivos 創始團隊；Rivos 賣給 Meta 後，他出任 Rosaic 執行長。</p>
+    </article>
+
+    <article class="person key-p">
+      <div class="hd"><h3>陳立武</h3><span class="en">Lip-Bu Tan · 英特爾執行長</span></div>
+      <div class="chips"><span class="chip r">前 Rivos 董事長、股東</span><span class="chip">英特爾執行長</span></div>
+      <ul>
+        <li>1959 年生於馬來西亞，南洋大學物理系、MIT 核子工程碩士、舊金山大學 MBA。</li>
+        <li>1987 年創辦創投華登國際（Walden International），後成立 Walden Catalyst，是半導體界知名投資人。</li>
+        <li>2009–2021 年任益華電腦（Cadence）執行長；2022–2024 年任英特爾董事；2025 年 3 月 18 日出任英特爾執行長。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>他同時連到 Rivos、英特爾與 Gill。Rivos 被出售時他是董事長，現在又以英特爾執行長身分，讓英特爾提供技術給 Gill 領導的 Rosaic，因而引發治理疑慮。<b>目前沒有報導指出他持有 Rosaic 股份。</b></p>
+    </article>
+
+    <article class="person">
+      <div class="hd"><h3>Amit Parikh</h3><span class="en">前 Rivos 財務長</span></div>
+      <div class="chips"><span class="chip r">前 Rivos 財務長</span><span class="chip s">Rosaic 設立文件簽署人</span></div>
+      <ul>
+        <li>Reuters 指出，他是 Rivos 前財務主管。</li>
+        <li>2026 年 5 月，由他簽署 Rosaic 的公司設立文件。</li>
+        <li>其他公開經歷有限；Reuters 透過 LinkedIn 聯繫未獲回應。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>他是目前唯一被點名、從 Rivos 直接轉到 Rosaic 的前 Rivos 主管，可證明兩家公司在人事上的延續。</p>
+    </article>
+
+    <article class="person">
+      <div class="hd"><h3>Puneet Kumar</h3><span class="en">Rivos 共同創辦人兼執行長</span></div>
+      <div class="chips"><span class="chip r">Rivos 共同創辦人、執行長</span><span class="chip w">傳聞與 Rosaic 有關，未證實</span></div>
+      <ul>
+        <li>與 Gill 共事多年，經歷包括 SiByte、P.A. Semi、Apple 與 Agnilux。</li>
+        <li>2021 年共同創辦 Rivos 並任執行長，帶領公司至被 Meta 收購。</li>
+        <li>收購後轉入 Meta。SemiAnalysis 報導他可能在 Meta 股票完全解鎖後離開。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>SemiAnalysis 提到外界推測他可能加入 Rosaic，<b>但這只是推測，沒有任何證實</b>。對外引用時請標註。</p>
+    </article>
+
+    <article class="person">
+      <div class="hd"><h3>Mark Hayter</h3><span class="en">Rivos 共同創辦人</span></div>
+      <div class="chips"><span class="chip r">Rivos 共同創辦人</span><span class="chip">已離開 Meta</span></div>
+      <ul>
+        <li>經歷迪吉多（DEC）、SiByte、Broadcom；在 P.A. Semi 任硬體與系統架構副總裁，後任 Apple 主管。</li>
+        <li>共同創辦 Agnilux（任營運長），被收購後任 Google 工程總監。</li>
+        <li>Rivos 被收購後轉入 Meta，SemiAnalysis 報導他已離開。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>與 Gill、Kumar 同屬一個長期合作的團隊，可說明這群人的背景。目前沒有報導指出他加入 Rosaic。</p>
+    </article>
+
+    <article class="person">
+      <div class="hd"><h3>H. Peter Anvin</h3><span class="en">Linux x86 核心程式維護者</span></div>
+      <div class="chips"><span class="chip">前英特爾</span><span class="chip s">2026/10 起 Rosaic</span></div>
+      <ul>
+        <li>自 1992 年參與 Linux 開發，長期共同維護 Linux 的 x86／x86-64 程式碼，也是 SYSLINUX 開機工具的作者。</li>
+        <li>2008 年起在英特爾負責 Linux x86 支援。</li>
+        <li>2026 年 10 月 8 日，他在 Linux 核心郵件清單以「H. Peter Anvin (Rosaic)」署名，顯示已在 Rosaic 任職。</li>
+      </ul>
+      <p class="why"><b>為何重要：</b>他與 Rivos 無關，但他的加入代表 Rosaic 正在延攬頂尖 x86 人才。有消息指他今年夏天在英特爾重組中被裁員，此說法未經證實。</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- 7. Price -->
+<section aria-labelledby="s7">
+  <h2 id="s7"><span class="no">07</span>Meta 收購 Rivos 的金額說法</h2>
+  <p class="sec-intro">Meta 從未公開交易金額，媒體引用的數字差異很大，因為各自指的對象不同。對外引用時，建議寫「Meta 未公開金額，外界估計約 20 億至 40 億美元」。</p>
+  <div class="bars" role="img" aria-label="Rivos 收購金額三種說法比較">
+    <div class="bar-row">
+      <div class="bl">約 20 億美元<small>Rivos 收購前募資時尋求的估值（The Information、Bloomberg）</small></div>
+      <div class="track"><div class="fill" style="width:50%">20 億</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bl">超過 25 億美元<small>SemiAnalysis 估計的收購支出</small></div>
+      <div class="track"><div class="fill" style="width:62.5%">25 億+</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bl">約 40 億美元<small>Reuters 引述消息人士：競標後含員工激勵的整體方案</small></div>
+      <div class="track"><div class="fill" style="width:100%">40 億</div></div>
+    </div>
+    <div class="axis"><div></div><div><span>0</span><span>10</span><span>20</span><span>30</span><span>40 億美元</span></div></div>
+  </div>
+</section>
+
+<!-- 8. Controversy -->
+<section aria-labelledby="s8">
+  <h2 id="s8"><span class="no">08</span>外界的疑慮與英特爾的立場</h2>
+  <div class="two">
+    <div class="panel">
+      <h3>外界質疑的重點</h3>
+      <ul>
+        <li>陳立武擔任英特爾執行長期間，仍是 Rivos 董事長與股東，卻推動英特爾收購 Rivos。</li>
+        <li>英特爾參與競標，推高了 Rivos 的出售價格；陳立武的創投 Walden Catalyst 稱此結果對其投資人是「成功的結局」。</li>
+        <li>英特爾向來幾乎不對外授權 x86 技術，這次卻提供給成立僅兩個月、由陳立武長期夥伴領導的新創。</li>
+        <li>Reuters 訪問的治理專家認為，陳立武應出脫持股、交付信託，或設立特別董事會委員會監督相關交易。</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>英特爾與陳立武方面</h3>
+      <ul>
+        <li>英特爾董事會在聘任陳立武時已知其投資可能造成利益衝突，並接受這項取捨。</li>
+        <li>內部規定：陳立武有利益衝突的案子必須迴避，由財務長 David Zinsner 決定。</li>
+        <li>英特爾表示，關係人交易由審計委員會審查。</li>
+        <li>消息人士稱，陳立武不認為自己的交易有利益衝突。</li>
+        <li>對 Rosaic 一案，英特爾不予置評，Gill 也未回應。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Verification -->
+<section aria-labelledby="s9">
+  <h2 id="s9"><span class="no">09</span>資訊確認程度</h2>
+  <p class="sec-intro">為避免誤用，下表列出常見說法的確認程度。</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th style="width:52%">說法</th><th style="width:16%">狀態</th><th>依據</th></tr></thead>
+      <tbody>
+        <tr><td>Amarjit Gill 是 Rosaic 執行長</td><td><span class="st ok">已證實</span></td><td>Rosaic 2026/7 修訂文件（Reuters 審閱）</td></tr>
+        <tr><td>前 Rivos 財務長 Amit Parikh 簽署 Rosaic 設立文件</td><td><span class="st ok">已證實</span></td><td>德拉瓦州設立文件（Reuters 審閱）</td></tr>
+        <tr><td>陳立武曾任 Rivos 董事長，並與 Gill 一同組建 Rivos 團隊</td><td><span class="st ok">已證實</span></td><td>Reuters</td></tr>
+        <tr><td>英特爾提供 Atom 技術與 RTL 設計碼給 Rosaic</td><td><span class="st wn">單一報導</span></td><td>Reuters 獨家（一位消息人士與文件）；英特爾不予置評，條件未公開</td></tr>
+        <tr><td>H. Peter Anvin 加入 Rosaic</td><td><span class="st ok">已證實</span></td><td>本人於 Linux 核心郵件清單以 Rosaic 署名</td></tr>
+        <tr><td>Anvin 是被英特爾裁員後加入</td><td><span class="st no">未證實</span></td><td>Phoronix 收到的消息，本人與英特爾均未證實</td></tr>
+        <tr><td>Puneet Kumar 將加入 Rosaic</td><td><span class="st no">未證實</span></td><td>SemiAnalysis 提及的外界推測</td></tr>
+        <tr><td>陳立武持有 Rosaic 股份</td><td><span class="st no">無報導</span></td><td>目前沒有任何報導提及</td></tr>
+        <tr><td>Rosaic 的產品與客戶</td><td><span class="st no">未公開</span></td><td>僅有媒體推測</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 10. Glossary -->
+<section aria-labelledby="s10">
+  <h2 id="s10"><span class="no">10</span>名詞說明</h2>
+  <dl class="gloss">
+    <div><dt>x86</dt><dd>英特爾與 AMD 主導的處理器架構，個人電腦與多數伺服器都使用。英特爾很少對外授權。</dd></div>
+    <div><dt>RISC-V</dt><dd>開放、免授權費的處理器架構，Rivos 採用此架構。與 x86、Arm 互為競爭。</dd></div>
+    <div><dt>Atom</dt><dd>英特爾的低功耗處理器產品線，耗電與發熱較低，適合行動與邊緣裝置。</dd></div>
+    <div><dt>RTL 設計碼</dt><dd>描述晶片電路如何運作的底層設計檔，相當於晶片的「設計藍圖」。取得 RTL 就能在其基礎上修改、設計自己的晶片。</dd></div>
+    <div><dt>隱身模式（Stealth Mode）</dt><dd>新創刻意不公開產品與資訊的營運狀態，晶片新創早期常見。</dd></div>
+    <div><dt>種子輪</dt><dd>新創最早期的正式募資，金額通常較小。1,000 萬美元足以支撐小型團隊，但遠不足以量產先進晶片。</dd></div>
+    <div><dt>RSU（限制性股票）</dt><dd>公司給員工的股票獎酬，需任職一段時間後分批解鎖。解鎖後員工離職的機會成本降低。</dd></div>
+    <div><dt>關係人交易</dt><dd>公司與其董事、高階主管或其利害關係方之間的交易，須經審查並依規定揭露。</dd></div>
+  </dl>
+</section>
+
+<!-- Sources -->
+<section aria-labelledby="s11">
+  <h2 id="s11"><span class="no">11</span>資料來源</h2>
+  <ol class="src">
+    <li>Reuters（2026/07/29）〈Exclusive: Intel providing chip technology to startup led by co-investor of Tan in rare deal〉— <a href="https://www.thestar.com.my/tech/tech-news/2026/07/30/exclusive-intel-providing-chip-technology-to-startup-led-by-co-investor-of-tan-in-rare-deal" target="_blank" rel="noopener">The Star 轉載</a></li>
+    <li>Reuters（2025/12/10）〈Intel pursued deals that boosted CEO Lip-Bu Tan's fortune, sources say〉— <a href="https://www.marketscreener.com/news/intel-pursued-deals-that-boosted-ceo-lip-bu-tan-s-fortune-sources-say-ce7d50dada8af220" target="_blank" rel="noopener">MarketScreener 轉載</a></li>
+    <li>Reuters（2025/09/30）〈Meta to buy chip startup Rivos for AI effort, source says〉— <a href="https://whbl.com/2025/09/30/meta-to-buy-chip-startup-rivos-for-ai-effort-source-says/" target="_blank" rel="noopener">WHBL 轉載</a></li>
+    <li>DatacenterDynamics（2025/10/01）〈Meta acquires RISC-V chip startup Rivos〉— <a href="https://www.datacenterdynamics.com/en/news/meta-acquires-risc-v-chip-startup-rivos-report/" target="_blank" rel="noopener">連結</a></li>
+    <li>Business Wire（2024/04/16）〈Rivos Raises More Than $250M〉— <a href="https://www.businesswire.com/news/home/20240416215878/en/Rivos-Raises-More-Than-250M-Targeting-Data-Analytics-and-Generative-AI-Markets" target="_blank" rel="noopener">連結</a></li>
+    <li>TechCrunch（2024/04/16）〈Apple lawsuit behind it, chip startup Rivos plots its next moves〉— <a href="https://techcrunch.com/2024/04/16/apple-lawsuit-behind-it-chip-startup-rivos-plots-its-next-moves" target="_blank" rel="noopener">連結</a></li>
+    <li>RISC-V International（2024/09）〈Rivos Selects Andes NX45〉— <a href="https://riscv.org/ecosystem-news/2024/09/rivos-selects-andes-nx45-for-control-functions-in-upcoming-high-performance-risc-v-soc" target="_blank" rel="noopener">連結</a></li>
+    <li>SemiAnalysis〈Meta's Infrastructure Team Needs A Culture Reset〉— <a href="https://newsletter.semianalysis.com/p/metas-infrastructure-team-needs-a" target="_blank" rel="noopener">連結</a></li>
+    <li>SemiAnalysis（2021/08/30）〈Rivos Inc – A Chip Off The Old Block〉— <a href="https://newsletter.semianalysis.com/p/rivos-inc-a-chip-off-the-old-block" target="_blank" rel="noopener">連結</a></li>
+    <li>Phoronix（2026/10/08）〈Secretive Rosaic Labs Hires Legendary Linux x86 Developer〉— <a href="https://www.phoronix.com/news/H-Peter-Anvin-Rosaic-Labs" target="_blank" rel="noopener">連結</a></li>
+    <li>HotHardware（2026/07/30）〈Intel Quietly Hands Atom CPU Tech To Startup Linked To CEO Lip-Bu Tan〉— <a href="https://hothardware.com/news/intel-hands-atom-cpu-tech-to-rosaiclabs" target="_blank" rel="noopener">連結</a></li>
+    <li>Chips and Cheese（2026/07/31）〈RosaicLabs, Atom RTL, and 32-Tile AMX〉— <a href="https://chipsandcheese.com/p/rosaiclabs-atom-rtl-and-32-tile-amx" target="_blank" rel="noopener">連結</a></li>
+    <li>InfoWorld（2010/04）〈Google buys Agnilux〉— <a href="https://www.infoworld.com/article/2294356/google-buys-agnilux-and-yes-there-s-an-apple-angle-2.html" target="_blank" rel="noopener">連結</a></li>
+    <li>Crunchbase〈Amarjit Gill〉— <a href="https://www.crunchbase.com/person/amarjit-gill" target="_blank" rel="noopener">連結</a></li>
+    <li>Wikipedia〈Lip-Bu Tan〉— <a href="https://en.wikipedia.org/wiki/Lip-Bu_Tan" target="_blank" rel="noopener">連結</a></li>
+  </ol>
+</section>
+
+<footer>本簡報依據截至 2026 年 10 月 15 日的公開報導整理。Rosaic Labs 仍在隱身模式，相關資訊可能隨時變動；標示「未證實」的內容請勿當作事實引用。</footer>
+
+</div>
+
+</body>
+</html>
