@@ -15,9 +15,9 @@
   --paper:#EDE9E0; --surface:#F8F5EE; --surface-2:#F1ECDF;
   --ink:#211C19; --ink-soft:#4B4239; --ink-faint:#6E6357; --line:rgba(33,28,25,.16);
   --claret:#5C1A2B; --brass:#8C6A32; --brass-soft:#B89A63;
-  --rivos:#2F4E66; --rivos-soft:rgba(47,78,102,.10);
-  --rosaic:#5C1A2B; --rosaic-soft:rgba(92,26,43,.08);
-  --tan:#8C6A32; --tan-soft:rgba(140,106,50,.12);
+  --rivos:#1F6391; --rivos-soft:rgba(31,99,145,.10);
+  --rosaic:#A3214A; --rosaic-soft:rgba(163,33,74,.08);
+  --tan:#B07A12; --tan-soft:rgba(176,122,18,.13);
   --neutral:#6E6357; --neutral-soft:rgba(33,28,25,.06);
   --warn:#8A5410; --warn-soft:rgba(138,84,16,.11); --ok:#4B6B3F; --ok-soft:rgba(75,107,63,.12);
   --shadow:0 1px 3px rgba(33,28,25,.08);
@@ -29,9 +29,9 @@
   --paper:#1B1512; --surface:#241D18; --surface-2:#2C231D;
   --ink:#EFE8DB; --ink-soft:#C8BBA8; --ink-faint:#A79A89; --line:rgba(239,232,219,.18);
   --claret:#E39BAC; --brass:#D3B36C; --brass-soft:#9C8050;
-  --rivos:#94B4CF; --rivos-soft:rgba(148,180,207,.12);
-  --rosaic:#E39BAC; --rosaic-soft:rgba(227,155,172,.12);
-  --tan:#D3B36C; --tan-soft:rgba(211,179,108,.13);
+  --rivos:#7DB6E0; --rivos-soft:rgba(125,182,224,.13);
+  --rosaic:#F08AA6; --rosaic-soft:rgba(240,138,166,.13);
+  --tan:#E8B84F; --tan-soft:rgba(232,184,79,.14);
   --neutral:#A79A89; --neutral-soft:rgba(239,232,219,.07);
   --warn:#E2B566; --warn-soft:rgba(226,181,102,.13); --ok:#93C67F; --ok-soft:rgba(147,198,127,.14);
   --shadow:0 1px 3px rgba(0,0,0,.5); color-scheme:dark}}
@@ -39,9 +39,9 @@
   --paper:#1B1512; --surface:#241D18; --surface-2:#2C231D;
   --ink:#EFE8DB; --ink-soft:#C8BBA8; --ink-faint:#A79A89; --line:rgba(239,232,219,.18);
   --claret:#E39BAC; --brass:#D3B36C; --brass-soft:#9C8050;
-  --rivos:#94B4CF; --rivos-soft:rgba(148,180,207,.12);
-  --rosaic:#E39BAC; --rosaic-soft:rgba(227,155,172,.12);
-  --tan:#D3B36C; --tan-soft:rgba(211,179,108,.13);
+  --rivos:#7DB6E0; --rivos-soft:rgba(125,182,224,.13);
+  --rosaic:#F08AA6; --rosaic-soft:rgba(240,138,166,.13);
+  --tan:#E8B84F; --tan-soft:rgba(232,184,79,.14);
   --neutral:#A79A89; --neutral-soft:rgba(239,232,219,.07);
   --warn:#E2B566; --warn-soft:rgba(226,181,102,.13); --ok:#93C67F; --ok-soft:rgba(147,198,127,.14);
   --shadow:0 1px 3px rgba(0,0,0,.5); color-scheme:dark}
@@ -58,18 +58,18 @@ p{margin:0}
 a{color:var(--claret)}
 a:focus-visible{outline:2px solid var(--claret);outline-offset:3px}
 section{display:flex;flex-direction:column;gap:22px;min-width:0;scroll-margin-top:72px}
-.sec-intro{font-family:var(--body);color:var(--ink-soft);font-size:1.05rem;max-width:60ch;line-height:1.75}
+.sec-intro{font-family:var(--body);color:var(--ink-soft);font-size:1.05rem;line-height:1.75}
 .r{color:var(--rivos);font-weight:600}.s{color:var(--rosaic);font-weight:600}.t{color:var(--tan);font-weight:600}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* hero */
-header{position:relative;padding-block:clamp(48px,8vw,84px) 36px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:18px;overflow:hidden}
+header{position:relative;padding-block:clamp(48px,8vw,84px) 44px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:18px;overflow:hidden}
 .stamp{position:absolute;top:10px;right:0;width:128px;height:128px;color:var(--brass);opacity:.55}
 @media (prefers-reduced-motion:no-preference){.stamp{animation:spin 120s linear infinite}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:.6em}
 .eyebrow::before{content:"";width:18px;height:1px;background:var(--brass)}
-h1{font-size:clamp(2.2rem,5.6vw,3.6rem);line-height:1.18;max-width:12em;padding-right:130px}
+h1{font-size:clamp(2.2rem,5.6vw,3.6rem);line-height:1.18;padding-right:150px}
 .lede{font-size:1.08rem;color:var(--ink-soft);max-width:60ch;line-height:1.85}
 .ledger{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:14px}
 .ledger-item{flex:1 1 150px;padding:1rem 1.3rem;border-left:1px solid var(--line);min-width:0}
@@ -77,7 +77,7 @@ h1{font-size:clamp(2.2rem,5.6vw,3.6rem);line-height:1.18;max-width:12em;padding-
 .ledger-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--ink-faint)}
 .ledger-value{font-family:var(--display);font-weight:600;font-size:1.3rem;margin-top:.25rem;line-height:1.35}
 .ledger-value.sm{font-size:1rem}
-.meta-row{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);line-height:1.6}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:-6px;font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);line-height:1.6}
 
 /* sticky nav */
 .docnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-top:-76px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -91,8 +91,8 @@ h1{font-size:clamp(2.2rem,5.6vw,3.6rem);line-height:1.18;max-width:12em;padding-
 
 /* summary */
 .answer{display:flex;flex-direction:column;gap:22px}
-.answer .big{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.3vw,1.35rem);line-height:1.75;color:var(--ink);border-left:2px solid var(--claret);padding-left:1.3rem;max-width:58ch}
-.answer .big .r,.answer .big .s{font-style:normal}
+.answer .big{font-family:var(--body);font-weight:400;font-size:1.05rem;line-height:1.8;color:var(--ink);border-left:2px solid var(--claret);padding-left:1.3rem}
+.answer .big .r,.answer .big .s{font-weight:600}
 .keys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .key{background:var(--surface);padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:6px;min-width:0}
 .key b{font-family:var(--display);font-weight:600;font-size:1.05rem}
@@ -115,17 +115,17 @@ svg .co{font-family:var(--display);font-size:21px;font-weight:600}
 svg .co-r{fill:var(--rivos)} svg .co-s{fill:var(--rosaic)}
 svg .lbl{font-family:var(--body);font-size:12.5px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
 svg .lbl-m{fill:var(--ink-faint)}
-svg .e{fill:none;stroke-width:1.8}
+svg .e{fill:none;stroke-width:2.4}
 svg .e-r{stroke:var(--rivos)} svg .e-s{stroke:var(--rosaic)} svg .e-t{stroke:var(--tan)} svg .e-n{stroke:var(--neutral)}
 svg .e-dash{stroke-dasharray:6 5}
 svg .ah-r{fill:var(--rivos)} svg .ah-s{fill:var(--rosaic)} svg .ah-n{fill:var(--neutral)}
 .legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);padding:8px 8px 0}
 .legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{display:inline-block;width:28px;border-top:2px solid var(--ink)}
+.legend i{display:inline-block;width:28px;border-top:3px solid var(--ink)}
 .legend i.d{border-top-style:dashed;border-color:var(--neutral)}
 
 /* lineage */
-.lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.lineage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .step{background:var(--surface);padding:1.1rem 1rem;display:flex;flex-direction:column;gap:6px;min-width:0}
 .step .yr{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--brass)}
 .step h3{font-size:1.08rem}
@@ -133,6 +133,7 @@ svg .ah-r{fill:var(--rivos)} svg .ah-s{fill:var(--rosaic)} svg .ah-n{fill:var(--
 .step .ppl{font-size:.84rem;line-height:1.6;border-top:1px solid var(--line);padding-top:8px;margin-top:auto;color:var(--ink)}
 .step.rv{background:color-mix(in srgb,var(--surface) 88%,var(--rivos))}
 .step.rs{background:color-mix(in srgb,var(--surface) 90%,var(--rosaic))}
+.step.inv .yr{color:var(--ink-faint)}
 @media (max-width:820px){.lineage{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.lineage{grid-template-columns:1fr}}
 
@@ -158,14 +159,16 @@ dl.facts dd{margin:0;min-width:0;color:var(--ink-soft)}
 
 /* people */
 .people{display:flex;flex-direction:column}
-.person{display:grid;grid-template-columns:minmax(170px,230px) 1fr;gap:.6rem 1.6rem;padding:1.5rem 0;border-top:1px solid var(--line);min-width:0}
+.person{display:grid;grid-template-columns:minmax(180px,230px) 1fr;grid-template-rows:auto auto auto 1fr;gap:.6rem 1.6rem;padding:1.5rem 0;border-top:1px solid var(--line);min-width:0}
 .person:last-child{border-bottom:1px solid var(--line)}
-.person .hd{grid-column:1;grid-row:1 / span 3;display:flex;flex-direction:column;gap:4px}
+.person .hd{grid-column:1;grid-row:1 / span 4;display:flex;flex-direction:column;gap:4px}
 .person .hd h3{font-size:1.3rem}
 .person .hd .en{font-family:var(--mono);font-size:.72rem;color:var(--claret);letter-spacing:.02em}
 .person .chips,.person ul,.person .why{grid-column:2;min-width:0}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;padding:.2rem .6rem;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft);white-space:nowrap}
+.person .why{margin-bottom:.2rem}
+.chips{display:flex;flex-wrap:wrap;align-items:center;align-self:start;gap:6px}
+.chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;padding:.2rem .6rem;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft);white-space:nowrap}
+.chip.dash{border-style:dashed}
 .chip.r{border-color:var(--rivos);color:var(--rivos);background:var(--rivos-soft)}
 .chip.s{border-color:var(--rosaic);color:var(--rosaic);background:var(--rosaic-soft)}
 .chip.t{border-color:var(--tan);color:var(--tan);background:var(--tan-soft)}
@@ -174,7 +177,7 @@ dl.facts dd{margin:0;min-width:0;color:var(--ink-soft)}
 .person li::marker{color:var(--brass-soft)}
 .person .why{font-size:.93rem;line-height:1.7;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.85rem 1.1rem;color:var(--ink-soft)}
 .person .why b{color:var(--ink);font-weight:600}
-@media (max-width:680px){.person{grid-template-columns:1fr}.person .hd,.person .chips,.person ul,.person .why{grid-column:1;grid-row:auto}}
+@media (max-width:680px){.ava{width:112px;height:112px}.person{grid-template-columns:1fr}.person .hd,.person .chips,.person ul,.person .why{grid-column:1;grid-row:auto}}
 
 /* price chart */
 .bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:16px}
@@ -216,6 +219,7 @@ tr:last-child td{border-bottom:none}
 ol.src{margin:0;padding-left:1.6em;font-size:.88rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:.55rem;line-height:1.6}
 ol.src li::marker{font-family:var(--mono);color:var(--brass);font-size:.75rem}
 ol.src a{word-break:break-word;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+h3.src-h{font-family:var(--display);font-size:1rem;font-weight:600;margin:1.4rem 0 .6rem}
 ol.src a:hover{color:var(--claret);border-color:var(--claret)}
 footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:24px;line-height:1.7}
 
@@ -235,6 +239,114 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
   .ledger-item{flex-basis:100%;border-left:none;padding-left:0;border-top:1px solid var(--line)}
   .ledger-item:first-child{border-top:none}
 }
+
+/* glossary visuals */
+.gviz{display:flex;flex-direction:column;gap:1.2rem}
+.gcard{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.gcard figcaption{display:flex;flex-direction:column;gap:.35rem}
+.gk{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--brass)}
+.gcard h3{font-size:1.2rem}
+.gcard figcaption p,.gnote{font-size:.95rem;color:var(--ink-soft);line-height:1.75}
+.spectrum{display:flex;align-items:center;gap:.8rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-faint)}
+.sp-track{position:relative;flex:1;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--line),var(--ink-faint))}
+.sp-track i{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid var(--surface)}
+.sp-x{background:var(--rosaic)} .sp-a{background:var(--neutral)} .sp-r{background:var(--rivos)}
+.arch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.arch-col{background:var(--surface);padding:1rem 1.1rem;min-width:0}
+.arch-col>b{font-family:var(--display);font-size:1.15rem}
+.arch-col:nth-child(1)>b{color:var(--rosaic)} .arch-col:nth-child(3)>b{color:var(--rivos)}
+.arch-col dl{margin:.5rem 0 0;display:flex;flex-direction:column}
+.arch-col dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--brass);margin-top:.55rem}
+.arch-col dd{margin:0;font-size:.9rem;color:var(--ink-soft);line-height:1.6}
+.arch-col dd.s{color:var(--rosaic);font-weight:600} .arch-col dd.r{color:var(--rivos);font-weight:600}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:none}
+.flow li{position:relative;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.9rem .8rem;display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--ink-faint);font-size:.8rem;z-index:1}
+.flow .fn{font-family:var(--mono);font-size:.7rem;color:var(--brass)}
+.flow b{font-family:var(--display);font-weight:600;font-size:1rem}
+.flow small{font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+.flow li.hl{background:var(--rosaic-soft);border:1.5px solid var(--rosaic)}
+.flow li.hl em{font-style:normal;font-family:var(--mono);font-size:.68rem;color:var(--rosaic);margin-top:.3rem}
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stg{position:relative;text-align:center;font-family:var(--display);font-weight:600;font-size:.95rem;padding:.7rem .5rem;border-radius:8px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-faint)}
+.stg small{display:block;font-family:var(--mono);font-weight:400;font-size:.66rem;margin-top:.2rem}
+.stg:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--ink-faint)}
+.stg.on-s{border-color:var(--rosaic);color:var(--rosaic);background:var(--rosaic-soft)}
+.stg.on-r{border-color:var(--rivos);color:var(--rivos);background:var(--rivos-soft)}
+.fund{display:flex;flex-direction:column;gap:12px}
+.fund-row{display:grid;grid-template-columns:minmax(0,12em) 1fr;gap:14px;align-items:center}
+.fl{font-family:var(--display);font-weight:600;font-size:.95rem}
+.fl small{display:block;font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--ink-faint)}
+.ftrack{position:relative;height:28px;background:var(--surface-2);border-radius:4px;display:flex;align-items:center}
+.ffill{position:absolute;inset:0 auto 0 0;border-radius:4px}
+.s-fill{background:var(--rosaic)} .r-fill{background:var(--rivos)}
+.fv{position:relative;font-family:var(--mono);font-size:.78rem;padding-left:calc(4% + 10px);color:var(--ink)}
+.fv.in{margin-left:auto;padding:0 10px;color:var(--surface)}
+.xref{display:flex;flex-direction:column;gap:2px;margin-top:.6rem;padding:.6rem .8rem;border:1px dashed var(--claret);border-radius:8px;text-decoration:none;color:var(--ink-soft);font-size:.88rem;line-height:1.5}
+.xref span{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--claret)}
+.xref:hover{background:var(--tag-bg,var(--rosaic-soft));color:var(--ink)}
+@media (max-width:760px){
+  .arch{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .flow li::after{display:none}
+  .flow li:last-child{grid-column:1 / -1}
+  .stages{grid-template-columns:1fr 1fr}
+  .stg::after{display:none}
+  .fund-row{grid-template-columns:1fr;gap:6px}
+}
+
+.em{color:var(--ink);font-weight:600}
+ul.amt{list-style:none;margin:.6rem 0 .5rem;padding:0;display:flex;flex-direction:column;gap:.45rem}
+ul.amt li{display:grid;grid-template-columns:7.2em 1fr;gap:.6rem;font-size:.9rem;line-height:1.55;padding:.5rem .7rem;background:var(--surface-2);border-radius:6px}
+.amt-v{font-family:var(--display);font-weight:600;color:var(--rivos);white-space:nowrap}
+.amt-tip{display:block;font-size:.86rem;color:var(--claret)}
+/* people labels */
+.lab{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--ink-faint);margin-top:.5rem}
+.person .hd .now{font-size:.92rem;color:var(--claret);line-height:1.5}
+.person .hd .now.na{color:var(--ink-faint)}
+.person .hd h3 .alt{display:block;font-family:var(--display);font-size:.9rem;font-weight:500;color:var(--ink-soft);margin-top:2px}
+.chips .lab{margin:0 .3rem 0 0;align-self:center}
+.chip.cur{background:var(--claret);border-color:var(--claret);color:var(--surface)}
+
+.keylist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.keylist li{position:relative;padding:.85rem 0 .85rem 1.3rem;border-bottom:1px solid var(--line);font-size:1rem;line-height:1.8;color:var(--ink-soft)}
+.keylist li::before{content:"";position:absolute;left:0;top:1.55rem;width:6px;height:6px;border-radius:50%;background:var(--brass)}
+.keylist b{color:var(--ink);font-weight:700}
+.basis{display:inline-block;margin-left:.4rem;font-family:var(--mono);font-size:.68rem;line-height:1.5;letter-spacing:.02em;color:var(--ink-faint);border:1px solid var(--line);background:var(--surface-2);border-radius:4px;padding:.05rem .45rem;vertical-align:.1em}
+.basis.warn{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
+.cos{grid-template-columns:1fr!important}
+.co-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem 1rem}
+dl.facts{grid-template-columns:7em 1fr}
+.co-card .fund{margin:.7rem 0 .4rem}
+.gviz-title{font-size:1.25rem;margin-top:.4rem}
+.tl .x small.def{margin-top:.45rem;padding:.45rem .7rem;background:var(--surface-2);border-left:2px solid var(--brass);border-radius:0 6px 6px 0;font-size:.86rem}
+
+.ava{width:140px;height:140px;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);margin-bottom:.6rem;flex:none}
+.ava img{width:100%;height:100%;object-fit:cover;display:block}
+.ava.mono{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:2.2rem;color:var(--brass);letter-spacing:.04em}
+
+.callout{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.8rem 1.4rem;display:flex;flex-direction:column;gap:1rem;box-shadow:var(--shadow)}
+.callout h2{font-size:clamp(1.35rem,2.6vw,1.7rem)}
+.callout .keylist{border-top:none}
+.callout .keylist li:last-child{border-bottom:none}
+.callout .keylist li{padding-top:.7rem;padding-bottom:.7rem}
+.callout .keylist li::before{top:1.45rem}
+.callout .keylist .r,.callout .keylist .s{font-weight:600}
+.pending{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;align-items:baseline;margin:0;padding-top:1rem;border-top:1px dashed var(--line);font-size:.95rem;line-height:1.75;color:var(--ink-soft)}
+.pending-k{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--brass);white-space:nowrap}
+@media (max-width:680px){.callout{padding:1.2rem 1.1rem}.pending{grid-template-columns:1fr}}
+
+.gcard.inline{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:0 10px 10px 0;padding:1rem 1.1rem 1.1rem;margin-top:1rem;gap:.7rem}
+.gcard.inline figcaption{gap:.3rem}
+.kb{align-self:flex-start;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--brass);border:1px solid var(--brass);border-radius:999px;padding:.08rem .55rem;margin-bottom:.15rem}
+.gcard.inline .flow li{background:var(--surface)}
+.gcard.inline .flow li.hl{background:var(--rosaic-soft)}
+.gcard.inline h4{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);margin:0}
+.gcard.inline figcaption p,.gcard.inline .gnote{font-size:.95rem;line-height:1.7;color:var(--ink-soft)}
+.gcard.inline .flow{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.gcard.inline .flow li{padding:.7rem .6rem}
+.gcard.inline .flow b{font-size:.92rem}
+@media (max-width:900px){.gcard.inline .flow{grid-template-columns:1fr 1fr}.gcard.inline .flow li::after{display:none}.gcard.inline .flow li:last-child{grid-column:1 / -1}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -249,51 +361,33 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
     <circle cx="100" cy="100" r="56" fill="none" stroke="currentColor" stroke-width="1"/>
     <text font-size="9.5" letter-spacing="3.2" fill="currentColor" font-family="IBM Plex Mono, monospace"><textPath href="#circlePath" startOffset="1%">RIVOS · ROSAIC LABS · SEMICONDUCTOR BRIEFING ·</textPath></text>
     <text x="100" y="98" text-anchor="middle" font-size="13" letter-spacing="1" fill="currentColor" font-family="Fraunces, Georgia, serif">2026</text>
-    <text x="100" y="114" text-anchor="middle" font-size="6.5" letter-spacing="2" fill="currentColor" font-family="IBM Plex Mono, monospace">OCTOBER · 15</text>
+    <text x="100" y="114" text-anchor="middle" font-size="6.5" letter-spacing="2" fill="currentColor" font-family="IBM Plex Mono, monospace">OCTOBER · 16</text>
   </svg>
   <span class="eyebrow">產業背景簡報 · 半導體新創</span>
   <h1>Rivos 與 Rosaic Labs 的關係</h1>
-  <p class="lede">兩家公司都是美國矽谷的晶片新創。本簡報說明兩家公司各自的背景、彼此之間的連結人物，以及英特爾（Intel）在其中扮演的角色。</p>
-  <div class="ledger">
-    <div class="ledger-item"><div class="ledger-label">RIVOS 成立</div><div class="ledger-value">2021</div></div>
-    <div class="ledger-item"><div class="ledger-label">META 收購 RIVOS</div><div class="ledger-value">2025/9</div></div>
-    <div class="ledger-item"><div class="ledger-label">ROSAIC 登記成立</div><div class="ledger-value">2026/5</div></div>
-    <div class="ledger-item"><div class="ledger-label">ROSAIC 執行長</div><div class="ledger-value sm">Amarjit Gill</div></div>
-  </div>
-  <div class="meta-row">
-    <span>資料截至 <span class="mono">2026/10/15</span></span>
-    <span>依據：Reuters、Bloomberg、SemiAnalysis、Phoronix 等公開報導（見文末來源）</span>
-  </div>
 </header>
 
 <nav class="docnav" aria-label="章節導覽">
   <div class="docnav-inner">
-    <a class="mark" href="#top">RIVOS / ROSAIC</a>
-    <a href="#s1"><span>01</span>結論</a>
+    <a href="#s1"><span>01</span>重點結論</a>
     <a href="#s2"><span>02</span>關係圖</a>
-    <a href="#s3"><span>03</span>人脈淵源</a>
-    <a href="#s4"><span>04</span>公司簡介</a>
-    <a href="#s5"><span>05</span>時間軸</a>
-    <a href="#s6"><span>06</span>關鍵人物</a>
-    <a href="#s7"><span>07</span>收購金額</a>
-    <a href="#s8"><span>08</span>疑慮與立場</a>
-    <a href="#s9"><span>09</span>確認程度</a>
-    <a href="#s10"><span>10</span>名詞</a>
-    <a href="#s11"><span>11</span>來源</a>
+    <a href="#s4"><span>03</span>公司簡介</a>
+    <a href="#s6"><span>04</span>關鍵人物</a>
+    <a href="#s3"><span>05</span>關聯成員創業軌跡</a>
+    <a href="#s5"><span>06</span>時間軸</a>
+    <a href="#s7"><span>07</span>資料來源</a>
   </div>
 </nav>
 
 <!-- 1. Summary -->
 <section id="s1" aria-labelledby="h1">
-  <h2 id="h1"><span class="no">01</span>一句話結論</h2>
-  <div class="answer">
-    <p class="big">兩家公司在法律上沒有隸屬關係。<span class="s">Rosaic Labs</span> 是 <span class="r">Rivos</span> 的早期投資人 Amarjit Gill 在 Rivos 被 Meta 收購後，帶著部分 Rivos 舊部新成立的晶片公司。兩邊的共同點在「人」，而非股權。</p>
-    <div class="keys">
-      <div class="key"><b>沒有股權關係</b><p>Rosaic 不是 Rivos 的子公司或分拆公司。Rivos 已在 2025 年 9 月被 Meta 收購。</p></div>
-      <div class="key"><b>核心人物重疊</b><p>Rosaic 執行長 Gill 曾協助組建 Rivos 創始團隊；前 Rivos 財務長 Amit Parikh 簽署了 Rosaic 的公司設立文件。</p></div>
-      <div class="key"><b>英特爾的角色引發關注</b><p>英特爾執行長陳立武曾任 Rivos 董事長，與 Gill 是長期共同投資夥伴。英特爾罕見地把 Atom 處理器的設計碼提供給 Rosaic。</p></div>
-      <div class="key"><b>仍屬未知</b><p>Rosaic 的產品方向、投資人名單都未公開；目前沒有報導指出陳立武持有 Rosaic 股份。</p></div>
-    </div>
+  <div class="callout">
+    <h2 id="h1"><span class="no">01</span>重點結論</h2>
+    <ul class="keylist">
+      <li>兩家公司都是美國矽谷的晶片公司，<b>目前未見公開資料顯示兩家公司有股權或從屬關係，已知的連結在「人」</b>（Rosaic 股東名冊未公開，無法完全排除）。<span class="r">Rivos</span> 是 2021 年成立的新創，已於 2025 年被 Meta 收購；<span class="s">Rosaic Labs</span> 則是 Rivos 董事暨投資人 Amarjit Gill 在 Rivos 被收購後，帶著部分 Rivos 舊部新成立的晶片新創。</li>
+      <li><b>Intel 罕見提供技術，雙方高層有淵源：</b>Intel 執行長陳立武曾任 Rivos 董事長，與 Amarjit Gill 是長期共同投資夥伴。2026 年 7 月 Reuters 獨家報導，Intel 罕見地提供 Atom 處理器技術給 Rosaic，並預計交付 RTL 設計碼（媒體獨家消息，Intel 不予置評）。</li>
+    </ul>
+    <p class="pending"><span class="pending-k">現階段未知</span><span>Rosaic 的具體產品規格、客戶、商業模式與投資人名單都未公開；目前也沒有報導指出陳立武持有 Rosaic 股份。</span></p>
   </div>
 </section>
 
@@ -315,7 +409,7 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
       <text x="147" y="200" class="lbl">2025/9 收購</text>
       <!-- Intel -> Rosaic -->
       <line x1="865" y1="94" x2="865" y2="246" class="e e-n" marker-end="url(#an)"/>
-      <text x="853" y="160" text-anchor="end" class="lbl">提供 Atom 設計碼</text>
+      <text x="853" y="160" text-anchor="end" class="lbl">提供 Atom 技術</text>
       <text x="853" y="178" text-anchor="end" class="lbl lbl-m">（2026/7 Reuters 報導）</text>
       <!-- Tan - Intel -->
       <line x1="580" y1="62" x2="770" y2="62" class="e e-t"/>
@@ -329,7 +423,7 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
       <text x="512" y="173" class="lbl lbl-m">（例：同為 Nuvia 種子輪投資人）</text>
       <!-- Gill - Rivos / Rosaic -->
       <line x1="420" y1="270" x2="230" y2="270" class="e e-r"/>
-      <text x="325" y="261" text-anchor="middle" class="lbl">投資人、協助組建創始團隊</text>
+      <text x="325" y="261" text-anchor="middle" class="lbl">董事、投資人、組建創始團隊</text>
       <line x1="580" y1="270" x2="766" y2="270" class="e e-s" marker-end="url(#as)"/>
       <text x="675" y="261" text-anchor="middle" class="lbl">執行長（CEO）</text>
       <!-- Parikh -->
@@ -352,7 +446,7 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
       <text x="135" y="80" text-anchor="middle" class="sub">Rivos 收購方</text>
 
       <rect x="770" y="30" width="190" height="64" rx="8" class="box b-neu"/>
-      <text x="865" y="58" text-anchor="middle" class="nm">英特爾 Intel</text>
+      <text x="865" y="58" text-anchor="middle" class="nm">Intel</text>
       <text x="865" y="80" text-anchor="middle" class="sub">x86 處理器大廠</text>
 
       <rect x="420" y="30" width="160" height="64" rx="8" class="box b-tan"/>
@@ -379,11 +473,11 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
 
       <rect x="420" y="440" width="160" height="60" rx="8" class="box b-dash"/>
       <text x="500" y="466" text-anchor="middle" class="nm">Puneet Kumar</text>
-      <text x="500" y="487" text-anchor="middle" class="sub">現於 Meta</text>
+      <text x="500" y="487" text-anchor="middle" class="sub">收購後轉入 Meta 任職</text>
 
       <rect x="795" y="480" width="165" height="60" rx="8" class="box b-person"/>
       <text x="877" y="506" text-anchor="middle" class="nm">H. Peter Anvin</text>
-      <text x="877" y="527" text-anchor="middle" class="sub">前英特爾 Linux 專家</text>
+      <text x="877" y="527" text-anchor="middle" class="sub">前 Intel Linux 專家</text>
     </svg>
     <div class="legend">
       <span><i style="border-color:var(--rivos)"></i>與 Rivos 的關係</span>
@@ -395,9 +489,137 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
   <p class="fig-note">在手機上可左右滑動查看完整圖表。</p>
 </section>
 
-<!-- 3. Lineage -->
+<!-- 3. Companies -->
+<section id="s4" aria-labelledby="h4">
+  <h2 id="h4"><span class="no">03</span>兩家公司簡介</h2>
+  <div class="cos">
+    <article class="co-card" style="--c:var(--rivos)">
+      <div class="co-head"><h3>Rivos</h3><p class="tag">RISC-V 架構的 AI 伺服器晶片新創，已被 Meta 收購</p></div>
+      <dl class="facts">
+        <dt>成立</dt><dd>2021 年 5 月，總部位於美國加州聖塔克拉拉（Santa Clara）</dd>
+        <dt>業務</dt><dd>伺服器級 RISC-V 處理器，結合專為大型語言模型與資料分析設計的 AI 加速器；採台積電 3 奈米製程。另提供伺服器硬體與完整軟體堆疊。</dd>
+        <dt>團隊</dt><dd>共同創辦人包括 Puneet Kumar（執行長）、Mark Hayter、Belli Kuttanna（技術長）、Tse-yu Yeh 等；陳立武擔任董事長。</dd>
+        <dt>募資</dt><dd>2024 年 4 月完成逾 2.5 億美元 A-3 輪募資，Matrix Capital 為最大投資人；投資人包括 Intel Capital、聯發科、和通創投、Walden Catalyst（陳立武的創投）、Dell Technologies Capital 等。</dd>
+        <dt>合作</dt><dd>2024 年 9 月宣布採用晶心科技（Andes）NX45 處理器核心，負責晶片內的控制功能。</dd>
+        <dt>訴訟</dt><dd>2022 年 Apple 控告 Rivos 挖角工程師並竊取營業秘密，雙方於 2024 年 2 月和解。</dd>
+        <dt>被收購</dt><dd>2025 年 9 月 30 日經 Bloomberg、Reuters 披露由 Meta 收購。Reuters 報導 Meta 是 Rivos 最大客戶之一。</dd>
+        <dt>收購金額</dt><dd><b class="em">Meta 與 Rivos 均未公開正式收購對價</b>。以下為媒體引述的數字，各自計算基礎不同，都不能視為確認的成交價：
+          <ul class="amt">
+            <li><span class="amt-v">逾 20 億美元</span>Rivos 收購前尋求募資的估值（The Information 報導、Reuters 引用）</li>
+            <li><span class="amt-v">超過 25 億美元</span>SemiAnalysis 估計的收購支出</li>
+            <li><span class="amt-v">約 40 億美元</span>Reuters 引述消息人士：Intel 與 Meta 競標後，含員工激勵的整體方案</li>
+          </ul></dd>
+      </dl>
+    </article>
+    <article class="co-card" style="--c:var(--rosaic)">
+      <div class="co-head"><h3>Rosaic Labs</h3><p class="tag">正式名稱 RosaicLabs Inc.，處於隱身模式的 x86 晶片新創</p></div>
+      <dl class="facts">
+        <dt>成立</dt><dd>2026 年 5 月向美國德拉瓦州提交公司設立文件；總部地點未公開</dd>
+        <dt>業務</dt><dd>外界推測為 x86 晶片（依據 Intel Atom 交易與 Anvin 加入），公司未說明產品方向。公司處於隱身模式（Stealth Mode），也就是刻意不公開產品與資訊，沒有官網、也沒有 LinkedIn 頁面，晶片新創早期常見。</dd>
+        <dt>團隊</dt><dd>執行長 Amarjit Gill；前 Rivos 財務長 Amit Parikh 簽署設立文件；Reuters 報導創始團隊包含多位 Rivos 老將。2026 年 10 月起，Linux x86 核心程式維護者 H. Peter Anvin 以 Rosaic 名義簽核核心修補程式，媒體報導其已加入（公司未發布人事公告）。</dd>
+        <dt>募資</dt><dd>依 Reuters 解讀 2026 年 7 月 24 日修訂的文件，公司可尋求 1,000 萬美元種子輪（新創的第一輪正式募資）。
+          <div class="fund" aria-label="募資規模比較，依實際比例繪製">
+            <div class="fund-row"><span class="fl">Rosaic 種子輪上限</span><div class="ftrack"><div class="ffill s-fill" style="width:4%"></div><span class="fv">1,000 萬美元</span></div></div>
+            <div class="fund-row"><span class="fl">Rivos 2024 年募資</span><div class="ftrack"><div class="ffill r-fill" style="width:100%"></div><span class="fv in">逾 2.5 億美元</span></div></div>
+          </div>
+          <span class="amt-tip">長條依實際比例繪製。Rosaic 的種子輪上限約為 Rivos 2024 年單輪募資的 4%。（分析判斷：此規模足以支撐小型團隊的早期研發，但遠不足以支應先進晶片量產。）</span></dd>
+        <dt>技術來源</dt><dd>Reuters 2026 年 7 月 29 日獨家報導，Intel 提供 Atom（Intel 的低功耗處理器產品線）技術，並預計交付 RTL 設計碼，讓 Rosaic 能自行設計客製化 x86 晶片（媒體獨家消息，Intel 不予置評）。
+          <figure class="gcard inline">
+      <figcaption><span class="kb">知識補充</span><h4>RTL 是什麼：一顆晶片從設計到出貨</h4><p>RTL 是用程式語言寫成的電路設計檔，描述晶片每個部分如何運作，相當於晶片的設計藍圖。據 Reuters 報導，Intel 預計交付下圖第 2 步的成果給 Rosaic（交付進度未公開）。</p></figcaption>
+      <ol class="flow">
+        <li><span class="fn">1</span><b>規格與架構</b><small>定義晶片要做什麼</small></li>
+        <li class="hl"><span class="fn">2</span><b>RTL 設計</b><small>寫出電路設計碼</small><em>Intel 提供 Atom 的這一步</em></li>
+        <li><span class="fn">3</span><b>驗證與佈局</b><small>確認設計正確、轉成實體電路圖</small></li>
+        <li><span class="fn">4</span><b>晶圓廠製造</b><small>例如台積電、Intel Foundry</small></li>
+        <li><span class="fn">5</span><b>封裝測試</b><small>成為可出貨的晶片</small></li>
+      </ol>
+      <p class="gnote">若取得現成的 RTL，Rosaic 就不必從零設計處理器核心，可在其基礎上修改，再整合進自己的晶片。這也是外界認為此舉罕見的原因：Intel 過去幾乎不對外提供 x86 設計碼。</p>
+    </figure></dd>
+      </dl>
+    </article>
+  </div>
+
+  <div class="gviz">
+    <h3 class="gviz-title">兩家公司的技術差異</h3>
+    <figure class="gcard">
+      <figcaption><span class="gk">x86 · Arm · RISC-V</span><h3>Rivos 用 RISC-V，Rosaic 用 x86：主流處理器架構比較</h3><p>處理器架構是晶片的「語言規格」，決定軟體能不能在這顆晶片上執行。架構不只三種，另有 MIPS、Power、SPARC 等；這裡列出目前最主流、也與本案直接相關的三種，差別在於開放程度。附帶一提，本案人物早年待過的 SiByte 採用 MIPS 架構，P.A. Semi 採用 Power 架構。</p></figcaption>
+      <div class="spectrum" aria-hidden="true"><span>封閉</span><div class="sp-track"><i style="left:6%" class="sp-x"></i><i style="left:50%" class="sp-a"></i><i style="left:94%" class="sp-r"></i></div><span>開放</span></div>
+      <div class="arch">
+        <div class="arch-col"><b>x86</b><dl><dt>誰能設計</dt><dd>主要為 Intel 與 AMD；另有兆芯（與 VIA 合資）、海光（取得 AMD 授權）等少數案例</dd><dt>授權</dt><dd>極少對外授權</dd><dt>常見用途</dt><dd>個人電腦、多數伺服器</dd><dt>本案</dt><dd class="s">Rosaic 取得 Intel 的 Atom（x86）技術</dd></dl></div>
+        <div class="arch-col"><b>Arm</b><dl><dt>誰能設計</dt><dd>向 Arm 公司付費取得授權者</dd><dt>授權</dt><dd>付費授權</dd><dt>常見用途</dt><dd>手機，並擴及筆電與伺服器</dd><dt>本案</dt><dd>與本案無直接關係，列出供對照</dd></dl></div>
+        <div class="arch-col"><b>RISC-V</b><dl><dt>誰能設計</dt><dd>任何公司</dd><dt>授權</dt><dd>指令集為開放標準、免授權費；但現成的處理器核心仍須付費取得（例如 Rivos 向晶心科技取得 NX45）</dd><dt>常見用途</dt><dd>嵌入式晶片，逐步擴及 AI 與伺服器</dd><dt>本案</dt><dd class="r">Rivos 採用的架構；晶心科技亦屬此陣營</dd></dl></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 4. People -->
+<section id="s6" aria-labelledby="h6">
+  <h2 id="h6"><span class="no">04</span>關鍵人物</h2>
+  <div class="people">
+
+    <article class="person key-p">
+      <div class="hd"><div class="ava mono" aria-hidden="true">AG</div><h3>Amarjit Gill</h3><span class="lab">現職</span><span class="now">Rosaic Labs 執行長</span></div>
+      <p class="why"><b>關鍵點：</b>Amarjit Gill 是串起兩家公司的核心人物。他是 Rivos 董事暨投資人，並與陳立武一起組建 Rivos 創始團隊；Rivos 賣給 Meta 後，他出任 Rosaic 執行長。</p>
+      <div class="chips"><span class="lab">相關經歷</span><span class="chip r">Rivos 董事、投資人</span><span class="chip">陳立武共同投資夥伴</span></div>
+      <ul>
+        <li>連續創業家與天使投資人，畢業於聖荷西州立大學電機系。</li>
+        <li>早年在德州儀器、迪吉多（DEC）與 Intel 擔任半導體業務主管。</li>
+        <li>共同創辦 SiByte（2000 年被 Broadcom 收購）與 P.A. Semi（2008 年被 Apple 收購）；共同創辦 Agnilux 並任執行長（2010 年被 Google 收購）。</li>
+        <li>與陳立武同為 Nuvia 種子輪投資人（2021 年被 Qualcomm 收購）。</li>
+      </ul>
+    </article>
+
+    <article class="person key-p">
+      <div class="hd"><div class="ava"><img src="data:image/jpeg;base64,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" alt="陳立武 Lip-Bu Tan"></div><h3>陳立武<span class="alt">Lip-Bu Tan</span></h3><span class="lab">現職</span><span class="now">Intel 執行長</span></div>
+      <p class="why"><b>關鍵點：</b>陳立武同時連到 Rivos、Intel 與 Gill。Rivos 被出售時他是董事長；他擔任 Intel 執行長期間，Intel 提供技術給 Gill 領導的 Rosaic，因而引發媒體對潛在利益衝突的關注。<b>目前沒有報導指出他持有 Rosaic 股份。</b></p>
+      <div class="chips"><span class="lab">相關經歷</span><span class="chip r">前 Rivos 董事長、股東</span></div>
+      <ul>
+        <li>1959 年生於馬來西亞，南洋大學物理系、MIT 核子工程碩士、舊金山大學 MBA。</li>
+        <li>1987 年創辦創投華登國際（Walden International），後成立 Walden Catalyst，是半導體界知名投資人。</li>
+        <li>2009–2021 年任益華電腦（Cadence）執行長；2022–2024 年任 Intel 董事；2025 年 3 月 18 日出任 Intel 執行長。</li>
+      </ul>
+    </article>
+
+    <article class="person">
+      <div class="hd"><div class="ava mono" aria-hidden="true">AP</div><h3>Amit Parikh</h3><span class="lab">現職</span><span class="now na">未公開</span></div>
+      <p class="why"><b>關鍵點：</b>Amit Parikh 是目前唯一出現在 Rosaic 公司文件上的前 Rivos 主管，說明兩家公司在人事上有所連結。不過他在 Rosaic 是否任職、擔任什麼職務，目前沒有公開資訊。</p>
+      <div class="chips"><span class="lab">相關經歷</span><span class="chip r">前 Rivos 財務長</span><span class="chip s">Rosaic 設立文件簽署人</span></div>
+      <ul>
+        <li>Reuters 指出，他是 Rivos 前財務主管。</li>
+        <li>2026 年 5 月，由他簽署 Rosaic 的公司設立文件。</li>
+        <li>其他公開經歷有限；Reuters 透過 LinkedIn 聯繫未獲回應。</li>
+      </ul>
+    </article>
+
+    <article class="person">
+      <div class="hd"><div class="ava"><img src="data:image/jpeg;base64,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" alt="Puneet Kumar"></div><h3>Puneet Kumar</h3><span class="lab">現職</span><span class="now">任職 Meta（Rivos 被收購後轉入）</span></div>
+      <p class="why"><b>關鍵點：</b>外界推測 Puneet Kumar 可能加入 Rosaic。<span class="basis warn">依據：SemiAnalysis 提及的外界推測，未經證實</span></p>
+      <div class="chips"><span class="lab">相關經歷</span><span class="chip r">Rivos 共同創辦人、前執行長</span><span class="chip s dash">傳聞與 Rosaic 有關，未證實</span></div>
+      <ul>
+        <li>與 Gill 共事多年，經歷包括 SiByte、P.A. Semi、Apple 與 Agnilux。</li>
+        <li>2021 年共同創辦 Rivos 並任執行長，帶領公司至被 Meta 收購。</li>
+        <li>Rivos 被收購後轉入 Meta 任職。SemiAnalysis 報導他可能在 Meta 股票完全解鎖後離開（外界推測，未經證實）。</li>
+      </ul>
+          </article>
+
+    <article class="person">
+      <div class="hd"><div class="ava"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAEYARgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD14DmpFFIFqVRWhmCipVFNC1Mi0AIFNSKpzTwlSpHzQAig4qZU4pyJUqqcUAIsdSqnNKqmpVU54oARU7VMqUqpUoSgkjCGpVU04JUqp0oAYqmnhTxTwlPVKAGhTilCmpQnFKEoAaFpdpqQJ0p2ygaIwppwU5qQJTgnNAyILzTipxTwvtT9vFAEIWl21KFFLsoAi20bfepdvtS7R6UAQ7fek2mp9o9KTZQJkO00bfWptlIV56UAiHb70FeOtTbR6UhUY6UDICvpRUuyigDywDmpUXvSKpzUqJQTcVVyOtTInPWkVOKmjTmgLiqo4qVVpVTpUypzQFwRamVRihVqZU4FAXBFFTKoBoRfapQvzCgBFUZqUDjihV+apgnSgBgWpFWnBOKeE5oAaFp4UetPVcCnqtADQnvTgg9aeFpwWgBgX3p233p4XtS7aAGhadtxzTgKdt4zQFyMDnNOxkU8LzTguKAuR7RShafil24oSlLoU9Bm30pMe1SlfQUmym1y7kpt9CPB9KNtSbe9Gylo/hdxuL6Ee2kII7cVLso6cYo5G+o+VL4nYiBiPrmmkPngDbU+G6lRiomMW/HIP6UaoNOjuMIX3op/mKhwMGinoO6PLFU56VMqmmqOanRTikQKi8dKnRfakROKnjT0oAVF5FTKvPSlVRxiplSgAVeKlC9OKVEqULQAIvtUqqc8ihFNShTmgBFXnpUoWhRUgWnYBAtSBfalCkU9RRYBu2nqPal2mnqtFgACnYpQKcBRYBAKXFOApce1DQCBadjilApwFIBgX2pwX2p4FLigBmBSgHrTyvQ0qinKcnpEEuXVDMZBI6DrRtOAfXpTnVcDcxVe+KQqHQiAu0g+6AOKI0b6yYOs9mhNh37MfN6UwsgOC2DVx4NsH2nU54bRVXli2DiuC1/40/DzwsrQrerd3I4AHOTWtLD1aztSic1bFQpbs7aOCaU/u03VK9jJDEZLzZAg/jLDivnPX/2lfE96zWnh/QCIn4WVFya5CTUfi14oyUvtQ2SH/VsCAK9SGR196zSXqcMszj9hXZ9TXOv+DdPBa78UwKR1XIrnr/4vfD2wicx30V2y9lPWvCLH4J/EjV1DXdvvDdWkYiuhsf2ZNWYBr0pFn721uldEcvwFL46t2YvF4uppGFkdfd/tC+G4Bm00I3H0xRWba/swWOMz65JB9DRT5sr7sn2GL7mmq81ZjWo0UA9KsIvtXztj3xQtTxrSIuRwKsRr60WAVVPFTKtAQjk1Io5osFxyrUwXpQo9qkVd2cdRRYdhVWpdtEYGw5HNPjXeMk45oSuS3YFHepAM0P5aOADj096vw6dqMoUpp7FW/iziqasCdyoF4p4Wrp0qdZNs7JbsegLDmnyaPfRKP3QLH7oDDmkrMlyt0KO2nhakMcqkpLAY3H3s9qE8vcdzcetO3QOfS4m2gCpEG5D5iGIDox/ioAz2qW7FQfMIBS45pwWlxg800rg3bQQCnAc0oHtTsYGQM1L0Vy4x5nYbilxxSuoWQKzhUbo/vT2QhhG/7vb/ABn+OnJcseYn7XKR4J6U4KAOSKmtoBdXZKNsRFyV/vV5Tq37QOiaP45m8NTeH5ZGiJBlHStsPQnUly0ldmNevDDq7Z6lDGZnYbl8tRl8+leOeNv2i9P0jVrjw14H0WfUtUt28t2jTcFPvXbeDPip4a8c6zdaLpdsYrmNf3grZ0Xwd4L8Laxd6lpejImoXTbppZF3ZNaclOhN+2i+bsZwk8THmi9D57TwX8cfiqwvvEGoNpdm5ysStsIFdt4b/Zl8Pacol8T3n2yQck5zXs813cNy20KeycYqExKeSWP1NdVTN8Ry+zpWSMo4OKd5u5iaR4I8BeHyBY6YJGHTeuRXQpcrEmYNNtI1HTCgVHyBjjFIVJbnpXBOcp6zk/vOyNNR2SHPe3sh6lB/sHFRbpWkDfaJifQnipMsBhelIx+U5OKx3di1J9iGTc7nzJX/ADoqUjKjC/jRQ2loOx5cic1YReKYqnPSrCKfSqFcci4FToKaiZHNWETHFACqKkVOacF9KeoOaBMeqVJGu1ixpVWpQvy9RzQVcSIDkmrFtA13L5EanJ4FRsoEQwOcgV5/+0D8YLX4HfCR7m12S6/fp5UMfdc8A0S0RG7sN+MHx+8HfBLSltwkeseIv+fJDuC/lXzTqH7V3xV8VxT3VhC2mLIcrEhxsFeIw6jqV7LJ4l1+Q6hrN05kkW4+bap5wKs/aZrNftaHYZefJ/8ArVx1akjqpUb7ndn4m/FTVrlrjUPFN5GwHyAMetdd4a+NnxP0vTntdQ1qa6vP+WJkY15MniC4t0ASDfIRnp0rntR13WrqVsxyo3Zl6iuV15I7VQh1PsPSv2tPEFl4fSz1bQ4Z7+I4lc87h617h4M+IOgfErwquoeH54d0S7rmNmwyP3AFfmBaXviYziaYloFPzM3Uj3rvvDmt6t4S12DxZ4Y1GaJ8bZbNWxG/uRW1PFdzKthVbQ/Sqwuf7RsPtLEsqnYF9MVYAFeDfAb9oHRvFutz+FtSsriPVinXb8ma96S3lBdWdcx8kV6VOUZo85xcGKOKUjPalXhNzKacygEHIOfSlLyLi0NC1Ii5Yj2pAPn2d/WlA35XnIOMDvST50zCMnFco2NPMs9jruO/5V96z9X8S6HoWrWGlapeI19dtthgB5z9Kx/iR8QdO+GvhRtRumSXU5BthgHUHsSK8Y+E3gzxN8Rfij/wtDxdPKqWz+Zbwk/Jjtiu/D4Vuk609lt5nLXxPNJU4b9T6aghVNUZ42OQhyhr498fPND8a7ua40yYQkn51QkGvsKaUz6hujG1mGQR6e9UZdT8FNqLWV8+kfbFHzedtz+taZbjp4Sv7SEL6GeNwsK0EnM+b/2fXspfjHqD2VrLE2PnZ1IzX0zc7f7Um3888VXtLHwoLs3Ojf2alyeptSuT9cVYCF5m84fOe4rLMcf9axDqTjY0wVONGly7jCCkmWGVoxVpdPuZlwJo2X0HakaxuVcr5LtjuBxXFPllqmdtOMYq/LcrYoPCVK8EyEA28hz6Co5Ayr80bKPUis1NvQr2iXwoap+XJpUiMvHAHqelO2jZjIA/vHpTbyNZfCl8oZkIRvnXr07VtTl76hbcJ1ZRg5tbEwtDMm62ubZtvBXfRXxPaX/iaHX9YVPEF9hbghFEhwBmivenwzUbuqh4az6EteQ+h1XmrMa80xV5qxGPavnj2hUXGanRcnpSKBUyCgBwWnqpzTlFSKvNACqDUvlBSrA8t2pAKljVUlWRjkCqiNl3TIFuNWVJB+7Rd7fhX56/tP8Aid/Hn7Ss0UEpuNMsIzGsQOQHFffOt6ynhX4b634mnIAjhdVJ+lflXbapcahrOvap5pee4vHkVj2BJoezIg/eQ+y8xpk/tBxHMDhAa0Bsl1NWuB50yfdx0ot2tpbAyXaLJKnO8nkVp6Sun3xVIztlbgPjpXHOzPWpamSZ7lNYCQR789RjpV2+upbaDPkKXI9K7K10Oy0e3kmuWV5GXIPeuWj0jUNV1aWYKRCp43cVxVInZ7Nsw2utSFgyR2pdZOuB0qe2N1BpaxHMUhYHDVpySyWNxsIPyfwgdati+k1pxs0vYqDG/bXNUi0ro0jDozpfh74xvPA/jW215rZXiYgPIF6Cvvjwf4p03xp4fTW9MuFdioLopr83TK0iDTXlKqpyw9q+g/2TNfvrb4gT6C07PZTHCKxr0MDNs83F0UtT7HeTEKZT7wpqRiKUqTkOOKsSqsV9Kso+ReFqDy2ddoPIORXoNWdzy27aCRDLtE3VO9Vdc8Qaf4Q8K3XiHV2WNYgQin+I9q0IYGuJgqcMvLGvm34++MU8Q+LIfDMM5Gn24KzBTwX7V35fgniqqpr5+hyY/EfVY3e72OPsbbxB8Z/i+txeyP5aS7jEenlZ9PpX19Z2Fjo2jwaJpsIit4UABHGa8v8A2f8Awn/ZXhF/El9Ftu3zGhI5Kdq9ULPJI8mMKf0rbN8TFVVh4fDHQzy7DNR9rLeRJZIqXTRuwJZDXx18RdMsJPjrcrNPcgnOAjkCvse2CLdZYYOw4PrXyN8QWX/helw5gBAB5ru4avLEt2urHLnUnCHuGn8CLe6tvi7cwC4uGtj0WRyRX1PIrNNdxp8hWM7SfpXy98EX3fGK58yYgN91a+pBI0lzeRlPuxkZrDPGvrcrRsXltpYe8nqfHrfED4k2vjTVoLDXAsUU7KgJ6DNacfxY+LixKp12BgDycCuWugg8e6uqNjFyxI9ea6n4e+CI/iR4l1PTpdQfT47ZMqU6tX0Sw2Bo0FVrwVvQ8aVTEVans6U2XU+OXxFTCFBLs+84HBrb0v8AaXu7e5SLX/Dc8tufld1H3f8Aaq1P+zZqUcbpZ+J5Ci/dJ/iry3xJoWteGNdXQPEOY3bmPj/WpWNOlluOfs6KSf4lJYzBvnqybR9a+Hdd0TxVoa6lpN2l1ZuM+Wh5Q+hq7Kxk8P38QOxERsE/Svl34NeILjwn8VXsYcrpl/iNLbPCN/er6qu7UJpd+jfc8sn65FfN5hg/qeJUH3Vj3sPjpYqi2j4hhlC+IdbIUqBcn5j35opIAF8R67Gp80faTgHtzRX3VJQUUnI+WnWmnblPpVFGasKKai81Oq8V+Yn3QIM1Oo5pqrxUyLzQA5RUiilA4p6igXUcqipOCpDDCdzQozUjoJoPLf5Y1++1ATPMf2pNUi0D9jvXvtN0kM0xAgUHDNk9q/N/QopIfCaShSZJIxJkd6+sP+ChE18t94RsReFNHeP95EG4Y54r5k0mUW2mxQrHvjYbU9hUS2N6STZT0LQtZ8SKZQXjiQ8gd69v8JeE9Jt9LjknT94owcDvWL4VgNnbmJVCq/Nd7pEM8aFYoS4PpXM1c9qhBIrW3gqxuNX+2XFxIyDkIx4rQ1Lwlb3sMa2hECA8lOM10K6ZPsDMcZXOKfFZ3M8KxKSoB5NLkO52scQvgfTXlMM5DH+9VuTSrOymSwito1jx98DrXW3NjYxEQrcDzj15pk2jm9twkTjzF71z1YC5lY8D8ZWp0nxBJNHF8ijPA61c+FnxCudD+LWjatDiFY5AGTpnmtzxrayx6lFFcw7grcn1FeReOLSbSWOvaY/l+TIhCj61rhnZnmYqN0froLqO+sdP1QrxdRB8DpyKGBjJIOe+RXE/BTxXF43/AGetC1CMh5YrZElI7ECu1wvklVbcAOTXe3dJHizjZlPWtTGh+BNV1lztMcZINfGC28mv+I3JYu99dCUMeuM19PfHHUv7P+Eclmhx9qXbXgnwzsRd/ErRLLGcIDX1eTQdPD1MQ+p85mc/a4iNA+tNPs10/wAH6dYIoQpEuQO/AqaQkyqV4UdRU92NmoRxD7qx7ajHCNkV8tJ87c2fQ29nGMCS2XOobicjYeK+RfiJlfjxcDtzxX11bqReKc/wGvkj4jjHx1nY+hr6Lht8uIdux4ucztSNP4LkH4yzArjnivqpR/p91j/nma+VPg23/F5HwOpr6tUY1G6/65mss+X+0v0LyaPNh7nxJqCgfEbWMAD/AElv516X+zkD/wALL1sE8eX0rzbVuPiJq5/6eW/nXpP7ODZ+JWt/9c69zGTc8rfkjysMl9dXqfQsvmi5IErAZHA+tfPf7S6qPGOlyEfOIwA3cV9DT/8AHwf94V89ftNA/wDCU6W3+wK+e4ebeNjbsz3M0s8K7nnfhttvxO8Pn1nX+dfaV6M6feA9DCePwr4s0TCfEfw43rOv86+1LzJsLj3iP8q6uIL/AFmN/wCtThyj3aErHwvCGTxfr2Bj/Sm6fWin8p4y10f9PJ/nRX1dC/IrHjTqRv7x9MKuDVhB61Gq5NTotfmJ9yORamRaaq4FTKPagByjipFWkVakC+tBLeo5RUqKJJY7c/dkOCPWmquafvdFEqp80XKmgcj4i/4KK3gk8feD9LjPyxQHdH65PH868F8PQrY6fA98w89iBHAfSvpb/goT4O1G8/4Rrx9ZQ7ra0i8u4YdiTkfyFfKMF697c6fdOcnaCoWs5bHVQ1eh7Hpt5b2D77r/AFuAVi9a6mLxZdjTWWytESYjgE4rhzGYdFbVJk3z7BsBqGLRbnxN4XczXtxZXTHKGM44rBM9WLaOq0nxtrDag8s0pliQ4f0WvR5L+V/Bn9u27YgA5NeVf2YNM8PLpMOWdYsvL3Y4716poekyar+zTIYtw8rO4dzUzqJHTBNnl1/cavqt8uoWN06DOQAeoqaLxrDC4t7PWmluY/8AWp/dPpU2gx3NlbQy2MfmlcqyN2qjL4F09Zrm/wBMTF1cMWlB7E+lDnFwuS4y5rGjr2pNr/hv7SkY3xjJcd68O1HWcm6t76ASoSRtNe/6F4NvLDwtdvdsxtCpKZ65r5n8baPc/wBtzRWruZZJgqoO+TU0WrmFeDUT9A/2FtNutP8AgJqs0upveRS3OY4m6RDB4FfSGBEkn7vG4dPSuA+A3gyw8A/s96LaQbvMvLZJpz/tla78qRC24k5HGa7la1zwqj96x5R+0Su7wBp43Y5ry74QSJB8Y9HMoH+qwM969Z/aEs5JvhfDcoCRDya8L8K6immeNPD+rltqBQjGvs8tSqZW6a31PlcZ7mYqo9tD7MvFJ1IAj5TzuqIlfMfAyAKdLKZfss+f3UsYOfqKR0AlZEPHc18bFWTR9PVfM00Lbl5L5WjXKbcMfSvk74oxG2+P727c71zz2FfWCM4UPD8pQ9P71eRfGn4X3/ipovFvhML/AG3bgCWJuAyDrj3r1+H8XHD4i9XZnnZnhnWpaHm/wkbyfjW0YHy5G1vWvqzzANRnQ8M0Zr5G+EN3/wAXoSC6sbyG4RgrmRCFyOuK+uiiNqE7AHcI+9bZ3WjUxLcdrGeWQlTocp8S6uS3xK1aFfveex/WvSv2byp+JOtkHny8V5prlzbp8U9URgUl89ue3WvSP2cJFk+K2thWTaI/4TX0OOUZZU3F9DxsLQqLGqT7n0Vcbw7uy9GGB618/ftNMo1rTJCP4RX0JKSdQ3EEoCM14D+0xCratp0jSxqoAwGOK+Y4bi5Y6Kv0Z7+cxvhGonlelsv/AAsfw1lsfv1/nX25OSbGdWGP3RwfXiviWyyvj7wyS0R3ToFwfcV9tMUcLb3DFSY8fmK7uJIOFeN3c87IISVKSmfDMyufHeuR+ty3P40Vf8VaPd+F/ivqem6uwga8mMsEjHClc+tFfUYeE504yg9Gjw8U1CrKLR9IqOanQcVEo5qwgxX5kfe3HKMVKgGaaBxUqj2oC49QMU9eaRRTwKBWvqPXmnuzGHy1IGe5pqrT1CoCXG/PRKBXOA/aL8MS+N/2VNa0aFQZ+CrY7g9vzr8zdO8P6r4Y8Q29rqikWyAKJ2Hy59K/XqzhjuUm0i9jE1vPGSUI4X2r4b8W+HtEguPEHhPXkXzluHntSRgjkkCplHRndhtJIx9Mg0y/8PCKRcsq5Ddq17HQJ54I2ikREQcEVwPhO6mjsZ7a4cqwYqqegHSvTNDkdI7eKZ9sRGeTXBKbjoe9TpxkV9a01NO8ITX0xHmLkbv73tW14J+I+jWXwsliuFEax5Mlu3UioPENzZ63oMmkWuHKnj61z+i+BEj0l31NV8yX5T83al7LnOiL5NkXPD95p+rX815pEiJb3RJ8k9RW9Hp+y+88xEFeAvrVXwx4T0/QTLJBtZusYDdK0TqUsizRsoEwyBXPUg4+6maRSk7si1DVljsZoGZcbfujoteK+G/BN74l8a6hrkyAQ2UoMSkf63ntXe6gZFs7osSZSDlfUV0Hwd0251P4j6FAR/xL9+bhAMgfWtMNTd9zlxrjGOh9i+FIp7f4XaRBcYDmBSoP8Ix0rVfc5AfqB1FPmz5ojjjAtIQFXHbio8AEBW3Ke9eql7p8rUd5HN/ErTxq3wf1eAR73SMlVHWvkG3jkl0COFcia1fdjuMGvuZYop4ZrOUApKpBBr478R6LL4V+JuqaTeqYxeSFoCem3NfUcO10ualLY+dzqk24ygfTHw08Sx+MPhhb3W8GWACI49uK6lQY4yXOS/FfLfwq8bP4C8aGzugf7Gu28tQegc96+pt8TxrcxuJLeUblYc4zXm5tgpYWtKy92WqPQwGLjVpJN6rcY2RH++Ybh9zFToWyGHynHT1qIMVBDw7lP3WpWVjF5pflei15PvN3R3r4bEP2LShfC6OmwJdA5DogBz9atCZ1nLS4YOMHFRh/MiEhXDHg0U2pt3YockFZnJXvwv8Ah/f38t7d6c7TynLMKn8K/Drwd4I1WfUtBtpUmuBhiWzXTUVrLFVHB0+Z2YlShzKSQ5jKQQzKUJz71wfxN+FemfE5Leae4eCaDAHOK7qkK7vWlh68qE1UpuzCpSU4uLPDYf2cLi38RaXqUGsLtsJBIFJ64r3af975IkPKABiO9R7APX86dkdxVV8VOs71Hdk0aEaXwnE/Ev4X6B8UtHWC+Vob6I/u504IH1ortO+VorehmtehBQhPQ562Ao1Z88kcaqc1Mg4pi5zUqVxHYOAqVBzTVGalUelADlAp6jmgU8dafQBQKcCEIKjL9gaFpy8PmktxWHQyzR3Hn2ygyA/Pu9O9fPfx8+FV9e+LpPijoUImsbe3P2yAdQB1IFfQUilxxkfTvTrUxNcNbXYVra4HlSRt91gfaqaujaE7H5peHNZ07VfEVzqOkKzafuKKJRhww65Fd5OJr6w83TpissfVc8VQ+OvgdvhT+0de32nWZtfDurcW4Awgc9cVSttTeztzGz7mP3dveuOpTVz2MLXvuXX1PU4cWywCN8cyL61nSadrczi5fXJgHPEe7pXTaTPb3EeL1ACw/GmXek2C3YlRZivseKqMLI9KNRM523/4S3SDI8F09yCflyc112k3l5cWy3dycSgfMtSxXOnWMG9VJfGAHrnUvpbbV2cuDHK33RWdSncc6qjsW/E99DZaNf6gW/eeX8g9TX0R+yb4Wn074Vy+K9btwZL75ofMHIHtXgvg/wAHXHxJ+MNp4bibdY2jia7X1TNfdSafY6NpNroWmRCKwtkCxotVRp2PExmIb0J4MODI0jbX52dqlAZXw6hfTFRLkhQBwKmkywCt2rplG+iPOWoKpDl84ryv48eB/wDhIPDCeKNMiLajYjAVRyV716qSWUqeh9KkRkJ2SqrRFdrK3QiumhiHQqRnHdHLOmpRcZdT4fjuP7U08YQBIxscH7yP3NerfC34sy+HpIfDfjCQtYSHbZXJ5J9mqp8XPhhd+FdTfxl4Wtnn0mVv9ItIxkqx6tj0rzkyWWrWI2oXiPp1Q+3pX3alRzXDKPX8mfJzhUwdfm6fmfawcTW6XtjKlxCwyNh3ACglY3W4JyGOCtfJvhH4jeLvh6y2kEjX2jM2Wjf5nA9q+g/CXxR8G+LrJSt5FYzjrDcMFbNfJYzKsRhX7yuvI97DZjTq25XZ+Z2bj96WAwp6CkwKcIzITNEwljI4Kmmb1zgjYfevIcpX0PWVSEl7wv4UULljzwPX1pQCz/cOKq7e6E6UFqmJxRRvTzNhQ0BWOT2pXQcsRCOKTGeKeOTxQchsAHNaJorkiM4BwKKcyk87SKKV0L2aOPVeamQUxRzUyCoJHKOKkUc00cCpAQKAHgU4CgfdzTwpABPQ0AKBSkYAoHvTgrO21ecdaXUAziPJFMjhaZyBHvxz6Y96mKb0O0jjrXN/EfxEfCHwpvNTiYpLdIbdZB1QkEZFU5JILNs8X/bi0SfU/g5oE8YV5rW53gqck8CvkGHVpnsrWWYGG5iGPJP8Veu+IrLxbb/D61Or67e61ZvMZAZMsYwecVyupeHLW/sIJ4IwGxw461zcyb0PQoXiiTQ9QXUkWR5RGyjkZrqYfEFnAht5NrnpmvI7iw1TSpj8zrGT/DV2KYMNgmdpcd63S0OhVZLY7291DTpN5eVQD05riYdY2avM7NvjXO361nXUE0gKmSUn2rX0jQdil5wShQkepNYVNNzVTlI95/Yvhurv4p+JNZugQZINoz6Zr62kO585zyf5185/sipaR3erBnSO92EGLPOK+i9rIuH6k9K0oNM83FLXUsRn5RUh5OaZEMr0NPHStpOxxptahTgm44xn2pAKMBjtLle+RWaV9SpRUlcPveZb3EQe3lUpJEwzkGvAfiP8E7yxupvEfgF/MjU7zpadz3r6A3NL/rPlI4yO9KrMrDy1EeO4/irtwmOqYSfPTfr5nPiMNCvHll8j4lj1Ercm0vkNnqJ4kt3X7h9KbLplizFgrw6h1SVGxX1X4t+GHhPxokkk1qllety1zEoDMa8L8QfCPxx4UnlbSrZdTsR0nc5YCvs8Ln9LEpQfuvzPl8Rlc6bblqvIxtE8ffELw1HGjeIGvIYj/wAe3Xj0r0nRf2kre4dLfxB4dktFXAa4Y8fWvFTfQW9y1vdQTxXoOH3rhR+NSSRRTpunkjnU9Iy2a6auTYTELmdr+RhTxNehpHRH1RZfFr4c6vCoh8TW8bf3CcEV0NjrWianIP7O16GY+gYV8WSaTp74ZNOjtv8Aaj709La+t2zZa3cWnoUY15M+Gb6RnZHfTzrkXvK7PudbdvveYj596j8mcKVKr/31XxJban4xsZ/Mg8Z6hNjorMcVrw/Ef4kQxbI76SXH8TNzXFLhat0mjVZ/D+Vn2IsM6DOxSf8AeoEdyxJ2Kp7HNfIy/FL4kiLaZSW/3qIfit8TY5Mudy+7VK4YrL7SNFnsH9ln1ysN0ThmU/jRXyE/xT+JU8xO8ovs1FP/AFXrP7SD+3Yfys+kFBzUqio161Mor5vc94cEz82elSIcds00DkelSkqmAetVYVxSTj5lJXuBT1IEYZAQo7Gp7WzvLlg8QAQdWJxisLXvGXgLwdK7+K/GNlYFeSkkgFGgXa0NpS0yFljL4/hXrViKyupYDKsbWyYy3mcYFfIvxH/bz0HRtQudD8AeHX1Nlyq6ihG364r5v8QftV/HrxVcTWyeKjpdjNkeWBt49KRUINn6X3/i7wBodrPPqfjHS1a3UtJH9oTdx1GM5rwvxL8W9K+N/hu5s/BtlOdH0+UrLM68O49K/N3UEu7nUZ7zWNTubyaVizkSH94TXrv7P3xul+E3iX+xdaVbjwzet+8jI/1ZPcmsay9xl/DI+tvDssbaFNA0CXMKjbLG4ztHtVHUPh09xaDUvC9pKYXG542H8q6LwnfeFNV1vUfFfhHVIdS0aOIzXcKMPkGM4xXyl4s/ar8a6Z8ZLu68LzeV4etLjyxaY4dc1wUVI6vanp2o6NHaSs97YvE2djCUfrVS18LeHluQ03zZ5DLXudnqHh74l+ArDxHdRpGJ4A0mFxtYiuXk+GdtOHj0zVFI6xDPU+legpWWprGqcBf6LpFrD5kEasfQis+ztJ3k+2oii3U4KkdK6XUtJl03zbS8UrcxHBz/ABU600G71SJNOtX8sycyD0Xua58RO+iO2lONrlv4Do8X7Qs93ps7okihZDn5CPQV9l3qeVqYlZD5eBgnpXyt4e0WK2vLnwz4SYR3UEfmNqvQBu4zXK6H+2vN4B8aXfgLx7pT6sltP5R1JGGFHqfUVWFfKebjXzPQ+14jKyNMjKy+1KFZ+XIz7VyHg34k/Dzx9BAPB3iu0uLiVA7WiONw9iK7GeGSEgkbR6A5zXY5czOJJ2sxhUrS8bc96SNy/wAtKeGpWsKwd6dTfenUCuI4Zl4wKcJ18sxzKXU8YPIpuCpyDn2pwckf6vB9aUeZvaxTUJI57xD4J8JeJ7dbfUtLjjyeJIkCt+YFeYa1+zhpqytP4Xv5I5W5CzNkCvb/AN5/EwYH9KPLRDuYlz7Gu+hja1D4ZnLUwVKpuj5a1P4NfEvRFadp7e7hHO2Pk4rk7vSfENopMvh6+YDrhDX2qJnC4VQR6NzThMHQie2j+m2vUocT1oK04KRxVckpT+F2PhkXskSlZ9Hu4G/21IqOO9jYFzMIufuscV9q33h7w3qmftmkxSZ64QCsGb4W/Du6kLzaAob8q9CPFSt71M4J5D/ePkz7fZj718g/4FSC/sWbA1BB9Wr6tb4NfDN+ugL+Zpv/AApf4X52/wBgr+ZpPiak94v8BLJJfzHygt/Zq5xfI30aivq+P4M/DGNjs0FfzNFP/WWl/KyP7El/MX1Oy6NvtygGS9SJkbgBlG+63emxhmXyVIEY5y3U1bgjjKi8edLW1thummmICAD3NfGrTc+p3JLS2aRWmZkjgUfPJKdoH415Z8QP2j/hD8KoZoLzW11DVRnbbxneCfqK+YP2pv2o9Q8Ya9cfDn4aXjWuhW7bL++h+VpHB52sO3WvmG3sbRpnupJpL99uC958xJ9s1M52NYQue8fFP9rn4o/E/ZaeGFk8LaQjHF1bMQ8g968A1681rWbrzPEfiS61c5zmZzzVw3EotEVSEjX70a9qrPHBOxJQge9Y899jWVKxDaSw2UGLFfLHcZzmlWRL2TE5xt7VAnkpeBAflzU91axsd0D4+lO7KptIc621y4gUAMOA1Z93p8cCskjeYp6AmrEUIRSA3z+tOSJLiURXDkY5BpptvUmrFPUseD/G/irwLPKug380FrefJcWisdsi+9S+HoPDOvfE9P8AhO9Rk0TRp5PMlkgGce1Z99ZXFupuo2R4yMHHas1YgqYuCJoZeSepWt1GL2OZytuffemftCfs72OjWvh621aa2sLOMQBlU/vQB941b0z4s/s8Rar/AGlD4+ukQHKx9ga/PgW9gz7DCAvYjrSPa6ezCKNCD61E6TJ9qu599a98T/gZqertrcfi2WaGL/Wbu9c3F+0B8I9Ot57q01iY3m7bGu3qlfE5solJRnxGOoHenmC1MQRYE3g8NjtWPsGyvrNup9H+M/2pZjYXOgeAdPWCO5Uh71eGGeprwTdd3k8ralIbyac5lmY8nNVlWGKQSW8QWJxtbA5Fa+i2yS6gsCyBbc/ed6qUORFU6ntGa+jWGoaKE1Pwp4guNEvE58yFzk19EfDj9s/4j+C4bTS/Gmjrq+kK4WTU5GPmAdzXzwFFnq7W08oez7Oh4zVZt99qP2UMzohztc/KRWMaup2uC5dD9TPh/wDtA/CP4r3v2Dwr4hUagFDNDMPLIPpz1r06RZAytGqyIg5ZeQa/Fy5sGtNSF5ps0+kSr92WzJTJ+or6C+Dn7XXjz4bG30jx5E2qeFxwZ8bp/wAD1raMznlA/R8BgPPwDngp6UAqhLcsp6n0rkfh78S/BfxT8Jxa/wCEdSSTevNkXHmp9VzmuvZp4Y1WVAR3ArZamEo2G8E7l6GlyfWjIPKjA7Cij2jejQuRB06UUUUtNxcouT2NBJPU5pKKqznuFgBK9Dig/Mcnk0UU+Ww1GPUKMDOcc0UUr+RfLTDAzRRRRzeQvZ0zAt4Hu7hYNp8x+CR/CPWvj/8AbT+PU+n2yfCHwdf+VI/7rVHiPzEemRX1D4+8Y2nw6+D2s+L7+4WC6a3YWqMcEvjjFfkxfa3c+IfEd/401otcahqEzMwfnHPFJigRJa29lBHp8PJcbpHPUn3NJDcf6f5cn3U6AVEBL5vnufvcgelRTqyTrID1rJq5vFtbE8km+4keMbW7571K85azCKPmxTZItqJIO9MmQptkQ5PpUW5djXmclqZz/uyRJGdx6NVqO3mFqrJJuz2qe6eJ7Tc2A47VWgk8mDzQ+Sf4aq5jazECtE+6Q4PvTmBlG5VIx1akhLX1x84wBVm4lkSP7JFD7bqmTNlFNDEt5ngcxyZjcYKE1mvbtG4ghjIB6g1oOZ7K3VvWorhSVW5E2Ce1aUTnqwsim6SJIExg+tOaMD5cjd61JI5kYPTDgncTXXc81vUjIRlMeCW9aQyABYguPU0/hXyvemkZfNJN3LVnoWQPKiYhhgjpWhpUYvEEDkrH3I4zWaylosDrVyxvAkfkBSrr1IrGtqtTTD/HY17iP7FiHl7f+6eTSGWTcJbYeVu42nqaZBFNdtvEm/Zzg06VpppzJbxZkUYKenvXnNJM9mxJfT6gLRI7sYt+wxzT4dUW4hSykCAAYUsM8Ux7ueaxMM6hyODn+GorK1s4dOku5JC6qfxBrVbaGEtze8MeJPFXwy18eMPAuoy2N5F81xEzfJMmeQFr9OvgV8W7L4xfCKx8QRMsWqRqBd2xPzKR3P1r8rrO5kucTTsfLJ2hT6V7x+xx8RZ/h78fLjwrqB32viNhFb7m4U7s5rWEmRJI/R9S0jg7cBu9LtcXBjZSFAzvpJISt6bbzSARlaUGVoDCTkg9a6UzllETK4yDmijaioqqOe9FD02FYXrSUo60lT8W5QUd6KT+KjlQWFoxRSjoaonkQlFFFKw+U/Pj9vrx/d33xIsPh3aXDpb2sYnkSM4Bz2P5Gvlh32iHyEAXAyGrX8X+NNR+JXxGm8baxku8fl/N+P8AjWLN5jx7zwidKllxWpI0UrxMxYHnjHaoJYnaAHcMipIZh5B8voetQ7GYlyTUG+w+KWR7c5529qWOYxkPIMg/w+lQWs224LAcirGAZGlbHPalJDT0G31v9p2zwuMD+EVTjeGKbfOr+mDWhAsUKm4YnjnFUZrkXVwZCg8s8Cixk9y/GElG+0IFSC4kVirou71pls9pbRbtpzSANPMXC4Q8ZqZI6YDpcyxBZSGHtUdxZWkUaPJKcY+7mn3FvJZxLJA27PUU6W3t7q3R3JEmOlVTdhVVoZgiKwMwYYzxUasPLORUiQE37QMTgDIppwqBh1BrqTueLNaifLsBA5phPPSlUs0hbtQxPmDNUgjoySMOYiQcMOlXrC7srMbtQTLvxkdqqEKyghsH19KsWT27y7bmEyBe/wDerGrqbYV/vDejtHtIf7Qs2LRP+Qpsl0QgwuJWP8PWmR30sentbxDbAx4iPWnvaNFCJmnWKVRu3N0xXmVIu+h76syWfTpmshNcyLHkZAB5NZsEklvc52iRP+eY6GrNrfX3iWRtL0XSbjU737oaFTivVtH/AGZvH2m/BvUPiLrUptmt+VsZB8xFbQhKxyztc8vVpophNeRqsTfdRe1R3upXWkaxZ+KNJkdL/S5FkgI9c1Xs57rUopJywJV9hHpViJ1e6+yXEeVX1pqXKxuCaP1h+D3ja2+I3wQ0LxKbhZL5bZftYQ5KvjkGu3Vv3W5M5b1r4L/YR+JK6F411T4Z6oX8zUpPOtQ54AGelfehSSK4eKQbueMV1QZyTQ4grhTjNFIxG8rg8d6SrZlYeOtJSYGKWkigpP4qWkPWmIWlHQ0ylxxQAtFNooA/Eew3p4f8iRcFWzVra9xBEFbCfxUkzuo8raNpqHzI4YvLDtzWbN1oEahpXVPlAOPrVmMqEKE5NVJGDzIycKBg471JHGxlzCck+tCQSZBvVLkx4wW6U8pKJACflpt2gSZTNw3qKnL4hDZ+Ud6JImD6MkmVBCIyeD1qlJZyxYZB+67VOAboBm4UelRS3gyYFJwtAp+7qx6lnjAWPJqU3sqWwgKbcnrSademFyJUUr6mnXcqTz5CgJ6iocWbU5pq5N5MtvZLPLJuU9qhCvfSKYcrSGKR4ADKSo7GpbW9MDBSgAHpQotBKomivJuivgzcH7pNRyRqkswB425FS30jXOWAVcHIqi5YKGfOfauiB51RaiwNiIbhSSfM2RTgwdQyjHrT3RRFnvVdTFNJsbHkr0zjt61ftcIyvGoaQ9IqoL8sRIPJq7aW5+wtdO+Cn3SOtKSKoS5Z3Og0rQtb1fWY7Xw9a/2hqUg4tT2r3/4dfseeK9WnXxH8Rr5dKtDy1mX5x9K+ePDnivWvCPirSvFmnZR4blA59VBGc19/61aeJfGPxF0b4vaL4gkfwldWUcFzYs/yB8DdgVnRpKc7M9apVtG6LOgeF/h34DVbLwNoENxdrw12UGc+tdYDea7aXWiazMGt7i3YbMcAkcVl3Wowm6ng8P2aRxqBhyMFj3pLNr6AxT3xJuC4IRepGa9N0IKJwOrJyufnj4r0G48AfEnVfDlwCC9w0sYP93PFZrzM7GVVG7vX0T+2f4EuLXxdp3xR06ApaXCrBIrDAz6181F1N75cT7kkA5HavKr0kmdkJto6vwJ4vk8FfHzw54zH7s27pCSOOvH9a/Xm0u2u9KsNTXDLd26y8dtyg/1r8YtQsBPYC3Mn72M+cjDrkCv0x/ZH+IOqfEb9mW21DWSpubCQ2gwedqAAGlHQUj24BlXY4+brmlAoVlkXzUJKnjmlrYwbCiiikAUh60tFACAUtFFABRRRQB+Jk0g3VBJHkb8ZpxhkK7+ooaZo4cOnHrWZsNjkRgWPG3jFIbt/MxGu2odu5/NPy+3rU+5JE242n1qiWxJf30ZEhyT39KgRXB8tmygomcpC8Y5z/F6U2yYPiOR+B3pMS3L4l8qPagytRmCGZPMQfP3pZriKJfJj+cmoROLZMqMueooSHW1RJapHJP5UpArRu7e2htPkcE1gBzLP5jNsNWVBaUAylhRYmk7KxbtYpLkEb8AU63eGC9Mc3NI8EsMQa1bdnrTjZ7bf7RL96lc05RNQW1C5t3yT2qsq5tDkc0skRji8yGPeDzmlUGS23FthHatYHHWViupdEIcYz0pWOYxQ+4gBmyB3pztEYcIct6VfU5twEZMORU1sXVNrt8p/hqKEybDgZx2qW2hWSbzxJlh1SiQ4bmk17BdaPNYlAu1CR9a+zf2PvE9v40+CFz4GvLh2udNczKm7kgV8UvazyRNcJDtweR6iu++CHxXu/gv47vvFGn6cb+OeExm27E1lTnySuepy80LH6A2ugX1zEb67dNLsoSd08pAGB615t8Rv2hvhx8M4mihuovEurfdia0YEJ9a+UPiJ8f8A4pfEm6uPM1KXQ9Il6WEZwGHpXlEdpa27+esjefnlmOcmul4htGPs0tz1P4lfHHx18UtPa01uaOLw2HLQ2eMOp9a4KxjhitkaJThurN3+lZkt3IZx5q+Zu421aAnhaMg5QcrF6Vy1Hc2gaSOXvnlJwiRMOfpX21/wTy1JP+FZ6xpZuVLC5aTyM849cV8PKTLuUHYz9RXt/wCx/wCLX8DftTHT7icrY30Bi8rPG5gMGoQPU/TcFWQui7V3EYpadMuy6IH3GG8fjTa06GLQUUUUIAooopgFFFFABRRRQB+IoExj2bzRJlIgJOaKKzNAMsMsIOMFaq+bhuKKKoTFlmXyTkVBFKEG7FFFJgiRVLv5gAzT3kEYD7dzNxzRRVIGPaBI4hdNz7VdtzbT2nmquH6AUUU3sZ/aGJJPbOY5D8p6Yp9vDPLc4eQmM84NFFYnWloS31x5EPlIgAHHFZmXdMqePSiitYHFiCRsTRptGNn3velRYnyqDBoorRbnERxCSKYgnk9qnhdkaQqoDUUUSLh8Rf029vWcwzKPLY4qxeJbafdFtxCsOAPWiiuWW57FLWJB5DyRi4mlZo+oB7VRVIPtDPjI64NFFEWZVNCL7RHLd5CgbasGYzyqwJG2iitTNMkaVUkDbjuzW/4D1M6X8cPDWtF2IkvY4j+YFFFSij9k5SDFbzgn5oV4puM0UVS2FMaxINKOlFFNGaFpT1oopjEooooAKKKKkD//2Q==" alt="H. Peter Anvin"></div><h3>H. Peter Anvin</h3><span class="lab">現職</span><span class="now">據媒體報導任職 Rosaic Labs（職稱未公開）</span></div>
+      <p class="why"><b>關鍵點：</b>H. Peter Anvin 與 Rivos 無關，但他加入 Rosaic，代表 Rosaic 正在延攬頂尖的 x86 人才。</p>
+      <div class="chips"><span class="lab">相關經歷</span><span class="chip">前 Intel Linux 工程師</span><span class="chip">Linux x86 核心程式維護者</span></div>
+      <ul>
+        <li>自 1992 年參與 Linux 開發，長期共同維護 Linux 的 x86／x86-64 程式碼，也是 SYSLINUX 開機工具的作者。</li>
+        <li>2008 年起在 Intel 負責 Linux x86 支援。據 Phoronix 引述爆料，他於 2026 年夏天 Intel 組織調整時離職（未經證實）。</li>
+        <li>2026 年 10 月 8 日，據 Phoronix 報導，他在 Linux 核心修補程式上以「Acked-by: H. Peter Anvin (Rosaic)」簽核，Phoronix 據此報導他已加入 Rosaic；目前沒有公司正式公告。<span class="basis">依據：Phoronix、Hardware Busters 報導</span></li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- 5. Lineage -->
 <section id="s3" aria-labelledby="h3">
-  <h2 id="h3"><span class="no">03</span>同一群人的二十多年</h2>
+  <h2 id="h3"><span class="no">05</span>Rivos 與 Rosaic 關聯成員的連續創業史</h2>
   <p class="sec-intro">Rivos 與 Rosaic 的核心成員，多數從 2000 年前後就在同一個圈子共事。這群人有一個反覆出現的模式：成立晶片新創，再被大廠收購。理解這段歷史，就能理解為什麼 Rosaic 會被視為「Rivos 人脈的延續」。</p>
   <div class="lineage">
     <div class="step">
@@ -418,258 +640,81 @@ footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-to
       <span class="ex">前 P.A. Semi 成員創立 → 併入 Google</span>
       <span class="ppl">Gill（創辦人、執行長）、Hayter（共同創辦）、Kumar</span>
     </div>
+    <div class="step inv">
+      <span class="yr">2019–2021 · 投資關係</span>
+      <h3>Nuvia</h3>
+      <span class="ex">伺服器處理器新創，由前 Apple 晶片工程師創立 → 2021 併入 Qualcomm。Rivos 創立初期曾與 Nuvia 共用辦公室。</span>
+      <span class="ppl">Gill、陳立武（皆為種子輪投資人）</span>
+    </div>
     <div class="step rv">
       <span class="yr">2021–2025</span>
       <h3 class="r">Rivos</h3>
       <span class="ex">RISC-V／AI 晶片 → 2025 併入 Meta</span>
-      <span class="ppl">Kumar、Hayter（共同創辦）、Gill（投資人）、陳立武（董事長）</span>
+      <span class="ppl">Kumar、Hayter（共同創辦）、Gill（董事、投資人）、陳立武（董事長）</span>
     </div>
     <div class="step rs">
       <span class="yr">2026–</span>
       <h3 class="s">Rosaic Labs</h3>
-      <span class="ex">x86 晶片，獲英特爾提供 Atom 設計碼</span>
-      <span class="ppl">Gill（執行長）、Parikh、多位前 Rivos 成員</span>
+      <span class="ex">據報導取得 Intel Atom 技術（x86）</span>
+      <span class="ppl">Gill（執行長）、多位前 Rivos 成員；Parikh 簽署設立文件</span>
     </div>
   </div>
-  <p class="fig-note">另有一條投資關係：Gill 與陳立武都是晶片新創 Nuvia 的種子輪投資人，Nuvia 於 2021 年被 Qualcomm 收購。人物經歷依據 SemiAnalysis、InfoWorld、Crunchbase 等資料整理。</p>
 </section>
 
-<!-- 4. Companies -->
-<section id="s4" aria-labelledby="h4">
-  <h2 id="h4"><span class="no">04</span>兩家公司簡介</h2>
-  <div class="cos">
-    <article class="co-card" style="--c:var(--rivos)">
-      <div><h3>Rivos</h3><p class="tag">RISC-V 架構的 AI 伺服器晶片新創，已被 Meta 收購</p></div>
-      <dl class="facts">
-        <dt>成立</dt><dd>2021 年 5 月</dd>
-        <dt>總部</dt><dd>美國加州聖塔克拉拉（Santa Clara）</dd>
-        <dt>產品</dt><dd>伺服器級 RISC-V 處理器，結合專為大型語言模型與資料分析設計的 AI 加速器；採台積電 3 奈米製程。另提供伺服器硬體與完整軟體堆疊。</dd>
-        <dt>規模</dt><dd>約 375 人（2024 年 4 月，執行長受訪數字）</dd>
-        <dt>募資</dt><dd>2024 年 4 月完成逾 2.5 億美元募資，由 Matrix Capital 領投；投資人包括 Intel Capital、聯發科、和通創投、Walden Catalyst（陳立武的創投）、Dell Technologies Capital 等。</dd>
-        <dt>合作</dt><dd>2024 年 9 月宣布採用晶心科技（Andes）NX45 處理器核心，負責晶片內的控制功能。</dd>
-        <dt>訴訟</dt><dd>2022 年 Apple 控告 Rivos 挖角工程師並竊取營業秘密，雙方於 2024 年 2 月和解。</dd>
-        <dt>結局</dt><dd>2025 年 9 月 30 日經 Bloomberg、Reuters 披露由 Meta 收購，金額未公開。Reuters 報導 Meta 是 Rivos 最大客戶之一。</dd>
-      </dl>
-    </article>
-    <article class="co-card" style="--c:var(--rosaic)">
-      <div><h3>Rosaic Labs</h3><p class="tag">正式名稱 RosaicLabs Inc.，處於隱身模式的 x86 晶片新創</p></div>
-      <dl class="facts">
-        <dt>成立</dt><dd>2026 年 5 月向美國德拉瓦州提交公司設立文件</dd>
-        <dt>現況</dt><dd>隱身模式（Stealth Mode）：沒有官網、沒有 LinkedIn 頁面，未公布產品。</dd>
-        <dt>經營團隊</dt><dd>執行長 Amarjit Gill；前 Rivos 財務長 Amit Parikh 簽署設立文件；Reuters 報導創始團隊包含多位 Rivos 老將。</dd>
-        <dt>募資</dt><dd>2026 年 7 月 24 日修訂的文件顯示，公司可募集最高 1,000 萬美元種子輪；5 百萬美元以下的資本支出不需投資人或董事會同意。</dd>
-        <dt>技術來源</dt><dd>依 Reuters 2026 年 7 月 29 日獨家報導，英特爾提供 Atom 處理器技術，並計畫交付 RTL 設計碼，讓 Rosaic 能自行設計客製化 x86 晶片。英特爾不予置評，交易條件未公開。</dd>
-        <dt>近期</dt><dd>2026 年 10 月，Linux x86 核心程式維護者 H. Peter Anvin 以 Rosaic 名義簽署程式修補。</dd>
-        <dt>產品方向</dt><dd>未公開。媒體推測包括邊緣運算、AI 運算或機器人，均無證實。</dd>
-      </dl>
-    </article>
-  </div>
-</section>
-
-<!-- 5. Timeline -->
+<!-- 6. Timeline -->
 <section id="s5" aria-labelledby="h5">
-  <h2 id="h5"><span class="no">05</span>時間軸</h2>
-  <p class="sec-intro">藍點為 Rivos 相關事件，金點為陳立武與英特爾相關事件，紅點為 Rosaic 相關事件。</p>
+  <h2 id="h5"><span class="no">06</span>時間軸</h2>
+  <p class="sec-intro">藍點為 Rivos 相關事件，金點為陳立武與 Intel 相關事件，紅點為 Rosaic 相關事件。</p>
   <ol class="tl">
     <li class="rv"><span class="d">2021/05</span><span class="x">Rivos 成立<small>陳立武與 Gill 協助組建創始團隊，陳立武後來擔任董事長</small></span></li>
     <li class="rv"><span class="d">2022</span><span class="x">Apple 控告 Rivos 挖角並竊取營業秘密<small>2024 年 2 月和解</small></span></li>
-    <li class="rv"><span class="d">2024/04</span><span class="x">Rivos 完成逾 2.5 億美元募資<small>Intel Capital 參與，當時陳立武尚未出任英特爾執行長</small></span></li>
+    <li class="rv"><span class="d">2024/04</span><span class="x">Rivos 完成逾 2.5 億美元募資<small>Intel Capital 參與，當時陳立武尚未出任 Intel 執行長</small></span></li>
     <li class="rv"><span class="d">2024/09</span><span class="x">Rivos 宣布採用晶心科技 NX45 核心</span></li>
-    <li class="tn"><span class="d">2025/03/18</span><span class="x">陳立武出任英特爾執行長，同時仍是 Rivos 董事長與股東</span></li>
-    <li class="tn"><span class="d">2025 夏</span><span class="x">陳立武向英特爾董事會提議收購 Rivos，遭董事會以利益衝突、缺乏明確 AI 策略為由否決<small>之後英特爾改提新 AI 計畫，與 Rivos 展開合作洽談並出價，與 Meta 形成競標</small></span></li>
-    <li class="rv"><span class="d">2025/08</span><span class="x">報導指 Rivos 尋求以約 20 億美元估值募資</span></li>
-    <li class="rv"><span class="d">2025/09/30</span><span class="x">Meta 收購 Rivos 消息曝光，Meta 勝過英特爾</span></li>
-    <li class="tn"><span class="d">2025/12/10</span><span class="x">Reuters 報導陳立武的投資與英特爾交易之間的利益衝突疑慮</span></li>
-    <li class="rs"><span class="d">2026/05</span><span class="x">RosaicLabs Inc. 在德拉瓦州登記成立<small>同月，併入 Meta 的 Rivos 員工第一批股票獎酬（RSU）解鎖</small></span></li>
-    <li class="rs"><span class="d">2026/07/24</span><span class="x">Rosaic 修訂設立文件：Gill 為執行長，可募最高 1,000 萬美元種子輪</span></li>
-    <li class="rs"><span class="d">2026/07/29</span><span class="x">Reuters 獨家：英特爾提供 Atom 技術與 RTL 設計碼給 Rosaic</span></li>
-    <li class="rs"><span class="d">2026/10/08</span><span class="x">H. Peter Anvin 以 Rosaic 名義出現在 Linux 核心郵件清單</span></li>
+    <li class="tn"><span class="d">2025/03/18</span><span class="x">陳立武出任 Intel 執行長，同時仍是 Rivos 董事長與股東</span></li>
+    <li class="tn"><span class="d">2025 夏</span><span class="x">據 Reuters 引述知情人士，陳立武曾向 Intel 董事會提議收購 Rivos，董事會因其身兼雙方的潛在利益衝突，以及缺乏支撐交易的 AI 策略而未同意（非 Intel 公開決議）<small>之後陳立武請副手研擬新 AI 計畫，Intel 隨後與 Rivos 展開合作洽談；Meta 出價後，Intel 也出價競標</small></span></li>
+    <li class="rv"><span class="d">2025/08</span><span class="x">報導指 Rivos 尋求以逾 20 億美元估值募資</span></li>
+    <li class="rv"><span class="d">2025/09/30</span><span class="x">Meta 收購 Rivos 消息曝光，Meta 勝過 Intel<small>金額未公開，<a href="#s4">外界估計見 03 公司簡介</a></small></span></li>
+    <li class="tn"><span class="d">2025/12/10</span><span class="x">Reuters 報導陳立武的個人投資與 Intel 交易之間的潛在利益衝突（公司治理疑慮，未涉及違法指控）</span></li>
+    <li class="rs"><span class="d">2026/05</span><span class="x">RosaicLabs Inc. 在德拉瓦州登記成立<small>同月，併入 Meta 的 Rivos 員工第一批股票獎酬（RSU）解鎖。SemiAnalysis 報導，部分前 Rivos 員工在解鎖後離開 Meta；共同創辦人 Mark Hayter 已離開 Meta，併入 Meta 的 Rivos 工程師約 30% 遭裁員。</small><small class="def">RSU（限制性股票）：公司給員工的股票獎酬，須任職滿一定期間才分批取得；解鎖後，員工離職的代價降低。</small></span></li>
+    <li class="rs"><span class="d">2026/07/24</span><span class="x">Rosaic 修訂設立文件：Gill 為執行長，可尋求 1,000 萬美元種子輪</span></li>
+    <li class="rs"><span class="d">2026/07/29</span><span class="x">Reuters 獨家：Intel 提供 Atom 技術與 RTL 設計碼給 Rosaic</span></li>
+    <li class="rs"><span class="d">2026/10/08</span><span class="x">H. Peter Anvin 以 Rosaic 名義簽核 Linux 核心修補程式（Phoronix 報導）</span></li>
   </ol>
 </section>
 
-<!-- 6. People -->
-<section id="s6" aria-labelledby="h6">
-  <h2 id="h6"><span class="no">06</span>關鍵人物</h2>
-  <p class="sec-intro">依與兩家公司的關聯程度排序。每張卡片下方的灰底文字，說明此人為何與本題相關。</p>
-  <div class="people">
-
-    <article class="person key-p">
-      <div class="hd"><h3>Amarjit Gill</h3><span class="en">Rosaic Labs 執行長</span></div>
-      <div class="chips"><span class="chip r">Rivos 投資人</span><span class="chip s">Rosaic 執行長</span><span class="chip t">陳立武共同投資夥伴</span></div>
-      <ul>
-        <li>連續創業家與天使投資人，畢業於聖荷西州立大學電機系。</li>
-        <li>早年在德州儀器、迪吉多（DEC）與英特爾擔任半導體業務主管。</li>
-        <li>共同創辦 SiByte（2000 年被 Broadcom 收購）與 P.A. Semi（2008 年被 Apple 收購）；創辦 Agnilux 並任執行長（2010 年被 Google 收購）。</li>
-        <li>與陳立武同為 Nuvia 種子輪投資人（2021 年被 Qualcomm 收購）。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>他是串起兩家公司的核心人物。他投資 Rivos，並與陳立武一起組建 Rivos 創始團隊；Rivos 賣給 Meta 後，他出任 Rosaic 執行長。</p>
-    </article>
-
-    <article class="person key-p">
-      <div class="hd"><h3>陳立武</h3><span class="en">Lip-Bu Tan · 英特爾執行長</span></div>
-      <div class="chips"><span class="chip r">前 Rivos 董事長、股東</span><span class="chip">英特爾執行長</span></div>
-      <ul>
-        <li>1959 年生於馬來西亞，南洋大學物理系、MIT 核子工程碩士、舊金山大學 MBA。</li>
-        <li>1987 年創辦創投華登國際（Walden International），後成立 Walden Catalyst，是半導體界知名投資人。</li>
-        <li>2009–2021 年任益華電腦（Cadence）執行長；2022–2024 年任英特爾董事；2025 年 3 月 18 日出任英特爾執行長。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>他同時連到 Rivos、英特爾與 Gill。Rivos 被出售時他是董事長，現在又以英特爾執行長身分，讓英特爾提供技術給 Gill 領導的 Rosaic，因而引發治理疑慮。<b>目前沒有報導指出他持有 Rosaic 股份。</b></p>
-    </article>
-
-    <article class="person">
-      <div class="hd"><h3>Amit Parikh</h3><span class="en">前 Rivos 財務長</span></div>
-      <div class="chips"><span class="chip r">前 Rivos 財務長</span><span class="chip s">Rosaic 設立文件簽署人</span></div>
-      <ul>
-        <li>Reuters 指出，他是 Rivos 前財務主管。</li>
-        <li>2026 年 5 月，由他簽署 Rosaic 的公司設立文件。</li>
-        <li>其他公開經歷有限；Reuters 透過 LinkedIn 聯繫未獲回應。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>他是目前唯一被點名、從 Rivos 直接轉到 Rosaic 的前 Rivos 主管，可證明兩家公司在人事上的延續。</p>
-    </article>
-
-    <article class="person">
-      <div class="hd"><h3>Puneet Kumar</h3><span class="en">Rivos 共同創辦人兼執行長</span></div>
-      <div class="chips"><span class="chip r">Rivos 共同創辦人、執行長</span><span class="chip w">傳聞與 Rosaic 有關，未證實</span></div>
-      <ul>
-        <li>與 Gill 共事多年，經歷包括 SiByte、P.A. Semi、Apple 與 Agnilux。</li>
-        <li>2021 年共同創辦 Rivos 並任執行長，帶領公司至被 Meta 收購。</li>
-        <li>收購後轉入 Meta。SemiAnalysis 報導他可能在 Meta 股票完全解鎖後離開。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>SemiAnalysis 提到外界推測他可能加入 Rosaic，<b>但這只是推測，沒有任何證實</b>。對外引用時請標註。</p>
-    </article>
-
-    <article class="person">
-      <div class="hd"><h3>Mark Hayter</h3><span class="en">Rivos 共同創辦人</span></div>
-      <div class="chips"><span class="chip r">Rivos 共同創辦人</span><span class="chip">已離開 Meta</span></div>
-      <ul>
-        <li>經歷迪吉多（DEC）、SiByte、Broadcom；在 P.A. Semi 任硬體與系統架構副總裁，後任 Apple 主管。</li>
-        <li>共同創辦 Agnilux（任營運長），被收購後任 Google 工程總監。</li>
-        <li>Rivos 被收購後轉入 Meta，SemiAnalysis 報導他已離開。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>與 Gill、Kumar 同屬一個長期合作的團隊，可說明這群人的背景。目前沒有報導指出他加入 Rosaic。</p>
-    </article>
-
-    <article class="person">
-      <div class="hd"><h3>H. Peter Anvin</h3><span class="en">Linux x86 核心程式維護者</span></div>
-      <div class="chips"><span class="chip">前英特爾</span><span class="chip s">2026/10 起 Rosaic</span></div>
-      <ul>
-        <li>自 1992 年參與 Linux 開發，長期共同維護 Linux 的 x86／x86-64 程式碼，也是 SYSLINUX 開機工具的作者。</li>
-        <li>2008 年起在英特爾負責 Linux x86 支援。</li>
-        <li>2026 年 10 月 8 日，他在 Linux 核心郵件清單以「H. Peter Anvin (Rosaic)」署名，顯示已在 Rosaic 任職。</li>
-      </ul>
-      <p class="why"><b>為何重要：</b>他與 Rivos 無關，但他的加入代表 Rosaic 正在延攬頂尖 x86 人才。有消息指他今年夏天在英特爾重組中被裁員，此說法未經證實。</p>
-    </article>
-
-  </div>
-</section>
-
-<!-- 7. Price -->
 <section id="s7" aria-labelledby="h7">
-  <h2 id="h7"><span class="no">07</span>Meta 收購 Rivos 的金額說法</h2>
-  <p class="sec-intro">Meta 從未公開交易金額，媒體引用的數字差異很大，因為各自指的對象不同。對外引用時，建議寫「Meta 未公開金額，外界估計約 20 億至 40 億美元」。</p>
-  <div class="bars" role="img" aria-label="Rivos 收購金額三種說法比較">
-    <div class="bar-row">
-      <div class="bl">約 20 億美元<small>Rivos 收購前募資時尋求的估值（The Information、Bloomberg）</small></div>
-      <div class="track"><div class="fill" style="width:50%">20 億</div></div>
-    </div>
-    <div class="bar-row">
-      <div class="bl">超過 25 億美元<small>SemiAnalysis 估計的收購支出</small></div>
-      <div class="track"><div class="fill" style="width:62.5%">25 億+</div></div>
-    </div>
-    <div class="bar-row">
-      <div class="bl">約 40 億美元<small>Reuters 引述消息人士：競標後含員工激勵的整體方案</small></div>
-      <div class="track"><div class="fill" style="width:100%">40 億</div></div>
-    </div>
-    <div class="axis"><div></div><div><span>0</span><span>10</span><span>20</span><span>30</span><span>40 億美元</span></div></div>
-  </div>
-</section>
-
-<!-- 8. Controversy -->
-<section id="s8" aria-labelledby="h8">
-  <h2 id="h8"><span class="no">08</span>外界的疑慮與英特爾的立場</h2>
-  <div class="two">
-    <div class="panel">
-      <h3>外界質疑的重點</h3>
-      <ul>
-        <li>陳立武擔任英特爾執行長期間，仍是 Rivos 董事長與股東，卻推動英特爾收購 Rivos。</li>
-        <li>英特爾參與競標，推高了 Rivos 的出售價格；陳立武的創投 Walden Catalyst 稱此結果對其投資人是「成功的結局」。</li>
-        <li>英特爾向來幾乎不對外授權 x86 技術，這次卻提供給成立僅兩個月、由陳立武長期夥伴領導的新創。</li>
-        <li>Reuters 訪問的治理專家認為，陳立武應出脫持股、交付信託，或設立特別董事會委員會監督相關交易。</li>
-      </ul>
-    </div>
-    <div class="panel">
-      <h3>英特爾與陳立武方面</h3>
-      <ul>
-        <li>英特爾董事會在聘任陳立武時已知其投資可能造成利益衝突，並接受這項取捨。</li>
-        <li>內部規定：陳立武有利益衝突的案子必須迴避，由財務長 David Zinsner 決定。</li>
-        <li>英特爾表示，關係人交易由審計委員會審查。</li>
-        <li>消息人士稱，陳立武不認為自己的交易有利益衝突。</li>
-        <li>對 Rosaic 一案，英特爾不予置評，Gill 也未回應。</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 9. Verification -->
-<section id="s9" aria-labelledby="h9">
-  <h2 id="h9"><span class="no">09</span>資訊確認程度</h2>
-  <p class="sec-intro">為避免誤用，下表列出常見說法的確認程度。</p>
-  <div class="tbl">
-    <table>
-      <thead><tr><th style="width:52%">說法</th><th style="width:16%">狀態</th><th>依據</th></tr></thead>
-      <tbody>
-        <tr><td>Amarjit Gill 是 Rosaic 執行長</td><td><span class="st ok">已證實</span></td><td>Rosaic 2026/7 修訂文件（Reuters 審閱）</td></tr>
-        <tr><td>前 Rivos 財務長 Amit Parikh 簽署 Rosaic 設立文件</td><td><span class="st ok">已證實</span></td><td>德拉瓦州設立文件（Reuters 審閱）</td></tr>
-        <tr><td>陳立武曾任 Rivos 董事長，並與 Gill 一同組建 Rivos 團隊</td><td><span class="st ok">已證實</span></td><td>Reuters</td></tr>
-        <tr><td>英特爾提供 Atom 技術與 RTL 設計碼給 Rosaic</td><td><span class="st wn">單一報導</span></td><td>Reuters 獨家（一位消息人士與文件）；英特爾不予置評，條件未公開</td></tr>
-        <tr><td>H. Peter Anvin 加入 Rosaic</td><td><span class="st ok">已證實</span></td><td>本人於 Linux 核心郵件清單以 Rosaic 署名</td></tr>
-        <tr><td>Anvin 是被英特爾裁員後加入</td><td><span class="st no">未證實</span></td><td>Phoronix 收到的消息，本人與英特爾均未證實</td></tr>
-        <tr><td>Puneet Kumar 將加入 Rosaic</td><td><span class="st no">未證實</span></td><td>SemiAnalysis 提及的外界推測</td></tr>
-        <tr><td>陳立武持有 Rosaic 股份</td><td><span class="st no">無報導</span></td><td>目前沒有任何報導提及</td></tr>
-        <tr><td>Rosaic 的產品與客戶</td><td><span class="st no">未公開</span></td><td>僅有媒體推測</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- 10. Glossary -->
-<section id="s10" aria-labelledby="h10">
-  <h2 id="h10"><span class="no">10</span>名詞說明</h2>
-  <dl class="gloss">
-    <div><dt>x86</dt><dd>英特爾與 AMD 主導的處理器架構，個人電腦與多數伺服器都使用。英特爾很少對外授權。</dd></div>
-    <div><dt>RISC-V</dt><dd>開放、免授權費的處理器架構，Rivos 採用此架構。與 x86、Arm 互為競爭。</dd></div>
-    <div><dt>Atom</dt><dd>英特爾的低功耗處理器產品線，耗電與發熱較低，適合行動與邊緣裝置。</dd></div>
-    <div><dt>RTL 設計碼</dt><dd>描述晶片電路如何運作的底層設計檔，相當於晶片的「設計藍圖」。取得 RTL 就能在其基礎上修改、設計自己的晶片。</dd></div>
-    <div><dt>隱身模式（Stealth Mode）</dt><dd>新創刻意不公開產品與資訊的營運狀態，晶片新創早期常見。</dd></div>
-    <div><dt>種子輪</dt><dd>新創最早期的正式募資，金額通常較小。1,000 萬美元足以支撐小型團隊，但遠不足以量產先進晶片。</dd></div>
-    <div><dt>RSU（限制性股票）</dt><dd>公司給員工的股票獎酬，需任職一段時間後分批解鎖。解鎖後員工離職的機會成本降低。</dd></div>
-    <div><dt>關係人交易</dt><dd>公司與其董事、高階主管或其利害關係方之間的交易，須經審查並依規定揭露。</dd></div>
-  </dl>
-</section>
-
-<!-- Sources -->
-<section id="s11" aria-labelledby="h11">
-  <h2 id="h11"><span class="no">11</span>資料來源</h2>
+  <h2 id="h7"><span class="no">07</span>資料來源</h2>
+  <p class="sec-intro">依證據等級分類。官方文件為公司或其顧問正式發布；媒體報導為記者查證或引述；媒體獨家指單一媒體引述消息人士與文件、當事公司未證實；分析機構推估為研究機構的估計或推測。Reuters 原站需登入，部分連結為轉載版本。</p>
+  <h3 class="src-h">官方文件</h3>
   <ol class="src">
-    <li>Reuters（2026/07/29）〈Exclusive: Intel providing chip technology to startup led by co-investor of Tan in rare deal〉— <a href="https://www.thestar.com.my/tech/tech-news/2026/07/30/exclusive-intel-providing-chip-technology-to-startup-led-by-co-investor-of-tan-in-rare-deal" target="_blank" rel="noopener">The Star 轉載</a></li>
-    <li>Reuters（2025/12/10）〈Intel pursued deals that boosted CEO Lip-Bu Tan's fortune, sources say〉— <a href="https://www.marketscreener.com/news/intel-pursued-deals-that-boosted-ceo-lip-bu-tan-s-fortune-sources-say-ce7d50dada8af220" target="_blank" rel="noopener">MarketScreener 轉載</a></li>
-    <li>Reuters（2025/09/30）〈Meta to buy chip startup Rivos for AI effort, source says〉— <a href="https://whbl.com/2025/09/30/meta-to-buy-chip-startup-rivos-for-ai-effort-source-says/" target="_blank" rel="noopener">WHBL 轉載</a></li>
-    <li>DatacenterDynamics（2025/10/01）〈Meta acquires RISC-V chip startup Rivos〉— <a href="https://www.datacenterdynamics.com/en/news/meta-acquires-risc-v-chip-startup-rivos-report/" target="_blank" rel="noopener">連結</a></li>
-    <li>Business Wire（2024/04/16）〈Rivos Raises More Than $250M〉— <a href="https://www.businesswire.com/news/home/20240416215878/en/Rivos-Raises-More-Than-250M-Targeting-Data-Analytics-and-Generative-AI-Markets" target="_blank" rel="noopener">連結</a></li>
-    <li>TechCrunch（2024/04/16）〈Apple lawsuit behind it, chip startup Rivos plots its next moves〉— <a href="https://techcrunch.com/2024/04/16/apple-lawsuit-behind-it-chip-startup-rivos-plots-its-next-moves" target="_blank" rel="noopener">連結</a></li>
-    <li>RISC-V International（2024/09）〈Rivos Selects Andes NX45〉— <a href="https://riscv.org/ecosystem-news/2024/09/rivos-selects-andes-nx45-for-control-functions-in-upcoming-high-performance-risc-v-soc" target="_blank" rel="noopener">連結</a></li>
-    <li>SemiAnalysis〈Meta's Infrastructure Team Needs A Culture Reset〉— <a href="https://newsletter.semianalysis.com/p/metas-infrastructure-team-needs-a" target="_blank" rel="noopener">連結</a></li>
-    <li>SemiAnalysis（2021/08/30）〈Rivos Inc – A Chip Off The Old Block〉— <a href="https://newsletter.semianalysis.com/p/rivos-inc-a-chip-off-the-old-block" target="_blank" rel="noopener">連結</a></li>
-    <li>Phoronix（2026/10/08）〈Secretive Rosaic Labs Hires Legendary Linux x86 Developer〉— <a href="https://www.phoronix.com/news/H-Peter-Anvin-Rosaic-Labs" target="_blank" rel="noopener">連結</a></li>
-    <li>HotHardware（2026/07/30）〈Intel Quietly Hands Atom CPU Tech To Startup Linked To CEO Lip-Bu Tan〉— <a href="https://hothardware.com/news/intel-hands-atom-cpu-tech-to-rosaiclabs" target="_blank" rel="noopener">連結</a></li>
-    <li>Chips and Cheese（2026/07/31）〈RosaicLabs, Atom RTL, and 32-Tile AMX〉— <a href="https://chipsandcheese.com/p/rosaiclabs-atom-rtl-and-32-tile-amx" target="_blank" rel="noopener">連結</a></li>
-    <li>InfoWorld（2010/04）〈Google buys Agnilux〉— <a href="https://www.infoworld.com/article/2294356/google-buys-agnilux-and-yes-there-s-an-apple-angle-2.html" target="_blank" rel="noopener">連結</a></li>
-    <li>Crunchbase〈Amarjit Gill〉— <a href="https://www.crunchbase.com/person/amarjit-gill" target="_blank" rel="noopener">連結</a></li>
-    <li>Wikipedia〈Lip-Bu Tan〉— <a href="https://en.wikipedia.org/wiki/Lip-Bu_Tan" target="_blank" rel="noopener">連結</a></li>
+    <li>Rivos，Rivos 完成逾 2.5 億美元 A-3 輪募資新聞稿（含台積電 3 奈米、投資人名單），2024/4/17。<a href="https://www.design-reuse.com/news/56074/rivos-risc-v-funding.html">design-reuse.com</a></li>
+    <li>Rivos、晶心科技聯合公告，Rivos Selects Andes NX45 for Control Functions，2024/9/11。<a href="https://riscv.org/ecosystem-news/2024/09/rivos-selects-andes-nx45-for-control-functions-in-upcoming-high-performance-risc-v-soc">riscv.org</a></li>
+    <li>Intel，Intel Appoints Lip-Bu Tan as Chief Executive Officer，2025/3/12。<a href="https://www.intc.com/news-events/press-releases/detail/1730/intel-appoints-lip-bu-tan-as-chief-executive-officer">intc.com</a></li>
+    <li>Latham &amp; Watkins（Meta 法律顧問），Latham &amp; Watkins Advises Meta in Acquisition of Rivos，2025/10/3。<a href="https://www.lw.com/en/news/2025/10/latham-watkins-advises-meta-in-acquisition-of-rivos">lw.com</a></li>
+    <li>Dell Technologies Capital（Rivos 投資人），Rivos acquired by Meta（創辦人與董事名單），2025/9/30。<a href="https://www.delltechnologiescapital.com/resources/rivos-acquired-by-meta">delltechnologiescapital.com</a></li>
+    <li>Walden Catalyst（陳立武的創投），From Idea to Exit: The Story of Rivos。<a href="https://waldencatalyst.com/blog/from-idea-to-exit-the-story-of-rivos">waldencatalyst.com</a></li>
+  </ol>
+  <h3 class="src-h">媒體報導</h3>
+  <ol class="src">
+    <li>MacRumors（引述 Bloomberg），Apple 與 Rivos 和解，2024/2/9。<a href="https://macrumors.com/2024/02/09/apple-settles-rivos-lawsuit">macrumors.com</a></li>
+    <li>Axios Pro Rata（引述 The Information），Rivos 尋求以 20 億美元估值募資，2025/8/13。<a href="https://www.axios.com/pro/all-deals/2025/08/13/pro-rata-premium-first-look">axios.com</a></li>
+    <li>Reuters，Meta to buy chip startup Rivos for AI effort, source says，2025/9/30（轉載）。<a href="https://whbl.com/2025/09/30/meta-to-buy-chip-startup-rivos-for-ai-effort-source-says/">whbl.com</a></li>
+    <li>Reuters，Intel pursued deals that boosted CEO Lip-Bu Tan's fortune, sources say，2025/12/10（轉載）。<a href="https://www.streetinsider.com/Reuters/Intel+pursued+deals+that+boosted+CEO+Lip-Bu+Tans+fortune,+sources+say/25723632.html">streetinsider.com</a></li>
+    <li>Tom's Hardware，Intel licenses Atom-class x86 cores to startup firm（Gill 投資 Rivos），2026/7/30。<a href="https://www.tomshardware.com/pc-components/cpus/intel-licenses-atom-class-x86-cores-to-startup-firm-reportedly-sharing-rtl-enabling-customer-to-build-its-own-custom-processors-based-on-x86-general-purpose-cores">tomshardware.com</a></li>
+    <li>Phoronix，H. Peter Anvin 以 Rosaic 名義簽核核心修補程式，2026/10/8。<a href="https://www.phoronix.com/news/H-Peter-Anvin-Rosaic-Labs">phoronix.com</a></li>
+    <li>Hardware Busters，Rosaic Labs lands H. Peter Anvin，2026/10/9。<a href="https://hwbusters.com/news/rosaic-labs-lands-h-peter-anvin-and-the-stealth-x86-startup-gets-harder-to-ignore/">hwbusters.com</a></li>
+  </ol>
+  <h3 class="src-h">媒體獨家（消息人士與文件，當事公司未證實）</h3>
+  <ol class="src">
+    <li>Reuters，Exclusive: Intel providing chip technology to startup led by co-investor of Tan in rare deal，2026/7/29（轉載）。Intel 不予置評。<a href="https://www.thestar.com.my/tech/tech-news/2026/07/30/exclusive-intel-providing-chip-technology-to-startup-led-by-co-investor-of-tan-in-rare-deal">thestar.com.my</a></li>
+  </ol>
+  <h3 class="src-h">分析機構推估</h3>
+  <ol class="src">
+    <li>SemiAnalysis，Meta 基礎架構團隊分析（收購支出逾 25 億美元、RSU 解鎖後人員流動、Puneet Kumar 動向推測），2026/7/22。<a href="https://newsletter.semianalysis.com/p/metas-infrastructure-team-needs-a">semianalysis.com</a></li>
   </ol>
 </section>
 
-<footer>本簡報依據截至 2026 年 10 月 15 日的公開報導整理。Rosaic Labs 仍在隱身模式，相關資訊可能隨時變動；標示「未證實」的內容請勿當作事實引用。</footer>
+<footer>本簡報依據截至 2026 年 10 月 16 日的公開報導整理。</footer>
 
 </div>
 
