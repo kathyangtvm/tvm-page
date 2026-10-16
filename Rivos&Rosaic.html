@@ -8,195 +8,284 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Noto+Serif+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* Layout: single reading column (max 980px) for an executive briefing; summary first, then diagram, timeline, profiles, verification, sources. */
+/* Layout: editorial dossier — 900px column on warm paper, hero with ledger strip, sticky section nav, claret + brass accents. */
 :root{
-  --bg:#F5F6F8; --surface:#FFFFFF; --fg:#1B2230; --muted:#5A6375; --line:#D9DDE5;
-  --rivos:#2C5C9A; --rivos-soft:#E6EDF7;
-  --rosaic:#A23E66; --rosaic-soft:#F6E7EE;
-  --tan:#94680F; --tan-soft:#F5EEDD;
-  --neutral:#6B7385; --neutral-soft:#ECEEF2;
-  --warn:#9A5B00; --warn-soft:#FBF1DF; --ok:#2F7A4F; --ok-soft:#E3F2E9;
-  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
-  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --paper:#EDE9E0; --surface:#F8F5EE; --surface-2:#F1ECDF;
+  --ink:#211C19; --ink-soft:#4B4239; --ink-faint:#6E6357; --line:rgba(33,28,25,.16);
+  --claret:#5C1A2B; --brass:#8C6A32; --brass-soft:#B89A63;
+  --rivos:#2F4E66; --rivos-soft:rgba(47,78,102,.10);
+  --rosaic:#5C1A2B; --rosaic-soft:rgba(92,26,43,.08);
+  --tan:#8C6A32; --tan-soft:rgba(140,106,50,.12);
+  --neutral:#6E6357; --neutral-soft:rgba(33,28,25,.06);
+  --warn:#8A5410; --warn-soft:rgba(138,84,16,.11); --ok:#4B6B3F; --ok-soft:rgba(75,107,63,.12);
+  --shadow:0 1px 3px rgba(33,28,25,.08);
+  --display:"Fraunces","Noto Serif TC",Georgia,serif;
+  --body:"Source Serif 4","Noto Serif TC",Georgia,serif;
+  --mono:"IBM Plex Mono","Noto Sans TC",ui-monospace,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#12161D; --surface:#1A2029; --fg:#E6E9EF; --muted:#9AA3B4; --line:#2E3644;
-  --rivos:#7FA8E0; --rivos-soft:#1D2A3D; --rosaic:#E08AAE; --rosaic-soft:#3A2230;
-  --tan:#D9AE55; --tan-soft:#33291A; --neutral:#A2AABA; --neutral-soft:#242B36;
-  --warn:#E5AE5A; --warn-soft:#352816; --ok:#76C496; --ok-soft:#1B3125; color-scheme:dark}}
+  --paper:#1B1512; --surface:#241D18; --surface-2:#2C231D;
+  --ink:#EFE8DB; --ink-soft:#C8BBA8; --ink-faint:#A79A89; --line:rgba(239,232,219,.18);
+  --claret:#E39BAC; --brass:#D3B36C; --brass-soft:#9C8050;
+  --rivos:#94B4CF; --rivos-soft:rgba(148,180,207,.12);
+  --rosaic:#E39BAC; --rosaic-soft:rgba(227,155,172,.12);
+  --tan:#D3B36C; --tan-soft:rgba(211,179,108,.13);
+  --neutral:#A79A89; --neutral-soft:rgba(239,232,219,.07);
+  --warn:#E2B566; --warn-soft:rgba(226,181,102,.13); --ok:#93C67F; --ok-soft:rgba(147,198,127,.14);
+  --shadow:0 1px 3px rgba(0,0,0,.5); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#12161D; --surface:#1A2029; --fg:#E6E9EF; --muted:#9AA3B4; --line:#2E3644;
-  --rivos:#7FA8E0; --rivos-soft:#1D2A3D; --rosaic:#E08AAE; --rosaic-soft:#3A2230;
-  --tan:#D9AE55; --tan-soft:#33291A; --neutral:#A2AABA; --neutral-soft:#242B36;
-  --warn:#E5AE5A; --warn-soft:#352816; --ok:#76C496; --ok-soft:#1B3125; color-scheme:dark}
+  --paper:#1B1512; --surface:#241D18; --surface-2:#2C231D;
+  --ink:#EFE8DB; --ink-soft:#C8BBA8; --ink-faint:#A79A89; --line:rgba(239,232,219,.18);
+  --claret:#E39BAC; --brass:#D3B36C; --brass-soft:#9C8050;
+  --rivos:#94B4CF; --rivos-soft:rgba(148,180,207,.12);
+  --rosaic:#E39BAC; --rosaic-soft:rgba(227,155,172,.12);
+  --tan:#D3B36C; --tan-soft:rgba(211,179,108,.13);
+  --neutral:#A79A89; --neutral-soft:rgba(239,232,219,.07);
+  --warn:#E2B566; --warn-soft:rgba(226,181,102,.13); --ok:#93C67F; --ok-soft:rgba(147,198,127,.14);
+  --shadow:0 1px 3px rgba(0,0,0,.5); color-scheme:dark}
 
-body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.75;
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.8;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.wrap{max-width:980px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:56px}
-h1,h2,h3{font-family:var(--serif);text-wrap:balance;line-height:1.35;margin:0}
-h1{font-size:clamp(28px,4.6vw,40px)}
-h2{font-size:clamp(22px,3vw,27px);display:flex;align-items:baseline;gap:12px}
-h2 .no{font-family:var(--mono);font-size:14px;color:var(--muted);font-weight:500}
-h3{font-size:19px}
+.wrap{max-width:900px;margin:0 auto;padding-block:0 80px;display:flex;flex-direction:column;gap:76px}
+h1,h2,h3{font-family:var(--display);color:var(--ink);text-wrap:balance;line-height:1.3;margin:0;font-weight:600}
+h2{font-size:clamp(1.55rem,3vw,2.05rem);display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+h2 .no{font-family:var(--mono);font-size:.85rem;color:var(--brass);font-weight:500}
+h3{font-size:1.15rem}
 p{margin:0}
-a{color:var(--rivos)}
-a:focus-visible{outline:2px solid var(--rivos);outline-offset:2px}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.lede{color:var(--muted);max-width:68ch}
-section{display:flex;flex-direction:column;gap:20px;min-width:0}
-.sec-intro{color:var(--muted);max-width:70ch}
-.r{color:var(--rivos);font-weight:700}.s{color:var(--rosaic);font-weight:700}.t{color:var(--tan);font-weight:700}
+a{color:var(--claret)}
+a:focus-visible{outline:2px solid var(--claret);outline-offset:3px}
+section{display:flex;flex-direction:column;gap:22px;min-width:0;scroll-margin-top:72px}
+.sec-intro{font-family:var(--body);color:var(--ink-soft);font-size:1.05rem;max-width:60ch;line-height:1.75}
+.r{color:var(--rivos);font-weight:600}.s{color:var(--rosaic);font-weight:600}.t{color:var(--tan);font-weight:600}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
-/* header */
-header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--line);padding-bottom:28px}
-.meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+/* hero */
+header{position:relative;padding-block:clamp(48px,8vw,84px) 36px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:18px;overflow:hidden}
+.stamp{position:absolute;top:10px;right:0;width:128px;height:128px;color:var(--brass);opacity:.55}
+@media (prefers-reduced-motion:no-preference){.stamp{animation:spin 120s linear infinite}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:.6em}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--brass)}
+h1{font-size:clamp(2.2rem,5.6vw,3.6rem);line-height:1.18;max-width:12em;padding-right:130px}
+.lede{font-size:1.08rem;color:var(--ink-soft);max-width:60ch;line-height:1.85}
+.ledger{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:14px}
+.ledger-item{flex:1 1 150px;padding:1rem 1.3rem;border-left:1px solid var(--line);min-width:0}
+.ledger-item:first-child{border-left:none;padding-left:0}
+.ledger-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--ink-faint)}
+.ledger-value{font-family:var(--display);font-weight:600;font-size:1.3rem;margin-top:.25rem;line-height:1.35}
+.ledger-value.sm{font-size:1rem}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);line-height:1.6}
+
+/* sticky nav */
+.docnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-top:-76px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.docnav-inner{display:flex;gap:1.4rem;overflow-x:auto;scrollbar-width:none;white-space:nowrap}
+.docnav-inner::-webkit-scrollbar{display:none}
+.docnav a{font-family:var(--mono);font-size:.74rem;color:var(--ink-faint);text-decoration:none;padding:.9rem 0;border-bottom:2px solid transparent}
+.docnav a span{color:var(--brass);margin-right:.4em}
+.docnav a:hover,.docnav a.active{color:var(--ink);border-bottom-color:var(--claret)}
+.docnav a.mark{color:var(--claret);border-right:1px solid var(--line);padding-right:1.3rem;letter-spacing:.06em}
+.docnav a.mark:hover{border-bottom-color:transparent}
 
 /* summary */
-.answer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px 26px;display:flex;flex-direction:column;gap:18px}
-.answer .big{font-family:var(--serif);font-size:clamp(19px,2.4vw,22px);line-height:1.6;font-weight:600}
-.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.key{background:var(--bg);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.key b{font-size:15px}
-.key p{font-size:15px;color:var(--muted)}
+.answer{display:flex;flex-direction:column;gap:22px}
+.answer .big{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.3vw,1.35rem);line-height:1.75;color:var(--ink);border-left:2px solid var(--claret);padding-left:1.3rem;max-width:58ch}
+.answer .big .r,.answer .big .s{font-style:normal}
+.keys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.key{background:var(--surface);padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:6px;min-width:0}
+.key b{font-family:var(--display);font-weight:600;font-size:1.05rem}
+.key p{font-size:.95rem;color:var(--ink-soft);line-height:1.7}
 
 /* diagram */
-.fig{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 12px 12px;overflow-x:auto}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 12px 12px;overflow-x:auto}
 .fig svg{display:block;width:100%;min-width:760px;height:auto}
-.fig-note{font-size:14px;color:var(--muted)}
-svg .box{stroke-width:1.5}
+.fig-note{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);line-height:1.7}
+svg .box{stroke-width:1.3}
 svg .b-rivos{fill:var(--rivos-soft);stroke:var(--rivos)}
 svg .b-rosaic{fill:var(--rosaic-soft);stroke:var(--rosaic)}
 svg .b-tan{fill:var(--tan-soft);stroke:var(--tan)}
-svg .b-neu{fill:var(--neutral-soft);stroke:var(--neutral)}
+svg .b-neu{fill:var(--surface-2);stroke:var(--neutral)}
 svg .b-person{fill:var(--surface);stroke:var(--line)}
 svg .b-dash{fill:var(--surface);stroke:var(--neutral);stroke-dasharray:5 4}
-svg .nm{font-family:var(--sans);font-size:16px;font-weight:700;fill:var(--fg)}
-svg .sub{font-family:var(--sans);font-size:12.5px;fill:var(--muted)}
-svg .co{font-family:var(--serif);font-size:20px;font-weight:700}
+svg .nm{font-family:var(--display);font-size:16px;font-weight:600;fill:var(--ink)}
+svg .sub{font-family:var(--body);font-size:12.5px;fill:var(--ink-faint)}
+svg .co{font-family:var(--display);font-size:21px;font-weight:600}
 svg .co-r{fill:var(--rivos)} svg .co-s{fill:var(--rosaic)}
-svg .lbl{font-family:var(--sans);font-size:12.5px;fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
-svg .lbl-m{fill:var(--muted)}
-svg .e{fill:none;stroke-width:2}
+svg .lbl{font-family:var(--body);font-size:12.5px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+svg .lbl-m{fill:var(--ink-faint)}
+svg .e{fill:none;stroke-width:1.8}
 svg .e-r{stroke:var(--rivos)} svg .e-s{stroke:var(--rosaic)} svg .e-t{stroke:var(--tan)} svg .e-n{stroke:var(--neutral)}
 svg .e-dash{stroke-dasharray:6 5}
 svg .ah-r{fill:var(--rivos)} svg .ah-s{fill:var(--rosaic)} svg .ah-n{fill:var(--neutral)}
-.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--muted);padding:8px 8px 0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);padding:8px 8px 0}
 .legend span{display:inline-flex;align-items:center;gap:8px}
-.legend i{display:inline-block;width:28px;border-top:2px solid var(--fg)}
+.legend i{display:inline-block;width:28px;border-top:2px solid var(--ink)}
 .legend i.d{border-top-style:dashed;border-color:var(--neutral)}
 
 /* lineage */
-.lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px;position:relative;min-width:0}
-.step .yr{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
-.step h3{font-size:17px}
-.step .ex{font-size:13.5px;color:var(--muted)}
-.step .ppl{font-size:13.5px;border-top:1px dashed var(--line);padding-top:6px;margin-top:auto}
-.step.rv{border-color:var(--rivos);background:var(--rivos-soft)}
-.step.rs{border-color:var(--rosaic);background:var(--rosaic-soft)}
-.step:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px;z-index:1}
-@media (max-width:820px){.lineage{grid-template-columns:1fr 1fr}.step::after{display:none}}
+.lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.step{background:var(--surface);padding:1.1rem 1rem;display:flex;flex-direction:column;gap:6px;min-width:0}
+.step .yr{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--brass)}
+.step h3{font-size:1.08rem}
+.step .ex{font-size:.86rem;color:var(--ink-soft);line-height:1.6}
+.step .ppl{font-size:.84rem;line-height:1.6;border-top:1px solid var(--line);padding-top:8px;margin-top:auto;color:var(--ink)}
+.step.rv{background:color-mix(in srgb,var(--surface) 88%,var(--rivos))}
+.step.rs{background:color-mix(in srgb,var(--surface) 90%,var(--rosaic))}
+@media (max-width:820px){.lineage{grid-template-columns:1fr 1fr}}
 @media (max-width:460px){.lineage{grid-template-columns:1fr}}
 
 /* company cards */
-.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.co-card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.co-card h3{font-size:24px;color:var(--c)}
-.co-card .tag{font-size:14px;color:var(--muted)}
-dl.facts{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:8px 14px;font-size:15px}
-dl.facts dt{color:var(--muted);font-size:14px;padding-top:1px}
-dl.facts dd{margin:0;min-width:0}
+.cos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.co-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.6rem;display:flex;flex-direction:column;gap:14px;min-width:0}
+.co-card h3{font-size:1.75rem;color:var(--c)}
+.co-card .tag{font-family:var(--body);font-size:.98rem;color:var(--ink-soft)}
+dl.facts{margin:0;display:grid;grid-template-columns:5.6em 1fr;gap:0;font-size:.95rem;line-height:1.7}
+dl.facts dt,dl.facts dd{border-top:1px solid var(--line);padding:.6rem 0}
+dl.facts dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--brass);padding-top:.8rem}
+dl.facts dd{margin:0;min-width:0;color:var(--ink-soft)}
 
 /* timeline */
 .tl{list-style:none;margin:0;padding:0;position:relative}
-.tl::before{content:"";position:absolute;left:7.6em;top:6px;bottom:6px;width:2px;background:var(--line)}
-.tl li{display:grid;grid-template-columns:6.8em 1fr;gap:44px;padding:9px 0;position:relative}
-.tl li::before{content:"";position:absolute;left:calc(7.6em - 5px);top:17px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--dot,var(--neutral))}
-.tl .d{font-family:var(--mono);font-size:13.5px;color:var(--muted);text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
-.tl .x{font-size:15.5px;min-width:0}
-.tl .x small{display:block;color:var(--muted);font-size:13.5px}
+.tl::before{content:"";position:absolute;left:calc(6.8em + 21px);top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:6.8em 1fr;gap:44px;padding:.75rem 0;position:relative}
+.tl li::before{content:"";position:absolute;left:calc(6.8em + 16px);top:1.3rem;width:11px;height:11px;border-radius:50%;background:var(--dot,var(--neutral));box-shadow:0 0 0 4px var(--paper)}
+.tl .d{font-family:var(--mono);font-size:.76rem;color:var(--ink-faint);text-align:right;padding-top:4px;font-variant-numeric:tabular-nums}
+.tl .x{font-family:var(--display);font-weight:600;font-size:1.04rem;min-width:0;line-height:1.6}
+.tl .x small{display:block;font-family:var(--body);font-weight:400;color:var(--ink-soft);font-size:.92rem;margin-top:.2rem}
 .tl li.rv{--dot:var(--rivos)} .tl li.rs{--dot:var(--rosaic)} .tl li.tn{--dot:var(--tan)}
-.tl li.rv::before,.tl li.rs::before,.tl li.tn::before{background:var(--dot)}
-.era{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;color:var(--muted);padding:16px 0 4px calc(6.8em + 28px)}
 
 /* people */
-.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.person{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.person .hd{display:flex;flex-direction:column;gap:2px}
-.person .hd h3{font-size:20px}
-.person .hd .en{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.people{display:flex;flex-direction:column}
+.person{display:grid;grid-template-columns:minmax(170px,230px) 1fr;gap:.6rem 1.6rem;padding:1.5rem 0;border-top:1px solid var(--line);min-width:0}
+.person:last-child{border-bottom:1px solid var(--line)}
+.person .hd{grid-column:1;grid-row:1 / span 3;display:flex;flex-direction:column;gap:4px}
+.person .hd h3{font-size:1.3rem}
+.person .hd .en{font-family:var(--mono);font-size:.72rem;color:var(--claret);letter-spacing:.02em}
+.person .chips,.person ul,.person .why{grid-column:2;min-width:0}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12.5px;padding:2px 9px;border-radius:999px;background:var(--neutral-soft);color:var(--fg);white-space:nowrap}
-.chip.r{background:var(--rivos-soft);color:var(--rivos);font-weight:500}
-.chip.s{background:var(--rosaic-soft);color:var(--rosaic);font-weight:500}
-.chip.t{background:var(--tan-soft);color:var(--tan);font-weight:500}
-.chip.w{background:var(--warn-soft);color:var(--warn);font-weight:500}
-.person ul{margin:0;padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:4px}
-.person .why{font-size:14.5px;background:var(--bg);border-radius:6px;padding:10px 12px}
-.person .why b{color:var(--fg)}
-.person.key-p{border-color:var(--tan)}
+.chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;padding:.2rem .6rem;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft);white-space:nowrap}
+.chip.r{border-color:var(--rivos);color:var(--rivos);background:var(--rivos-soft)}
+.chip.s{border-color:var(--rosaic);color:var(--rosaic);background:var(--rosaic-soft)}
+.chip.t{border-color:var(--tan);color:var(--tan);background:var(--tan-soft)}
+.chip.w{border-color:var(--warn);color:var(--warn);background:var(--warn-soft)}
+.person ul{margin:0;padding-left:1.1em;font-size:.95rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:4px;line-height:1.7}
+.person li::marker{color:var(--brass-soft)}
+.person .why{font-size:.93rem;line-height:1.7;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:.85rem 1.1rem;color:var(--ink-soft)}
+.person .why b{color:var(--ink);font-weight:600}
+@media (max-width:680px){.person{grid-template-columns:1fr}.person .hd,.person .chips,.person ul,.person .why{grid-column:1;grid-row:auto}}
 
 /* price chart */
-.bars{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+.bars{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:16px}
 .bar-row{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:14px;align-items:center}
-.bar-row .bl{font-size:14.5px}
-.bar-row .bl small{display:block;color:var(--muted);font-size:13px}
-.track{position:relative;height:30px;background:var(--neutral-soft);border-radius:4px}
-.fill{position:absolute;inset:0 auto 0 0;background:var(--rivos);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:var(--surface);font-family:var(--mono);font-size:14px;font-weight:500;font-variant-numeric:tabular-nums}
-.axis{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bar-row .bl{font-family:var(--display);font-weight:600;font-size:1rem}
+.bar-row .bl small{display:block;font-family:var(--body);font-weight:400;color:var(--ink-soft);font-size:.84rem;line-height:1.5}
+.track{position:relative;height:30px;background:var(--surface-2);border-radius:4px}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--claret);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:var(--surface);font-family:var(--mono);font-size:.8rem;font-weight:500;font-variant-numeric:tabular-nums}
+.axis{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:14px;font-family:var(--mono);font-size:.68rem;color:var(--ink-faint)}
 .axis div:last-child{display:flex;justify-content:space-between}
 @media (max-width:560px){.bar-row,.axis{grid-template-columns:1fr}.axis div:first-child{display:none}}
 
 /* controversy */
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.panel ul{margin:0;padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:6px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panel{background:var(--surface);padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel h3{font-size:1.1rem}
+.panel ul{margin:0;padding-left:1.1em;font-size:.95rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;line-height:1.7}
+.panel li::marker{color:var(--brass-soft)}
 
 /* verification table */
-.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
-th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:13px;color:var(--muted);font-weight:500;background:var(--bg)}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.93rem}
+th,td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+td{color:var(--ink-soft)} td:first-child{color:var(--ink)}
+th{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--claret);font-weight:500;background:var(--surface-2)}
 tr:last-child td{border-bottom:none}
-.st{display:inline-block;font-size:12.5px;padding:2px 9px;border-radius:999px;white-space:nowrap;font-weight:500}
+.st{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:.15rem .6rem;border-radius:999px;white-space:nowrap;font-weight:500}
 .st.ok{background:var(--ok-soft);color:var(--ok)}
 .st.wn{background:var(--warn-soft);color:var(--warn)}
 .st.no{background:var(--neutral-soft);color:var(--neutral)}
 
 /* glossary */
-.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px 28px;margin:0}
-.gloss div{border-top:1px solid var(--line);padding-top:10px;min-width:0}
-.gloss dt{font-weight:700;font-size:15.5px}
-.gloss dd{margin:2px 0 0;font-size:14.5px;color:var(--muted)}
+.gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 2.5rem;margin:0}
+.gloss div{border-top:1px solid var(--line);padding:.9rem 0;min-width:0}
+.gloss dt{font-family:var(--display);font-weight:600;font-size:1.02rem}
+.gloss dd{margin:2px 0 0;font-size:.92rem;color:var(--ink-soft);line-height:1.7}
 
 /* sources */
-ol.src{margin:0;padding-left:1.6em;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px;columns:1}
-ol.src a{word-break:break-word}
-footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+ol.src{margin:0;padding-left:1.6em;font-size:.88rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:.55rem;line-height:1.6}
+ol.src li::marker{font-family:var(--mono);color:var(--brass);font-size:.75rem}
+ol.src a{word-break:break-word;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+ol.src a:hover{color:var(--claret);border-color:var(--claret)}
+footer{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:24px;line-height:1.7}
+
+@media (max-width:680px){
+  .keys{grid-template-columns:1fr}
+  .tl::before{left:calc(5.2em + 13px)}
+  .tl li{grid-template-columns:5.2em 1fr;gap:30px}
+  .tl li::before{left:calc(5.2em + 8px)}
+  .tl .d{font-size:.68rem}
+  .stamp{width:84px;height:84px;opacity:.4}
+  h1{padding-right:70px}
+  .ledger-item{flex-basis:45%}
+  .ledger-item:nth-child(3){border-left:none;padding-left:0}
+}
+@media (max-width:420px){
+  .stamp{display:none} h1{padding-right:0}
+  .ledger-item{flex-basis:100%;border-left:none;padding-left:0;border-top:1px solid var(--line)}
+  .ledger-item:first-child{border-top:none}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="top">
 
 <header>
-  <div class="eyebrow">產業背景簡報 · 半導體新創</div>
+  <svg class="stamp" viewBox="0 0 200 200" aria-hidden="true">
+    <defs><path id="circlePath" d="M 100,100 m -74,0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0"/></defs>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="56" fill="none" stroke="currentColor" stroke-width="1"/>
+    <text font-size="9.5" letter-spacing="3.2" fill="currentColor" font-family="IBM Plex Mono, monospace"><textPath href="#circlePath" startOffset="1%">RIVOS · ROSAIC LABS · SEMICONDUCTOR BRIEFING ·</textPath></text>
+    <text x="100" y="98" text-anchor="middle" font-size="13" letter-spacing="1" fill="currentColor" font-family="Fraunces, Georgia, serif">2026</text>
+    <text x="100" y="114" text-anchor="middle" font-size="6.5" letter-spacing="2" fill="currentColor" font-family="IBM Plex Mono, monospace">OCTOBER · 15</text>
+  </svg>
+  <span class="eyebrow">產業背景簡報 · 半導體新創</span>
   <h1>Rivos 與 Rosaic Labs 的關係</h1>
   <p class="lede">兩家公司都是美國矽谷的晶片新創。本簡報說明兩家公司各自的背景、彼此之間的連結人物，以及英特爾（Intel）在其中扮演的角色。</p>
+  <div class="ledger">
+    <div class="ledger-item"><div class="ledger-label">RIVOS 成立</div><div class="ledger-value">2021</div></div>
+    <div class="ledger-item"><div class="ledger-label">META 收購 RIVOS</div><div class="ledger-value">2025/9</div></div>
+    <div class="ledger-item"><div class="ledger-label">ROSAIC 登記成立</div><div class="ledger-value">2026/5</div></div>
+    <div class="ledger-item"><div class="ledger-label">ROSAIC 執行長</div><div class="ledger-value sm">Amarjit Gill</div></div>
+  </div>
   <div class="meta-row">
     <span>資料截至 <span class="mono">2026/10/15</span></span>
     <span>依據：Reuters、Bloomberg、SemiAnalysis、Phoronix 等公開報導（見文末來源）</span>
   </div>
 </header>
 
+<nav class="docnav" aria-label="章節導覽">
+  <div class="docnav-inner">
+    <a class="mark" href="#top">RIVOS / ROSAIC</a>
+    <a href="#s1"><span>01</span>結論</a>
+    <a href="#s2"><span>02</span>關係圖</a>
+    <a href="#s3"><span>03</span>人脈淵源</a>
+    <a href="#s4"><span>04</span>公司簡介</a>
+    <a href="#s5"><span>05</span>時間軸</a>
+    <a href="#s6"><span>06</span>關鍵人物</a>
+    <a href="#s7"><span>07</span>收購金額</a>
+    <a href="#s8"><span>08</span>疑慮與立場</a>
+    <a href="#s9"><span>09</span>確認程度</a>
+    <a href="#s10"><span>10</span>名詞</a>
+    <a href="#s11"><span>11</span>來源</a>
+  </div>
+</nav>
+
 <!-- 1. Summary -->
-<section aria-labelledby="s1">
-  <h2 id="s1"><span class="no">01</span>一句話結論</h2>
+<section id="s1" aria-labelledby="h1">
+  <h2 id="h1"><span class="no">01</span>一句話結論</h2>
   <div class="answer">
     <p class="big">兩家公司在法律上沒有隸屬關係。<span class="s">Rosaic Labs</span> 是 <span class="r">Rivos</span> 的早期投資人 Amarjit Gill 在 Rivos 被 Meta 收購後，帶著部分 Rivos 舊部新成立的晶片公司。兩邊的共同點在「人」，而非股權。</p>
     <div class="keys">
@@ -209,8 +298,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 2. Relationship diagram -->
-<section aria-labelledby="s2">
-  <h2 id="s2"><span class="no">02</span>關係圖</h2>
+<section id="s2" aria-labelledby="h2">
+  <h2 id="h2"><span class="no">02</span>關係圖</h2>
   <p class="sec-intro">左側是 Rivos，右側是 Rosaic Labs，中間是同時連到兩邊的人物。實線代表已有報導或文件證實，虛線代表傳聞、尚未證實。</p>
   <div class="fig" role="img" aria-label="Rivos 與 Rosaic Labs 關係圖">
     <svg viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg">
@@ -307,8 +396,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 3. Lineage -->
-<section aria-labelledby="s3">
-  <h2 id="s3"><span class="no">03</span>同一群人的二十多年</h2>
+<section id="s3" aria-labelledby="h3">
+  <h2 id="h3"><span class="no">03</span>同一群人的二十多年</h2>
   <p class="sec-intro">Rivos 與 Rosaic 的核心成員，多數從 2000 年前後就在同一個圈子共事。這群人有一個反覆出現的模式：成立晶片新創，再被大廠收購。理解這段歷史，就能理解為什麼 Rosaic 會被視為「Rivos 人脈的延續」。</p>
   <div class="lineage">
     <div class="step">
@@ -346,8 +435,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 4. Companies -->
-<section aria-labelledby="s4">
-  <h2 id="s4"><span class="no">04</span>兩家公司簡介</h2>
+<section id="s4" aria-labelledby="h4">
+  <h2 id="h4"><span class="no">04</span>兩家公司簡介</h2>
   <div class="cos">
     <article class="co-card" style="--c:var(--rivos)">
       <div><h3>Rivos</h3><p class="tag">RISC-V 架構的 AI 伺服器晶片新創，已被 Meta 收購</p></div>
@@ -378,8 +467,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 5. Timeline -->
-<section aria-labelledby="s5">
-  <h2 id="s5"><span class="no">05</span>時間軸</h2>
+<section id="s5" aria-labelledby="h5">
+  <h2 id="h5"><span class="no">05</span>時間軸</h2>
   <p class="sec-intro">藍點為 Rivos 相關事件，金點為陳立武與英特爾相關事件，紅點為 Rosaic 相關事件。</p>
   <ol class="tl">
     <li class="rv"><span class="d">2021/05</span><span class="x">Rivos 成立<small>陳立武與 Gill 協助組建創始團隊，陳立武後來擔任董事長</small></span></li>
@@ -399,8 +488,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 6. People -->
-<section aria-labelledby="s6">
-  <h2 id="s6"><span class="no">06</span>關鍵人物</h2>
+<section id="s6" aria-labelledby="h6">
+  <h2 id="h6"><span class="no">06</span>關鍵人物</h2>
   <p class="sec-intro">依與兩家公司的關聯程度排序。每張卡片下方的灰底文字，說明此人為何與本題相關。</p>
   <div class="people">
 
@@ -475,8 +564,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 7. Price -->
-<section aria-labelledby="s7">
-  <h2 id="s7"><span class="no">07</span>Meta 收購 Rivos 的金額說法</h2>
+<section id="s7" aria-labelledby="h7">
+  <h2 id="h7"><span class="no">07</span>Meta 收購 Rivos 的金額說法</h2>
   <p class="sec-intro">Meta 從未公開交易金額，媒體引用的數字差異很大，因為各自指的對象不同。對外引用時，建議寫「Meta 未公開金額，外界估計約 20 億至 40 億美元」。</p>
   <div class="bars" role="img" aria-label="Rivos 收購金額三種說法比較">
     <div class="bar-row">
@@ -496,8 +585,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 8. Controversy -->
-<section aria-labelledby="s8">
-  <h2 id="s8"><span class="no">08</span>外界的疑慮與英特爾的立場</h2>
+<section id="s8" aria-labelledby="h8">
+  <h2 id="h8"><span class="no">08</span>外界的疑慮與英特爾的立場</h2>
   <div class="two">
     <div class="panel">
       <h3>外界質疑的重點</h3>
@@ -522,8 +611,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 9. Verification -->
-<section aria-labelledby="s9">
-  <h2 id="s9"><span class="no">09</span>資訊確認程度</h2>
+<section id="s9" aria-labelledby="h9">
+  <h2 id="h9"><span class="no">09</span>資訊確認程度</h2>
   <p class="sec-intro">為避免誤用，下表列出常見說法的確認程度。</p>
   <div class="tbl">
     <table>
@@ -544,8 +633,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- 10. Glossary -->
-<section aria-labelledby="s10">
-  <h2 id="s10"><span class="no">10</span>名詞說明</h2>
+<section id="s10" aria-labelledby="h10">
+  <h2 id="h10"><span class="no">10</span>名詞說明</h2>
   <dl class="gloss">
     <div><dt>x86</dt><dd>英特爾與 AMD 主導的處理器架構，個人電腦與多數伺服器都使用。英特爾很少對外授權。</dd></div>
     <div><dt>RISC-V</dt><dd>開放、免授權費的處理器架構，Rivos 採用此架構。與 x86、Arm 互為競爭。</dd></div>
@@ -559,8 +648,8 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </section>
 
 <!-- Sources -->
-<section aria-labelledby="s11">
-  <h2 id="s11"><span class="no">11</span>資料來源</h2>
+<section id="s11" aria-labelledby="h11">
+  <h2 id="h11"><span class="no">11</span>資料來源</h2>
   <ol class="src">
     <li>Reuters（2026/07/29）〈Exclusive: Intel providing chip technology to startup led by co-investor of Tan in rare deal〉— <a href="https://www.thestar.com.my/tech/tech-news/2026/07/30/exclusive-intel-providing-chip-technology-to-startup-led-by-co-investor-of-tan-in-rare-deal" target="_blank" rel="noopener">The Star 轉載</a></li>
     <li>Reuters（2025/12/10）〈Intel pursued deals that boosted CEO Lip-Bu Tan's fortune, sources say〉— <a href="https://www.marketscreener.com/news/intel-pursued-deals-that-boosted-ceo-lip-bu-tan-s-fortune-sources-say-ce7d50dada8af220" target="_blank" rel="noopener">MarketScreener 轉載</a></li>
@@ -583,6 +672,16 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 <footer>本簡報依據截至 2026 年 10 月 15 日的公開報導整理。Rosaic Labs 仍在隱身模式，相關資訊可能隨時變動；標示「未證實」的內容請勿當作事實引用。</footer>
 
 </div>
+
+<script>
+(function(){try{
+  var links=[].slice.call(document.querySelectorAll('.docnav a[href^="#s"]'));var map={};
+  links.forEach(function(l){map[l.getAttribute('href').slice(1)]=l;});
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var l=map[e.target.id];if(l&&e.isIntersecting){links.forEach(function(x){x.classList.remove('active');});l.classList.add('active');}});},{rootMargin:'-40% 0px -55% 0px'});
+  [].slice.call(document.querySelectorAll('section[id^="s"]')).forEach(function(s){io.observe(s);});
+}catch(e){}})();
+</script>
 
 </body>
 </html>
