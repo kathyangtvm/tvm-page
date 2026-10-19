@@ -1,0 +1,628 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>PCB 主要設備商彙整</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: interactive explainer modeled on the user's Gemini reference — sticky white top bar, dark gradient hero card, white rounded "Part" cards on slate, step switcher, region tabs, live charts, quiz. Emerald = accent; region colors: international blue, mainland China rose, Taiwan amber. */
+:root{
+  --bg:#F1F5F9; --card:#FFFFFF; --card-2:#F8FAFC; --line:#E2E8F0;
+  --ink:#0F172A; --ink-2:#334155; --ink-3:#64748B;
+  --brand:#059669; --brand-soft:#D1FAE5; --brand-ink:#065F46;
+  --hero-a:#0F172A; --hero-b:#1E293B; --hero-c:#022C22; --hero-ink:#F8FAFC; --hero-dim:#CBD5E1; --hero-acc:#34D399;
+  --intl:#2563EB; --intl-soft:#DBEAFE; --cn:#E11D48; --cn-soft:#FFE4E6; --tw:#D97706; --tw-soft:#FEF3C7;
+  --ok:#059669; --ok-soft:#D1FAE5; --warn:#B45309; --warn-soft:#FEF3C7; --mute:#64748B; --mute-soft:#F1F5F9;
+  --bad:#DC2626; --bad-soft:#FEE2E2;
+  --sans:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1120; --card:#111827; --card-2:#0F172A; --line:#1F2937;
+  --ink:#F1F5F9; --ink-2:#CBD5E1; --ink-3:#94A3B8;
+  --brand:#34D399; --brand-soft:rgba(52,211,153,.14); --brand-ink:#6EE7B7;
+  --hero-a:#020617; --hero-b:#0F172A; --hero-c:#022C22;
+  --intl:#60A5FA; --intl-soft:rgba(96,165,250,.15); --cn:#FB7185; --cn-soft:rgba(251,113,133,.15); --tw:#FBBF24; --tw-soft:rgba(251,191,36,.15);
+  --ok:#34D399; --ok-soft:rgba(52,211,153,.14); --warn:#FBBF24; --warn-soft:rgba(251,191,36,.14); --mute:#94A3B8; --mute-soft:rgba(148,163,184,.12);
+  --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1120; --card:#111827; --card-2:#0F172A; --line:#1F2937;
+  --ink:#F1F5F9; --ink-2:#CBD5E1; --ink-3:#94A3B8;
+  --brand:#34D399; --brand-soft:rgba(52,211,153,.14); --brand-ink:#6EE7B7;
+  --hero-a:#020617; --hero-b:#0F172A; --hero-c:#022C22;
+  --intl:#60A5FA; --intl-soft:rgba(96,165,250,.15); --cn:#FB7185; --cn-soft:rgba(251,113,133,.15); --tw:#FBBF24; --tw-soft:rgba(251,191,36,.15);
+  --ok:#34D399; --ok-soft:rgba(52,211,153,.14); --warn:#FBBF24; --warn-soft:rgba(251,191,36,.14); --mute:#94A3B8; --mute-soft:rgba(148,163,184,.12);
+  --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--card)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{margin:0;line-height:1.35;text-wrap:balance}
+p{margin:0}
+a{color:var(--brand)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .inner{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;white-space:nowrap}
+.brand .ic{font-size:1.4rem}
+.top nav{display:flex;gap:20px;font-size:.88rem;font-weight:500;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{color:var(--ink-3);text-decoration:none;white-space:nowrap}
+.top nav a:hover{color:var(--brand)}
+.pill{font-size:.72rem;font-weight:700;background:var(--brand-soft);color:var(--brand-ink);padding:4px 10px;border-radius:999px;white-space:nowrap}
+@media (max-width:860px){.top nav{display:none}}
+
+main.inner{display:flex;flex-direction:column;gap:40px;padding-block:28px 64px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b) 55%,var(--hero-c));color:var(--hero-ink);border-radius:20px;padding:clamp(24px,5vw,44px);box-shadow:0 20px 40px -20px rgba(2,6,23,.45);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.22),transparent 70%)}
+.hero-in{max-width:760px;display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
+.badge{align-self:flex-start;font-size:.75rem;font-weight:700;color:var(--hero-acc);background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.35);padding:4px 12px;border-radius:999px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.01em}
+.hero p{color:var(--hero-dim);font-size:1.02rem}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-top:18px;border-top:1px solid rgba(148,163,184,.3);margin-top:6px}
+.kpi small{display:block;font-size:.74rem;color:#94A3B8}
+.kpi b{display:block;font-size:1.15rem;color:var(--hero-acc);font-weight:700}
+.kpi i{font-style:normal;font-size:.74rem;color:#94A3B8}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* part card */
+.part{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 1px 2px rgba(15,23,42,.05);display:flex;flex-direction:column;gap:22px;scroll-margin-top:76px;min-width:0}
+.part-hd{border-bottom:1px solid var(--line);padding-bottom:16px;display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:.74rem;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase}
+.part-hd h2{font-size:clamp(1.3rem,2.6vw,1.6rem);font-weight:700}
+.part-hd p{color:var(--ink-2);max-width:68ch}
+
+/* summary tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tile{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .ic{font-size:1.5rem}
+.tile h3{font-size:1.02rem;font-weight:700}
+.tile p{font-size:.92rem;color:var(--ink-2)}
+
+/* step switcher */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.step{background:var(--card-2);border:2px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;transition:border-color .15s,background .15s;min-width:0}
+.step:hover{border-color:color-mix(in srgb,var(--brand) 50%,var(--line))}
+.step.on{border-color:var(--brand);background:var(--brand-soft)}
+.step .n{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.step .t{font-weight:700;font-size:.98rem}
+.step .hot{font-size:.68rem;font-weight:700;color:var(--tw);margin-top:2px}
+.detail{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;background:var(--card-2);border:1px solid var(--line);border-radius:16px;padding:22px}
+@media (max-width:760px){.detail{grid-template-columns:1fr}}
+.detail h3{font-size:1.2rem;font-weight:700;display:flex;gap:8px;align-items:center}
+.plain{background:var(--brand-soft);border-radius:12px;padding:12px 14px;color:var(--ink);font-size:.95rem}
+.plain b{color:var(--brand-ink)}
+.detail ul{margin:0;padding-left:1.1em;color:var(--ink-2);font-size:.93rem;display:flex;flex-direction:column;gap:4px}
+.vend{display:flex;flex-direction:column;gap:10px}
+.vrow{display:grid;grid-template-columns:4.6em 1fr;gap:8px;align-items:start;font-size:.9rem}
+.vrow .lab{font-size:.74rem;font-weight:700;padding-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.78rem;font-weight:500;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
+.chip.i{background:var(--intl-soft);color:var(--intl);border-color:transparent}
+.chip.c{background:var(--cn-soft);color:var(--cn);border-color:transparent}
+.chip.t{background:var(--tw-soft);color:var(--tw);border-color:transparent}
+.none{font-size:.82rem;color:var(--ink-3)}
+.li{color:var(--intl)}.lc{color:var(--cn)}.lt{color:var(--tw)}
+
+/* charts */
+.chart-box{position:relative;width:100%;height:380px}
+.chart-box.tall{height:520px}
+.note{font-size:.8rem;color:var(--ink-3);line-height:1.65}
+.two-col{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.two-col{grid-template-columns:1fr}}
+.callout{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.callout h3{font-size:1rem;font-weight:700}
+.callout p{font-size:.92rem;color:var(--ink-2)}
+
+/* tabs + tables */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{border:1px solid var(--line);background:var(--card-2);border-radius:999px;padding:6px 16px;font-size:.9rem;font-weight:600;color:var(--ink-2)}
+.tab.on[data-r="intl"]{background:var(--intl);color:#fff;border-color:var(--intl)}
+.tab.on[data-r="cn"]{background:var(--cn);color:#fff;border-color:var(--cn)}
+.tab.on[data-r="tw"]{background:var(--tw);color:#1C1917;border-color:var(--tw)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:.9rem;line-height:1.6}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card-2);font-size:.75rem;font-weight:700;color:var(--ink-3);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td{color:var(--ink-2)}
+td.co{color:var(--ink);font-weight:700}
+td.co small{display:block;font-family:var(--mono);font-weight:400;font-size:.72rem;color:var(--ink-3)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink)}
+.up{color:var(--ok);font-weight:600}.dn{color:var(--bad);font-weight:600}
+.unit{font-size:.8rem;color:var(--ink-3)}
+
+/* buy cards */
+.buy{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.bc{border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--card-2);min-width:0}
+.bc h3{font-size:1.02rem;font-weight:700;display:flex;gap:8px;align-items:center}
+.bc .k{font-size:.74rem;font-weight:700;color:var(--ink-3)}
+.bc p{font-size:.9rem;color:var(--ink-2)}
+.warnbar{display:flex;gap:12px;align-items:flex-start;background:var(--warn-soft);border-radius:14px;padding:14px 16px;font-size:.92rem;color:var(--ink)}
+
+/* trend */
+.dual{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.dual .callout ul{margin:0;padding-left:1.1em;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.dual .callout li b{color:var(--ink)}
+.st{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.st.ok{background:var(--ok-soft);color:var(--ok)}.st.wn{background:var(--warn-soft);color:var(--warn)}.st.no{background:var(--mute-soft);color:var(--mute)}
+
+/* quiz */
+.quiz{display:flex;flex-direction:column;gap:16px}
+.q{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--card-2);display:flex;flex-direction:column;gap:10px}
+.q h3{font-size:1rem;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;text-align:left;font-size:.92rem}
+.opt:hover{border-color:var(--brand)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ink)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--ink)}
+.fb{font-size:.9rem;color:var(--ink-2)}
+.fb b.r{color:var(--ok)}.fb b.w{color:var(--bad)}
+.score{font-weight:700;color:var(--brand-ink)}
+
+/* glossary + sources */
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.gl div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card-2)}
+.gl dt{font-weight:700;font-size:.95rem}
+.gl dd{margin:2px 0 0;font-size:.86rem;color:var(--ink-2)}
+details{border:1px solid var(--line);border-radius:14px;background:var(--card-2)}
+summary{cursor:pointer;padding:14px 18px;font-weight:700;font-size:.95rem}
+.srcs{padding:0 18px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.srcs h4{font-size:.78rem;color:var(--brand);margin-bottom:4px}
+.srcs ol{margin:0;padding-left:1.4em;font-size:.84rem;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+.srcs a{color:var(--ink-2);word-break:break-word}
+footer{font-size:.8rem;color:var(--ink-3);text-align:center;padding-bottom:20px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>
+/* Additions: glass status pills, compact numbered process flow with arrows, equipment-category tabs mapping equipment→vendors, jump-to-company links, inline term tooltips. */
+:root{--sA:#047857;--sA-soft:#D1FAE5;--sB:#1D4ED8;--sB-soft:#DBEAFE;--sC:#B45309;--sC-soft:#FEF3C7;--sD:#475569;--sD-soft:#F1F5F9;--glass:#0E7490;--glass-soft:#CFFAFE;--flash:#FEF08A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sA:#34D399;--sA-soft:rgba(52,211,153,.15);--sB:#93C5FD;--sB-soft:rgba(147,197,253,.15);--sC:#FCD34D;--sC-soft:rgba(252,211,77,.14);--sD:#CBD5E1;--sD-soft:rgba(203,213,225,.12);--glass:#67E8F9;--glass-soft:rgba(103,232,249,.12);--flash:rgba(250,204,21,.25)}}
+:root[data-theme="dark"]{--sA:#34D399;--sA-soft:rgba(52,211,153,.15);--sB:#93C5FD;--sB-soft:rgba(147,197,253,.15);--sC:#FCD34D;--sC-soft:rgba(252,211,77,.14);--sD:#CBD5E1;--sD-soft:rgba(203,213,225,.12);--glass:#67E8F9;--glass-soft:rgba(103,232,249,.12);--flash:rgba(250,204,21,.25)}
+.sp{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.sp.A{background:var(--sA-soft);color:var(--sA)}.sp.B{background:var(--sB-soft);color:var(--sB)}.sp.C{background:var(--sC-soft);color:var(--sC)}.sp.D{background:var(--sD-soft);color:var(--sD)}.sp.N{background:transparent;color:var(--ink-3);border:1px dashed var(--line)}
+.legend-row{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.82rem;color:var(--ink-2);align-items:center}
+table{min-width:860px}
+.tiles3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.tl-ul{margin:0;padding-left:1.1em;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:4px}
+.tl-ul li::marker{color:var(--ink-3)}
+.sub-h{font-size:.95rem;font-weight:700;color:var(--ink-3)}
+
+/* flow */
+.flow{display:flex;align-items:stretch;gap:4px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.fstep{flex:1 0 auto;display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--card-2);border-radius:10px;padding:7px 9px;font-weight:700;font-size:.86rem;white-space:nowrap}
+.fstep .no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--ink-2);font-family:var(--mono);font-size:.75rem;flex:none}
+.fstep:hover{border-color:var(--brand)}
+.fstep.on{border-color:var(--brand);background:var(--brand-soft)}
+.fstep.on .no{background:var(--brand);color:#fff}
+.fstep.hot::after{content:"★";font-size:.8rem;color:var(--tw);margin-left:-2px}
+.farrow{flex:none;align-self:center;color:var(--ink-3);font-size:.9rem}
+.fdetail{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.fdetail h3{font-size:1.05rem;font-weight:700}
+.fdetail .lbl{font-size:.75rem;font-weight:700;color:var(--ink-3);margin-right:6px}
+.catlink{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 12px;font-size:.84rem;font-weight:600;color:var(--brand-ink)}
+.catlink:hover{border-color:var(--brand)}
+
+/* categories */
+.ctabs{display:flex;flex-wrap:wrap;gap:8px}
+.ctab{border:1px solid var(--line);background:var(--card-2);border-radius:12px;padding:8px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:96px}
+.ctab b{font-size:.92rem}
+.ctab small{font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.ctab.on{border-color:var(--brand);background:var(--brand-soft)}
+.cpanel{border:1px solid var(--line);border-radius:14px;background:var(--card-2);padding:18px;display:flex;flex-direction:column;gap:14px}
+.cpanel h3{font-size:1.1rem;font-weight:700}
+.eqt{width:100%;border-collapse:collapse;min-width:0;font-size:.9rem}
+.eqt td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.eqt tr:last-child td{border-bottom:none}
+.eqt td:first-child{width:28%;font-weight:700;color:var(--ink)}
+@media (max-width:640px){.eqt td{display:block;width:auto !important;padding:4px 0}.eqt td:first-child{padding-top:10px}}
+.vlink{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 10px;font-size:.82rem;color:var(--ink);margin:2px 4px 2px 0;cursor:pointer}
+.vlink:hover{border-color:var(--brand);color:var(--brand-ink)}
+.vlink .cty{font-size:.68rem;font-weight:700;color:var(--ink-3)}
+.vlink .sp{padding:0 7px;font-size:.66rem}
+.gline{border-top:1px dashed var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.gline .gt{font-size:.78rem;font-weight:700;color:var(--glass)}
+.gline p{font-size:.88rem;color:var(--ink-2)}
+tr.flash td{animation:flash 2.2s ease-out}
+@keyframes flash{0%,40%{background:var(--flash)}100%{background:transparent}}
+.crit{font-size:.86rem;color:var(--ink-2);background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.crit b{color:var(--ink)}
+.crit ul{margin:4px 0 0;padding-left:1.1em}
+
+/* terms */
+.term{border-bottom:1.5px dotted var(--brand);cursor:help;position:relative;outline:none}
+.term:hover::after,.term:focus::after{content:attr(data-def);position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:max-content;max-width:260px;white-space:normal;background:var(--ink);color:var(--card);font-size:.8rem;font-weight:400;line-height:1.55;padding:8px 10px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;padding:0 18px 18px}
+.tlist{display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--ink-2)}
+.tlist div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:6px 0}
+.tlist div:last-child{border-bottom:none}
+.tlist b{color:var(--ink)}
+.tlist .y{font-family:var(--mono);white-space:nowrap;color:var(--ink)}
+details + details{margin-top:10px}
+@media (prefers-reduced-motion:reduce){tr.flash td{animation:none;background:var(--flash)}}
+td .gs{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+td .gs small{font-size:.82rem;color:var(--ink-2)}
+td .pos{display:block;font-size:.8rem;color:var(--ink-3);margin-top:4px}
+</style>
+
+<header class="top gut">
+  <div class="inner">
+    <div class="brand"><span class="ic" aria-hidden="true">🔩</span>PCB 主要設備商彙整</div>
+    <nav aria-label="章節">
+      <a href="#summary">一句話看懂</a><a href="#process">製程</a><a href="#cats">設備類別與廠商</a><a href="#vendors">設備商比較</a><a href="#growth">台廠成長</a><a href="#notes">市場動態</a><a href="#appendix">附錄</a>
+    </nav>
+    <span class="pill">資料截至 2026/10/19</span>
+  </div>
+</header>
+
+<div class="gut">
+<main class="inner" id="main">
+
+<section id="summary" class="hero" aria-labelledby="h-hero">
+  <div class="hero-in">
+    <span class="badge">💡 一句話看懂 PCB 設備產業</span>
+    <h1 id="h-hero">「做一片電路板要經過八個主要製程步驟，各類設備都有不同的龍頭；多數設備商也已開始把產品延伸到玻璃基板。」</h1>
+    <p>全球最大的 PCB 設備商（中國大廠「大族數控」）市占只有 6.5%，市場高度分散。本頁比較國際、中國與台灣共 22 家主要 PCB 設備商（收錄標準見 Part 3），並逐家標註其玻璃基板（TGV，玻璃通孔）相關的公開動態。</p>
+    <div class="kpis">
+      <div class="kpi"><small>全球 PCB 設備市場</small><b class="num">US$71 億</b><i>2024 年</i></div>
+      <div class="kpi"><small>最大廠市占</small><b class="num">6.5%</b><i>大族數控</i></div>
+      <div class="kpi"><small>有玻璃基板公開動態</small><b class="num" id="kG">—</b><i>收錄的 PCB 設備商</i></div>
+      <div class="kpi"><small>其中有出貨紀錄</small><b class="num" id="kA">—</b><i>小量或測試機</i></div>
+    </div>
+  </div>
+</section>
+
+<section class="part" aria-labelledby="h-key">
+  <div class="part-hd"><span class="eyebrow">概述</span><h2 id="h-key">全球 PCB 設備大廠速覽</h2></div>
+  <div class="tiles tiles3">
+    <div class="tile"><span class="ic" aria-hidden="true">🌐</span><h3><span class="li">國際大廠</span>守住高階</h3><ul class="tl-ul">
+      <li>KLA（Orbotech）：主導曝光與 AOI 檢測</li>
+      <li>Via Mechanics、三菱電機：主導雷射鑽孔</li>
+      <li>MKS（Atotech）：主導電鍍</li>
+      <li>IC 載板等級設備仍以美、日廠為主</li></ul></div>
+    <div class="tile"><span class="ic" aria-hidden="true">🏭</span><h3><span class="lc">中國廠</span>規模最大</h3><ul class="tl-ul">
+      <li>大族數控：2025 年營收人民幣 57.7 億、年增 73%</li>
+      <li>大族數控：2026 年上半年營收再增 109%</li>
+      <li>芯碁微裝（曝光）、東威科技（電鍍）同步擴張</li></ul></div>
+    <div class="tile"><span class="ic" aria-hidden="true">📍</span><h3><span class="lt">台灣廠</span>集中在利基設備</h3><ul class="tl-ul">
+      <li>大量（背鑽）：2026 年 1–9 月營收年增 140%</li>
+      <li>志聖、群翊：壓膜、烘烤設備</li>
+      <li>牧德：AOI 檢測設備</li>
+      <li>志聖、群翊、牧德已切入半導體先進封裝</li></ul></div>
+  </div>
+</section>
+
+<section id="process" class="part" aria-labelledby="h-proc">
+  <div class="part-hd"><span class="eyebrow">Part 1</span><h2 id="h-proc">PCB 製程：八個主要步驟</h2></div>
+  <div class="flow" id="flow" role="tablist" aria-label="製程步驟"></div>
+  <div class="fdetail" id="fdetail" aria-live="polite"></div>
+  <p class="note">此為多層板的簡化流程；HDI 板與 IC 載板會重複壓合、鑽孔、鍍銅。同一類設備會在多個步驟重複使用，因此設備商改依「設備類別」整理於 Part 2。</p>
+</section>
+
+<section id="cats" class="part" aria-labelledby="h-cats">
+  <div class="part-hd"><span class="eyebrow">Part 2</span><h2 id="h-cats">設備類別與對應設備商</h2><p>依灼識諮詢的市場分類整理：先看各類設備占全球支出多少，再看每類設備有哪些廠商。點廠商名稱可跳到 Part 3 的公司比較。</p></div>
+  <div class="two-col">
+    <div class="chart-box"><canvas id="spendChart" role="img" aria-label="2024 年全球 PCB 設備支出各類別占比"></canvas></div>
+    <div class="callout">
+      <h3>📌 支出重心</h3>
+      <p>鑽孔、曝光、檢測三類合計 52.7%，是設備支出的重心，也是 AI 板擴產時最先缺機的設備。</p>
+      <p>2024 年市場約 US$70.85 億，預估 2029 年達 US$107.65 億，年複合成長約 8.7%。</p>
+      <p class="note">來源：灼識諮詢（CIC），載於大族數控港股招股資料，經信達證券轉引；非 Prismark 原始數據。「其他」為來源未逐項列出的類別。</p>
+    </div>
+  </div>
+  <div class="ctabs" id="ctabs" role="tablist" aria-label="設備類別"></div>
+  <div class="cpanel" id="cpanel" aria-live="polite"></div>
+  <div class="legend-row"><span>玻璃基板動態：</span><span class="sp A">已出貨</span><span class="sp B">產品推出／接單</span><span class="sp C">研發／小批量</span><span class="sp D">待確認</span></div>
+</section>
+
+<section id="vendors" class="part" aria-labelledby="h-ven">
+  <div class="part-hd"><span class="eyebrow">Part 3</span><h2 id="h-ven">主要設備商比較</h2><p>切換分頁查看三個區域。國際大廠多半不單獨揭露 PCB 營收，「規模」欄列出最接近的公開數字並註明口徑；三區幣別不同，請勿直接互比。</p></div>
+  <div class="crit"><b>收錄標準</b><ul>
+    <li>國際：產業報告與公開資料中，各類設備被列為主要供應商者。</li>
+    <li>中國：以 PCB 設備為主業的上市龍頭。</li>
+    <li>台灣：以 PCB 製程設備為主要業務的上市櫃公司。</li>
+    <li>例外說明：鼎泰高科產品為鑽針耗材；揚博營收以半導體材料代理為主，自製設備占比較小。</li>
+  </ul></div>
+  <div class="tabs" role="tablist" aria-label="區域">
+    <button class="tab on" data-r="intl" role="tab" aria-selected="true">🌐 國際（美・日・德）</button>
+    <button class="tab" data-r="cn" role="tab" aria-selected="false">🏭 中國</button>
+    <button class="tab" data-r="tw" role="tab" aria-selected="false">📍 台灣</button>
+  </div>
+  <div id="vtable"></div>
+  <p class="note" id="vnote"></p>
+</section>
+
+<section id="growth" class="part" aria-labelledby="h-gr">
+  <div class="part-hd"><span class="eyebrow">Part 4</span><h2 id="h-gr">台灣設備商誰成長最快？</h2><p>大量與志聖 2026 年累計營收年增最多，分別約 140% 與 87%。牧德 2025 年已倍增，基期墊高後今年增速放緩；由田仍在衰退。</p></div>
+  <div class="chart-box tall"><canvas id="growthChart" role="img" aria-label="台灣 PCB 設備商營收年增率"></canvas></div>
+  <p class="note">2026 年累計期間各家不同（大量、聯策、由田 1–9 月；群翊、揚博 1–8 月；志聖、牧德 1–7 月；川寶、長廣 1–6 月）。來源：各公司月營收公告（Yahoo 股市彙整）。</p>
+</section>
+
+
+<section id="notes" class="part" aria-labelledby="h-tr">
+  <div class="part-hd"><span class="eyebrow">Part 5</span><h2 id="h-tr">市場動態：需求、交期與風險</h2><p>設備需求由 AI 伺服器板擴產帶動，但交期拉長、受惠不平均，也有景氣循環的風險。</p></div>
+  <div class="dual">
+    <div class="callout"><h3>⏳ 交期與需求</h3><ul>
+      <li><b>交期：</b>受 AI 伺服器板擴產帶動，高階 PCB 設備交期已拉長到約 6 個月；大量月產能約 400 台已滿載，熱門機種訂單排到 2027 年。</li>
+      <li><b>需求來源：</b>板子變厚、層數變多、訊號變快，需要更多鑽孔、背鑽與量測；IC 載板與高階 HDI 推升曝光、AOI 與細線路電鍍需求。</li>
+    </ul></div>
+    <div class="callout"><h3>🧯 需要留意的地方</h3><ul>
+      <li><b>景氣循環：</b>訂單集中在 AI 板擴產，若雲端業者資本支出放緩，訂單可能快速反轉。</li>
+      <li><b>受惠不平均：</b>川寶（−22%）、長廣（−15%）、由田（−10%）2025 年營收衰退。</li>
+      <li><b>同名不同公司：</b>大族數控（PCB 設備）與大族激光旗下的大族半導體不同；已批量交付面板級 TGV 設備的是後者。</li>
+    </ul></div>
+  </div>
+</section>
+
+
+<section id="appendix" class="part" aria-labelledby="h-ap">
+  <div class="part-hd"><span class="eyebrow">附錄</span><h2 id="h-ap">參考資料</h2><p>名詞解釋也可直接在正文中把滑鼠移到虛線底線的詞上查看。</p></div>
+  <details>
+    <summary>🔍 PCB 設備商以外的 TGV 相關廠商與基板廠量產時程（點開查看）</summary>
+    <div class="mini">
+    <div class="callout"><h3>🎯 TGV 成孔與檢測專業廠</h3><div class="tlist">
+      <div><span><b>鈦昇</b>（台灣 8027）成孔設備，美系客戶驗證完成並已交機</span><span class="sp A">已出貨</span></div>
+      <div><span><b>晶呈科</b>（台灣 4768）氣態蝕刻成孔，小量出貨</span><span class="sp A">已出貨</span></div>
+      <div><span><b>帝爾激光</b>（中國）雷射輔助蝕刻成孔，小批量復購</span><span class="sp A">已出貨</span></div>
+      <div><span><b>德龍激光</b>（中國）TGV 產品已有銷售，占比小</span><span class="sp A">已出貨</span></div>
+      <div><span><b>LPKF</b>（德國）LIDE 成孔，獲亞洲封裝大廠意向書</span><span class="sp B">意向書</span></div>
+      <div><span><b>Philoptics</b>（韓國）TGV 基板送樣，尚無訂單</span><span class="sp B">送樣</span></div>
+      <div><span><b>蔚華科</b>（台灣 3055）微裂紋檢測機，客戶驗證中</span><span class="sp B">驗證中</span></div>
+      <div><span><b>Onto Innovation</b>（美國）玻璃面板檢測與曝光機</span><span class="sp B">產品推出</span></div>
+    </div></div>
+    <div class="callout"><h3>🏭 玻璃基板製造廠的量產目標</h3><div class="tlist">
+      <div><b>SKC Absolics（韓國，美國廠）</b><span class="y">2027（多次延期）</span></div>
+      <div><b>三星電機（韓國）</b><span class="y">2028</span></div>
+      <div><b>LG Innotek（韓國）</b><span class="y">2028</span></div>
+      <div><b>DNP（日本）</b><span class="y">FY2028</span></div>
+      <div><b>BOE（中國）</b><span class="y">最快 2028</span></div>
+      <div><b>群創（台灣）</b><span class="y">最快 2028</span></div>
+      <div><b>Intel（美國）</b><span class="y">約 2030</span></div>
+      <div><b>欣興（台灣）</b><span class="y">2030 前機率不高</span></div>
+    </div></div>
+  </div>
+  </details>
+  <dl class="gl">
+    <div><dt>TGV（玻璃通孔）</dt><dd>在玻璃上打出貫穿的微小孔洞再填銅，讓上下兩面線路導通，是玻璃基板的關鍵製程。</dd></div>
+    <div><dt>玻璃基板</dt><dd>用玻璃取代傳統樹脂做載板核心，較平、不易變形，適合大尺寸 AI 晶片封裝。</dd></div>
+    <div><dt>HDI（高密度互連板）</dt><dd>用雷射打微小盲孔的電路板，手機與高階電子產品常用。</dd></div>
+    <div><dt>LDI（雷射直接成像）</dt><dd>用雷射直接把線路圖案寫到感光膜上，線路更細、對位更準。</dd></div>
+    <div><dt>AOI（自動光學檢測）</dt><dd>以高解析相機拍攝板面，與設計圖比對，自動找出缺陷。</dd></div>
+    <div><dt>背鑽</dt><dd>把通孔中不需要的一截銅鑽掉，減少高速訊號干擾，AI 伺服器板大量使用。</dd></div>
+    <div><dt>VCP（垂直連續電鍍）</dt><dd>板子垂直吊掛、連續通過電鍍槽，鍍層均勻、適合大量生產。</dd></div>
+    <div><dt>IC 載板（ABF 載板）</dt><dd>承載晶片、連接晶片與主機板的精密基板，線路最細，對設備精度要求最高。</dd></div>
+  </dl>
+  <details>
+    <summary>🔎 閱讀前請注意：資料可信度（點開查看）</summary>
+    <div style="padding:0 18px 18px"><div class="tbl"><table style="min-width:640px">
+    <thead><tr><th style="width:46%">說法</th><th style="width:16%">確認程度</th><th>依據</th></tr></thead>
+    <tbody>
+      <tr><td>大族數控、芯碁、東威、鼎泰 2025 年營收</td><td><span class="st ok">已證實</span></td><td>公司年報或年報摘要</td></tr>
+      <tr><td>KLA、MKS 部門或終端市場營收</td><td><span class="st ok">已證實</span></td><td>公司財報；均含非 PCB 業務</td></tr>
+      <tr><td>大族數控全球 PCB 設備市占 6.5%、第一</td><td><span class="st ok">第三方</span></td><td>灼識諮詢（CIC），載於港股招股資料</td></tr>
+      <tr><td>全球市場 US$71 億與各站占比</td><td><span class="st wn">轉引</span></td><td>灼識諮詢數據，經券商報告轉引</td></tr>
+      <tr><td>台灣廠 2025 年營收</td><td><span class="st wn">部分單一來源</span></td><td>月營收公告；由田、川寶、揚博、聯策建議以公開資訊觀測站複核</td></tr>
+      <tr><td>各家玻璃基板動態</td><td><span class="st wn">多為媒體與公司稿</span></td><td>規格多為公司自述；聯策、大量、東威的玻璃資訊屬二手或券商轉述</td></tr>
+      <tr><td>大族鑽孔機約 50%、芯碁 15%、東威逾 50%、長廣 95% 等市占</td><td><span class="st wn">公司自述</span></td><td>年報、法說或媒體報導，無獨立第三方佐證</td></tr>
+      <tr><td>Via Mechanics、Schmoll、Bürkle 營收</td><td><span class="st no">未公開</span></td><td>私人公司或未揭露</td></tr>
+    </tbody>
+  </table></div></div>
+  </details>
+  <details>
+    <summary>📚 展開全部資料來源</summary>
+    <div class="srcs" id="srcBox"></div>
+  </details>
+</section>
+
+
+<footer>依據截至 2026 年 10 月 19 日的公開資料整理，僅供內部參考，不構成投資建議。標示「公司自述」「二手」或「待確認」的內容，對外引用前請再行確認。</footer>
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+var GL={A:'已出貨',B:'產品推出／接單',C:'研發／小批量',D:'待確認',N:'未見公開資料'};
+var G={
+ 'KLA（Orbotech）':['B','Lumina 檢測機可檢測含玻璃核心的 IC 基板（2024/10）；新聞稿未提 TGV。','檢測'],
+ 'Via Mechanics':['C','與日本電氣硝子共同開發以 CO₂ 雷射在玻璃核心基板打出無裂痕通孔（2024/11）。','成孔'],
+ 'MKS（Atotech、ESI）':['B','Atotech 推出 InPro Pulse TGV 高深寬比銅填孔製程（2026/9 展出）；ESI 雷射鑽孔機未標示玻璃用途。','金屬化填孔'],
+ '三菱電機':['C','2014 年發表 CO₂ 雷射玻璃鑽孔技術（最小孔徑 25μm）；現行鑽孔機產品頁未提玻璃。','成孔'],
+ 'SCREEN':['B','PE Solutions（PCB 曝光）未見玻璃資料；集團內 SCREEN Finetech 的面板級塗佈機 Lemotia 標示支援玻璃核心基板。','塗佈'],
+ 'Adtec（Ushio）':['B','母公司 Ushio 步進曝光機 UX-59113 可處理玻璃面板（2025/8 發表）；Adtec 產品頁列有 TGV 雙面檢測機 PAVIS-TGV（韓國 AKC 開發）。','曝光、檢測'],
+ 'ORC':['N','面板級直接曝光機相關報導僅提有機樹脂基板。',''],
+ 'Schmoll':['B','官網新聞：展出玻璃面板 TGV 方案，未公布型號、規格與客戶。','成孔'],
+ 'Bürkle':['N','未見玻璃相關公開資料。',''],
+ '大族數控':['C','2025 年報研發項目「玻璃基板加工設備」狀態為小批量，涵蓋 TGV 與裂片；未揭露出貨或營收。','成孔、切割'],
+ '芯碁微裝':['B','面板級封裝曝光機 PLP 3000／4000 規格標示可支援玻璃基板（2025 半年報）；未提 TGV。','曝光'],
+ '東威科技':['D','券商報告稱 TGV 電鍍設備已交付並通過驗收，未找到公司一手說明。','金屬化填孔'],
+ '鼎泰高科':['N','2026 年報導僅談 PCB 鑽針，未提玻璃。',''],
+ '志聖':['N','參與的 G2C+ 聯盟展出主題含 TGV，但報導未說明是志聖自家產品。',''],
+ '大量':['B','玻璃邊緣塗佈機（Edge Coater），營收占比小，同時用於 AR 眼鏡；不是 TGV 設備（法說摘要，二手）。','塗佈'],
+ '揚博':['B','Wing X 乾燥系統鎖定高階載板與玻璃載板，已接單，預計 2027 年出貨（2026/9）。','濕製程後段'],
+ '牧德':['N','2026 年新機與法說會內容未提玻璃或 TGV。',''],
+ '群翊':['A','玻璃中介層與玻璃載板用壓膜、烘烤、塗佈設備，小量出貨給美系大廠與一線封測廠（2026/7）。','增層壓合'],
+ '聯策':['B','推出玻璃基板 AOI 檢測機 Alpha WFI-20，解析度 0.25μm/pixel（法說摘要，二手）。','檢測'],
+ '長廣':['A','玻璃載板真空壓膜機，測試設備已出貨給美系 IDM（2026/1）；報導未提 TGV。','增層壓合'],
+ '由田':['C','TGV 孔檢 AOI 在 Touch Taiwan 2026 展出，未公布規格。','檢測'],
+ '川寶':['C','TGV 填孔代工，電鍍設備 2026/7 完成試機，已有打樣詢問。','金屬化填孔']
+};
+
+var keys=Object.keys(G),nG=keys.filter(function(k){return G[k][0]!=='N';}).length,nA=keys.filter(function(k){return G[k][0]==='A';}).length;
+document.getElementById('kG').textContent=nG+' / '+keys.length+' 家';
+document.getElementById('kA').textContent=nA+' 家';
+var V={
+ intl:{note:'規模欄多為集團部門或終端市場數字，含非 PCB 業務；私人公司未揭露營收。',head:['公司','主力站別與定位','規模（公開數字與口徑）','玻璃基板公開動態'],rows:[
+  ['KLA（Orbotech）','美國 NASDAQ: KLAC','曝光（LDI）、AOI、噴印','歐美最大 PCB 曝光、AOI 品牌，高階 IC 載板級設備強','「PCB 與元件檢測」部門 FY2026（2025/7–2026/6）US$7.50 億，年增約 21%；含非 PCB 的元件檢測'],
+  ['Via Mechanics','日本 Amada（6113）100% 持有','機械鑽孔、雷射鑽孔','前身為日立子公司，全球主要鑽孔機供應商，雷射鑽孔尤強','未揭露；Amada 2025 年以 ¥510 億收購'],
+  ['MKS（Atotech、ESI）','美國 NASDAQ: MKSI','電鍍藥水與電鍍線、雷射鑽孔','同時供應雷射鑽孔與電鍍','「電子與封裝」終端市場 2025 年 US$11.11 億；含藥水耗材'],
+  ['三菱電機','日本 6503','雷射鑽孔','主攻 IC 載板用雷射鑽孔','未揭露 PCB 營收'],
+  ['SCREEN','日本 7735','LDI 曝光','日系曝光主要供應商之一','PE Solutions 部門 FY3/2026 約 ¥145 億'],
+  ['Adtec（Ushio）','日本 Ushio（6925）全資持有','曝光','自稱 PCB 曝光全球市占領先','FY3/2024 約 ¥145 億（公司自述）'],
+  ['ORC','日本 未上市','曝光（含載板用）','老牌曝光廠，2006 年接手 Pentax 直接成像業務','2025 年全公司約 ¥182 億（公司自述）'],
+  ['Schmoll','德國 未上市','機械鑽孔、雷射、LDI','歐洲鑽孔專業廠，1962 年起生產鑽孔機','未揭露'],
+  ['Bürkle','德國 未上市','壓合機','歐洲壓合設備利基廠','未揭露']]},
+ cn:{note:'金額單位：人民幣。大族數控 2026 年 2 月在香港掛牌（3200.HK）。市占數字標示「公司自述」者無第三方佐證。',head:['公司','主力站別與定位','2025 年營收／2026 上半年','玻璃基板公開動態'],rows:[
+  ['大族數控','深圳 301200／港股 3200','鑽孔為主（約占營收 72%），另有曝光、檢測、成型','全球 PCB 設備市占 6.5%、排名第一（灼識諮詢，2024）；公司估計機械鑽孔機全球市占約 50%',['57.73 億（+73%）','49.85 億（+109%）']],
+  ['芯碁微裝','上海科創板 688630','LDI 曝光','公司自述 2024 年為全球最大 PCB 直接成像設備商，市占 15%',['14.08 億（+48%）','11.06 億（+69%）']],
+  ['東威科技','上海科創板 688700','垂直連續電鍍（VCP）','VCP 在中國市占逾 50%（公司自述）',['10.98 億（+46%）','6.74 億（+52%）']],
+  ['鼎泰高科','深圳 301377','耗材：鑽針','鑽針全球銷量市占 26.8%、第一（Frost & Sullivan，2024）',['21.44 億（+36%）','19.43 億（+115%）']]]},
+ tw:{note:'金額單位：新台幣，依 2025 年營收排序。周邊參考：德律（3030）2025 年營收 84.67 億，但檢測對象是組裝後電路板（PCBA），不屬 PCB 製程設備；亞智（Manz 台灣）未上市櫃，德國母公司已聲請破產。',head:['公司','主力站別與定位','2025 年營收','玻璃基板公開動態'],rows:[
+  ['志聖','2467 上市','壓膜、烘烤、壓合','2025 年半導體約占 4 成，已打入 CoWoS、SoIC 先進封裝供應鏈',['61.02 億','+26.6%']],
+  ['大量','3167 上市','鑽孔機、背鑽機、背鑽量測','高階背鑽機比重由 2024 年約 2 成升至 2025 年約 5 成',['50.78 億','+95.4%']],
+  ['揚博','2493 上市','濕製程（蝕刻、乾燥）','營收以半導體材料代理為主，自製設備主攻 HDI、載板',['37.68 億','+3.0%']],
+  ['牧德','3563 上市','AOI 檢測、電測','高階 PCB 檢測帶動成長，半導體檢測 2026 年起放量',['31.92 億','+108%']],
+  ['群翊','6664 上櫃','塗佈、烘烤、壓膜','接單約 6 成來自 IC 載板與高階 PCB',['25.74 億','+3.1%']],
+  ['聯策','6658 上市','AOI、線寬量測、水平濕製程','子公司映利做水平濕製程',['20.81 億','+30.5%']],
+  ['長廣','7795 上市','ABF 載板真空壓膜機','自稱中高階真空壓膜機全球市占約 95%；長興持股 61.7%',['18.98 億','−15.0%']],
+  ['由田','3455 上櫃','PCB、載板 AOI','另有面板與半導體封裝 AOI',['16.75 億','−9.5%']],
+  ['川寶','1595 上櫃','LDI 曝光','轉向玻璃基板代工與半導體設備',['7.16 億','−21.8%']]]}
+};
+
+var REG={},CTY={'KLA（Orbotech）':'美','Via Mechanics':'日','MKS（Atotech、ESI）':'美','三菱電機':'日','SCREEN':'日','Adtec（Ushio）':'日','ORC':'日','Schmoll':'德','Bürkle':'德'};
+['intl','cn','tw'].forEach(function(r){V[r].rows.forEach(function(row){REG[row[0]]=r;if(!CTY[row[0]])CTY[row[0]]=r==='cn'?'中':'台';});});
+
+// ---- terms (inline tooltips)
+var TERMS=[['LDI','雷射直接成像：用雷射直接把線路圖案寫到感光膜上，線路更細、對位更準。'],['AOI','自動光學檢測：以高解析相機拍攝板面，與設計圖比對，自動找出缺陷。'],['背鑽','把通孔中不需要的一截銅鑽掉，減少高速訊號干擾，AI 伺服器板大量使用。'],['VCP','垂直連續電鍍：板子垂直吊掛、連續通過電鍍槽，鍍層均勻、適合大量生產。'],['IC 載板','承載晶片、連接晶片與主機板的精密基板（常用 ABF 樹脂），線路最細，對設備精度要求最高。'],['HDI','高密度互連板：用雷射打微小盲孔，手機與高階電子產品常用。'],['TGV','玻璃通孔：在玻璃上打出貫穿的微小孔洞再填銅，讓上下兩面線路導通，是玻璃基板的關鍵製程。'],['玻璃基板','用玻璃取代傳統樹脂做載板核心，較平、不易變形，適合大尺寸 AI 晶片封裝。'],['PLP','面板級封裝：在方形大面板上做封裝，比圓形晶圓能放更多晶片。'],['盲孔','只穿過部分板層、不貫穿整片板子的孔。']];
+function markTerms(root,seen){
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode;if(!p||p.closest('script,style,button,.term,dl.gl,summary,.vlink,.sp,canvas,header,.kpis,h1,h2,.ctab,.fstep,th,.gt'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}});
+  var nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+  TERMS.forEach(function(t){
+    if(seen[t[0]])return;
+    for(var i=0;i<nodes.length;i++){var n=nodes[i],idx=n.nodeValue.indexOf(t[0]);if(idx<0)continue;
+      var after=n.splitText(idx);after.splitText(t[0].length);var sp=document.createElement('span');sp.className='term';sp.tabIndex=0;sp.setAttribute('data-def',t[1]);sp.textContent=t[0];after.parentNode.replaceChild(sp,after);seen[t[0]]=1;
+      nodes=[];var w2=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);while(w2.nextNode()){var c=w2.currentNode,pp=c.parentNode;if(pp&&!pp.closest('script,style,button,.term,dl.gl,summary,.vlink,.sp,canvas,header,.kpis,h1,h2,.ctab,.fstep,th,.gt'))nodes.push(c);}
+      break;}
+  });
+}
+
+// ---- jump to company
+function jump(name){
+  var r=REG[name];if(!r)return;renderV(r);
+  var row=document.getElementById('row-'+name);if(!row)return;
+  row.scrollIntoView({behavior:'smooth',block:'center'});
+  row.classList.remove('flash');void row.offsetWidth;row.classList.add('flash');
+}
+document.addEventListener('click',function(e){var v=e.target.closest('.vlink');if(v){e.preventDefault();jump(v.dataset.co);}});
+function vlink(name,label,showG){var g=G[name];return '<button class="vlink" data-co="'+name+'" title="跳到公司比較">'+(label||name)+'<span class="cty">'+CTY[name]+'</span>'+(showG&&g?'<span class="sp '+g[0]+'">'+GL[g[0]]+'</span>':'')+'</button>';}
+
+// ---- categories
+var CATS=[
+ {k:'drill',t:'鑽孔',p:20.7,d:'在板上打孔讓各層導通；AI 伺服器板層數多、板厚，鑽孔與背鑽需求最強。',
+  eq:[['機械鑽孔機',[['Via Mechanics'],['Schmoll'],['大族數控'],['大量']]],['背鑽機與殘銅量測',[['大量'],['大族數控']]],['雷射鑽孔機（打盲孔）',[['Via Mechanics'],['三菱電機'],['MKS（Atotech、ESI）','MKS（ESI）'],['大族數控']]],['鑽針（耗材）',[['鼎泰高科']]]],
+  g:'在玻璃上打通孔就是 TGV，主流做法是雷射改質後再蝕刻，與機械鑽孔原理不同。',gv:['Schmoll','Via Mechanics','三菱電機','大族數控']},
+ {k:'expo',t:'曝光',p:17.0,d:'把線路圖案轉移到感光膜上，決定線路能做多細；內層、外層、防焊都會用到。',
+  eq:[['LDI 曝光機',[['KLA（Orbotech）'],['SCREEN'],['Adtec（Ushio）','Adtec'],['ORC'],['Schmoll'],['芯碁微裝'],['大族數控'],['川寶']]]],
+  g:'玻璃面板上的曝光需要可處理玻璃的機台。',gv:['芯碁微裝','Adtec（Ushio）']},
+ {k:'insp',t:'檢測',p:15.0,d:'用相機比對設計圖找出斷路、短路，並逐片通電測試；貫穿前後段製程。',
+  eq:[['AOI 與檢測設備',[['KLA（Orbotech）'],['牧德'],['由田'],['聯策'],['大族數控']]],['電測（通電測試）',[['牧德']]]],
+  g:'玻璃基板還要檢查每個孔的位置、孔徑與微裂紋。',gv:['KLA（Orbotech）','Adtec（Ushio）','聯策','由田']},
+ {k:'route',t:'成型',p:8.7,d:'把大板切成客戶要的外型。',
+  eq:[['成型機',[['大族數控']]]],
+  g:'玻璃面板切割容易崩邊。',gv:['大族數控'],note:'本頁收錄名單中，成型設備只有大族數控；其他成型設備商未列入本次比較。'},
+ {k:'plate',t:'電鍍',p:7.2,d:'在孔壁與線路長上銅，讓各層真正導通。',
+  eq:[['電鍍藥水與電鍍線',[['MKS（Atotech、ESI）','MKS（Atotech）']]],['垂直連續電鍍線（VCP）',[['東威科技']]]],
+  g:'TGV 要把細長的孔填滿銅，孔越深越細越難。',gv:['MKS（Atotech、ESI）','東威科技','川寶']},
+ {k:'press',t:'壓合',p:5.9,d:'把多層板加溫加壓壓成一塊。',
+  eq:[['壓合機',[['Bürkle'],['志聖']]]],
+  g:'玻璃核心兩面貼膜加壓，需避免破片與翹曲。',gv:[],gnote:'收錄的壓合設備商中未見玻璃相關公開資料；玻璃用的壓膜設備見「其他」。'},
+ {k:'other',t:'其他',p:25.5,d:'來源未逐項列出的設備，包括壓膜、塗佈、烘烤，以及顯影、蝕刻等濕製程。',
+  eq:[['壓膜、塗佈、烘烤',[['志聖'],['群翊'],['長廣']]],['濕製程（顯影、蝕刻、乾燥）',[['揚博'],['聯策']]]],
+  g:'玻璃基板增層前後的壓膜、塗佈、乾燥設備，是目前少數已有出貨紀錄的類別。',gv:['群翊','長廣','揚博','SCREEN','大量']}
+];
+var curC=0,termSeen={};
+function renderCats(){
+  document.getElementById('ctabs').innerHTML=CATS.map(function(c,i){return '<button class="ctab'+(i===curC?' on':'')+'" role="tab" aria-selected="'+(i===curC)+'" data-i="'+i+'"><b>'+c.t+'</b><small>占支出 '+c.p.toFixed(1)+'%</small></button>';}).join('');
+  var c=CATS[curC];
+  var eq='<table class="eqt"><tbody>'+c.eq.map(function(e){return '<tr><td>'+e[0]+'</td><td>'+e[1].map(function(v){return vlink(v[0],v[1]);}).join('')+'</td></tr>';}).join('')+'</tbody></table>';
+  var gl=c.gv.length?'<div>'+c.gv.map(function(n){return vlink(n,null,true);}).join('')+'</div>':'<p>'+c.gnote+'</p>';
+  var p=document.getElementById('cpanel');
+  p.innerHTML='<h3>'+c.t+'設備</h3><p style="color:var(--ink-2);font-size:.93rem"><span class="lbl" style="font-size:.75rem;font-weight:700;color:var(--ink-3);margin-right:6px">說明</span>'+c.d+'</p>'+eq+(c.note?'<p class="note">'+c.note+'</p>':'')+'<div class="gline"><span class="gt">🪟 用在玻璃基板上</span><p>'+c.g+'</p>'+gl+'</div>';
+  markTerms(p,{});
+}
+document.getElementById('ctabs').addEventListener('click',function(e){var b=e.target.closest('.ctab');if(!b)return;curC=+b.dataset.i;renderCats();});
+function goCat(k){CATS.forEach(function(c,i){if(c.k===k)curC=i;});renderCats();document.getElementById('cats').scrollIntoView({behavior:'smooth',block:'start'});}
+
+// ---- flow
+var STEPS=[
+ {t:'內層線路',d:'在每一層板上做出銅線路：貼上感光乾膜、曝光，再把多餘的銅蝕刻掉。',c:['other','expo']},
+ {t:'內層檢測',d:'壓合前用相機比對設計圖，找出斷路、短路，壞的不往下送。',c:['insp']},
+ {t:'壓合',d:'把多層線路與絕緣膠片加溫加壓，壓成一塊多層板。',c:['press']},
+ {t:'鑽孔',hot:true,d:'打通孔讓上下層導通；背鑽去除多餘的銅，雷射打微小盲孔。AI 伺服器板需求最強（★）。',c:['drill']},
+ {t:'孔壁鍍銅',d:'先除膠渣、做化學銅打底，再電鍍把孔壁的銅鍍厚。',c:['plate','other']},
+ {t:'外層線路',d:'和內層相同：壓膜、曝光、蝕刻，做出最外兩層線路。',c:['other','expo']},
+ {t:'防焊',d:'塗上防焊油墨保護線路，曝光定義焊接開口，再烘烤固化。',c:['other','expo']},
+ {t:'成型與測試',d:'切出外型、逐片通電測試，最後再做外觀檢查。',c:['route','insp']}
+];
+var curS=3;
+function catName(k){for(var i=0;i<CATS.length;i++)if(CATS[i].k===k)return CATS[i].t;}
+function renderFlow(){
+  document.getElementById('flow').innerHTML=STEPS.map(function(s,i){return (i?'<span class="farrow" aria-hidden="true">→</span>':'')+'<button class="fstep'+(i===curS?' on':'')+(s.hot?' hot':'')+'" role="tab" aria-selected="'+(i===curS)+'" data-i="'+i+'"><span class="no">'+(i+1)+'</span>'+s.t+'</button>';}).join('');
+  var s=STEPS[curS],f=document.getElementById('fdetail');
+  f.innerHTML='<h3>'+(curS+1)+'. '+s.t+'</h3><p style="color:var(--ink-2);font-size:.93rem"><span class="lbl">說明</span>'+s.d+'</p><div><span class="lbl">用到的設備類別</span>'+s.c.map(function(k){return '<button class="catlink" data-k="'+k+'">'+catName(k)+' →</button>';}).join(' ')+'</div>';
+  markTerms(f,{});
+}
+document.getElementById('flow').addEventListener('click',function(e){var b=e.target.closest('.fstep');if(!b)return;curS=+b.dataset.i;renderFlow();});
+document.getElementById('fdetail').addEventListener('click',function(e){var b=e.target.closest('.catlink');if(b)goCat(b.dataset.k);});
+
+// ---- comparison table
+function gcell(name){var g=G[name];return '<td><div class="gs"><span class="sp '+g[0]+'">'+GL[g[0]]+'</span>'+(g[2]?'<small><b>對應：</b>'+g[2]+'</small>':'')+'<small>'+g[1]+'</small></div></td>';}
+function numcell(x){if(!Array.isArray(x))return '<td>'+x+'</td>';if(x[1].charAt(0)==='+'||x[1].charAt(0)==='−'){var dn=x[1].charAt(0)==='−';return '<td class="n">'+x[0]+'<br><span class="'+(dn?'dn':'up')+'">'+x[1]+'</span></td>';}return '<td class="n">2025：'+x[0]+'<br>2026H1：'+x[1]+'</td>';}
+var curR=null;
+function renderV(r){
+  if(r===curR)return;curR=r;
+  var d=V[r],box=document.getElementById('vtable');
+  box.innerHTML='<div class="tbl"><table><thead><tr>'+d.head.map(function(h,i){return '<th'+(i===3?' style="width:34%"':'')+'>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+
+   d.rows.map(function(row){return '<tr id="row-'+row[0]+'"><td class="co">'+row[0]+'<small>'+row[1]+'</small></td><td>'+row[2]+'<span class="pos">'+row[3]+'</span></td>'+numcell(row[4])+gcell(row[0])+'</tr>';}).join('')+'</tbody></table></div>';
+  document.getElementById('vnote').textContent=d.note;
+  [].forEach.call(document.querySelectorAll('.tab'),function(b){var on=b.dataset.r===r;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
+  markTerms(box,{});
+}
+document.querySelector('.tabs').addEventListener('click',function(e){var b=e.target.closest('.tab');if(b)renderV(b.dataset.r);});
+
+renderFlow();renderCats();renderV('intl');
+// first occurrence of each term in static text
+markTerms(document.getElementById('main'),termSeen);
+
+var SRC=[
+ ['市場與中國',[['證券時報：大族數控 2025 年報','https://www.stcn.com/article/detail/3712899.html'],['大族數控 2025 年報（玻璃基板研發項目）','https://www.hanscnc.com/uploads/upload/files/20260519/50d0d10032dea4fc1723d3e03448e4a1.pdf'],['大族數控 2026 半年報摘要','https://pdf.dfcfw.com/pdf/H2_AN202608201828217605_1.pdf'],['LaserFair：大族數控港股上市','https://www.laserfair.com/English/202603/03/1028.html'],['老虎證券：大族數控（市場規模）','https://www.itiger.com/news/1143650674'],['信達證券摘要（各站占比）','https://www.itiger.com/news/1123682745'],['工商時報：灼識諮詢市占','https://wantrich.chinatimes.com/news/20250531900121-420201'],['芯碁微裝 2025 年報摘要','https://static.cninfo.com.cn/finalpage/2026-03-14/1225007946.PDF'],['芯碁微裝 2025 半年報（PLP 支援玻璃）','https://stockmc.xueqiu.com/202508/688630_20250828_H2HQ.pdf'],['中信建投：芯碁 2026 中報點評','https://m.gelonghui.com/news/5302864'],['證券時報：東威科技 2025 年報','https://www.stcn.com/article/detail/3843882.html'],['東吳證券：東威 2026 中報點評','https://pdf.dfcfw.com/pdf/H3_AP202608121827902291_1.pdf'],['老虎證券轉載（東威 TGV 電鍍，二手）','https://www.itiger.com/news/2642544691'],['上海證券報：鼎泰高科 2025 年報','https://paper.cnstock.com/html/2026-03/27/content_2192557.htm'],['同花順：鼎泰高科 2026 半年報','https://stock.10jqka.com.cn/20260819/c679108234.shtml'],['大族半導體 TGV 設備（區分大族數控）','https://www.ab-sm.com/a/71877']]],
+ ['國際',[['KLA FY2026 財報','https://digital-release.wowktv.com/business/press-releases/cision/20260728CG12657/kla-corporation-reports-fiscal-2026-fourth-quarter-and-full-year-results'],['KLA 10-K FY2025','https://www.sec.gov/Archives/edgar/data/319201/000031920125000024/klac-20250630.htm'],['KLA IC 載板檢測新品（含玻璃核心）','https://ir.kla.com/news-events/press-releases/detail/485/kla-unveils-comprehensive-ic-substrate-portfolio-for-a-new'],['Amada 收購 Via Mechanics','https://filingreader.com/news-wire/tokyo/2025-04-17/amada-to-acquire-via-mechanics-expands-semiconductor-footprint'],['日本電氣硝子 × Via Mechanics 共同開發','https://www.neg.co.jp/news/20241119.html'],['MKS 2025 年財報','https://investor.mks.com/news-releases/news-release-details/mks-inc-reports-fourth-quarter-and-full-year-2025-financial'],['MKS KPCA 2026（Atotech TGV 填孔）','https://iconnect007.com/article/151454/mks-highlights-laser-and-chemistry-solutions-at-kpca-show-2026/151451/pcb'],['三菱電機雷射鑽孔機','https://us.mitsubishielectric.com/fa/en/products/laser-processing/laser/drilling/'],['三菱電機玻璃鑽孔技術（2014）','https://optronics-media.com/news/20140214/18703/'],['SCREEN 部門營收','https://envalith.com/en/companies/7735/segments'],['SCREEN Finetech Lemotia','https://www.screen.co.jp/ft/products/lemotia'],['Adtec 曝光產品頁','https://www.adtec.com/products/exposure/'],['Ushio UX-59113','https://www.ushio.co.jp/jp/news/1002/2025-2025/501410.html'],['ORC 面板級直接曝光（マイナビ）','https://news.mynavi.jp/techplus/article/20250828-3420072/'],['ORC 公司概要','https://job.mynavi.jp/27/pc/search/corp77179/outline.html'],['Adtec 公司概要','https://job.mynavi.jp/27/pc/search/corp86800/outline.html'],['Schmoll TGV 玻璃面板方案','https://www.schmoll-maschinen.de/news/schmoll-showcases-advanced-tgv-solutions-for-glass-panel-technology'],['I-Connect007：Schmoll','https://iconnect007.com/article/144571/driving-innovation-schmolldecades-of-technology-evolution/144568/pcb'],['Bürkle','https://nimbus.com/en/news/2018/09/auctus-takes-over-robert-b/160']]],
+ ['台灣',[['Yahoo 月營收：志聖','https://tw.stock.yahoo.com/quote/2467/revenue'],['Yahoo 月營收：群翊','https://tw.stock.yahoo.com/quote/6664.TWO/revenue'],['Yahoo 月營收：大量','https://tw.stock.yahoo.com/quote/3167/revenue'],['Yahoo 月營收：牧德','https://tw.stock.yahoo.com/quote/3563/revenue'],['Yahoo 月營收：川寶','https://tw.stock.yahoo.com/quote/1595.TWO/revenue'],['Yahoo 月營收：由田','https://tw.stock.yahoo.com/quote/3455/revenue'],['Yahoo 月營收：揚博','https://tw.stock.yahoo.com/quote/2493/revenue'],['Yahoo 月營收：聯策','https://tw.stock.yahoo.com/quote/6658/revenue'],['Yahoo 月營收：長廣','https://tw.stock.yahoo.com/quote/7795/revenue'],['Yahoo 月營收：德律','https://tw.stock.yahoo.com/quote/3030/revenue'],['工商時報 2026/7/2（群翊、由田玻璃動態）','https://www.ctee.com.tw/news/20260702701576-430501'],['旺得富 2026/1/16（長廣玻璃壓膜）','https://wantrich.chinatimes.com/news/20260116900339-420101'],['旺得富 2026/9/18（揚博 Wing X）','https://wantrich.chinatimes.com/news/20260918900123-420101'],['工商時報 2026/7/31（川寶 TGV 填孔）','https://www.ctee.com.tw/news/20260731700269-439901'],['富果：聯策法說摘要（二手）','https://blog.fugle.tw/post/earnings-call-6658-2026-09-01'],['富果：大量法說摘要（二手）','https://blog.fugle.tw/post/earnings-call-3167-2025-08-11'],['壹蘋新聞網（G2C+ 聯盟）','https://news.nextapple.com/finance/20260409/0AE8F82D0619EE73F020F1733DEF9465'],['TechNews：牧德新機','https://cdn.technews.tw/2026/04/22/macvision-new-equipment/'],['志聖法說','https://vocus.cc/article/69f1dba3fd8978000135c4fc'],['群翊法說','https://blog.fugle.tw/post/earnings-call-6664-2026-03-30'],['工商時報：大量訂單滿載','https://www.ctee.com.tw/news/20261011700451-430201'],['大量背鑽機比重','https://uanalyze.com.tw/articles/9914137703'],['長廣法說','https://www.stockfeel.com.tw/2026q2-%E9%95%B7%E5%BB%A3%E7%B2%BE%E6%A9%9F-%E6%B3%95%E8%AA%AA%E6%9C%83/'],['方格子：AI PCB 設備（交期）','https://vocus.cc/article/6a11566dfd89780001c8cc25']]],
+ ['玻璃基板產業（附錄）',[['工商時報 2026/9/30（晶呈科）','https://www.ctee.com.tw/news/20260930700076-439901'],['鈦昇新聞稿 2026/10/6','https://hao.cnyes.com/post/271029'],['LPKF 新聞稿 2026/9/23','https://www.laserfocusworld.com/directory/laser-sources/laser-semiconductor/press-release/55408846/lpkf-laser-electronics-leading-asian-advanced-semiconductor-packaging-manufacturer-selects-lpkfs-glass-processing-equipment-for-production-ramp-up'],['亞洲經濟（Philoptics）','https://view.asiae.co.kr/en/article/2026090710053387061'],['同花順（帝爾激光）','https://stock.10jqka.com.cn/20260703/c677931977.shtml'],['東方財富（德龍激光）','https://finance.eastmoney.com/a/202606303788586858.html'],['TechNews（蔚華科）','https://finance.technews.tw/2026/09/08/spiroxs-exclusive-glass-substrate-mass-production-testing-equipment-technology/'],['Onto Innovation 新聞稿','https://www.businesswire.com/news/home/20240709852324/en/Onto-Innovation-Further-Strengthens-Companys-Panel-Portfolio-with-New-Glass-Suite'],['TrendForce（Absolics 延期）','https://www.trendforce.com/news/?p=61380'],['LEDinside（三星電機）','https://www.ledinside.com/news/2026/7/2026_07_06_01'],['Korea Times（LG Innotek）','https://www.koreatimes.co.kr/business/companies/20260909/lg-innotek-shows-next-gen-chip-substrate-technology-at-kpca-show-2026'],['DNP 新聞稿','https://www.global.dnp/news/detail/20177773_4126.html'],['TrendForce（BOE）','https://www.trendforce.com/news/2026/09/23/news-boe-joins-glass-substrate-race/'],['鉅亨（群創法說）','https://news.cnyes.com/news/id/6580492'],["Tom's Hardware（Intel 等時程）",'https://www.tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined'],['自由時報（欣興）','https://ec.ltn.com.tw/article/paper/1764679']]]
+];
+
+document.getElementById('srcBox').innerHTML=SRC.map(function(g){return '<div><h4>'+g[0]+'</h4><ol>'+g[1].map(function(x){return '<li><a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a></li>';}).join('')+'</ol></div>';}).join('');
+
+var charts=[];
+function tok(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function drawCharts(){
+  if(!window.Chart)return;
+  charts.forEach(function(c){c.destroy();});charts=[];
+  var ink=tok('--ink-2'),grid=tok('--line'),brand=tok('--brand'),mute=tok('--ink-3'),tw=tok('--tw');
+  Chart.defaults.font.family='"Noto Sans TC",system-ui,sans-serif';Chart.defaults.color=ink;
+  var sp=CATS.map(function(c){return [c.t,c.p];});
+  charts.push(new Chart(document.getElementById('spendChart'),{type:'bar',data:{labels:sp.map(function(r){return r[0];}),datasets:[{data:sp.map(function(r){return r[1];}),backgroundColor:sp.map(function(r,i){return i<3?brand:(i===6?grid:mute);}),borderRadius:6}]},
+   options:{indexAxis:'y',maintainAspectRatio:false,onClick:function(e,els){if(els.length){curC=els[0].index;renderCats();}},plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.x.toFixed(1)+'%，約 US$'+(c.parsed.x/100*70.85).toFixed(1)+' 億';}}}},scales:{x:{max:30,grid:{color:grid},ticks:{callback:function(v){return v+'%';}}},y:{grid:{display:false}}}}}));
+  var g=[["大量",95.4,140.2],["志聖",26.6,87.1],["聯策",30.5,21.9],["群翊",3.1,18.7],["揚博",3.0,14.1],["牧德",108.0,11.6],["川寶",-21.8,4.6],["長廣",-15.0,2.9],["由田",-9.5,-14.0]];
+  charts.push(new Chart(document.getElementById('growthChart'),{type:'bar',data:{labels:g.map(function(r){return r[0];}),datasets:[
+    {label:'2025 全年',data:g.map(function(r){return r[1];}),backgroundColor:tw+'55',borderRadius:4},
+    {label:'2026 年累計',data:g.map(function(r){return r[2];}),backgroundColor:tw,borderRadius:4}]},
+   options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:function(c){var v=c.parsed.x;return c.dataset.label+'：'+(v>0?'+':'')+v.toFixed(1)+'%';}}}},scales:{x:{grid:{color:function(c){return c.tick&&c.tick.value===0?mute:grid;}},ticks:{callback:function(v){return v+'%';}}},y:{grid:{display:false}}}}}));
+}
+drawCharts();
+try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawCharts);new MutationObserver(drawCharts).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});}catch(e){}
+})();
+</script>
+
+</body></html>
