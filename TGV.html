@@ -1,0 +1,586 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>TGV 玻璃基板懶人包</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: interactive explainer modeled on the user's Gemini reference — sticky white top bar, dark gradient hero card, white rounded "Part" cards on slate, step switcher, region tabs, live charts, quiz. Emerald = accent; region colors: international blue, mainland China rose, Taiwan amber. */
+:root{
+  --bg:#F1F5F9; --card:#FFFFFF; --card-2:#F8FAFC; --line:#E2E8F0;
+  --ink:#0F172A; --ink-2:#334155; --ink-3:#64748B;
+  --brand:#059669; --brand-soft:#D1FAE5; --brand-ink:#065F46;
+  --hero-a:#0F172A; --hero-b:#1E293B; --hero-c:#022C22; --hero-ink:#F8FAFC; --hero-dim:#CBD5E1; --hero-acc:#34D399;
+  --intl:#2563EB; --intl-soft:#DBEAFE; --cn:#E11D48; --cn-soft:#FFE4E6; --tw:#D97706; --tw-soft:#FEF3C7;
+  --ok:#059669; --ok-soft:#D1FAE5; --warn:#B45309; --warn-soft:#FEF3C7; --mute:#64748B; --mute-soft:#F1F5F9;
+  --bad:#DC2626; --bad-soft:#FEE2E2;
+  --sans:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1120; --card:#111827; --card-2:#0F172A; --line:#1F2937;
+  --ink:#F1F5F9; --ink-2:#CBD5E1; --ink-3:#94A3B8;
+  --brand:#34D399; --brand-soft:rgba(52,211,153,.14); --brand-ink:#6EE7B7;
+  --hero-a:#020617; --hero-b:#0F172A; --hero-c:#022C22;
+  --intl:#60A5FA; --intl-soft:rgba(96,165,250,.15); --cn:#FB7185; --cn-soft:rgba(251,113,133,.15); --tw:#FBBF24; --tw-soft:rgba(251,191,36,.15);
+  --ok:#34D399; --ok-soft:rgba(52,211,153,.14); --warn:#FBBF24; --warn-soft:rgba(251,191,36,.14); --mute:#94A3B8; --mute-soft:rgba(148,163,184,.12);
+  --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1120; --card:#111827; --card-2:#0F172A; --line:#1F2937;
+  --ink:#F1F5F9; --ink-2:#CBD5E1; --ink-3:#94A3B8;
+  --brand:#34D399; --brand-soft:rgba(52,211,153,.14); --brand-ink:#6EE7B7;
+  --hero-a:#020617; --hero-b:#0F172A; --hero-c:#022C22;
+  --intl:#60A5FA; --intl-soft:rgba(96,165,250,.15); --cn:#FB7185; --cn-soft:rgba(251,113,133,.15); --tw:#FBBF24; --tw-soft:rgba(251,191,36,.15);
+  --ok:#34D399; --ok-soft:rgba(52,211,153,.14); --warn:#FBBF24; --warn-soft:rgba(251,191,36,.14); --mute:#94A3B8; --mute-soft:rgba(148,163,184,.12);
+  --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--card)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1100px;margin:0 auto}
+h1,h2,h3,h4{margin:0;line-height:1.35;text-wrap:balance}
+p{margin:0}
+a{color:var(--brand)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .inner{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;white-space:nowrap}
+.brand .ic{font-size:1.4rem}
+.top nav{display:flex;gap:20px;font-size:.88rem;font-weight:500;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{color:var(--ink-3);text-decoration:none;white-space:nowrap}
+.top nav a:hover{color:var(--brand)}
+.pill{font-size:.72rem;font-weight:700;background:var(--brand-soft);color:var(--brand-ink);padding:4px 10px;border-radius:999px;white-space:nowrap}
+@media (max-width:860px){.top nav{display:none}}
+
+main.inner{display:flex;flex-direction:column;gap:40px;padding-block:28px 64px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b) 55%,var(--hero-c));color:var(--hero-ink);border-radius:20px;padding:clamp(24px,5vw,44px);box-shadow:0 20px 40px -20px rgba(2,6,23,.45);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(52,211,153,.22),transparent 70%)}
+.hero-in{max-width:760px;display:flex;flex-direction:column;gap:16px;position:relative;z-index:1}
+.badge{align-self:flex-start;font-size:.75rem;font-weight:700;color:var(--hero-acc);background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.35);padding:4px 12px;border-radius:999px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.01em}
+.hero p{color:var(--hero-dim);font-size:1.02rem}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-top:18px;border-top:1px solid rgba(148,163,184,.3);margin-top:6px}
+.kpi small{display:block;font-size:.74rem;color:#94A3B8}
+.kpi b{display:block;font-size:1.15rem;color:var(--hero-acc);font-weight:700}
+.kpi i{font-style:normal;font-size:.74rem;color:#94A3B8}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* part card */
+.part{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);box-shadow:0 1px 2px rgba(15,23,42,.05);display:flex;flex-direction:column;gap:22px;scroll-margin-top:76px;min-width:0}
+.part-hd{border-bottom:1px solid var(--line);padding-bottom:16px;display:flex;flex-direction:column;gap:4px}
+.eyebrow{font-size:.74rem;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase}
+.part-hd h2{font-size:clamp(1.3rem,2.6vw,1.6rem);font-weight:700}
+.part-hd p{color:var(--ink-2);max-width:68ch}
+
+/* summary tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tile{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile .ic{font-size:1.5rem}
+.tile h3{font-size:1.02rem;font-weight:700}
+.tile p{font-size:.92rem;color:var(--ink-2)}
+
+/* step switcher */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.step{background:var(--card-2);border:2px solid var(--line);border-radius:14px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;transition:border-color .15s,background .15s;min-width:0}
+.step:hover{border-color:color-mix(in srgb,var(--brand) 50%,var(--line))}
+.step.on{border-color:var(--brand);background:var(--brand-soft)}
+.step .n{font-family:var(--mono);font-size:.7rem;color:var(--ink-3)}
+.step .t{font-weight:700;font-size:.98rem}
+.step .hot{font-size:.68rem;font-weight:700;color:var(--tw);margin-top:2px}
+.detail{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;background:var(--card-2);border:1px solid var(--line);border-radius:16px;padding:22px}
+@media (max-width:760px){.detail{grid-template-columns:1fr}}
+.detail h3{font-size:1.2rem;font-weight:700;display:flex;gap:8px;align-items:center}
+.plain{background:var(--brand-soft);border-radius:12px;padding:12px 14px;color:var(--ink);font-size:.95rem}
+.plain b{color:var(--brand-ink)}
+.detail ul{margin:0;padding-left:1.1em;color:var(--ink-2);font-size:.93rem;display:flex;flex-direction:column;gap:4px}
+.vend{display:flex;flex-direction:column;gap:10px}
+.vrow{display:grid;grid-template-columns:4.6em 1fr;gap:8px;align-items:start;font-size:.9rem}
+.vrow .lab{font-size:.74rem;font-weight:700;padding-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.78rem;font-weight:500;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);background:var(--card)}
+.chip.i{background:var(--intl-soft);color:var(--intl);border-color:transparent}
+.chip.c{background:var(--cn-soft);color:var(--cn);border-color:transparent}
+.chip.t{background:var(--tw-soft);color:var(--tw);border-color:transparent}
+.none{font-size:.82rem;color:var(--ink-3)}
+.li{color:var(--intl)}.lc{color:var(--cn)}.lt{color:var(--tw)}
+
+/* charts */
+.chart-box{position:relative;width:100%;height:380px}
+.chart-box.tall{height:520px}
+.note{font-size:.8rem;color:var(--ink-3);line-height:1.65}
+.two-col{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.two-col{grid-template-columns:1fr}}
+.callout{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.callout h3{font-size:1rem;font-weight:700}
+.callout p{font-size:.92rem;color:var(--ink-2)}
+
+/* tabs + tables */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{border:1px solid var(--line);background:var(--card-2);border-radius:999px;padding:6px 16px;font-size:.9rem;font-weight:600;color:var(--ink-2)}
+.tab.on[data-r="intl"]{background:var(--intl);color:#fff;border-color:var(--intl)}
+.tab.on[data-r="cn"]{background:var(--cn);color:#fff;border-color:var(--cn)}
+.tab.on[data-r="tw"]{background:var(--tw);color:#1C1917;border-color:var(--tw)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:.9rem;line-height:1.6}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card-2);font-size:.75rem;font-weight:700;color:var(--ink-3);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td{color:var(--ink-2)}
+td.co{color:var(--ink);font-weight:700}
+td.co small{display:block;font-family:var(--mono);font-weight:400;font-size:.72rem;color:var(--ink-3)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink)}
+.up{color:var(--ok);font-weight:600}.dn{color:var(--bad);font-weight:600}
+.unit{font-size:.8rem;color:var(--ink-3)}
+
+/* buy cards */
+.buy{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.bc{border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--card-2);min-width:0}
+.bc h3{font-size:1.02rem;font-weight:700;display:flex;gap:8px;align-items:center}
+.bc .k{font-size:.74rem;font-weight:700;color:var(--ink-3)}
+.bc p{font-size:.9rem;color:var(--ink-2)}
+.warnbar{display:flex;gap:12px;align-items:flex-start;background:var(--warn-soft);border-radius:14px;padding:14px 16px;font-size:.92rem;color:var(--ink)}
+
+/* trend */
+.dual{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.dual .callout ul{margin:0;padding-left:1.1em;font-size:.92rem;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.dual .callout li b{color:var(--ink)}
+.st{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.st.ok{background:var(--ok-soft);color:var(--ok)}.st.wn{background:var(--warn-soft);color:var(--warn)}.st.no{background:var(--mute-soft);color:var(--mute)}
+
+/* quiz */
+.quiz{display:flex;flex-direction:column;gap:16px}
+.q{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--card-2);display:flex;flex-direction:column;gap:10px}
+.q h3{font-size:1rem;font-weight:700}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;text-align:left;font-size:.92rem}
+.opt:hover{border-color:var(--brand)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ink)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--ink)}
+.fb{font-size:.9rem;color:var(--ink-2)}
+.fb b.r{color:var(--ok)}.fb b.w{color:var(--bad)}
+.score{font-weight:700;color:var(--brand-ink)}
+
+/* glossary + sources */
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.gl div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card-2)}
+.gl dt{font-weight:700;font-size:.95rem}
+.gl dd{margin:2px 0 0;font-size:.86rem;color:var(--ink-2)}
+details{border:1px solid var(--line);border-radius:14px;background:var(--card-2)}
+summary{cursor:pointer;padding:14px 18px;font-weight:700;font-size:.95rem}
+.srcs{padding:0 18px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.srcs h4{font-size:.78rem;color:var(--brand);margin-bottom:4px}
+.srcs ol{margin:0;padding-left:1.4em;font-size:.84rem;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+.srcs a{color:var(--ink-2);word-break:break-word}
+footer{font-size:.8rem;color:var(--ink-3);text-align:center;padding-bottom:20px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>
+/* Additions for the TGV explainer: progress-stage colors (shipped / sampling / R&D / unverified), timeline, filters. */
+:root{--sA:#047857;--sA-soft:#D1FAE5;--sB:#1D4ED8;--sB-soft:#DBEAFE;--sC:#B45309;--sC-soft:#FEF3C7;--sD:#475569;--sD-soft:#F1F5F9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sA:#34D399;--sA-soft:rgba(52,211,153,.15);--sB:#93C5FD;--sB-soft:rgba(147,197,253,.15);--sC:#FCD34D;--sC-soft:rgba(252,211,77,.14);--sD:#CBD5E1;--sD-soft:rgba(203,213,225,.12)}}
+:root[data-theme="dark"]{--sA:#34D399;--sA-soft:rgba(52,211,153,.15);--sB:#93C5FD;--sB-soft:rgba(147,197,253,.15);--sC:#FCD34D;--sC-soft:rgba(252,211,77,.14);--sD:#CBD5E1;--sD-soft:rgba(203,213,225,.12)}
+.sp{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.sp.A{background:var(--sA-soft);color:var(--sA)}.sp.B{background:var(--sB-soft);color:var(--sB)}.sp.C{background:var(--sC-soft);color:var(--sC)}.sp.D{background:var(--sD-soft);color:var(--sD)}
+.legend-row{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.82rem;color:var(--ink-2);align-items:center}
+.pl{display:flex;flex-direction:column;gap:8px}
+.pi{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px}
+.pi b{font-size:.95rem}
+.pi .rg{font-size:.72rem;color:var(--ink-3);margin-left:6px;font-weight:500}
+.pi p{grid-column:1 / -1;font-size:.86rem;color:var(--ink-2)}
+.why{font-size:.9rem;color:var(--ink-2);background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:10px 12px}
+.filters{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.fg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fg span{font-size:.78rem;font-weight:700;color:var(--ink-3);margin-right:2px}
+.fb2{border:1px solid var(--line);background:var(--card-2);border-radius:999px;padding:4px 12px;font-size:.84rem;font-weight:600;color:var(--ink-2)}
+.fb2.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
+td.src a{font-size:.8rem;color:var(--ink-2)}
+td.src .q{display:block;font-size:.7rem;color:var(--ink-3)}
+.cnt{font-size:.85rem;color:var(--ink-3)}
+/* timeline */
+.tl{display:flex;flex-direction:column;gap:2px;overflow-x:auto}
+.tl-in{min-width:640px;display:flex;flex-direction:column;gap:2px}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-name{font-weight:700;font-size:.92rem;line-height:1.35}
+.tl-name small{display:block;font-weight:400;font-size:.72rem;color:var(--ink-3)}
+.tl-track{position:relative;height:38px}
+.tl-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr)}
+.tl-grid i{border-left:1px dashed var(--line)}
+.tl-bar{position:absolute;top:15px;height:8px;border-radius:4px;background:var(--brand-soft)}
+.tl-dot{position:absolute;top:11px;width:16px;height:16px;transform:translateX(-50%) rotate(45deg);background:var(--brand);border-radius:3px}
+.tl-dot.late{background:var(--ink-3)}
+.tl-lab{position:absolute;top:-2px;font-size:.74rem;color:var(--ink-2);white-space:nowrap;transform:translateX(-50%)}
+.tl-lab.r{transform:translateX(-100%)}
+.tl-axis{display:grid;grid-template-columns:150px 1fr;gap:12px}
+.tl-axis div:last-child{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+/* pcb cards */
+.pcb{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.pc{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card-2);display:flex;flex-direction:column;gap:6px;min-width:0}
+.pc .hd{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.pc b{font-size:.95rem}
+.pc .hd small{display:block;font-size:.72rem;color:var(--ink-3);font-weight:400}
+.pc p{font-size:.85rem;color:var(--ink-2)}
+.sp.N{background:var(--mute-soft);color:var(--mute)}
+.sp.X{background:transparent;color:var(--ink-3);border:1px dashed var(--line)}
+h3.sub{font-size:1rem;font-weight:700;margin-top:4px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+
+/* primer additions */
+:root{--glass:#0E7490;--glass-soft:#CFFAFE;--cu:#B45309;--cu-soft:#FDE68A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--glass:#67E8F9;--glass-soft:rgba(103,232,249,.16);--cu:#FBBF24;--cu-soft:rgba(251,191,36,.35)}}
+:root[data-theme="dark"]{--glass:#67E8F9;--glass-soft:rgba(103,232,249,.16);--cu:#FBBF24;--cu-soft:rgba(251,191,36,.35)}
+.sub-h{font-size:.95rem;font-weight:700;color:var(--ink-3);margin:2px 0 -8px}
+.qa{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.qa .q5{border:1px solid var(--line);border-radius:14px;background:var(--card-2);padding:16px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.qa .q5 h3{font-size:1rem;font-weight:700;display:flex;gap:8px;align-items:baseline}
+.qa .q5 h3 span{font-family:var(--mono);font-size:.78rem;color:var(--brand)}
+.qa .q5 p{font-size:.92rem;color:var(--ink-2)}
+.cmp li{line-height:1.65}
+.cmp .tag{display:inline-block;font-size:.7rem;color:var(--ink-3);margin-left:4px}
+.cmp .co{font-size:.7rem;font-weight:700;color:var(--warn);background:var(--warn-soft);padding:0 6px;border-radius:6px;margin-left:4px;white-space:nowrap}
+.fig2{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card-2);padding:12px}
+.fig2 svg{display:block;width:100%;min-width:640px;height:auto}
+.x-chip{fill:var(--card);stroke:var(--ink-3);stroke-width:1.2}
+.x-int{fill:none;stroke:var(--ink-3);stroke-dasharray:5 4}
+.x-rdl{fill:var(--brand-soft);stroke:var(--brand);stroke-width:1}
+.x-glass{fill:var(--glass-soft);stroke:var(--glass);stroke-width:1.5}
+.x-cu{fill:var(--cu)}
+.x-ball{fill:var(--cu-soft);stroke:var(--cu)}
+.x-pcb{fill:var(--sC-soft);stroke:var(--ink-3)}
+.x-t{font-family:var(--sans);font-size:14px;font-weight:700;fill:var(--ink)}
+.x-s{font-family:var(--sans);font-size:12px;fill:var(--ink-2)}
+.x-in{font-family:var(--sans);font-size:12.5px;font-weight:700;fill:var(--ink)}
+.x-l{stroke:var(--ink-3);stroke-width:1}
+.ms{list-style:none;margin:0;padding:0;position:relative}
+.ms::before{content:"";position:absolute;left:6.4em;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ms li{display:grid;grid-template-columns:5.6em 1fr;gap:28px;padding:8px 0;position:relative}
+.ms li::before{content:"";position:absolute;left:calc(6.4em - 5px);top:15px;width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px var(--card)}
+.ms li.tw::before{background:var(--tw)}
+.ms .d{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);text-align:right;padding-top:2px}
+.ms .e{font-size:.93rem;color:var(--ink)}
+.ms .e a{font-size:.75rem;color:var(--ink-3);margin-left:6px}
+@media (max-width:520px){.ms::before{left:4.9em}.ms li{grid-template-columns:4.2em 1fr;gap:24px}.ms li::before{left:calc(4.9em - 5px)}}
+</style>
+
+<header class="top gut">
+  <div class="inner">
+    <div class="brand"><span class="ic" aria-hidden="true">🔬</span>TGV 玻璃基板懶人包</div>
+    <nav aria-label="章節">
+      <a href="#five">一分鐘現況</a><a href="#why">為什麼用玻璃</a><a href="#stack">封裝位置</a><a href="#process">製程與廠商</a><a href="#board">進度總表</a><a href="#milestones">關鍵事件</a><a href="#timeline">量產時程</a><a href="#pcb">PCB 設備商</a><a href="#notes">數據與提醒</a>
+    </nav>
+    <span class="pill">資料截至 2026/10/19</span>
+  </div>
+</header>
+
+<div class="gut">
+<main class="inner">
+
+<section id="summary" class="hero" aria-labelledby="h-hero">
+  <div class="hero-in">
+    <span class="badge">💡 一句話看懂 TGV 玻璃基板</span>
+    <h1 id="h-hero">「用玻璃取代樹脂做晶片載板，在玻璃上打出微小通孔（TGV）讓上下導通。目前全球還沒有人大規模量產。」</h1>
+    <p>TGV（Through Glass Via，玻璃通孔）是玻璃基板的關鍵製程。玻璃比傳統樹脂載板更平、更不易變形，適合 AI 晶片這類大尺寸封裝。截至 2026 年 10 月，進度最快的基板廠預計 2027 年量產，多數設備商仍在送樣驗證或小量出貨。</p>
+    <div class="kpis">
+      <div class="kpi"><small>最快量產時程</small><b class="num">2027 年</b><i>SKC Absolics（多次延期）</i></div>
+      <div class="kpi"><small>多數基板廠目標</small><b class="num">2028 年</b><i>三星電機、LG Innotek、DNP、BOE、群創</i></div>
+      <div class="kpi"><small>本頁收錄廠商</small><b class="num" id="kpiN">—</b><i>台灣、國際、中國、韓國</i></div>
+      <div class="kpi"><small>SEMI 預估成長</small><b class="num">年增 67.2%</b><i>2028–2040 年複合成長率</i></div>
+    </div>
+  </div>
+</section>
+
+<section id="five" class="part" aria-labelledby="h-five">
+  <div class="part-hd"><span class="eyebrow">概覽</span><h2 id="h-five">一分鐘掌握 TGV 現況</h2><p>上排是三個基本觀念，下排是目前產業狀況；細節在後面各段。</p></div>
+  <h3 class="sub-h">基本觀念</h3>
+  <div class="qa">
+    <div class="q5"><h3><span>是什麼</span>什麼是 TGV 與玻璃基板？</h3><p>載板是承載晶片、連接晶片與主機板的那一層。玻璃基板就是用玻璃取代傳統樹脂當載板的核心層；TGV（玻璃通孔）則是在玻璃上打出的貫穿小孔，填銅後讓玻璃上下兩面的線路導通。</p></div>
+    <div class="q5"><h3><span>為什麼</span>為什麼產業要投入？</h3><p>AI 晶片越做越大，樹脂載板容易翹曲、線路難再加密。Intel 2023 年發表時稱，玻璃可讓布線密度提高約 10 倍、圖形失真減少 50%（公司宣稱）。</p></div>
+    <div class="q5"><h3><span>難在哪</span>最大的難題是什麼？</h3><p>玻璃易碎，鑽孔與切割時容易產生微裂（業界稱 SeWaRe）；金屬附著、面板平坦度與良率也仍待克服。報導指出 Absolics 早期試產曾每隔幾天就破損數百片面板（二手轉述）。</p></div>
+  </div>
+  <h3 class="sub-h">目前狀況</h3>
+  <div class="tiles">
+    <div class="tile"><span class="ic" aria-hidden="true">⏳</span><h3>量產還沒開始</h3><p>SKC 旗下 Absolics 原訂 2024 年量產，時程多次延後，最新報導指向 2027 年；三星電機、LG Innotek、DNP 目標 2028 年；Intel 自家導入約 2030 年。欣興表示 2030 年前大規模量產的機率不高。</p></div>
+    <div class="tile"><span class="ic" aria-hidden="true">🎯</span><h3>成孔是進度最快的一站</h3><p>德國 LPKF 已取得亞洲封裝大廠的量產意向書；台灣鈦昇已交機給美系客戶；中國帝爾激光、德龍激光已有小量營收。</p></div>
+    <div class="tile"><span class="ic" aria-hidden="true">📍</span><h3>台廠多在送樣與小量出貨</h3><p>已有出貨紀錄的台廠：鈦昇（成孔）、晶呈科（成孔）、群翊（增層設備）、長廣（壓膜測試機）。揚博已接單，預計 2027 年出貨。</p></div>
+    <div class="tile"><span class="ic" aria-hidden="true">📏</span><h3>規格多為廠商自述</h3><p>深寬比、缺陷率等數字大多來自公司新聞稿，尚無第三方驗證；部分媒體說法彼此矛盾，本頁都有標註。</p></div>
+  </div>
+</section>
+
+<section id="why" class="part" aria-labelledby="h-why">
+  <div class="part-hd"><span class="eyebrow">Part 1</span><h2 id="h-why">為什麼要用玻璃？好處與挑戰</h2><p>玻璃基板的好處多半來自廠商宣稱，尚待量產驗證；挑戰則是目前延後量產的主因。標示「公司宣稱」者為廠商自己的數字。</p></div>
+  <div class="dual cmp">
+    <div class="callout"><h3>✅ 玻璃相較樹脂載板的好處</h3><ul>
+      <li><b>布線密度約提高 10 倍</b><span class="co">Intel 宣稱</span><span class="tag">2023/9</span></li>
+      <li><b>圖形失真減少 50%</b>，表面極平，曝光更容易對焦<span class="co">Intel 宣稱</span></li>
+      <li><b>可做超大尺寸封裝</b>，同尺寸可多放約 50% 晶片面積<span class="co">Intel 宣稱</span></li>
+      <li><b>耐熱、機械穩定</b>，熱膨脹係數較接近矽，翹曲可能減少<span class="tag">Gartner 分析師觀點</span></li>
+      <li><b>封裝厚度與功耗可減半</b><span class="co">Absolics 宣稱</span><span class="tag">2023/1</span></li>
+    </ul></div>
+    <div class="callout"><h3>⚠️ 目前的挑戰</h3><ul>
+      <li><b>易碎、微裂（SeWaRe）</b>：鑽孔與切割都可能產生，且可能到測試、封裝才裂開</li>
+      <li><b>切割邊緣剝裂</b>：銅與絕緣層熱膨脹不同，冷卻後的應力會讓裂縫擴大<span class="tag">學術論文 2025</span></li>
+      <li><b>製程長、良率難</b>：檢測前約 190 道步驟<span class="tag">券商分析師說法</span></li>
+      <li><b>尚待突破</b>：10 微米以下孔徑的金屬化、半米見方面板維持極高平坦度</li>
+      <li><b>成本</b>：目前查不到可查證的量化成本數據</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="stack" class="part" aria-labelledby="h-stack">
+  <div class="part-hd"><span class="eyebrow">Part 2</span><h2 id="h-stack">玻璃基板在晶片封裝裡的位置</h2><p>由上而下：晶片坐在載板上，載板再焊到主機板。玻璃取代的是載板中間的「核心層」，TGV 就是穿過這層玻璃的銅柱。</p></div>
+  <div class="fig2" role="img" aria-label="玻璃基板封裝剖面示意圖">
+    <svg viewBox="0 0 760 350" xmlns="http://www.w3.org/2000/svg">
+      <rect x="110" y="20" width="150" height="40" rx="4" class="x-chip"/><text x="185" y="45" text-anchor="middle" class="x-in">晶片</text>
+      <rect x="290" y="20" width="150" height="40" rx="4" class="x-chip"/><text x="365" y="45" text-anchor="middle" class="x-in">晶片</text>
+      <rect x="90" y="70" width="370" height="26" rx="4" class="x-int"/><text x="275" y="88" text-anchor="middle" class="x-s">（選用）中介層或橋接，例如 Intel EMIB</text>
+      <rect x="60" y="104" width="430" height="30" class="x-rdl"/>
+      <rect x="60" y="134" width="430" height="80" class="x-glass"/>
+      <rect x="60" y="214" width="430" height="30" class="x-rdl"/>
+      <g class="x-cu"><rect x="95" y="134" width="10" height="80"/><rect x="155" y="134" width="10" height="80"/><rect x="215" y="134" width="10" height="80"/><rect x="275" y="134" width="10" height="80"/><rect x="335" y="134" width="10" height="80"/><rect x="395" y="134" width="10" height="80"/><rect x="445" y="134" width="10" height="80"/></g>
+      <text x="275" y="179" text-anchor="middle" class="x-in">玻璃核心</text>
+      <g class="x-ball"><circle cx="90" cy="256" r="9"/><circle cx="140" cy="256" r="9"/><circle cx="190" cy="256" r="9"/><circle cx="240" cy="256" r="9"/><circle cx="290" cy="256" r="9"/><circle cx="340" cy="256" r="9"/><circle cx="390" cy="256" r="9"/><circle cx="440" cy="256" r="9"/></g>
+      <rect x="30" y="268" width="490" height="44" rx="4" class="x-pcb"/><text x="275" y="295" text-anchor="middle" class="x-in">主機板（PCB）</text>
+      <line x1="440" y1="40" x2="540" y2="40" class="x-l"/><text x="548" y="36" class="x-t">晶片</text><text x="548" y="53" class="x-s">GPU、CPU 等運算晶片</text>
+      <line x1="490" y1="119" x2="540" y2="110" class="x-l"/><text x="548" y="106" class="x-t">上層增層線路</text><text x="548" y="123" class="x-s">多層細線路，連接晶片</text>
+      <line x1="490" y1="174" x2="540" y2="170" class="x-l"/><text x="548" y="166" class="x-t">玻璃核心＋TGV</text><text x="548" y="183" class="x-s">直立的銅柱就是 TGV，</text><text x="548" y="198" class="x-s">讓上下兩面導通</text>
+      <line x1="490" y1="229" x2="540" y2="230" class="x-l"/><text x="548" y="226" class="x-t">下層增層線路</text><text x="548" y="243" class="x-s">Intel 樣品為上下各 10 層</text>
+      <line x1="449" y1="256" x2="540" y2="268" class="x-l"/><text x="548" y="272" class="x-t">錫球</text><text x="548" y="289" class="x-s">把載板焊到主機板</text>
+    </svg>
+  </div>
+  <p class="note">示意圖，非實際比例。傳統載板的核心層是樹脂，玻璃基板只換掉這一層，上下的增層線路做法與傳統載板類似。資料來源：Electronics360（2026/5）、TrendForce（2026/1，Intel 樣品 10-2-10 疊構）。</p>
+</section>
+
+<section id="process" class="part" aria-labelledby="h-proc">
+  <div class="part-hd"><span class="eyebrow">Part 3</span><h2 id="h-proc">玻璃基板怎麼做？每一站有誰？</h2><p>點選下方各站，查看這一站在做什麼、難在哪裡，以及已公開投入的廠商與目前進度。</p></div>
+  <div class="legend-row"><span>進度標籤：</span><span class="sp A">已出貨／交機</span><span class="sp B">產品推出／送樣驗證</span><span class="sp C">研發／試產</span><span class="sp D">待確認</span></div>
+  <div class="steps" id="steps" role="tablist" aria-label="製程站"></div>
+  <div class="detail" id="detail" aria-live="polite"></div>
+  <p class="note">流程為簡化示意，各廠實際做法不同。「已出貨」含小量出貨與驗證機交機，不代表已量產。</p>
+</section>
+
+<section id="board" class="part" aria-labelledby="h-board">
+  <div class="part-hd"><span class="eyebrow">Part 4</span><h2 id="h-board">廠商進度總表</h2><p>可依地區與進度篩選。每一列都附資料來源；標示「二手」者為法說會摘要或轉述，引用前建議再確認。</p></div>
+  <div class="filters">
+    <div class="fg" id="fRegion"><span>地區</span><button class="fb2 on" data-v="all">全部</button><button class="fb2" data-v="台灣">台灣</button><button class="fb2" data-v="國際">美・歐・日</button><button class="fb2" data-v="中韓">中國・韓國</button></div>
+    <div class="fg" id="fStage"><span>進度</span><button class="fb2 on" data-v="all">全部</button><button class="fb2" data-v="A">已出貨</button><button class="fb2" data-v="B">送樣驗證</button><button class="fb2" data-v="C">研發試產</button><button class="fb2" data-v="D">待確認</button></div>
+    <span class="cnt" id="cnt"></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:15%">公司</th><th style="width:11%">製程站</th><th>內容與規格</th><th style="width:12%">進度</th><th style="width:15%">來源</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table></div>
+</section>
+
+<section id="maturity" class="part" aria-labelledby="h-mat">
+  <div class="part-hd"><span class="eyebrow">Part 5</span><h2 id="h-mat">哪一站最成熟？</h2><p>依本頁收錄的廠商統計，成孔站已有出貨紀錄的廠商最多；曝光與切割目前只有少數廠商公開投入。</p></div>
+  <div class="chart-box"><canvas id="matChart" role="img" aria-label="各製程站廠商進度分布"></canvas></div>
+  <p class="note">統計範圍為本頁收錄的設備與製程廠商，不代表全產業。玻璃材料商與基板整合製造廠（如群創、欣興、SKC Absolics）不列入計算。</p>
+</section>
+
+<section id="milestones" class="part" aria-labelledby="h-ms">
+  <div class="part-hd"><span class="eyebrow">Part 6</span><h2 id="h-ms">一路走來：關鍵事件</h2><p>從 2022 年第一座玻璃基板廠動工至今的重要事件。金色圓點為台灣廠商。</p></div>
+  <ol class="ms">
+    <li><span class="d">2022/11</span><span class="e">SKC 旗下 Absolics 在美國喬治亞州動工，投資約 6 億美元<a href="https://www.manufacturingdive.com/news/absolics-to-receive-75-million-chips-act-funding-covington-georgia/717242/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2023/09</span><span class="e">Intel 發表玻璃基板，目標本十年下半推出，首批鎖定資料中心與 AI<a href="https://www.theregister.com/2023/09/18/intel_glass_packaging/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2024/05</span><span class="e">美國商務部依晶片法案，初步同意補助 Absolics 最多 7,500 萬美元<a href="https://www.manufacturingdive.com/news/absolics-to-receive-75-million-chips-act-funding-covington-georgia/717242/" target="_blank" rel="noopener">來源</a></span></li>
+    <li class="tw"><span class="d">2024/08</span><span class="e">鈦昇與數十家業者成立 E-core 玻璃基板聯盟<a href="https://cdn.technews.tw/2024/08/28/er-e-core-system/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2025/12</span><span class="e">日本 DNP 的 TGV 試產線開始運轉，2026 年初出樣<a href="https://www.trendforce.com/news/2025/12/22/news-dnp-accelerates-tgv-glass-substrate-push-with-late-2025-pilot-line-early-2026-sample-shipments/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2026/01</span><span class="e">Intel 首度展示「玻璃核心＋EMIB」樣品（78×77mm）<a href="https://www.trendforce.com/news/2026/01/26/news-intel-reportedly-presents-first-thick-core-glass-substrate-with-emib-targeting-ai-data-centers/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2026/05</span><span class="e">印度公布 Intel 與 3DGS 約 33 億美元的基板廠計畫，建置期 5–6 年<a href="https://www.trendforce.com/news/2026/06/01/news-intel-advances-glass-substrate-push-with-3dgs-us3-3-billion-india-plant-set-for-five-to-six-year-buildout/" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2026/07</span><span class="e">三星電機與住友化學旗下 Dongwoo Fine-Chem 合資成立玻璃核心公司<a href="https://evertiq.com/design/2026-07-13-sumitomo-chemical-to-establish-jv-with-samsung-electro-mechanics" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2026/07</span><span class="e">報導指 Absolics 量產延到 2027 年（韓媒轉述，非公司公告）<a href="https://www.trendforce.com/news/?p=61380" target="_blank" rel="noopener">來源</a></span></li>
+    <li class="tw"><span class="d">2026/07</span><span class="e">欣興表示 2030 年前大規模量產機率不高<a href="https://ec.ltn.com.tw/article/paper/1764679" target="_blank" rel="noopener">來源</a></span></li>
+    <li class="tw"><span class="d">2026/08</span><span class="e">群創：TGV 玻璃基板客戶驗證中，最快 2028 年量產<a href="https://news.cnyes.com/news/id/6580492" target="_blank" rel="noopener">來源</a></span></li>
+    <li><span class="d">2026/09</span><span class="e">德國 LPKF 獲亞洲封裝大廠成孔設備意向書<a href="https://www.laserfocusworld.com/directory/laser-sources/laser-semiconductor/press-release/55408846/lpkf-laser-electronics-leading-asian-advanced-semiconductor-packaging-manufacturer-selects-lpkfs-glass-processing-equipment-for-production-ramp-up" target="_blank" rel="noopener">來源</a></span></li>
+  </ol>
+</section>
+
+<section id="timeline" class="part" aria-labelledby="h-tl">
+  <div class="part-hd"><span class="eyebrow">Part 7</span><h2 id="h-tl">基板廠何時量產？</h2><p>設備需求要等基板廠量產才會放大。目前公開的目標時程集中在 2027 到 2028 年，且已出現延期。</p></div>
+  <div class="tl"><div class="tl-in" id="tlBox"></div></div>
+  <p class="note">菱形為公開目標時程，灰色表示自家導入或保守看法。DNP 的「FY2028」指其會計年度（2028 年 4 月至 2029 年 3 月）。TOPPAN 石川試產線原訂 2026 年 7 月啟用，是否如期本次未查證，未列入圖中。</p>
+</section>
+
+<section id="pcb" class="part" aria-labelledby="h-pcb">
+  <div class="part-hd"><span class="eyebrow">Part 8</span><h2 id="h-pcb">PCB 設備商跨入 TGV 的情況</h2><p>對照前一份「PCB 主要設備商比較」名單：哪些已公開投入玻璃基板，哪些還沒有。</p></div>
+  <div class="legend-row"><span class="sp A">已出貨</span><span class="sp B">產品推出／接單</span><span class="sp C">研發／試產</span><span class="sp D">待確認</span><span class="sp N">未見公開資料</span><span class="sp X">本次未查</span></div>
+  <div id="pcbBox" style="display:flex;flex-direction:column;gap:14px"></div>
+</section>
+
+<section id="notes" class="part" aria-labelledby="h-notes">
+  <div class="part-hd"><span class="eyebrow">Part 9</span><h2 id="h-notes">市場數字與閱讀提醒</h2></div>
+  <div class="facts">
+    <div class="callout"><h3>📊 市場規模：查不到玻璃基板單獨的總金額</h3><p>本次查不到玻璃基板單獨的市場美元總額。可引用的有：</p><p>・Counterpoint：面板級扇出型封裝（FOPLP）加玻璃基板封裝合計，2024 年 US$6.5 億、2030 年 US$80 億；兩者合併計算，不是玻璃基板單獨的數字。</p><p>・SEMI（2026/5）：初期量產約在 2028 年，2028–2040 年複合成長率 67.2%，未給金額。</p><p>・LPKF 自估：其玻璃加工設備 2030 年可服務市場約 €17 億（公司自估）。</p></div>
+    <div class="callout"><h3>⚠️ 互相矛盾的說法</h3><p>・<b>鈦昇量產時程</b>：法說摘要稱 2027 年第二季大量生產，理財周刊稱 2027 年下半年試產。</p><p>・<b>帝爾激光</b>：TrendForce 寫「面板級大量出貨」，公司說法為小批量，本頁採小量。</p><p>・<b>Intel、三星電機</b>：有券商稱 Intel 已出貨玻璃基板產品、三星電機已供應 Apple 樣品，與其他公開報導矛盾，本頁不採用。</p></div>
+    <div class="callout"><h3>🔎 本頁沒有收錄的</h3><p>大族數控、EO Technics、Via Mechanics、三菱電機、Ebara 查無可靠的 TGV 證據。牧德、志聖、雷科、晶彩科只出現在概念股名單，沒有找到產品或進度報導。</p><p>弘塑、均華、辛耘、盟立僅被列為「可望受惠」或聯盟成員，沒有進度揭露。</p></div>
+  </div>
+</section>
+
+<section class="part" aria-labelledby="h-gl">
+  <div class="part-hd"><span class="eyebrow">附錄</span><h2 id="h-gl">名詞小辭典與資料來源</h2></div>
+  <dl class="gl">
+    <div><dt>載板（IC 載板）</dt><dd>承載晶片、連接晶片與主機板的精密基板。傳統用樹脂（ABF），玻璃基板是用玻璃取代其核心層。</dd></div>
+    <div><dt>AOI（自動光學檢測）</dt><dd>以高解析相機拍攝，與設計圖比對，自動找出缺陷。</dd></div>
+    <div><dt>PLP（面板級封裝）</dt><dd>在方形大面板上做封裝，比圓形晶圓能放更多晶片，玻璃是常見的面板材料之一。</dd></div>
+    <div><dt>FOPLP（面板級扇出型封裝）</dt><dd>PLP 的一種做法，群創已量產；與玻璃基板是不同產品。</dd></div>
+    <div><dt>SeWaRe</dt><dd>業界對玻璃在鑽孔、切割過程中產生微裂的稱呼，是玻璃基板良率的主要障礙。</dd></div>
+    <div><dt>EMIB</dt><dd>Intel 的嵌入式橋接技術，用小片矽橋連接相鄰晶片。</dd></div>
+    <div><dt>TGV（玻璃通孔）</dt><dd>Through Glass Via。在玻璃上打出貫穿的微小孔洞，再填銅，讓玻璃上下兩面的線路可以導通。</dd></div>
+    <div><dt>玻璃核心基板（Glass Core）</dt><dd>用玻璃取代傳統樹脂當載板的核心層，再在兩面做多層線路，用於承載大型 AI 晶片。</dd></div>
+    <div><dt>雷射改質＋蝕刻</dt><dd>先用雷射改變玻璃局部結構，再用藥液把這些區域溶掉成孔。LPKF 的 LIDE、帝爾激光的 LACE 都屬這類做法。</dd></div>
+    <div><dt>深寬比</dt><dd>孔的深度除以孔徑。數字越大代表孔越細長，打孔與填銅都越難。例如 10:1 指孔深是孔徑的 10 倍。</dd></div>
+    <div><dt>玻璃中介層（Glass Interposer）</dt><dd>放在晶片與載板之間、負責轉接線路的玻璃層，與玻璃核心基板是不同產品。</dd></div>
+    <div><dt>510×515mm</dt><dd>目前玻璃基板常見的面板尺寸，一片大面板可切出多顆基板。</dd></div>
+    <div><dt>LOI（意向書）</dt><dd>Letter of Intent，表達採購意向但尚非正式訂單。</dd></div>
+    <div><dt>CPO（共同封裝光學）</dt><dd>把光學元件與晶片封裝在一起，Corning 的玻璃方案鎖定此應用。</dd></div>
+  </dl>
+  <details>
+    <summary>📚 展開全部資料來源</summary>
+    <div class="srcs" id="srcBox"></div>
+  </details>
+</section>
+
+<footer>依據截至 2026 年 10 月 19 日的公開資料整理，僅供內部參考，不構成投資建議。規格多為廠商自述；標示「二手」或「待確認」的內容，對外引用前請再行確認。</footer>
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+var SL={A:'已出貨／交機',B:'產品推出／送樣',C:'研發／試產',D:'待確認'};
+var S=[
+ {k:'mat',n:'01',ic:'🪟',t:'玻璃材料',plain:'先準備平整、熱膨脹低的特殊玻璃面板，常見尺寸 510×515mm。',hard:'玻璃要夠平、夠薄又不易碎，材料規格直接影響後段良率。'},
+ {k:'hole',n:'02',ic:'🎯',t:'成孔',plain:'在玻璃上打出大量貫穿的微小孔洞。主流做法是先用雷射改質玻璃，再用藥液蝕刻成孔。',hard:'玻璃脆，容易產生微裂紋；孔越細長（深寬比越高）越難做，良率是量產的關鍵。'},
+ {k:'insp',n:'03',ic:'🔍',t:'檢測量測',plain:'檢查每個孔的位置、上中下孔徑，以及有沒有微裂紋。',hard:'孔數量極多、尺寸在微米等級，又要找出肉眼看不到的裂紋，需要高速高解析設備。'},
+ {k:'metal',n:'04',ic:'⚗️',t:'金屬化填孔',plain:'把孔填滿銅或在孔壁鍍銅，讓玻璃上下兩面導通。',hard:'孔越深越細，越難讓銅均勻填滿而不留空洞。'},
+ {k:'build',n:'05',ic:'🥪',t:'增層壓合',plain:'在玻璃兩面貼上絕緣膜、烘烤固化，再一層層做出線路，和傳統載板類似。',hard:'玻璃與樹脂膜的熱膨脹不同，壓合、烘烤時要避免翹曲與破片。'},
+ {k:'litho',n:'06',ic:'💡',t:'曝光與線路',plain:'用曝光設備在增層上做出細線路。',hard:'大面板上做微米級細線路，對位精度要求高。'},
+ {k:'cut',n:'07',ic:'✂️',t:'切割',plain:'把大面板切成一顆顆基板。',hard:'玻璃切割容易崩邊，邊緣品質影響可靠度。'},
+ {k:'sub',n:'08',ic:'🏭',t:'基板整合製造',plain:'把上述各站整合起來，做出完整的玻璃基板，交給晶片大廠封裝。這一站是基板廠與跨入的面板廠，不是設備商。',hard:'要把每一站的良率串起來，並通過晶片客戶的可靠度驗證，目前多家都卡在這一關。'}
+];
+var R=[
+ // hole
+ {co:'鈦昇',tk:'8027',rg:'台灣',st:'hole',s:'A',d:'雷射改質加濕蝕刻成孔設備 PHB-600A：面板 600×600mm、厚度 100–1100μm，深寬比 10:1（研發 20:1）。美系客戶完成驗證並已交機。量產時程說法不一（見 Part 9）。',src:[['工商時報 2026/7/2','https://www.ctee.com.tw/news/20260702701576-430501'],['公司新聞稿 2026/10/6','https://hao.cnyes.com/post/271029']]},
+ {co:'晶呈科',tk:'4768',rg:'台灣',st:'hole',s:'A',d:'以氣態蝕刻方式成孔，與 14 家客戶合作。2026 年起小量訂單陸續出貨，2027 年底擴至 12 條線。',src:[['旺得富 2026/3/4','https://wantrich.chinatimes.com/news/20260304900488-420101'],['工商時報 2026/9/30','https://www.ctee.com.tw/news/20260930700076-439901']]},
+ {co:'TPK-KY',tk:'3673',rg:'台灣',st:'hole',s:'C',d:'中壢 TGV 試產線 2026 年 9 月初啟動；公司表示今明兩年不會有具體營收。',src:[['鉅亨 2026/6/26','https://news.cnyes.com/news/id/6511628'],['數位時代 2026/9/30','https://www.bnext.com.tw/article/91547/glass-substrate-concept-stocks-tgv']]},
+ {co:'LPKF',tk:'德國 XETRA',rg:'國際',st:'hole',s:'B',d:'LIDE 雷射誘導深蝕刻。亞洲先進封裝大廠簽署意向書（中個位數百萬歐元），用於首座玻璃基板廠量產爬坡；屬意向書，尚非正式訂單。',src:[['公司新聞稿 2026/9/23','https://www.laserfocusworld.com/directory/laser-sources/laser-semiconductor/press-release/55408846/lpkf-laser-electronics-leading-asian-advanced-semiconductor-packaging-manufacturer-selects-lpkfs-glass-processing-equipment-for-production-ramp-up']]},
+ {co:'Philoptics',tk:'韓國 KOSDAQ',rg:'中韓',st:'hole',s:'B',d:'2.0mm 厚、510×515mm TGV 基板，公司自稱缺陷孔 0ppm；稱設備導入「幾近確定」，但尚無訂單。',src:[['亞洲經濟 2026/9/7','https://view.asiae.co.kr/en/article/2026090710053387061']]},
+ {co:'帝爾激光',tk:'300776.SZ',rg:'中韓',st:'hole',s:'A',d:'雷射輔助化學蝕刻（LACE）TGV 設備，晶圓級與面板級皆已出貨，2026 年小批量復購。',src:[['同花順 2026/7/3','https://stock.10jqka.com.cn/20260703/c677931977.shtml','二手']]},
+ {co:'德龍激光',tk:'688170.SH',rg:'中韓',st:'hole',s:'A',d:'TGV 相關產品已形成銷售但占營收比重小；公司自己提示批量訂單仍不確定。',src:[['東方財富 2026/6/30','https://finance.eastmoney.com/a/202606303788586858.html']]},
+ {co:'海目星',tk:'688559.SH',rg:'中韓',st:'hole',s:'C',d:'自有超快雷射改質加濕蝕刻 TGV 能力，研發階段。',src:[['TrendForce 2026/8/7','https://www.trendforce.com/news/?p=61728','二手']]},
+ // insp
+ {co:'蔚華科',tk:'3055',rg:'台灣',st:'insp',s:'B',d:'SP8000G 觀察雷射改質層；SP7000G 微裂紋掃描，510×515mm 全片約 20 分鐘。與美系大廠等客戶驗證中。',src:[['TechNews 2026/9/8','https://finance.technews.tw/2026/09/08/spiroxs-exclusive-glass-substrate-mass-production-testing-equipment-technology/']]},
+ {co:'聯策',tk:'6658',rg:'台灣',st:'insp',s:'B',d:'AOI 檢測機 Alpha WFI-20，解析度 0.25μm/pixel，2D 加 3D 檢測，SEMICON 展出。',src:[['富果法說摘要','https://blog.fugle.tw/post/earnings-call-6658-2026-09-01','二手']]},
+ {co:'翔緯光電',tk:'未上市',rg:'台灣',st:'insp',s:'B',d:'TGV 孔自動檢測量測機，已推出產品。',src:[['經濟日報 2026/8/20','https://money.udn.com/money/story/5635/9703607']]},
+ {co:'由田',tk:'3455',rg:'台灣',st:'insp',s:'C',d:'TGV 孔檢 AOI，Touch Taiwan 2026 展出，未公布規格。',src:[['工商時報 2026/7/2','https://www.ctee.com.tw/news/20260702701576-430501']]},
+ {co:'Onto Innovation',tk:'NYSE: ONTO',rg:'國際',st:'insp',s:'B',d:'Firefly G3 玻璃面板檢測：靈敏度 <1μm，可量 TGV 位移與上、腰、下孔徑。稱多家客戶已選用，未具名。',src:[['公司新聞稿 2024/7/9','https://www.businesswire.com/news/home/20240709852324/en/Onto-Innovation-Further-Strengthens-Companys-Panel-Portfolio-with-New-Glass-Suite']]},
+ {co:'KLA',tk:'NASDAQ: KLAC',rg:'國際',st:'insp',s:'B',d:'Lumina 可檢測含玻璃核心的 IC 基板；新聞稿未提 TGV。',src:[['公司新聞稿 2024/10/15','https://ir.kla.com/news-events/press-releases/detail/485/kla-unveils-comprehensive-ic-substrate-portfolio-for-a-new']]},
+ // metal
+ {co:'川寶',tk:'1595',rg:'台灣',st:'metal',s:'C',d:'TGV 填孔代工：510×515mm、厚 1.4mm，填孔深寬比 1:10。電鍍設備 2026 年 7 月完成試機，已有打樣詢問；第二階段將增設雷射成孔。',src:[['工商時報 2026/7/31','https://www.ctee.com.tw/news/20260731700269-439901']]},
+ {co:'亞智科技',tk:'未上市（Manz 亞洲）',rg:'台灣',st:'metal',s:'C',d:'濕蝕刻與電鍍填孔：厚度 ≤0.4mm、孔徑 20μm、深寬比 1:20（公司宣稱）。公司表示市場仍處研發及前導階段。',src:[['公司新聞稿 2026/8/18','https://www.taiwannews.com.tw/en/news/6423853'],['自由時報 2026/8/18','https://ec.ltn.com.tw/article/breakingnews/5543792']]},
+ {co:'MKS（Atotech）',tk:'NASDAQ: MKSI',rg:'國際',st:'metal',s:'B',d:'InPro Pulse TGV 高深寬比銅填孔製程，KPCA 2026 展出，未公布規格。',src:[['I-Connect007 2026/9/3','https://iconnect007.com/article/151454/mks-highlights-laser-and-chemistry-solutions-at-kpca-show-2026/151451/pcb']]},
+ {co:'東威科技',tk:'688700.SH',rg:'中韓',st:'metal',s:'D',d:'券商報告稱 TGV 電鍍設備已交付並通過驗收，未找到公司一手說明。',src:[['老虎證券轉載','https://www.itiger.com/news/2642544691','二手']]},
+ // build
+ {co:'群翊',tk:'6664',rg:'台灣',st:'build',s:'A',d:'玻璃中介層與玻璃載板用壓膜、烘烤、塗佈設備，小量出貨給美系大廠與一線封測廠，訂單能見度到 2027 年上半年。',src:[['工商時報 2026/7/2','https://www.ctee.com.tw/news/20260702701576-430501']]},
+ {co:'長廣',tk:'7795',rg:'台灣',st:'build',s:'A',d:'玻璃載板真空壓膜機，測試設備已出貨給美系 IDM；開發中機型支援 >600×600mm、<0.5mm 薄玻璃。報導未提 TGV。',src:[['旺得富 2026/1/16','https://wantrich.chinatimes.com/news/20260116900339-420101']]},
+ {co:'揚博',tk:'2493',rg:'台灣',st:'build',s:'B',d:'Wing X 乾燥系統（濕製程後段），鎖定高階載板與玻璃載板；已接單，預計 2027 年出貨。',src:[['旺得富 2026/9/18','https://wantrich.chinatimes.com/news/20260918900123-420101']]},
+ // litho
+ {co:'Onto Innovation',tk:'NYSE: ONTO',rg:'國際',st:'litho',s:'B',d:'JetStep X500 面板微影：線寬線距 <1.5μm、單次曝光 250×250mm。',src:[['公司新聞稿 2024/7/9','https://www.businesswire.com/news/home/20240709852324/en/Onto-Innovation-Further-Strengthens-Companys-Panel-Portfolio-with-New-Glass-Suite']]},
+ // cut
+ {co:'東捷',tk:'8064',rg:'台灣',st:'cut',s:'C',d:'玻璃核心雷射開槽與切割，重點在崩邊與粗糙度控制，開發中。',src:[['理財周刊 2026/9/30','https://www.moneyweekly.com.tw/ArticleData/Info/Article/252536'],['財報狗 2026/8/31','https://statementdog.com/news/17550']]},
+ // sub
+ {co:'群創',tk:'3481',rg:'台灣',st:'sub',s:'C',d:'以面板廠大尺寸玻璃加工經驗投入 TGV 玻璃基板，產品開發與客戶驗證中，最快 2028 年量產。另有 FOPLP（面板級扇出型封裝）已量產，Chip-First 月出貨約 4,000 萬顆。',src:[['鉅亨 2026/8/18','https://news.cnyes.com/news/id/6580492'],['TechNews 2026/8/23','https://technews.tw/2026/08/23/innolux-earnings-call-26q2/']]},
+ {co:'欣興',tk:'3037',rg:'台灣',st:'sub',s:'C',d:'法說會表示 2030 年前大規模量產機率不高，以客製化為主。',src:[['自由時報 2026/7/30','https://ec.ltn.com.tw/article/paper/1764679']]},
+ {co:'SKC Absolics',tk:'韓國 SKC（美國廠）',rg:'中韓',st:'sub',s:'C',d:'美國喬治亞廠第一期年產能 12,000 m²；全面量產由 2024 年延到 2027 年，2026 年進行最終可靠度驗證。',src:[['TrendForce 2026/7/24','https://www.trendforce.com/news/?p=61380']]},
+ {co:'三星電機',tk:'韓國 KRX',rg:'中韓',st:'sub',s:'C',d:'與 Dongwoo Fine-Chem 合資 GlaSSEM；玻璃核心材料 2027 年下半年、成品基板 2028 年。',src:[['LEDinside 2026/7/6','https://www.ledinside.com/news/2026/7/2026_07_06_01']]},
+ {co:'LG Innotek',tk:'韓國 KRX',rg:'中韓',st:'sub',s:'C',d:'KPCA 2026 展出玻璃核心基板，目標 2028 年量產。',src:[['Korea Times 2026/9/9','https://www.koreatimes.co.kr/business/companies/20260909/lg-innotek-shows-next-gen-chip-substrate-technology-at-kpca-show-2026']]},
+ {co:'BOE',tk:'000725.SZ',rg:'中韓',st:'sub',s:'C',d:'1mm 厚、深寬比 15:1、孔徑 67μm、24 層增層；最快 2028 年量產。',src:[['TrendForce 2026/9/23','https://www.trendforce.com/news/2026/09/23/news-boe-joins-glass-substrate-race/']]},
+ {co:'DNP',tk:'日本 TSE 7912',rg:'國際',st:'sub',s:'B',d:'久喜廠 TGV 試產線 2025 年 12 月起運轉，面板 510×515mm；2026 年初開始送樣，FY2028 量產。',src:[['DNP 新聞稿','https://www.global.dnp/news/detail/20177773_4126.html']]},
+ {co:'Intel',tk:'NASDAQ: INTC',rg:'國際',st:'sub',s:'C',d:'2026 年 1 月展示內嵌 2 顆 EMIB 的厚玻璃核心基板；目前只有試產線，自家導入約 2030 年。',src:[["Tom's Hardware 2026/8/27",'https://www.tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined']]},
+ // mat
+ {co:'Corning',tk:'NYSE: GLW',rg:'國際',st:'mat',s:'C',d:'含 TGV 的 Glass Bridge，用於共同封裝光學（CPO）；2026 年 5 月與 BOE 簽 3 年合作備忘錄。',src:[['TrendForce 2026/8/7','https://www.trendforce.com/news/?p=61728','二手']]},
+ {co:'SCHOTT',tk:'德國 未上市',rg:'國際',st:'mat',s:'A',d:'供應封裝用玻璃面板（D263 T、BOROFLOAT 33、AF 32），屬玻璃原片供應，新聞稿未提 TGV。',src:[['公司新聞稿 2023/9/27','https://www.schott.com/news-and-media/media-releases/2023/schott-strengthens-glass-substrate-portfolio']]}
+];
+var sById={};S.forEach(function(s){sById[s.k]=s;});
+document.getElementById('kpiN').textContent=(function(){var u={};R.forEach(function(r){u[r.co]=1;});return Object.keys(u).length+' 家';})();
+
+// steps
+var cur=1,stepsEl=document.getElementById('steps'),detEl=document.getElementById('detail');
+function renderSteps(){
+  stepsEl.innerHTML=S.map(function(s,i){var n=R.filter(function(r){return r.st===s.k;}).length;return '<button class="step'+(i===cur?' on':'')+'" role="tab" aria-selected="'+(i===cur)+'" data-i="'+i+'"><span class="n">STEP '+s.n+'</span><span class="t">'+s.ic+' '+s.t+'</span><span class="n">收錄 '+n+' 家</span></button>';}).join('');
+  var s=S[cur],rows=R.filter(function(r){return r.st===s.k;}).sort(function(a,b){return a.s<b.s?-1:a.s>b.s?1:0;});
+  detEl.innerHTML='<div style="display:flex;flex-direction:column;gap:12px;min-width:0"><h3>'+s.ic+' 步驟 '+s.n+'：'+s.t+'</h3><p class="plain"><b>白話文：</b>'+s.plain+'</p><p class="why"><b>難在哪裡：</b>'+s.hard+'</p></div>'+
+   '<div class="pl"><div style="font-size:.78rem;font-weight:700;color:var(--ink-3)">已公開投入的廠商（依進度排序）</div>'+
+   rows.map(function(r){return '<div class="pi"><b>'+r.co+'<span class="rg">'+r.rg+'・'+r.tk+'</span></b><span class="sp '+r.s+'">'+SL[r.s]+'</span><p>'+r.d+'</p></div>';}).join('')+'</div>';
+}
+stepsEl.addEventListener('click',function(e){var b=e.target.closest('.step');if(!b)return;cur=+b.dataset.i;renderSteps();});
+renderSteps();
+
+// board
+var fR='all',fS='all',order={hole:1,insp:2,metal:3,build:4,litho:5,cut:6,sub:7,mat:0};
+function src(r){return r.src.map(function(x){return '<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>'+(x[2]?'<span class="q">'+x[2]+'</span>':'');}).join('<br>');}
+function renderBoard(){
+  var rows=R.filter(function(r){return (fR==='all'||r.rg===fR)&&(fS==='all'||r.s===fS);}).sort(function(a,b){return order[a.st]-order[b.st]||(a.s<b.s?-1:a.s>b.s?1:0);});
+  document.getElementById('tb').innerHTML=rows.length?rows.map(function(r){return '<tr><td class="co">'+r.co+'<small>'+r.rg+'・'+r.tk+'</small></td><td>'+sById[r.st].t+'</td><td>'+r.d+'</td><td><span class="sp '+r.s+'">'+SL[r.s]+'</span></td><td class="src">'+src(r)+'</td></tr>';}).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--ink-3)">沒有符合條件的廠商</td></tr>';
+  document.getElementById('cnt').textContent='共 '+rows.length+' 筆';
+}
+function bindF(id,set){document.getElementById(id).addEventListener('click',function(e){var b=e.target.closest('.fb2');if(!b)return;set(b.dataset.v);[].forEach.call(this.querySelectorAll('.fb2'),function(x){x.classList.toggle('on',x===b);});renderBoard();});}
+bindF('fRegion',function(v){fR=v;});bindF('fStage',function(v){fS=v;});
+renderBoard();
+
+// timeline
+var TL=[
+ {n:'SKC Absolics',m:'韓國 SKC 旗下・美國喬治亞廠',y:2027,lab:'最新報導指向 2027（多次延期）'},
+ {n:'三星電機',m:'韓國',y:2028,lab:'材料 2027 下半年、成品 2028'},
+ {n:'LG Innotek',m:'韓國',y:2028,lab:'目標 2028 量產'},
+ {n:'DNP',m:'日本',y:2028.25,lab:'2026 送樣、FY2028 量產'},
+ {n:'BOE',m:'中國',y:2028,lab:'最快 2028 量產'},
+ {n:'群創',m:'台灣',y:2028,lab:'最快 2028 量產（客戶驗證中）'},
+ {n:'Intel',m:'美國',y:2030,lab:'自家導入約 2030',late:true},
+ {n:'欣興',m:'台灣',y:2030,lab:'2030 前大規模量產機率不高',late:true}
+];
+function px(y){return Math.max(0,Math.min(100,(y-2026)/5*100+10));}
+document.getElementById('tlBox').innerHTML='<div class="tl-axis"><div></div><div><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div></div>'+TL.map(function(t){var x=px(t.y),r=x>70;return '<div class="tl-row"><div class="tl-name">'+t.n+'<small>'+t.m+'</small></div><div class="tl-track"><div class="tl-grid"><i></i><i></i><i></i><i></i><i></i></div><div class="tl-bar" style="left:10%;width:'+(x-10)+'%"></div><div class="tl-dot'+(t.late?' late':'')+'" style="left:'+x+'%"></div><span class="tl-lab'+(r?' r':'')+'" style="left:'+(r?x-2:x)+'%">'+t.lab+'</span></div></div>';}).join('');
+
+// pcb
+var PL={A:'已出貨',B:'產品推出／接單',C:'研發／試產',D:'待確認',N:'未見公開資料',X:'本次未查'};
+var PCB=[
+ {g:'台灣',items:[['群翊','6664','A','玻璃中介層與載板用壓膜、烘烤設備小量出貨。'],['長廣','7795','A','玻璃載板真空壓膜測試機已出貨給美系 IDM。'],['揚博','2493','B','Wing X 乾燥系統已接單，預計 2027 年出貨。'],['聯策','6658','B','推出玻璃基板 AOI 檢測機（二手資料）。'],['川寶','1595','C','TGV 填孔代工，電鍍設備 2026/7 完成試機。'],['由田','3455','C','TGV 孔檢 AOI 在展會展出。'],['大量','3167','D','報導稱玻璃基板已認列營收，但未說明是否為 TGV。'],['志聖','2467','N','只出現在概念股名單，未找到產品或進度報導。'],['牧德','3563','N','只出現在概念股名單，未找到產品或進度報導。']]},
+ {g:'國際',items:[['KLA（Orbotech）','KLAC','B','Lumina 可檢測含玻璃核心的 IC 基板。'],['MKS（Atotech）','MKSI','B','推出 TGV 高深寬比銅填孔製程。'],['Via Mechanics','Amada 旗下','N','查無可靠的玻璃加工證據。'],['三菱電機','6503','N','查無可靠的玻璃加工證據。'],['MKS（ESI）','MKSI','N','雷射鑽孔機展出時只標 PCB／基板用途。'],['SCREEN、Adtec、ORC、Schmoll、Bürkle','','X','本次未查 TGV 動態。']]},
+ {g:'中國',items:[['東威科技','688700','D','券商稱 TGV 電鍍設備已交付驗收，無一手來源。'],['大族數控','301200','N','查無可靠的 TGV 證據。'],['芯碁微裝、鼎泰高科','','X','本次未查 TGV 動態。']]}
+];
+document.getElementById('pcbBox').innerHTML=PCB.map(function(g){return '<h3 class="sub">'+g.g+'</h3><div class="pcb">'+g.items.map(function(it){return '<div class="pc"><div class="hd"><b>'+it[0]+(it[1]?'<small>'+it[1]+'</small>':'')+'</b><span class="sp '+it[2]+'">'+PL[it[2]]+'</span></div><p>'+it[3]+'</p></div>';}).join('')+'</div>';}).join('');
+
+// sources
+var EXTRA=[['eeNews Europe 2023/9/18（Intel 玻璃基板）','https://www.eenewseurope.com/en/intel-tips-glass-substrate-for-chiplet-packaging'],['The Register 2023/9/18（Intel）','https://www.theregister.com/2023/09/18/intel_glass_packaging/'],['Korea JoongAng Daily 2023/1/17（Absolics）','https://www.koreajoongangdaily.com/business/absolics-paves-its-way-with-semiconductor-packaging/11504980'],['Korea Herald 2026/6/14（製程與良率）','https://www.koreaherald.com/article/10771160'],['MDPI Micromachines 2025/11（玻璃切割裂紋）','https://www.mdpi.com/2072-666X/16/11/1256'],['Manufacturing Dive 2024/5/29（Absolics CHIPS 補助）','https://www.manufacturingdive.com/news/absolics-to-receive-75-million-chips-act-funding-covington-georgia/717242/'],['TechNews 2024/8/28（鈦昇 E-core 聯盟）','https://cdn.technews.tw/2024/08/28/er-e-core-system/'],['TrendForce 2025/12/22（DNP）','https://www.trendforce.com/news/2025/12/22/news-dnp-accelerates-tgv-glass-substrate-push-with-late-2025-pilot-line-early-2026-sample-shipments/'],['TrendForce 2026/1/26（Intel 樣品）','https://www.trendforce.com/news/2026/01/26/news-intel-reportedly-presents-first-thick-core-glass-substrate-with-emib-targeting-ai-data-centers/'],['Evertiq 2026/7/13（三星電機合資）','https://evertiq.com/design/2026-07-13-sumitomo-chemical-to-establish-jv-with-samsung-electro-mechanics'],['Electronics360 2026/5/4（封裝結構）','https://electronics360.globalspec.com/article/23483/glass-substrates-in-integrated-circuit-packaging'],['SEMI 2026/5/27（市場成長率）','https://www.aap.com.au/aapreleases/cision20260527ae68104/'],['TrendForce 2026/7/24（Absolics 延期）','https://www.trendforce.com/news/?p=61380'],['TrendForce 2026/9/23（BOE）','https://www.trendforce.com/news/2026/09/23/news-boe-joins-glass-substrate-race/'],['TrendForce 2026/8/18（三星電機、Shinko）','https://www.trendforce.com/news/2026/08/18/news-glass-substrate-war-heats-up-shinko-electric-advances-22-layer-product-as-samsung-reportedly-faces-ramp-up-uncertainty/'],['TrendForce 2026/6/1（Intel）','https://www.trendforce.com/news/2026/06/01/news-intel-advances-glass-substrate-push-with-3dgs-us3-3-billion-india-plant-set-for-five-to-six-year-buildout/'],["Tom's Hardware 2026/8/27（產業時程）",'https://www.tomshardware.com/tech-industry/manufacturing/glass-substrate-roadmap-examined'],['LEDinside 2026/7/6（三星電機合資）','https://www.ledinside.com/news/2026/7/2026_07_06_01'],['Korea Times 2026/9/9（LG Innotek）','https://www.koreatimes.co.kr/business/companies/20260909/lg-innotek-shows-next-gen-chip-substrate-technology-at-kpca-show-2026'],['DNP 新聞稿（TGV 試產線）','https://www.global.dnp/news/detail/20177773_4126.html'],['自由時報 2026/7/30（欣興）','https://ec.ltn.com.tw/article/paper/1764679'],['I-Connect007（LPKF 2026）','https://iconnect007.com/article/149873/lpkf-gets-off-to-a-solid-start-in-2026/149870/pcb'],['理財周刊 2026/10/2（大量）','https://www.moneyweekly.com.tw/_Article?AID=252941'],['工商時報 2026/8/4（受惠族群）','https://www.ctee.com.tw/news/20260804700079-430501'],['富果鈦昇法說摘要（二手）','https://blog.fugle.tw/post/earnings-call-8027-2026-07-07'],['同花順 2026/8/20（帝爾激光）','https://news.10jqka.com.cn/20260820/c679115402.shtml']];
+var seen={},list=[];R.forEach(function(r){r.src.forEach(function(x){if(!seen[x[1]]){seen[x[1]]=1;list.push([r.co+'：'+x[0],x[1]]);}});});
+function ol(arr){return '<ol>'+arr.map(function(x){return '<li><a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a></li>';}).join('')+'</ol>';}
+document.getElementById('srcBox').innerHTML='<div><h4>廠商動態</h4>'+ol(list)+'</div><div><h4>產業時程與市場</h4>'+ol(EXTRA)+'</div>';
+
+// chart
+var chart;
+function tok(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function drawChart(){
+  if(!window.Chart)return;if(chart)chart.destroy();
+  var st=S.filter(function(s){return s.k!=='mat'&&s.k!=='sub';});
+  Chart.defaults.font.family='"Noto Sans TC",system-ui,sans-serif';Chart.defaults.color=tok('--ink-2');
+  var ds=['A','B','C','D'].map(function(k){return {label:SL[k],data:st.map(function(s){return R.filter(function(r){return r.st===s.k&&r.s===k;}).length;}),backgroundColor:tok('--s'+k),borderRadius:3};});
+  chart=new Chart(document.getElementById('matChart'),{type:'bar',data:{labels:st.map(function(s){return s.t;}),datasets:ds},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.x+' 家';}}}},scales:{x:{stacked:true,grid:{color:tok('--line')},ticks:{stepSize:1},title:{display:true,text:'廠商家數'}},y:{stacked:true,grid:{display:false}}}}});
+}
+drawChart();
+try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawChart);new MutationObserver(drawChart).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});}catch(e){}
+})();
+</script>
+
+</body></html>
