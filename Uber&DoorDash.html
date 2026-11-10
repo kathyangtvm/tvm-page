@@ -205,7 +205,7 @@ th{letter-spacing:.3px}
 .callout{position:absolute;bottom:calc(100% + 1px);transform:translateX(50%);font-size:11.5px;line-height:1;color:var(--ink2);white-space:nowrap;padding-bottom:7px}
 .callout::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:6px;background:var(--ink3)}
 .chips-h{font-size:13px;font-weight:700;color:var(--ink2);margin:16px 0 8px;letter-spacing:.3px}
-.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .chip{background:var(--soft);border-radius:10px;padding:10px 12px;border-top:3px solid var(--line);display:flex;flex-direction:column;gap:2px}
 .chip.u{border-top-color:var(--uber)} .chip.d{border-top-color:var(--dd)}
 .chip .k{font-size:12px;color:var(--ink2)} .chip b{font-size:17px} .chip .d{font-size:12px;color:var(--ink3)}
@@ -291,6 +291,19 @@ section,.lh,.tw{scroll-margin-top:16px}
 .src ol{column-count:2;column-gap:32px;padding-left:22px;margin:6px 0}
 .src li{break-inside:avoid;font-size:12px;line-height:1.5;margin:0 0 3px}
 @media (max-width:760px){.src ol{column-count:1}}
+.prof{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 16px}
+.pc{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:9px 14px;border-radius:10px;background:var(--soft);border-left:4px solid var(--line);font-size:13px;color:var(--ink2)}
+.pc.u{border-left-color:var(--uber)} .pc.d{border-left-color:var(--dd)}
+.pc b{font-size:15px;color:var(--ink)} .pc em{font-style:normal;font-weight:700;color:var(--ink)}
+.pc span+span::before{content:"";}
+@media (max-width:760px){.prof{grid-template-columns:1fr}}
+.fnl{margin:2px 0 4px;padding-left:2.2em;font-size:inherit}
+.fnl li{margin:1px 0}
+.ctbl.kind{table-layout:fixed}
+.ctbl.kind td{font-size:13px}
+.ctbl.kind td.ck{width:14%}
+.ctbl.kind th:first-child{width:14%}
+.ctbl.kind th{text-align:left}
 </style>
 </head>
 <body>
@@ -385,11 +398,14 @@ section,.lh,.tw{scroll-margin-top:16px}
     <div class="lnote" style="margin-top:8px"><div class="fn">* Uber 財報以「外送部門」揭露，涵蓋 Uber Eats 及旗下其他外送品牌，未單獨公布 Uber Eats 數字。</div><div class="fn">* DoorDash 數字含 2025 年併購的英國外送平台 Deliveroo。</div></div>
     <div class="chips-h">其他指標</div>
     <div class="chips">
-      <div class="chip u"><span class="k">Uber One 會員</span><b>約 5,500 萬</b><span class="d">會員貢獻外送交易額 70%<sup><a href="https://stockanalysis.com/stocks/uber/transcripts/725012-q3-2026/" target="_blank" rel="noopener" title="開啟來源 [30]">[30]</a></sup></span></div>
+      <div class="chip u"><span class="k">Uber One 會員</span><b>約 5,500 萬</b><span class="d">2026 Q3；會員貢獻外送交易額 70%<sup><a href="https://stockanalysis.com/stocks/uber/transcripts/725012-q3-2026/" target="_blank" rel="noopener" title="開啟來源 [30]">[30]</a></sup></span></div>
       <div class="chip u"><span class="k">Uber 生鮮與零售外送</span><b>年化約 150 億美元</b><span class="d">年增 40%<sup><a href="https://stockanalysis.com/stocks/uber/transcripts/725012-q3-2026/" target="_blank" rel="noopener" title="開啟來源 [30]">[30]</a></sup></span></div>
-      <div class="chip u"><span class="k">Uber 每月活躍用戶（全公司）</span><b>2.15 億</b><span class="d">年增 14%<sup><a href="https://seekingalpha.com/pr/20712391" target="_blank" rel="noopener" title="開啟來源 [1]">[1]</a></sup></span></div>
-      <div class="chip d"><span class="k">DoorDash 會員／活躍用戶</span><b>未公布人數</b><span class="d">僅稱 DashPass 付費會員「強勁成長」<sup><a href="https://www.sec.gov/Archives/edgar/data/0001792789/000179278926000062/proddashex991-pressrelease.htm" target="_blank" rel="noopener" title="開啟來源 [2]">[2]</a></sup></span></div>
+      <div class="chip u"><span class="k">Uber 每月活躍用戶（全公司）</span><b>2.15 億</b><span class="d">2026 Q3，年增 14%<sup><a href="https://seekingalpha.com/pr/20712391" target="_blank" rel="noopener" title="開啟來源 [1]">[1]</a></sup></span></div>
+      <div class="chip d"><span class="k">DoorDash 會員</span><b>逾 3,500 萬</b><span class="d">旗下三個外送平台的付費會員方案（DashPass、Wolt+、Deliveroo Plus）合計，2025 年底<sup><a href="https://www.sec.gov/Archives/edgar/data/1792789/000179278926000012/prodq4dashex991-pressrelea.htm" target="_blank" rel="noopener" title="開啟來源 [53]">[53]</a></sup></span></div>
+      <div class="chip d"><span class="k">DoorDash 月活躍用戶</span><b>逾 5,600 萬</b><span class="d">2025 年 12 月有下單的帳戶（含非會員）<sup><a href="https://www.sec.gov/Archives/edgar/data/1792789/000179278926000012/prodq4dashex991-pressrelea.htm" target="_blank" rel="noopener" title="開啟來源 [53]">[53]</a></sup></span></div>
     </div>
+    <div class="lnote" style="margin-top:6px"><div class="fn">* DoorDash 三個會員方案分屬旗下不同外送品牌，內容都以免運費或運費折扣為主：</div>
+      <ul class="fnl"><li><b>DashPass</b>：DoorDash 本身（美國、加拿大等）</li><li><b>Wolt+</b>：Wolt（2022 年收購，主要在歐洲）<sup><a href="https://press.wolt.com/en-WW/215041-doordash-completes-acquisition-of-wolt" target="_blank" rel="noopener" title="開啟來源 [56]">[56]</a></sup></li><li><b>Deliveroo Plus</b>：Deliveroo（2025 年收購，主要在英國）<sup><a href="https://secure.businesswire.com/news/home/20251002060133/en/DoorDash-Completes-Acquisition-of-Deliveroo" target="_blank" rel="noopener" title="開啟來源 [24]">[24]</a></sup></li></ul><div class="fn">* 月活躍用戶是當月有下單的所有帳戶，會員只是其中有訂閱付費方案的人，所以會員數會少於月活躍用戶。</div><div class="fn">* DoorDash 2026 年第三季財報未更新這兩個數字，上方為最近一次公布（2025 年第四季財報）；會員數含試用及合作帳戶。資料時間與定義都與 Uber 不同，不宜直接比較。</div></div>
   </div>
 
   <div class="layer" style="margin-top:28px"><h3 class="lh" id="s1c"><span class="lt">C</span>美國餐飲外送市占<span class="lhs">（第三方依消費者刷卡金額推估）</span></h3></div>
@@ -506,11 +522,11 @@ section,.lh,.tw{scroll-margin-top:16px}
   <p class="lnote" style="margin:-4px 0 10px">點選機器人小圖可放大檢視。</p>
   <div class="tbl-wrap">
   <table>
-    <thead><tr><th>平台</th><th>合作對象</th><th>類型</th><th>城市</th><th>已公開規模</th><th>狀態</th></tr></thead>
+    <thead><tr><th>平台</th><th>合作對象</th><th>類型</th><th>已上線城市（含試點）</th><th>已公開規模</th><th>狀態</th></tr></thead>
     <tbody>
       <tr class="tgrp"><td colspan="6">地面機器人（人行道／自行車道）</td></tr>
       <tr><td class="grp" rowspan="5"><span class="tag t-uber">Uber</span></td><td>Avride<button aria-label="放大 Avride 圖片" class="thumb" data-img="avride"><img alt="Avride"/></button></td><td>人行道機器人</td><td>奧斯汀、達拉斯、費城、澤西市、阿靈頓</td><td>Avride 全公司約 500 台、累計 60 萬次以上（非 Uber 專屬）<span class="tag media">媒體報導</span><sup><a href="https://foodondemand.com/06172026/uber-avride-roll-out-autonomous-delivery-in-northern-virginia/" target="_blank" rel="noopener" title="開啟來源 [14]">[14]</a></sup></td><td><span class="st on">營運中</span></td></tr>
-      <tr><td>Coco<button aria-label="放大 Coco Robotics 圖片" class="thumb" data-img="coco"><img alt="Coco Robotics"/></button></td><td>人行道機器人</td><td>邁阿密等</td><td>未公布 Uber 專屬數字<sup><a href="https://www.nasdaq.com/press-release/coco-robotics-expands-uber-eats-partnership-miami-2025-04-02" target="_blank" rel="noopener" title="開啟來源 [7]">[7]</a></sup></td><td><span class="st on">營運中</span></td></tr>
+      <tr><td>Coco<button aria-label="放大 Coco Robotics 圖片" class="thumb" data-img="coco"><img alt="Coco Robotics"/></button></td><td>人行道機器人</td><td>洛杉磯、邁阿密</td><td>未公布 Uber 專屬數字<sup><a href="https://www.nasdaq.com/press-release/coco-robotics-expands-uber-eats-partnership-miami-2025-04-02" target="_blank" rel="noopener" title="開啟來源 [7]">[7]</a></sup></td><td><span class="st on">營運中</span></td></tr>
       <tr><td>Cartken<button aria-label="放大 Cartken 圖片" class="thumb" data-img="cartken"><img alt="Cartken"/></button></td><td>人行道機器人</td><td>日本東京（2024 年 3 月起，與三菱電機合作）<span class="tag media">媒體報導</span><sup><a href="https://www.engadget.com/uber-eats-expands-its-autonomous-food-delivery-service-to-japan-092727592.html" target="_blank" rel="noopener" title="開啟來源 [35]">[35]</a></sup></td><td>Uber 官方列為合作夥伴，規模未公布<sup><a href="https://www.uber.com/en-US/blog/robot-deliveries-a-new-way-to-keep-your-orders-moving/" target="_blank" rel="noopener" title="開啟來源 [3]">[3]</a></sup></td><td><span class="st on">營運中</span></td></tr>
       <tr><td>Starship<button aria-label="放大 Starship 圖片" class="thumb" data-img="starship"><img alt="Starship"/></button></td><td>人行道機器人</td><td>英國里茲（2025 年 12 月）、雪菲爾（2026 年 3 月）<span class="tag media">媒體報導</span><sup><a href="https://www.uktech.news/foodtech/uber-and-starship-expand-robotic-deliveries-to-new-uk-city-20260325" target="_blank" rel="noopener" title="開啟來源 [34]">[34]</a></sup></td><td>Starship 全公司 2,700 多台（非 Uber 專屬），目標 2027 年逾 12,000 台<sup><a href="https://seekingalpha.com/pr/20315873-starship-technologies-and-uber-eats-launch-autonomous-delivery-partnership" target="_blank" rel="noopener" title="開啟來源 [10]">[10]</a></sup></td><td><span class="st on">營運中</span></td></tr>
       <tr><td>Serve<button aria-label="放大 Serve Robotics 圖片" class="thumb" data-img="serve"><img alt="Serve Robotics"/></button></td><td>人行道機器人</td><td>洛杉磯、邁阿密、達拉斯、亞特蘭大、芝加哥等 <span class="tag media">媒體報導</span><sup><a href="https://qsr.pro/articles/autonomous-delivery-robots-drones-doordash-dot-serve-grubhub-qsr-map-2026" target="_blank" rel="noopener" title="開啟來源 [52]">[52]</a></sup></td><td>Serve 第二季經 Uber 配送量首次下滑 <span class="tag media">媒體報導</span><sup><a href="https://www.axios.com/2026/08/17/serve-robotics-uber-grubhub-doordash-washington" target="_blank" rel="noopener" title="開啟來源 [15]">[15]</a></sup></td><td><span class="st end">預計不續約（2027 年初到期）</span></td></tr>
@@ -519,16 +535,18 @@ section,.lh,.tw{scroll-margin-top:16px}
       <tr><td>Serve<button aria-label="放大 Serve Robotics 圖片" class="thumb" data-img="serve"><img alt="Serve Robotics"/></button></td><td>人行道機器人</td><td>洛杉磯、聖荷西、華盛頓特區</td><td>未公布 DoorDash 專屬數字<sup><a href="https://serverobotics.com/blog/meet-the-local-restaurants-bringing-serve-robots-to-san-jose-and-dc" target="_blank" rel="noopener" title="開啟來源 [17]">[17]</a></sup></td><td><span class="st on">擴大中</span></td></tr>
       <tr class="tgrp"><td colspan="6">無人機</td></tr>
       <tr><td class="grp" rowspan="2"><span class="tag t-uber">Uber</span></td><td>Flytrex<button aria-label="放大 Flytrex 無人機 圖片" class="thumb" data-img="flytrex"><img alt="Flytrex 無人機"/></button></td><td>無人機（Uber 有投資）</td><td>美國試點市場，未公布城市</td><td>2025 年 9 月宣布試點，未公布實際上線城市與規模<sup><a href="https://investor.uber.com/news-events/news/press-release-details/2025/Uber-Partners-with-Flytrex-to-Launch-Drone-Delivery/default.aspx" target="_blank" rel="noopener" title="開啟來源 [22]">[22]</a></sup></td><td><span class="st pilot">已宣布試點</span></td></tr>
-      <tr><td>Manna</td><td>無人機</td><td>愛爾蘭起步，再擴展歐洲</td><td>2026 年 2 月宣布合作；Manna 在歐洲累計逾 25 萬次無人機配送 <span class="tag media">媒體報導</span><sup><a href="https://www.irishtimes.com/business/2026/02/26/drone-delivery-company-manna-signs-partnership-with-uber" target="_blank" rel="noopener" title="開啟來源 [49]">[49]</a></sup></td><td><span class="st pilot">已宣布合作</span></td></tr>
+      <tr><td>Manna</td><td>無人機</td><td>尚未公布（計畫從愛爾蘭起步）</td><td>2026 年 2 月宣布合作；Manna 在歐洲累計逾 25 萬次無人機配送 <span class="tag media">媒體報導</span><sup><a href="https://www.irishtimes.com/business/2026/02/26/drone-delivery-company-manna-signs-partnership-with-uber" target="_blank" rel="noopener" title="開啟來源 [49]">[49]</a></sup></td><td><span class="st pilot">已宣布合作</span></td></tr>
       <tr><td class="grp" rowspan="4"><span class="tag t-dd">DoorDash</span></td><td>Wing<button aria-label="放大 Wing 無人機 圖片" class="thumb" data-img="wing"><img alt="Wing 無人機"/></button></td><td>無人機</td><td>維吉尼亞西南部、達拉斯、夏洛特、亞特蘭大</td><td>累計「數萬次」配送<sup><a href="https://about.doordash.com/en-us/news/doordash-wing-expand-to-atlanta" target="_blank" rel="noopener" title="開啟來源 [13]">[13]</a></sup></td><td><span class="st on">營運中</span></td></tr>
       <tr><td><b>DoorDash Air（自研）</b><button aria-label="放大 DoorDash Air（自研無人機） 圖片" class="thumb" data-img="ddair"><img alt="DoorDash Air（自研無人機）"/></button></td><td>無人機</td><td>北加州</td><td>2026 年 9 月起試點；DoorDash 稱約 80% 的一般餐點重量與大小可由無人機配送，早期測試平均 5 分鐘內送達<sup><a href="https://about.doordash.com/en-us/news/doordash-drone-delivery" target="_blank" rel="noopener" title="開啟來源 [25]">[25]</a></sup></td><td><span class="st pilot">試點</span></td></tr>
       <tr><td>Flytrex<button class="thumb" data-img="flytrex" aria-label="放大 Flytrex 無人機 圖片"><img alt="Flytrex 無人機"></button></td><td>無人機</td><td>德州達拉斯－沃斯堡（2025 年 6 月起）</td><td>與 Uber 同為合作對象；DoorDash 未持股<sup><a href="https://business.mammothtimes.com/mammothtimes/article/bizwire-2025-6-26-doordash-and-flytrex-launch-drone-delivery-in-dallas-fort-worth" target="_blank" rel="noopener" title="開啟來源 [42]">[42]</a><a href="https://help.doordash.com/en-us/consumers/article/drone-delivery" target="_blank" rel="noopener" title="開啟來源 [41]">[41]</a></sup></td><td><span class="st on">營運中</span></td></tr>
-      <tr><td>Manna</td><td>無人機</td><td>未公布</td><td>DoorDash 官方列為無人機合作夥伴<sup><a href="https://help.doordash.com/en-us/consumers/article/drone-delivery" target="_blank" rel="noopener" title="開啟來源 [41]">[41]</a></sup></td><td><span class="st pilot">合作夥伴</span></td></tr>
-      <tr class="tgrp"><td colspan="6">自駕車（無人駕駛汽車）</td></tr>
-      <tr><td class="grp" rowspan="1"><span class="tag t-dd">DoorDash</span></td><td>Waymo<button aria-label="放大 Waymo 自駕車 圖片" class="thumb" data-img="waymo"><img alt="Waymo 自駕車"/></button></td><td>自駕車（無人駕駛汽車）</td><td>亞利桑那州鳳凰城都會區</td><td>2025 年 10 月開始測試，12 月 2 日正式上線；目前限 DashMart 訂單<sup><a href="https://about.doordash.com/en-ca/news/waymo" target="_blank" rel="noopener" title="開啟來源 [31]">[31]</a><a href="https://waymo.com/blog/shorts/waymo-delivery-is-live-on-doordash-in-phoenix/" target="_blank" rel="noopener" title="開啟來源 [37]">[37]</a></sup></td><td><span class="st on">已上線（範圍有限）</span></td></tr>
+      <tr><td>Manna</td><td>無人機</td><td>芬蘭 Espoo（透過旗下 Wolt）<span class="tag media">媒體報導</span><sup><a href="https://techcrunch.com/?p=3071190" target="_blank" rel="noopener" title="開啟來源 [50]">[50]</a></sup></td><td>DoorDash 官方列為無人機合作夥伴<sup><a href="https://help.doordash.com/en-us/consumers/article/drone-delivery" target="_blank" rel="noopener" title="開啟來源 [41]">[41]</a></sup></td><td><span class="st on">營運中</span></td></tr>
+      <tr class="tgrp"><td colspan="6">自駕車與自主電動載具</td></tr>
+      <tr><td class="grp" rowspan="2"><span class="tag t-dd">DoorDash</span></td><td>Waymo<button aria-label="放大 Waymo 自駕車 圖片" class="thumb" data-img="waymo"><img alt="Waymo 自駕車"/></button></td><td>自駕車（無人駕駛汽車）</td><td>亞利桑那州鳳凰城都會區</td><td>2025 年 10 月開始測試，12 月 2 日正式上線；目前限 DashMart 訂單<sup><a href="https://about.doordash.com/en-ca/news/waymo" target="_blank" rel="noopener" title="開啟來源 [31]">[31]</a><a href="https://waymo.com/blog/shorts/waymo-delivery-is-live-on-doordash-in-phoenix/" target="_blank" rel="noopener" title="開啟來源 [37]">[37]</a></sup></td><td><span class="st on">已上線（範圍有限）</span></td></tr>
+      <tr><td>ALSO</td><td>小型自主電動配送載具（DoorDash 有投資）：體積介於機器人與汽車之間，設計行駛於自行車道、路緣與路肩</td><td>尚未部署</td><td>2026 年 3 月簽多年期合作，共同開發自主配送載具；ALSO 為 Rivian 分拆公司，現有產品為電動自行車與電動送貨四輪車<sup><a href="https://au.finance.yahoo.com/news/announces-strategic-partnership-doordash-130000124.html" target="_blank" rel="noopener" title="開啟來源 [40]">[40]</a></sup></td><td><span class="st pilot">共同開發中</span></td></tr>
     </tbody>
   </table>
   </div>
+  <div class="lnote" style="margin-top:6px"><div class="fn">* 「已上線城市」依各公司或媒體最近一次公開資訊整理，未必代表目前每個城市仍在營運。</div></div>
   <div class="cum">
     <div class="chips-h">累計配送次數（官方說法）</div>
     <div class="cum-r"><span class="tag t-uber">Uber</span>10 多個城市，累計「數十萬次」機器人配送<sup><a href="https://www.uber.com/en-US/blog/robot-deliveries-a-new-way-to-keep-your-orders-moving/" target="_blank" rel="noopener" title="開啟來源 [3]">[3]</a></sup></div>
@@ -541,6 +559,19 @@ section,.lh,.tw{scroll-margin-top:16px}
     <div class="reg-r"><b>加州聖荷西（2026 年 10 月）</b><span>市議會通過規範：每台年費 200–250 美元、人行道限速每小時 5 英里（約 8 公里）、故障 30 分鐘內移除、違規罰 100–500 美元，9 個月後檢討；目前 Coco、Serve 共 35 台，DoorDash 表示有意引進 Dot <span class="tag media">媒體報導</span><sup><a href="https://sanjosespotlight.com/san-jose-sets-rules-for-delivery-robots/" target="_blank" rel="noopener" title="開啟來源 [32]">[32]</a></sup></span></div>
     <div class="reg-r"><b>芝加哥（2025 年 11 月）</b><span>800 多位居民連署要求暫停 Coco、Serve 機器人試辦；若市議會未延長，試辦最晚至 2027 年 5 月 <span class="tag media">媒體報導</span><sup><a href="https://www.cbsnews.com/amp/chicago/news/north-side-residents-petition-pause-to-delivery-robots" target="_blank" rel="noopener" title="開啟來源 [33]">[33]</a></sup></span></div>
   </div>
+
+  <div class="chips-h" style="margin-top:18px">三種載具的差別</div>
+  <div class="tbl-wrap"><table class="ctbl kind">
+    <thead><tr><th></th><th>人行道機器人</th><th>自主電動載具</th><th>自駕車</th></tr></thead>
+    <tbody>
+      <tr><td class="ck">行駛位置</td><td>人行道、行人穿越道</td><td>自行車道、路緣、路肩<sup><a href="https://au.finance.yahoo.com/news/announces-strategic-partnership-doordash-130000124.html" target="_blank" rel="noopener" title="開啟來源 [40]">[40]</a></sup></td><td>一般車道</td></tr>
+      <tr><td class="ck">速度</td><td>約步行速度（例：聖荷西規定人行道最高每小時 5 英里，約 8 公里）<span class="tag media">媒體報導</span><sup><a href="https://sanjosespotlight.com/san-jose-sets-rules-for-delivery-robots/" target="_blank" rel="noopener" title="開啟來源 [32]">[32]</a></sup></td><td>介於兩者之間；ALSO 未公布規格</td><td>與一般車流相同</td></tr>
+      <tr><td class="ck">體積</td><td>約冰桶大小</td><td>介於機器人與汽車之間</td><td>一般汽車</td></tr>
+      <tr><td class="ck">監管方式</td><td>地方政府核發許可（例：Fremont、聖荷西）<sup><a href="https://www.fremont.gov/government/departments/economic-development/business-assistance/doordash-delivery-robots" target="_blank" rel="noopener" title="開啟來源 [11]">[11]</a></sup></td><td>尚無公開的專門規範</td><td>需取得自駕車營運許可</td></tr>
+      <tr><td class="ck">例子</td><td>Coco、Serve、Starship、Avride、Cartken</td><td>ALSO（開發中）</td><td>Waymo</td></tr>
+    </tbody>
+  </table></div>
+  <div class="lnote" style="margin-top:6px"><div class="fn">* DoorDash 的 Dot 介於兩者之間：可走人行道、自行車道與馬路，最高時速約 32 公里<sup><a href="https://about.doordash.com/en-us/news/doordash-unveils-dot" target="_blank" rel="noopener" title="開啟來源 [4]">[4]</a></sup>，上方部署表將其歸在地面機器人。</div></div>
 </section>
 
 <!-- 4 時間軸 -->
@@ -634,6 +665,7 @@ section,.lh,.tw{scroll-margin-top:16px}
   <div class="tbl-wrap"><table class="ctbl">
     <thead><tr><th>評估項目</th><th style="color:var(--uber)">Uber</th><th style="color:var(--dd)">DoorDash</th></tr></thead>
     <tbody>
+      <tr><td class="ck">成立時間</td><td>2009 年<sup><a href="https://capedge.com/filing/1543151/0001543151-20-000010/10K-2019FY" target="_blank" rel="noopener" title="開啟來源 [54]">[54]</a></sup></td><td>2013 年<sup><a href="https://about.doordash.com/en-us/company" target="_blank" rel="noopener" title="開啟來源 [55]">[55]</a></sup></td></tr>
       <tr><td class="ck">已公布的實際配送</td><td>10 多個城市，累計「數十萬次」地面機器人配送<sup><a href="https://www.uber.com/en-US/blog/robot-deliveries-a-new-way-to-keep-your-orders-moving/" target="_blank" rel="noopener" title="開啟來源 [3]">[3]</a></sup></td><td>Dot 加上合作的機器人、無人機業者，累計「數十萬次」；其中 Coco 試點逾 10 萬筆<sup><a href="https://about.doordash.com/en-us/news/doordash-drone-delivery" target="_blank" rel="noopener" title="開啟來源 [25]">[25]</a><a href="https://www.businesswire.com/news/home/20250410517445/en" target="_blank" rel="noopener" title="開啟來源 [6]">[6]</a></sup></td></tr>
       <tr><td class="ck">自研硬體</td><td>未公布自研硬體，目前皆與外部業者合作</td><td>Dot（地面機器人）、DoorDash Air（無人機）<sup><a href="https://about.doordash.com/en-us/news/doordash-unveils-dot" target="_blank" rel="noopener" title="開啟來源 [4]">[4]</a><a href="https://about.doordash.com/en-us/news/doordash-drone-delivery" target="_blank" rel="noopener" title="開啟來源 [25]">[25]</a></sup></td></tr>
       <tr><td class="ck">股權投資</td><td>Avride、Flytrex（Serve 已出售）</td><td>ALSO（小型自主電動配送載具）</td></tr>
@@ -714,6 +746,10 @@ section,.lh,.tw{scroll-margin-top:16px}
     <li id="s50" value="50"><a target="_blank" rel="noopener" href="https://techcrunch.com/?p=3071190">TechCrunch：Manna 在芬蘭為 Wolt 配送（2025/11，媒體）</a></li>
     <li id="s51" value="51"><a target="_blank" rel="noopener" href="https://www.businesswire.com/news/home/20240321769456/en/DoorDash-and-Wing-Announce-Drone-Delivery-Pilot-in-the-US">DoorDash × Wing 新聞稿：美國試點（2024/3/21）</a></li>
     <li id="s52" value="52"><a target="_blank" rel="noopener" href="https://qsr.pro/articles/autonomous-delivery-robots-drones-doordash-dot-serve-grubhub-qsr-map-2026">QSR.pro：2026 自動配送地圖（2026/3，媒體）</a></li>
+    <li id="s53" value="53"><a target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/1792789/000179278926000012/prodq4dashex991-pressrelea.htm">DoorDash 2025 年第四季及全年財報（SEC 8-K，2026/2/18）</a></li>
+    <li id="s54" value="54"><a target="_blank" rel="noopener" href="https://capedge.com/filing/1543151/0001543151-20-000010/10K-2019FY">Uber 2019 年度報告（10-K）：公司成立沿革</a></li>
+    <li id="s55" value="55"><a target="_blank" rel="noopener" href="https://about.doordash.com/en-us/company">DoorDash 官方：公司簡介</a></li>
+    <li id="s56" value="56"><a target="_blank" rel="noopener" href="https://press.wolt.com/en-WW/215041-doordash-completes-acquisition-of-wolt">Wolt 官方：DoorDash 完成收購 Wolt（2022）</a></li>
   </ol>
 </section>
 
