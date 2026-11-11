@@ -261,6 +261,22 @@ tr.tgrp td{background:var(--soft);font-weight:700;font-size:13px;color:var(--ink
 .fn::first-letter{}
 .fn{text-indent:-0.9em;padding-left:0.9em}
 .h4s{display:block;font-size:11.5px;font-weight:400;color:var(--ink3)}
+.kpi{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px 10px}
+.kpis{gap:16px}
+.kpi-wide{grid-column:1/-1}
+.seggr{margin:-2px 0 4px 68px;font-size:11.5px;color:var(--ink3)}
+.dv{margin-top:4px}
+.dv-row{display:grid;grid-template-columns:210px 30% 1fr;align-items:center;margin:6px 0;font-size:13px}
+.dv-row .dvl{color:var(--ink2);line-height:1.3;padding-right:8px}
+.dv-row .dvl small{color:var(--ink3);font-size:11px}
+.dv-n{display:flex;justify-content:flex-end;align-items:center;gap:6px;border-right:1.5px solid var(--ink3);min-height:22px;padding-right:0}
+.dv-p{display:flex;align-items:center;gap:6px;min-height:22px}
+.dvb{display:block;height:20px;border-radius:3px}
+.dvb.s2{background:var(--seg2)} .dvb.u{background:var(--uber)} .dvb.s3{background:var(--seg3)} .dvb.neg{background:var(--bad-soft);border:1px solid var(--bad)} .dvb.tot{background:var(--ink2)}
+.dvv{white-space:nowrap;font-weight:600} .dvv small{font-weight:400;color:var(--ink3)}
+.dv-tot{border-top:1px dashed var(--line);padding-top:6px}
+@media (max-width:760px){.dv-row{grid-template-columns:34% 1fr;font-size:12px;row-gap:2px}.dv-row .dvl{grid-column:1/-1}.dvv small{display:block}}
+.unit{display:inline-block;font-size:11px;font-weight:400;color:var(--ink2);background:var(--soft);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;white-space:nowrap}
 .fn .tag{margin-left:4px}
 html{scroll-behavior:smooth}
 section,.lh,.tw{scroll-margin-top:16px}
@@ -389,61 +405,65 @@ section,.lh,.tw{scroll-margin-top:16px}
     </div>
     <div class="kpis">
       <div class="kpi">
-        <h4>交易額（Gross Bookings，億美元）</h4>
+        <h4>交易額（Gross Bookings／Marketplace GOV）<span class="unit">單位：億美元</span></h4>
         <div class="bar-row hascall"><span>Uber</span><div class="bar-track">
-          <div class="stackwrap" style="width:60%"><span class="callout" style="right:1.5%">貨運 17.68 (+35%)</span><div class="stack"><i class="sg u" style="width:47.7%" title="外送 285.39 億（+22%）">外送 285.39<em class="g"> (+22%)</em></i><i class="sg s2" style="width:49.3%" title="叫車 295.12 億（+18%）">叫車 295.12<em class="g"> (+18%)</em></i><i class="sg s3" style="width:3%" title="貨運 17.68 億（+35%）"></i></div></div>
+          <div class="stackwrap" style="width:60%"><span class="callout" style="right:1.5%">貨運 17.68</span><div class="stack"><i class="sg u" style="width:47.7%" title="外送 285.39 億（+22%）">外送 285.39</i><i class="sg s2" style="width:49.3%" title="叫車 295.12 億（+18%）">叫車 295.12</i><i class="sg s3" style="width:3%" title="貨運 17.68 億（+35%）"></i></div></div>
           <span class="bar-val">合計 598.19 <small>(+20%)</small></span></div></div>
+        <div class="seggr">年增：外送 +22%｜叫車 +18%｜貨運 +35%</div>
         <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:34%" title="DoorDash 339.41 億（+36%）"></div><span class="bar-val">339.41 <small>(+36%；不含 Deliveroo +23%)</small></span></div></div>
-        <div class="note"><div class="fn">* 交易額指消費者於平台下單之總金額（含餐費），非公司營收；Uber 財報稱 Gross Bookings，DoorDash 財報稱 Marketplace GOV（Gross Order Value）。</div></div>
+        
       </div>
       <div class="kpi">
-        <h4>營收（Revenue，億美元）</h4>
+        <h4>營收（Revenue）<span class="unit">單位：億美元</span></h4>
         <div class="bar-row hascall"><span>Uber</span><div class="bar-track">
-          <div class="stackwrap" style="width:72%"><span class="callout" style="right:5.95%">貨運 17.58 (+34%)</span><div class="stack"><i class="sg u" style="width:37.2%" title="外送部門營收 54.88 億（+23%）">外送 54.88<em class="g"> (+23%)</em></i><i class="sg s2" style="width:50.9%" title="叫車營收 75.20 億（−2%）">叫車 75.20<em class="g"> (−2%)</em></i><i class="sg s3" style="width:11.9%" title="貨運營收 17.58 億（+34%）"></i></div></div>
+          <div class="stackwrap" style="width:72%"><span class="callout" style="right:5.95%">貨運 17.58</span><div class="stack"><i class="sg u" style="width:37.2%" title="外送部門營收 54.88 億（+23%）">外送 54.88</i><i class="sg s2" style="width:50.9%" title="叫車營收 75.20 億（−2%）">叫車 75.20</i><i class="sg s3" style="width:11.9%" title="貨運營收 17.58 億（+34%）"></i></div></div>
           <span class="bar-val">合計 147.66 <small>(+10%)</small></span></div></div>
+        <div class="seggr">年增：外送 +23%｜叫車 −2%｜貨運 +34%</div>
         <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:22.5%" title="DoorDash 營收 46.16 億（+34%）"></div><span class="bar-val">46.16 <small>(+34%；不含 Deliveroo +23%)</small></span></div></div>
-        <div class="note"><div class="fn">* 各部門營收依 Uber 財報分部揭露數字。</div></div>
+        
       </div>
       <div class="kpi">
-        <h4>訂單／趟次（Total Orders／Trips，億筆）<small class="h4s">口徑不同，不宜直接比較</small></h4>
+        <h4>訂單／趟次（Total Orders／Trips）<span class="unit">單位：億筆</span><small class="h4s">口徑不同，不宜直接比較</small></h4>
         <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar s2 lab" style="width:51%" title="Uber 40.61 億趟，含叫車與外送">叫車與外送合計</div><span class="bar-val">40.61 <small>(+16%)</small></span></div></div>
         <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:12%" title="DoorDash 9.93 億筆（+28%）"></div><span class="bar-val">9.93 <small>(+28%；不含 Deliveroo +17%)</small></span></div></div>
-        <div class="note"><div class="fn">* <b>Uber 僅公布叫車與外送合計趟次，未單獨揭露外送訂單數</b>，故無法比較外送訂單量。</div></div>
+        <div class="note"><div class="fn">* Uber 僅公布叫車與外送合計趟次</div></div>
       </div>
       <div class="kpi">
-        <h4>獲利：調整後 EBITDA（Adjusted EBITDA，億美元）</h4>
+        <h4>獲利：調整後 EBITDA（Adjusted EBITDA）<span class="unit">單位：億美元</span></h4>
         <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar s2 lab" style="width:46%" title="Uber 全公司調整後 EBITDA 29.63 億（+31%）">全公司</div><span class="bar-val">29.63 <small>(+31%)</small></span></div></div>
         <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:17%" title="DoorDash 調整後 EBITDA 10.60 億（+41%）"></div><span class="bar-val">10.60 <small>(+41%)</small></span></div></div>
-        <div class="note"><div class="fn">* 調整後 EBITDA 指未計利息、稅項、折舊攤銷及一次性項目前之獲利。</div><div class="fn">* GAAP 淨利（Net Income）：Uber 5.12 億（−92%，含 4.76 億稅前股權投資評價損失）、DoorDash 4.66 億（+91%）。</div><div class="fn">* 自由現金流（Free Cash Flow）：Uber 25.35 億（+14%）、DoorDash 7.87 億（+9%）。</div><div class="fn">* Uber 各部門營業利益（Segment Operating Income／Loss，Non-GAAP）：</div><ul class="fnl"><li>叫車（Mobility）23.62 億（+27%）</li><li>外送（Delivery）10.57 億（+30%）</li><li>貨運（Freight）虧損 0.33 億</li><li>企業一般行政與平台研發（Corporate G&amp;A and Platform R&amp;D）虧損 10.82 億</li><li>Non-GAAP 營業利益（Non-GAAP Operating Income）總計 23.04 億（+38%）</li></ul><div class="fn">* 部門營業利益未分攤總部費用，與 DoorDash 定義不同，不宜直接比較。</div></div>
+        <div class="note"><div class="fn">* 調整後 EBITDA 指未計利息、稅項、折舊攤銷及一次性項目前之獲利。</div></div>
+      </div>
+      <div class="kpi">
+        <h4>GAAP 淨利（Net Income）<span class="unit">單位：億美元</span></h4>
+        <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar s2" style="width:60%" title="Uber GAAP 淨利 5.12 億（−92%）"></div><span class="bar-val">5.12 <small>(−92%)</small></span></div></div>
+        <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:54.6%" title="DoorDash GAAP 淨利 4.66 億（+91%）"></div><span class="bar-val">4.66 <small>(+91%)</small></span></div></div>
+        <div class="note"><div class="fn">* Uber 本季淨利含 4.76 億稅前股權投資評價損失；去年同期為 66.26 億。</div></div>
+      </div>
+      <div class="kpi">
+        <h4>自由現金流（Free Cash Flow）<span class="unit">單位：億美元</span></h4>
+        <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar s2" style="width:60%" title="Uber 自由現金流 25.35 億（+14%）"></div><span class="bar-val">25.35 <small>(+14%)</small></span></div></div>
+        <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:18.6%" title="DoorDash 自由現金流 7.87 億（+9%）"></div><span class="bar-val">7.87 <small>(+9%)</small></span></div></div>
+        <div class="note"><div class="fn">* 營業活動淨現金流（Net Cash from Operating Activities）：Uber 26.39 億、DoorDash 9.94 億。</div></div>
+      </div>
+      <div class="kpi kpi-wide">
+        <h4>Uber 各部門營業利益（Segment Operating Income／Loss，Non-GAAP）<span class="unit">單位：億美元</span></h4>
+        <div class="dv">
+          <div class="dv-row"><span class="dvl">叫車（Mobility）</span><div class="dv-n"></div><div class="dv-p"><i class="dvb s2" style="width:88.0%"></i><span class="dvv">23.62 <small>(+27%)</small></span></div></div>
+          <div class="dv-row"><span class="dvl">外送（Delivery）</span><div class="dv-n"></div><div class="dv-p"><i class="dvb u" style="width:39.4%"></i><span class="dvv">10.57 <small>(+30%)</small></span></div></div>
+          <div class="dv-row"><span class="dvl">貨運（Freight）</span><div class="dv-n"><span class="dvv">−0.33 <small>(去年同期 −0.40)</small></span><i class="dvb s3" style="width:1.8%"></i></div><div class="dv-p"></div></div>
+          <div class="dv-row"><span class="dvl">企業一般行政與平台研發<br><small>Corporate G&amp;A and Platform R&amp;D</small></span><div class="dv-n"><span class="dvv">−10.82 <small>(去年同期 −9.60)</small></span><i class="dvb neg" style="width:60.0%"></i></div><div class="dv-p"></div></div>
+          <div class="dv-row dv-tot"><span class="dvl">Non-GAAP 營業利益合計<br><small>Non-GAAP Operating Income</small></span><div class="dv-n"></div><div class="dv-p"><i class="dvb tot" style="width:85.8%"></i><span class="dvv">23.04 <small>(+38%)</small></span></div></div>
+        </div>
+        <div class="note"><div class="fn">* 部門營業利益未分攤總部費用（列於「企業一般行政與平台研發」）；DoorDash 未揭露同類數字，不宜比較。</div></div>
       </div>
     </div>
+    <div class="lnote" style="margin-top:10px"><div class="fn">* Uber 財報以「外送部門」揭露，涵蓋 Uber Eats 及旗下其他外送品牌，未單獨公布 Uber Eats 數字。</div><div class="fn">* DoorDash 數字含 2025 年併購的英國外送平台 Deliveroo。</div></div>
   </div>
 
   <div class="layer" style="margin-top:28px">
-    <h3 class="lh" id="s1b"><span class="lt">B</span>外送業務比較：Uber 外送部門 vs DoorDash<span class="lhs">（2026 Q3 官方財報數字）<sup><a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Third-Quarter-2026/default.aspx" target="_blank" rel="noopener" title="開啟來源 [1]">[1]</a><a href="https://www.sec.gov/Archives/edgar/data/0001792789/000179278926000062/proddashex991-pressrelease.htm" target="_blank" rel="noopener" title="開啟來源 [2]">[2]</a></sup></span></h3>
-    <div class="legend">
-      <span><span class="sw" style="background:var(--uber)"></span>Uber 外送部門</span>
-      <span><span class="sw" style="background:var(--dd)"></span>DoorDash</span>
-    </div>
-    <div class="kpis kpis3">
-      <div class="kpi">
-        <h4>外送交易額（Gross Bookings／Marketplace GOV，億美元）</h4>
-        <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar u" style="width:23.6%" title="Uber 外送部門交易額 285.39 億（+22%）"></div><span class="bar-val">285.39 <small>(+22%)</small></span></div></div>
-        <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:28%" title="DoorDash 339.41 億（+36%）"></div><span class="bar-val">339.41 <small>(+36%；不含 Deliveroo +23%)</small></span></div></div>
-      </div>
-      <div class="kpi">
-        <h4>營收（Revenue，億美元）<small class="h4s">Uber 外送部門 vs DoorDash 全公司</small></h4>
-        <div class="bar-row"><span>Uber</span><div class="bar-track"><div class="bar u" style="width:28%" title="Uber 外送部門營收 54.88 億（+23%）"></div><span class="bar-val">54.88 <small>(+23%)</small></span></div></div>
-        <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:23.6%" title="DoorDash 營收 46.16 億（+34%）"></div><span class="bar-val">46.16 <small>(+34%；不含 Deliveroo +23%)</small></span></div></div>
-      </div>
-      <div class="kpi">
-        <h4>外送訂單（Total Orders，億筆）</h4>
-        <div class="bar-row"><span>Uber</span><div class="bar-track"><span class="bar-val" style="color:var(--ink3)">未單獨公布</span></div></div>
-        <div class="bar-row"><span>DoorDash</span><div class="bar-track"><div class="bar d" style="width:28%" title="DoorDash 9.93 億筆（+28%）"></div><span class="bar-val">9.93 <small>(+28%；不含 Deliveroo +17%)</small></span></div></div>
-      </div>
-    </div>
-    <div class="lnote" style="margin-top:8px"><div class="fn">* Uber 財報以「外送部門」揭露，涵蓋 Uber Eats 及旗下其他外送品牌，未單獨公布 Uber Eats 數字。</div><div class="fn">* DoorDash 數字含 2025 年併購的英國外送平台 Deliveroo。</div></div>
-    <div class="chips-h">其他指標</div>
+    <h3 class="lh" id="s1b"><span class="lt">B</span>其他營運指標（Other Metrics）<span class="lhs">（公司公布）</span></h3>
+    
     <div class="chips">
       <div class="chip u"><span class="k">Uber One 會員（Members）</span><b>約 5,500 萬</b><span class="d">2026 Q3；會員貢獻外送交易額 70%<sup><a href="https://stockanalysis.com/stocks/uber/transcripts/725012-q3-2026/" target="_blank" rel="noopener" title="開啟來源 [30]">[30]</a></sup></span></div>
       <div class="chip u"><span class="k">Uber 生鮮與零售外送（Grocery &amp; Retail）</span><b>年化 150 億美元</b><span class="d">年化交易額（Gross Bookings Run Rate），年增 40%<sup><a href="https://stockanalysis.com/stocks/uber/transcripts/725012-q3-2026/" target="_blank" rel="noopener" title="開啟來源 [30]">[30]</a></sup></span></div>
@@ -754,7 +774,7 @@ section,.lh,.tw{scroll-margin-top:16px}
       <div class="stat"><div class="lbl">Serve 2026 年第三季全公司營收（Revenue，未拆分外送與醫院業務）</div><div class="big">283.50 <small>萬美元</small></div></div>
     </div>
     <div>
-      <div style="font-size:14px;font-weight:700;margin-bottom:8px">Serve 平均每日活躍機器人數（Daily Active Robots，台）</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px">Serve 平均每日活躍機器人數（Daily Active Robots）<span class="unit">單位：台</span></div>
       <div class="col-chart">
         <div class="col"><div class="v">312</div><div class="c" style="height:34%" title="2025 Q3：312 台"></div></div>
         <div class="col"><div class="v">792</div><div class="c" style="height:86%" title="2026 Q2：792 台"></div></div>
