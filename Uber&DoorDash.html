@@ -308,6 +308,14 @@ table.scale td.tx small{display:block;color:var(--ink3);font-size:11.5px}
 .cl{position:relative;padding-left:11px}
 .cl+.cl{margin-top:4px}
 .cl::before{content:"·";position:absolute;left:0;color:var(--ink3);font-weight:700}
+.srcsum{cursor:pointer;font-size:15px;font-weight:700;color:var(--ink);padding:6px 0;list-style-position:inside}
+.srcsum:hover{color:var(--accent)}
+.sv-chart{position:relative;margin-top:22px}
+.sv-chart .brk{flex:0 0 1px;align-self:stretch;border-left:1.5px dashed var(--ink3);position:relative}
+.sv-chart .brk span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--ink3);white-space:nowrap}
+.sv-lbl .brk-sp{flex:0 0 1px}
+.col .c.c-del{background:var(--seg2)}
+.chart-note{font-size:12px;color:var(--ink2);margin-top:8px;padding:6px 8px;background:var(--soft);border-radius:6px;line-height:1.5}
 .unit{display:inline-block;font-size:11px;font-weight:400;color:var(--ink2);background:var(--soft);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;white-space:nowrap}
 .fn .tag{margin-left:4px}
 html{scroll-behavior:smooth}
@@ -785,15 +793,18 @@ section,.lh,.tw{scroll-margin-top:16px}
     </div>
     <div>
       <div style="font-size:14px;font-weight:700;margin-bottom:8px">Serve Robotics 平均每日活躍機器人數（Daily Active Robots）<span class="unit">單位：台</span></div>
-      <div class="col-chart">
-        <div class="col"><div class="v">312</div><div class="c" style="height:34%" title="2025 Q3：312 台"></div></div>
+      <div class="col-chart sv-chart">
+        <div class="col"><div class="v">312</div><div class="c c-del" style="height:34%" title="2025 Q3：312 台（僅外送機器人）"></div></div>
+        <div class="brk"><span>統計範圍改變</span></div>
         <div class="col"><div class="v">792</div><div class="c" style="height:86%" title="2026 Q2：792 台"></div></div>
         <div class="col"><div class="v">917</div><div class="c" style="height:100%" title="2026 Q3：917 台"></div></div>
       </div>
-      <div class="col-lbl"><span>2025 Q3<br><small>僅外送機器人</small></span><span>2026 Q2<br><small>含醫院室內機器人</small></span><span>2026 Q3<br><small>含醫院室內機器人</small></span></div>
-      <div class="lnote" style="margin-top:10px"><b>說明</b><div class="fn">* Serve Robotics 本業是人行道外送機器人；2026 年收購醫院送物機器人公司 Diligent Robotics 後，公司註明第二、三季數字都包含戶外外送與醫院室內機器人，但未拆分各占多少。</div><div class="fn">* 2025 年第三季（收購前）的 312 台全為外送機器人；2026 年起統計範圍改變，因此 312→917 不代表外送機器人增加的台數，公司未公布外送機器人的個別數量。</div><div class="fn">* Serve Robotics 表示已在美國部署逾 2,000 台機器人，此為累計部署數，不等於每日活躍台數，也未區分外送與醫院用途。</div><div class="fn">* 全年營收預估（Revenue Guidance）先從 2,600 萬美元下修至 900–1,000 萬 <span class="tag media">媒體報導</span><span class="tag one">單一來源</span><sup><a href="https://www.axios.com/2026/08/17/serve-robotics-uber-grubhub-doordash-washington" target="_blank" rel="noopener" title="開啟來源 [15]">[15]</a></sup>，第三季再上調至 1,200 萬美元；2026 年 10 月在澳洲推出第一個海外城市<sup><a href="https://finviz.com/news/417685/serve-robotics-announces-third-quarter-2026-results" target="_blank" rel="noopener" title="開啟來源 [18]">[18]</a></sup>。</div><div class="fn">* Serve Robotics 與 Uber 合約「預計不續約」為 Serve Robotics 執行長於 2026 年第二季法說會的說法，並附帶「除非營運模式明顯改善」的條件 <span class="tag media">媒體報導</span><sup><a href="https://www.marketbeat.com/instant-alerts/serve-robotics-q2-earnings-call-highlights-2026-08-07/" target="_blank" rel="noopener" title="開啟來源 [132]">[132]</a></sup>；Uber 未正式公布，雙方最終合作狀態尚未確定。</div></div>
+      <div class="col-lbl sv-lbl"><span>2025 Q3<br><small>僅外送機器人</small></span><span class="brk-sp"></span><span>2026 Q2<br><small>含醫院室內機器人</small></span><span>2026 Q3<br><small>含醫院室內機器人</small></span></div>
+      <div class="chart-note">2026 年收購醫院送物機器人公司 Diligent Robotics 後，數字含醫院室內機器人且未拆分；312→917 不代表外送機器人增加的台數。</div>
+      
     </div>
   </div>
+  <div class="lnote" style="margin-top:14px"><b>說明</b><div class="fn">* 累計部署：Serve Robotics 表示已在美國部署逾 2,000 台機器人；此為累計數，不等於每日活躍台數，也未區分外送與醫院用途。</div><div class="fn">* 全年營收預估（Revenue Guidance）：先從 2,600 萬美元下修至 900–1,000 萬美元 <span class="tag media">媒體報導</span><span class="tag one">單一來源</span><sup><a href="https://www.axios.com/2026/08/17/serve-robotics-uber-grubhub-doordash-washington" target="_blank" rel="noopener" title="開啟來源 [15]">[15]</a></sup>，第三季再上調至 1,200 萬美元<sup><a href="https://finviz.com/news/417685/serve-robotics-announces-third-quarter-2026-results" target="_blank" rel="noopener" title="開啟來源 [18]">[18]</a></sup>。</div></div>
 </section>
 
 <!-- 6 結論 -->
@@ -814,9 +825,8 @@ section,.lh,.tw{scroll-margin-top:16px}
       <p>自研 Dot 機器人與 DoorDash Air 無人機，入股自主電動配送車公司 ALSO，另與 Coco Robotics、Serve Robotics（地面機器人）、Wing（無人機）、Waymo（自駕車）合作，並以自有 AI 調度平台分派訂單。</p>
     </div>
   </div>
-  <div class="chips-h" style="margin-top:20px">商業化程度對照</div>
   <div class="tbl-wrap"><table class="ctbl">
-    <thead><tr><th>評估項目</th><th style="color:var(--uber)">Uber</th><th style="color:var(--dd)">DoorDash</th></tr></thead>
+    <thead><tr><th>項目</th><th style="color:var(--uber)">Uber</th><th style="color:var(--dd)">DoorDash</th></tr></thead>
     <tbody>
       <tr><td class="ck">成立時間</td><td>2009 年<sup><a href="https://capedge.com/filing/1543151/0001543151-20-000010/10K-2019FY" target="_blank" rel="noopener" title="開啟來源 [54]">[54]</a></sup></td><td>2013 年<sup><a href="https://about.doordash.com/en-us/company" target="_blank" rel="noopener" title="開啟來源 [55]">[55]</a></sup></td></tr>
       <tr><td class="ck">已公布的實際配送</td><td>10 多個城市，累計「數十萬次」地面機器人配送<sup><a href="https://www.uber.com/en-US/blog/robot-deliveries-a-new-way-to-keep-your-orders-moving/" target="_blank" rel="noopener" title="開啟來源 [3]">[3]</a></sup></td><td><div class="cl">Dot 及合作之機器人、無人機業者合計，累計「數十萬次」</div><div class="cl">其中 Coco Robotics 試點逾 10 萬筆<sup><a href="https://about.doordash.com/en-us/news/doordash-drone-delivery" target="_blank" rel="noopener" title="開啟來源 [25]">[25]</a><a href="https://www.businesswire.com/news/home/20250410517445/en" target="_blank" rel="noopener" title="開啟來源 [6]">[6]</a></sup></div></td></tr>
@@ -827,26 +837,12 @@ section,.lh,.tw{scroll-margin-top:16px}
       <tr><td class="ck">派單方式</td><td>Uber Eats 平台派單給外部業者<sup><a href="https://www.uber.com/en-US/blog/robot-deliveries-a-new-way-to-keep-your-orders-moving/" target="_blank" rel="noopener" title="開啟來源 [3]">[3]</a></sup></td><td>自家 AI 調度平台，在外送員、機器人、無人機、自駕車之間分派<sup><a href="https://about.doordash.com/en-us/news/doordash-unveils-dot" target="_blank" rel="noopener" title="開啟來源 [4]">[4]</a></sup></td></tr>
     </tbody>
   </table></div>
-  <div class="lnote" style="margin:6px 0 0"><div class="fn">* 兩家公司都已在部分城市實際配送，但整體機器人訂單占比、單台每日配送量、單筆配送成本、各平台專屬機器人數量等指標均未公布。</div><div class="fn">* DoorDash 執行長於 2026 年 8 月法說會表示，Dot 在鳳凰城測試市場已服務數萬名顧客，預計年底在該市場達「高個位數」百分比滲透率（目標值）<span class="tag media">媒體報導</span><sup><a href="https://www.marketbeat.com/instant-alerts/doordash-q2-earnings-call-highlights-2026-08-05/" target="_blank" rel="noopener" title="開啟來源 [120]">[120]</a></sup>。</div><div class="fn">* 配送次數僅反映實際使用情形，無法據以判斷成本效益。</div></div>
-  <div class="facts" style="grid-template-columns:1fr;margin-top:16px">
-    <div class="fbox">
-      <h3>已確認的事實</h3>
-      <ul>
-        <li>機器人外送已在特定城市正式營運，以短距離訂單為主；兩家均未公布整體機器人訂單占比；DoorDash 表示 Dot 目標於 2026 年底在鳳凰城測試市場達「高個位數」百分比的訂單滲透率 <span class="tag media">媒體報導</span><sup><a href="https://www.marketbeat.com/instant-alerts/doordash-q2-earnings-call-highlights-2026-08-05/" target="_blank" rel="noopener" title="開啟來源 [120]">[120]</a></sup>。</li>
-        <li>機器人業者可同時與多個平台合作：Serve Robotics 原以 Uber 為主，現轉向 DoorDash、Grubhub。</li>
-        <li>Uber 採多家外部業者合作模式；DoorDash 兼具自研硬體與自有調度平台。</li>
-        <li>兩家官方都表示累計機器人／自主配送已達「數十萬次」，但統計範圍不同（DoorDash 含無人機），不宜直接比較。</li>
-        <li>地方政府以許可、限速、罰則管理（佛利蒙、聖荷西）；芝加哥 2025 年 11 月出現居民連署要求暫停 <span class="tag media">媒體報導</span><span class="tag one">單一來源</span><sup><a href="https://www.cbsnews.com/amp/chicago/news/north-side-residents-petition-pause-to-delivery-robots" target="_blank" rel="noopener" title="開啟來源 [33]">[33]</a></sup>。</li>
-        <li>台灣：公平會已兩度否准 foodpanda 台灣出售案（2024 年 Uber、2026 年 Grab）。</li>
-      </ul>
-    </div>
-
-  </div>
   </div>
 </section>
 
 <section class="src" id="srcs">
-  <h2 style="font-size:15px">資料來源</h2>
+  <details id="srcdet">
+  <summary class="srcsum">資料來源（共 147 筆，點選展開）</summary>
   <ol>
     <li id="s1" value="1"><a target="_blank" rel="noopener" href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Third-Quarter-2026/default.aspx">Uber 官方：2026 年第三季財報新聞稿</a></li>
     <li id="s2" value="2"><a target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/0001792789/000179278926000062/proddashex991-pressrelease.htm">DoorDash 2026 年第三季財報（SEC 8-K）</a></li>
@@ -960,7 +956,6 @@ section,.lh,.tw{scroll-margin-top:16px}
     <li id="s117" value="117"><a target="_blank" rel="noopener" href="https://www.zipline.com/about/zipline-fact-sheet">Zipline 官方：公司概況與 P2 無人機規格</a></li>
     <li id="s118" value="118"><a target="_blank" rel="noopener" href="https://www.placera.se/pressmeddelanden/coco-robotics-launches-with-uber-eats-in-san-jose-expanding-autonomous-delivery-across-the-u-s-20260422">Coco Robotics 新聞稿：與 Uber Eats 在聖荷西上線（2026/4/22，公告轉載）</a></li>
     <li id="s119" value="119"><a target="_blank" rel="noopener" href="https://www.irishtimes.com/business/2026/06/19/manna-announces-strategic-pause-that-grounds-drone-deliveries-in-ireland/">Irish Times：Manna 宣布暫停愛爾蘭無人機配送（2026/6/19，媒體）</a></li>
-    <li id="s120" value="120"><a target="_blank" rel="noopener" href="https://www.marketbeat.com/instant-alerts/doordash-q2-earnings-call-highlights-2026-08-05/">MarketBeat：DoorDash 2026 年第二季法說會重點（2026/8/5，媒體）</a></li>
     <li id="s121" value="121"><a target="_blank" rel="noopener" href="https://thenextweb.com/news/doordash-air-drones-manna-ireland">The Next Web：DoorDash Air 取得 FAA Part 135 認證（2026/9/30，媒體）</a></li>
     <li id="s122" value="122"><a target="_blank" rel="noopener" href="https://www.thedronegirl.com/2026/09/30/doordash-air-drone-delivery-harrison-shih/">The Drone Girl：DoorDash Air 在舊金山生產（2026/9/30，媒體）</a></li>
     <li id="s123" value="123"><a target="_blank" rel="noopener" href="https://avride.ai/robot">Avride 官方：外送機器人規格</a></li>
@@ -997,9 +992,10 @@ section,.lh,.tw{scroll-margin-top:16px}
     <li id="s154" value="154"><a target="_blank" rel="noopener" href="https://www.vti.se/en/archives/news/archives/2026-03-25-vti-reviews-robots-for-deliveries-in-stockholm">瑞典國家道路與運輸研究院（VTI）：斯德哥爾摩外送機器人研究（2026/3/25）</a></li>
     <li id="s155" value="155"><a target="_blank" rel="noopener" href="https://dlp.dubai.gov.ae/Legislation%20Reference/2026/Executive%20Council%20Resolution%20No.%20(14)%20of%202026%20Approving%20the%20Use%20of%20Autonomous%20Vehicles.html">杜拜法規入口：2026 年行政會議第 14 號決議（自駕車使用）</a></li>
   </ol>
+  </details>
 </section>
 
-<div class="foot">金額以億美元四捨五入。DoorDash 2025 年起合併 Deliveroo，年增率同時列出含與不含 Deliveroo 的數字。</div>
+<div class="foot">金額單位為億美元，依財報百萬美元數字換算至小數點後兩位。DoorDash 2025 年 10 月起合併 Deliveroo，年增率同時列出含與不含 Deliveroo 的數字。</div>
 </div>
 
 <div id="lb" class="lb" hidden><div class="lb-in"><img id="lbimg" alt=""><div id="lbcap" class="lb-cap"></div><button class="lb-x" aria-label="關閉">×</button></div></div>
@@ -1034,5 +1030,6 @@ document.querySelectorAll('#secMap [data-k]').forEach(function(el){
 document.addEventListener('click',function(){tip.hidden=true;});
 })();
 </script>
+<script>(function(){function o(){if(location.hash==='#srcs'||/^#s\d+$/.test(location.hash)){var d=document.getElementById('srcdet');if(d)d.open=true;}}window.addEventListener('hashchange',o);o();document.querySelectorAll('a[href="#srcs"]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('srcdet').open=true;});});})();</script>
 </body>
 </html>
