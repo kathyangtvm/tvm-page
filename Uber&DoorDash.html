@@ -316,6 +316,11 @@ table.scale td.tx small{display:block;color:var(--ink3);font-size:11.5px}
 .sv-lbl .brk-sp{flex:0 0 1px}
 .col .c.c-del{background:var(--seg2)}
 .chart-note{font-size:12px;color:var(--ink2);margin-top:8px;padding:6px 8px;background:var(--soft);border-radius:6px;line-height:1.5}
+.mtip.pinned{pointer-events:auto;padding-right:28px;border-color:var(--accent)}
+.mtip a{color:var(--accent);text-decoration:none;font-size:11px;vertical-align:super}
+.mtip a:hover{text-decoration:underline}
+.mtip .mtx{position:absolute;top:4px;right:6px;border:0;background:none;font-size:18px;line-height:1;color:var(--ink3);cursor:pointer;padding:2px 4px}
+.mtip .tlh{margin-top:6px;font-size:11px;color:var(--ink3)}
 .unit{display:inline-block;font-size:11px;font-weight:400;color:var(--ink2);background:var(--soft);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;white-space:nowrap}
 .fn .tag{margin-left:4px}
 html{scroll-behavior:smooth}
@@ -710,7 +715,7 @@ section,.lh,.tw{scroll-margin-top:16px}
 <!-- 5 法規地圖 -->
 <section id="secMap">
   <h2><span class="no">5</span>全球法規與營運地圖<span class="lhs" style="margin-left:4px">（地面外送機器人為主；法規查詢至 2026/11）</span></h2>
-  <div class="lnote" style="margin:-4px 0 10px">將游標移至（手機請點選）國家、州或城市標記，可檢視當地法規與營運業者。</div>
+  <div class="lnote" style="margin:-4px 0 10px">將游標移至國家、州或城市標記，可檢視當地法規與營運業者；點一下可固定提示框，並點選來源編號開啟原文（手機請直接點選）。</div>
   <div class="mlegend">
   <span><i class="lg c1"></i>國家／州層級已有專法</span>
   <span><i class="lg c2"></i>無專法，以城市規範、開放路權或試辦方式營運</span>
@@ -788,8 +793,10 @@ section,.lh,.tw{scroll-margin-top:16px}
   <h2><span class="no">7</span>Serve Robotics 機器人營運規模<span class="lhs" style="margin-left:4px">（Serve Robotics 為上市公司，按季公布機隊數據）</span></h2>
   <div class="persp">
     <div style="align-self:start">
-      <div class="stat"><div class="lbl">Serve Robotics 2026 年第三季平均每日活躍機器人數（Daily Active Robots，Serve Robotics 全公司）<br><span class="tag calc">含戶外外送機器人及醫院室內機器人，公司未拆分</span></div><div class="big">917 <small>台</small></div></div>
-      <div class="stat"><div class="lbl">Serve Robotics 2026 年第三季全公司營收（Revenue，未拆分外送與醫院業務）</div><div class="big">283.50 <small>萬美元</small></div></div>
+      <div class="stat"><div class="lbl">Serve Robotics 在美國累計部署的外送機器人數（Deployed Robots）<sup><a href="https://www.nasdaq.com/press-release/serve-robotics-builds-2000-autonomous-delivery-robots-creating-largest-sidewalk" target="_blank" rel="noopener" title="開啟來源 [156]">[156]</a></sup><br><span class="tag calc">2025 年 12 月公布；累計部署數，非每日活躍台數</span></div><div class="big">2,000 <small>台以上</small></div></div>
+      <div class="stat"><div class="lbl">Serve Robotics 2026 年第三季平均每日活躍機器人數（Daily Active Robots）<br><span class="tag calc">含戶外外送機器人及醫院室內機器人，公司未拆分</span></div><div class="big">917 <small>台</small></div></div>
+      <div class="stat"><div class="lbl">Serve Robotics 2026 年第三季全公司營收（Revenue，含外送與醫院業務）</div><div class="big">283.50 <small>萬美元</small></div></div>
+      <div class="stat"><div class="lbl">Serve Robotics 2026 全年營收預估（Revenue Guidance）<sup><a href="https://finviz.com/news/417685/serve-robotics-announces-third-quarter-2026-results" target="_blank" rel="noopener" title="開啟來源 [18]">[18]</a></sup><br><span class="tag calc">第三季上調；先前曾從 2,600 萬美元下修至 900–1,000 萬美元</span> <span class="tag media">媒體報導</span><span class="tag one">單一來源</span><sup><a href="https://www.axios.com/2026/08/17/serve-robotics-uber-grubhub-doordash-washington" target="_blank" rel="noopener" title="開啟來源 [15]">[15]</a></sup></div><div class="big">1,200 <small>萬美元</small></div></div>
     </div>
     <div>
       <div style="font-size:14px;font-weight:700;margin-bottom:8px">Serve Robotics 平均每日活躍機器人數（Daily Active Robots）<span class="unit">單位：台</span></div>
@@ -804,7 +811,6 @@ section,.lh,.tw{scroll-margin-top:16px}
       
     </div>
   </div>
-  <div class="lnote" style="margin-top:14px"><b>說明</b><div class="fn">* 累計部署：Serve Robotics 表示已在美國部署逾 2,000 台機器人；此為累計數，不等於每日活躍台數，也未區分外送與醫院用途。</div><div class="fn">* 全年營收預估（Revenue Guidance）：先從 2,600 萬美元下修至 900–1,000 萬美元 <span class="tag media">媒體報導</span><span class="tag one">單一來源</span><sup><a href="https://www.axios.com/2026/08/17/serve-robotics-uber-grubhub-doordash-washington" target="_blank" rel="noopener" title="開啟來源 [15]">[15]</a></sup>，第三季再上調至 1,200 萬美元<sup><a href="https://finviz.com/news/417685/serve-robotics-announces-third-quarter-2026-results" target="_blank" rel="noopener" title="開啟來源 [18]">[18]</a></sup>。</div></div>
 </section>
 
 <!-- 6 結論 -->
@@ -842,7 +848,7 @@ section,.lh,.tw{scroll-margin-top:16px}
 
 <section class="src" id="srcs">
   <details id="srcdet">
-  <summary class="srcsum">資料來源（共 147 筆，點選展開）</summary>
+  <summary class="srcsum">資料來源（共 148 筆，點選展開）</summary>
   <ol>
     <li id="s1" value="1"><a target="_blank" rel="noopener" href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Third-Quarter-2026/default.aspx">Uber 官方：2026 年第三季財報新聞稿</a></li>
     <li id="s2" value="2"><a target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/0001792789/000179278926000062/proddashex991-pressrelease.htm">DoorDash 2026 年第三季財報（SEC 8-K）</a></li>
@@ -991,6 +997,7 @@ section,.lh,.tw{scroll-margin-top:16px}
     <li id="s153" value="153"><a target="_blank" rel="noopener" href="https://www.astra.admin.ch/de/automatisiertes-fahren">瑞士聯邦路政署（ASTRA）：自動駕駛條例與試辦</a></li>
     <li id="s154" value="154"><a target="_blank" rel="noopener" href="https://www.vti.se/en/archives/news/archives/2026-03-25-vti-reviews-robots-for-deliveries-in-stockholm">瑞典國家道路與運輸研究院（VTI）：斯德哥爾摩外送機器人研究（2026/3/25）</a></li>
     <li id="s155" value="155"><a target="_blank" rel="noopener" href="https://dlp.dubai.gov.ae/Legislation%20Reference/2026/Executive%20Council%20Resolution%20No.%20(14)%20of%202026%20Approving%20the%20Use%20of%20Autonomous%20Vehicles.html">杜拜法規入口：2026 年行政會議第 14 號決議（自駕車使用）</a></li>
+    <li id="s156" value="156"><a target="_blank" rel="noopener" href="https://www.nasdaq.com/press-release/serve-robotics-builds-2000-autonomous-delivery-robots-creating-largest-sidewalk">Serve Robotics 新聞稿：2025 年部署逾 2,000 台外送機器人（2025/12/12）</a></li>
   </ol>
   </details>
 </section>
@@ -1018,16 +1025,26 @@ var TT={"S:Virginia": ["維吉尼亞州", "州法（PDD 法）：2017 年全美�
 var tip=document.getElementById('mtip');
 var CZ={"Brazil": "巴西", "Mexico": "墨西哥", "Argentina": "阿根廷", "Chile": "智利", "Colombia": "哥倫比亞", "Peru": "秘魯", "France": "法國", "Spain": "西班牙", "Italy": "義大利", "Portugal": "葡萄牙", "Netherlands": "荷蘭", "Belgium": "比利時", "Austria": "奧地利", "Poland": "波蘭", "Norway": "挪威", "Denmark": "丹麥", "Greece": "希臘", "Turkey": "土耳其", "Russia": "俄羅斯", "Ukraine": "烏克蘭", "India": "印度", "Indonesia": "印尼", "Thailand": "泰國", "Vietnam": "越南", "Philippines": "菲律賓", "Malaysia": "馬來西亞", "Singapore": "新加坡", "New Zealand": "紐西蘭", "Saudi Arabia": "沙烏地阿拉伯", "Israel": "以色列", "Egypt": "埃及", "South Africa": "南非", "Nigeria": "奈及利亞", "Kenya": "肯亞", "Pakistan": "巴基斯坦", "Bangladesh": "孟加拉", "Mongolia": "蒙古", "Kazakhstan": "哈薩克", "Iran": "伊朗", "Iraq": "伊拉克", "North Korea": "北韓", "Greenland": "格陵蘭", "Iceland": "冰島", "Romania": "羅馬尼亞", "Hungary": "匈牙利", "Lithuania": "立陶宛", "Latvia": "拉脫維亞", "Qatar": "卡達", "Kuwait": "科威特", "Oman": "阿曼", "Myanmar": "緬甸", "Cambodia": "柬埔寨", "Laos": "寮國", "Venezuela": "委內瑞拉", "Cuba": "古巴"};
 var ZH={"Alabama": "阿拉巴馬州", "Alaska": "阿拉斯加州", "Arizona": "亞利桑那州", "Arkansas": "阿肯色州", "California": "加州", "Colorado": "科羅拉多州", "Connecticut": "康乃狄克州", "Delaware": "德拉瓦州", "District of Columbia": "華盛頓特區", "Florida": "佛羅里達州", "Georgia": "喬治亞州", "Hawaii": "夏威夷州", "Idaho": "愛達荷州", "Illinois": "伊利諾州", "Indiana": "印第安納州", "Iowa": "愛荷華州", "Kansas": "堪薩斯州", "Kentucky": "肯塔基州", "Louisiana": "路易斯安那州", "Maine": "緬因州", "Maryland": "馬里蘭州", "Massachusetts": "麻薩諸塞州", "Michigan": "密西根州", "Minnesota": "明尼蘇達州", "Mississippi": "密西西比州", "Missouri": "密蘇里州", "Montana": "蒙大拿州", "Nebraska": "內布拉斯加州", "Nevada": "內華達州", "New Hampshire": "新罕布夏州", "New Jersey": "紐澤西州", "New Mexico": "新墨西哥州", "New York": "紐約州", "North Carolina": "北卡羅來納州", "North Dakota": "北達科他州", "Ohio": "俄亥俄州", "Oklahoma": "奧克拉荷馬州", "Oregon": "奧勒岡州", "Pennsylvania": "賓州", "Rhode Island": "羅德島州", "South Carolina": "南卡羅來納州", "South Dakota": "南達科他州", "Tennessee": "田納西州", "Texas": "德州", "Utah": "猶他州", "Vermont": "佛蒙特州", "Virginia": "維吉尼亞州", "Washington": "華盛頓州", "West Virginia": "西維吉尼亞州", "Wisconsin": "威斯康辛州", "Wyoming": "懷俄明州", "Puerto Rico": "波多黎各", "American Samoa": "美屬薩摩亞", "Guam": "關島", "Commonwealth of the Northern Mariana Islands": "北馬利安納群島", "United States Virgin Islands": "美屬維京群島"};
-function show(e,k){var d=TT[k];if(!d){var n=k.slice(2);d=k[0]==="S"?[ZH[n]||n,"未查到外送機器人相關州法（不代表沒有法規）","本報告業者未見營運"]:[CZ[n]||n,"未查到相關法規資訊（不代表沒有法規）","本報告業者未見營運"];}tip.innerHTML='<b>'+d[0]+'</b>'+(d[1]?'<div class="tl1">'+d[1]+'</div>':'')+(d[2]?'<div class="tl2">'+d[2]+'</div>':'');tip.hidden=false;move(e);}
-function move(e){var x=(e.touches?e.touches[0].clientX:e.clientX),y=(e.touches?e.touches[0].clientY:e.clientY);var w=tip.offsetWidth,h=tip.offsetHeight;var L=x+14,T=y+14;if(L+w>window.innerWidth-8)L=x-w-14;if(L<8)L=8;if(T+h>window.innerHeight-8)T=y-h-14;tip.style.left=L+'px';tip.style.top=T+'px';}
+var PIN=false;
+function lk(s){return s.replace(/\[(\d+)\]/g,function(m,n){var a=document.querySelector('#s'+n+' a');return a?'<a href="'+a.href+'" target="_blank" rel="noopener" title="開啟來源 ['+n+']">['+n+']</a>':m;});}
+function show(e,k,pin){var d=TT[k];if(!d){var n=k.slice(2);d=k[0]==="S"?[ZH[n]||n,"未查到外送機器人相關州法（不代表沒有法規）","本報告業者未見營運"]:[CZ[n]||n,"未查到相關法規資訊（不代表沒有法規）","本報告業者未見營運"];}
+ var f=pin?lk:function(s){return s;};
+ tip.innerHTML=(pin?'<button class="mtx" aria-label="關閉">×</button>':'')+'<b>'+d[0]+'</b>'+(d[1]?'<div class="tl1">'+f(d[1])+'</div>':'')+(d[2]?'<div class="tl2">'+f(d[2])+'</div>':'')+(pin?'':'<div class="tlh">點一下可固定，並點選來源編號</div>');
+ tip.classList.toggle('pinned',!!pin);tip.hidden=false;move(e);
+ if(pin){var x=tip.querySelector('.mtx');x.addEventListener('click',function(ev){ev.stopPropagation();unpin();});}}
+function unpin(){PIN=false;tip.classList.remove('pinned');tip.hidden=true;document.querySelectorAll('#secMap .hov').forEach(function(x){x.classList.remove('hov');});}
+function move(e){var x=(e.touches?e.touches[0].clientX:e.clientX),y=(e.touches?e.touches[0].clientY:e.clientY);var w=tip.offsetWidth,h=tip.offsetHeight;var L=x+14,T=y+14;if(L+w>window.innerWidth-8)L=x-w-14;if(L<8)L=8;if(T+h>window.innerHeight-8)T=y-h-14;if(T<8)T=8;tip.style.left=L+'px';tip.style.top=T+'px';}
 document.querySelectorAll('#secMap [data-k]').forEach(function(el){
  var k=el.getAttribute('data-k');
- el.addEventListener('mouseenter',function(e){show(e,k);el.classList.add('hov');});
- el.addEventListener('mousemove',move);
- el.addEventListener('mouseleave',function(){tip.hidden=true;el.classList.remove('hov');});
- el.addEventListener('click',function(e){show(e,k);e.stopPropagation();});
+ el.addEventListener('mouseenter',function(e){if(PIN)return;show(e,k,false);el.classList.add('hov');});
+ el.addEventListener('mousemove',function(e){if(!PIN)move(e);});
+ el.addEventListener('mouseleave',function(){if(PIN)return;tip.hidden=true;el.classList.remove('hov');});
+ el.addEventListener('click',function(e){e.stopPropagation();document.querySelectorAll('#secMap .hov').forEach(function(x){x.classList.remove('hov');});PIN=true;show(e,k,true);el.classList.add('hov');});
 });
-document.addEventListener('click',function(){tip.hidden=true;});
+tip.addEventListener('click',function(e){e.stopPropagation();});
+document.addEventListener('click',function(){if(PIN)unpin();else tip.hidden=true;});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&PIN)unpin();});
+tip.addEventListener('click',function(e){var t=e.target.closest('a');if(!t)return;e.preventDefault();e.stopPropagation();var w=null;try{w=window.open(t.href,'_blank','noopener');}catch(err){}if(!w){try{window.top.location.href=t.href;}catch(err){location.href=t.href;}}});
 })();
 </script>
 <script>(function(){function o(){if(location.hash==='#srcs'||/^#s\d+$/.test(location.hash)){var d=document.getElementById('srcdet');if(d)d.open=true;}}window.addEventListener('hashchange',o);o();document.querySelectorAll('a[href="#srcs"]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('srcdet').open=true;});});})();</script>
